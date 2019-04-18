@@ -1,6 +1,6 @@
 #%Dialect 1.0
 
-dialect: WebAPI
+dialect: WebAPI Spec
 version: 1.0
 
 uses:
@@ -17,8 +17,164 @@ external:
 
 nodeMappings:
 
+  ParsedUnit:
+    classTerm: doc.Unit
+    mapping:
+      location:
+        propertyTerm: apiContract.location
+        range: string
+      internalRef:
+        propertyTerm: apiContract.internalReference
+        range: ParsedUnitUnion
+        allowMultiple: true
+      externalRef:
+        propertyTerm: apiContract.externalReference
+        range: link
+        allowMultiple: true
+
+  WebAPIDocument:
+    extends: ParsedUnit
+    classTerm: apiContract.WebAPIDocument
+    mapping:
+      encodes:
+        propertyTerm: doc.encodes
+        range: WebAPI
+      declares:
+        propertyTerm: doc.declares
+        range: DeclaredDomainElementUnion
+        allowMultiple: true
+
+  DataTypeFragment:
+    extends: ParsedUnit
+    classTerm: apiContract.DataTypeFragment
+    mapping:
+      encodes:
+        propertyTerm: doc.encodes
+        range: Shape
+
+  UserDocumentationFragment:
+    extends: ParsedUnit
+    classTerm: apiContract.UserDocumentationFragment
+    mapping:
+      encodes:
+        propertyTerm: doc.encodes
+        range: CreativeWork
+
+  NamedExampleFragment:
+    extends: ParsedUnit
+    classTerm: apiContract.NamedExampleFragment
+    mapping:
+      encodes:
+        propertyTerm: doc.encodes
+        range: Examples
+
+  ResourceTypeFragment:
+    extends: ParsedUnit
+    classTerm: apiContract.ResourceTypeFragment
+    mapping:
+      encodes:
+        propertyTerm: doc.encodes
+        range: ResourceType
+
+  TraitFragment:
+    extends: ParsedUnit
+    classTerm: apiContract.TraitFragment
+    mapping:
+      encodes:
+        propertyTerm: doc.encodes
+        range: Trait
+
+  SecuritySchemeFragment:
+    extends: ParsedUnit
+    classTerm: apiContract.SecuritySchemeFragment
+    mapping:
+      encodes:
+        propertyTerm: doc.encodes
+        range: SecurityScheme
+
+  AnnotationTypeFragment:
+    extends: ParsedUnit
+    classTerm: apiContract.AnnotationTypeDeclarationFragment
+    mapping:
+      encodes:
+        propertyTerm: doc.encodes
+        range: CustomDomainProperty
+
+  LibraryModule:
+    extends: ParsedUnit
+    classTerm: apiContract.LibraryModule
+    mapping:
+      declares:
+        propertyTerm: doc.declares
+        range: DeclaredDomainElementUnion
+        allowMultiple: true
+
+  ParsedUnitUnion:
+    typeDiscriminatorName: unitType
+    typeDiscriminator:
+      DataTypeFragment: DataTypeFragment
+      UserDocumentationFragment: UserDocumentationFragment
+      NamedExampleFragment: NamedExampleFragment
+      ResourceTypeFragment: ResourceTypeFragment
+      TraitFragment: TraitFragment
+      SecuritySchemeFragment: SecuritySchemeFragment
+      LibraryModule: LibraryModule
+      WebAPIDocument: WebAPIDocument
+    union:
+      - DataTypeFragment
+      - UserDocumentationFragment
+      - NamedExampleFragment
+      - ResourceTypeFragment
+      - TraitFragment
+      - SecuritySchemeFragment
+      - LibraryModule
+      - WebAPIDocument
+
+#  DataObject:
+#    classTerm: data.Object
+#    mapping:
+#      name:
+#        propertyTerm: core.name
+#        range: string
+#      properties:
+#        propertyTerm: data.property
+#        range: DataNodeUnion
+#        allowMultiple: true
+
+  DeclaredDomainElementUnion:
+    typeDiscriminatorName: declarationType
+    typeDiscriminator:
+      Union: UnionShape
+      Tuple: TupleShape
+      Node: NodeShape
+      Array: ArrayShape
+      Schema: SchemaShape
+      File: FileShape
+      Nil: NilShape
+      Scalar: ScalarShape
+      Any: AnyShape
+      Parameter: Parameter
+      ResourceType: ResourceType
+      Trait: Trait
+      SecurityScheme: SecurityScheme
+    union:
+      - UnionShape
+      - TupleShape
+      - NodeShape
+      - ArrayShape
+      - SchemaShape
+      - FileShape
+      - MatrixShape
+      - NilShape
+      - ScalarShape
+      - AnyShape
+      - Parameter
+      - ResourceType
+      - Trait
+      - SecurityScheme
+
   DataShapesUnion:
-    typeDiscriminatorName: type
+    typeDiscriminatorName: shapeType
     typeDiscriminator:
       Union: UnionShape
       Tuple: TupleShape
@@ -40,9 +196,9 @@ nodeMappings:
       - NilShape
       - ScalarShape
       - AnyShape
-    
+
   SecuritySettingsUnion:
-    typeDiscriminatorName: type
+    typeDiscriminatorName: settingsType
     typeDiscriminator:
       OAuth2: OAuth2Settings
       OAuth1: OAuth1Settings
@@ -55,7 +211,7 @@ nodeMappings:
       - APIKeySettings
       - HTTPSettings
       - OpenIDSettings
-    
+
   SchemaShape:
     classTerm: raml-shapes.SchemaShape
     extends: AnyShape
@@ -63,6 +219,7 @@ nodeMappings:
       mediaType:
         propertyTerm: shacl.mediaType
         range: string
+
 
   RecursiveShape:
     classTerm: raml-shapes.RecursiveShape
@@ -111,8 +268,8 @@ nodeMappings:
     classTerm: apiContract.Operation
     mapping:
       extends:
-        propertyTerm: doc.extends
-        typeDiscriminatorName: type
+        propertyTerm: apiContract.extends
+        typeDiscriminatorName: operationType
         typeDiscriminator:
           AppliedTrait: ParametrizedTrait
         range:
@@ -238,6 +395,13 @@ nodeMappings:
       examples:
         propertyTerm: apiContract.examples
         range: Examples
+      linkTarget:
+        propertyTerm: apiContract.link-target
+        range: link
+      linkLabel:
+        propertyTerm: apiContract.link-label
+        range: string
+
 
 
   OAuth2Settings:
@@ -286,6 +450,12 @@ nodeMappings:
         propertyTerm: doc.variable
         range: string
         allowMultiple: true
+      linkTarget:
+        propertyTerm: apiContract.link-target
+        range: link
+      linkLabel:
+        propertyTerm: apiContract.link-label
+        range: string
 
 
   ParametrizedTrait:
@@ -296,15 +466,11 @@ nodeMappings:
         range: string
       target:
         propertyTerm: doc.target
-        range:
-          - ResourceType
-          - Trait
-    
+        range: Trait
       variable:
         propertyTerm: doc.variable
         range: VariableValue
         allowMultiple: true
-
 
   Callback:
     classTerm: apiContract.Callback
@@ -341,22 +507,6 @@ nodeMappings:
         propertyTerm: raml-shapes.propertyTarget
         range: link
         allowMultiple: true
-
-
-  AbstractDeclaration:
-    classTerm: doc.AbstractDeclaration
-    mapping:
-      name:
-        propertyTerm: core.name
-        range: string
-      description:
-        propertyTerm: core.description
-        range: string
-      variable:
-        propertyTerm: doc.variable
-        range: string
-        allowMultiple: true
-
 
   FileShape:
     classTerm: raml-shapes.FileShape
@@ -399,9 +549,6 @@ nodeMappings:
     classTerm: shacl.PropertyShape
     extends: Shape
     mapping:
-      path:
-        propertyTerm: shacl.path
-        range: link
       range:
         propertyTerm: raml-shapes.range
         range: DataShapesUnion
@@ -626,6 +773,13 @@ nodeMappings:
       queryString:
         propertyTerm: apiContract.queryString
         range: DataShapesUnion
+      linkTarget:
+        propertyTerm: apiContract.link-target
+        range: link
+      linkLabel:
+        propertyTerm: apiContract.link-label
+        range: string
+
 
 
   ParametrizedResourceType:
@@ -636,10 +790,7 @@ nodeMappings:
         range: string
       target:
         propertyTerm: doc.target
-        range:
-          - ResourceType
-          - Trait
-    
+        range: ResourceType
       variable:
         propertyTerm: doc.variable
         range: VariableValue
@@ -822,6 +973,12 @@ nodeMappings:
       settings:
         propertyTerm: security.settings
         range: SecuritySettingsUnion
+      linkTarget:
+        propertyTerm: apiContract.link-target
+        range: link
+      linkLabel:
+        propertyTerm: apiContract.link-label
+        range: string
 
 
   Server:
@@ -857,8 +1014,8 @@ nodeMappings:
     classTerm: apiContract.EndPoint
     mapping:
       extends:
-        propertyTerm: doc.extends
-        typeDiscriminatorName: type
+        propertyTerm: apiContract.extends
+        typeDiscriminatorName: extensionType
         typeDiscriminator:
           AppliedResourceType: ParametrizedResourceType
           AppliedTrait: ParametrizedTrait
@@ -866,7 +1023,7 @@ nodeMappings:
           - ParametrizedResourceType
           - ParametrizedTrait
         allowMultiple: true
-    
+
       path:
         propertyTerm: apiContract.path
         range: string
@@ -1010,9 +1167,6 @@ nodeMappings:
       referenceId:
         propertyTerm: doc.reference-id
         range: link
-      location:
-        propertyTerm: doc.location
-        range: string
 
 
   Payload:
@@ -1120,6 +1274,12 @@ nodeMappings:
         propertyTerm: raml-shapes.closure
         range: link
         allowMultiple: true
+      linkTarget:
+        propertyTerm: apiContract.link-target
+        range: link
+      linkLabel:
+        propertyTerm: apiContract.link-label
+        range: string
 
 
   Trait:
@@ -1135,6 +1295,12 @@ nodeMappings:
         propertyTerm: doc.variable
         range: string
         allowMultiple: true
+      linkTarget:
+        propertyTerm: apiContract.link-target
+        range: link
+      linkLabel:
+        propertyTerm: apiContract.link-label
+        range: string
 
 
   Encoding:
@@ -1191,15 +1357,7 @@ nodeMappings:
 
 
 
+
 documents:
   root:
-    encodes: WebAPI
-    declares:
-      dataShapes: DataShapesUnion
-      resourceTypes: ResourceType
-      traits: Trait
-      securitySchemes: SecurityScheme
-      parameters: Parameter
-      responses: Response
-
-  
+    encodes: ParsedUnitUnion
