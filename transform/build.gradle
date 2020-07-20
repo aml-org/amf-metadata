@@ -8,12 +8,16 @@ dependencies {
     // Use Scala 2.13 in our library project
     implementation "org.scala-lang:scala-library:${scalaVersion}"
 
+    implementation "com.github.amlorg:amf-client_2.12:${amfVersion}"
+    implementation "org.apache.jena:jena-arq:3.11.0"
+
+
     // Use Scalatest for testing our library
-    testImplementation "org.scalatest:scalatest_2.13:${scalaTestVersion}"
-    testImplementation "org.scalatestplus:junit-4-12_2.13:${scalaTestPlusJunitVersion}"
+    testImplementation "org.scalatest:scalatest_2.12:${scalaTestVersion}"
+    testImplementation "org.scalatestplus:junit-4-12_2.12:${scalaTestPlusJunitVersion}"
 
     // Need scala-xml at test runtime
-    testRuntimeOnly "org.scala-lang.modules:scala-xml_2.13:${scalaXmlVersion}"
+    testRuntimeOnly "org.scala-lang.modules:scala-xml_2.12:${scalaXmlVersion}"
 }
 
 publishing {

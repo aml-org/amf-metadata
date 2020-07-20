@@ -1,9 +1,20 @@
 allprojects {
     repositories {
-        // Use jcenter for resolving dependencies.
-        // You can declare any Maven/Ivy/file repository here.
-        jcenter()
         mavenCentral()
+        //Mule repositories
+        maven {
+            name "mule-releases"
+            url "http://repository-master.mulesoft.org/nexus/content/repositories/releases/"
+        }
+        maven {
+            name "mule-snapshots"
+            url "http://repository-master.mulesoft.org/nexus/content/repositories/snapshots/"
+        }
+        maven {
+            name "mule-ee-snapshots"
+            url "https://repository-master.mulesoft.org/nexus/content/repositories/ci-snapshots/"
+        }
+        maven { url "https://jitpack.io" }
     }
 }
 
