@@ -1,0 +1,27 @@
+plugins {
+    id "scala"
+    id "java-library"
+    id "maven-publish"
+}
+
+dependencies {
+    // Use Scala 2.13 in our library project
+    implementation "org.scala-lang:scala-library:${scalaVersion}"
+
+    // Use Scalatest for testing our library
+    testImplementation "org.scalatest:scalatest_2.13:${scalaTestVersion}"
+    testImplementation "org.scalatestplus:junit-4-12_2.13:${scalaTestPlusJunitVersion}"
+
+    // Need scala-xml at test runtime
+    testRuntimeOnly "org.scala-lang.modules:scala-xml_2.13:${scalaXmlVersion}"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId group
+            artifactId 'amf-transformation'
+            version '1.0'
+        }
+    }
+}

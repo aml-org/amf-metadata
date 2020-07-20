@@ -1,0 +1,15 @@
+plugins {
+    id 'scala'
+}
+
+dependencies {
+    // Use Scala 2.13 in our library project
+    implementation 'org.scala-lang:scala-library:2.13.2'
+
+    // Use Scalatest for testing our library
+    testImplementation 'org.scalatest:scalatest_2.13:3.1.2'
+    testImplementation 'org.scalatestplus:junit-4-12_2.13:3.1.2.0'
+
+    // Need scala-xml at test runtime
+    testRuntimeOnly 'org.scala-lang.modules:scala-xml_2.13:1.2.0'
+}
