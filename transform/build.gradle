@@ -24,8 +24,8 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId group
-            artifactId 'amf-transformation'
-            version '1.0'
+            artifactId 'amf-canonical'
+            version '1.0.0'
         }
     }
 }
