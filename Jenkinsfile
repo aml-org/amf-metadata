@@ -46,7 +46,7 @@ pipeline {
       when {
         anyOf {
           branch 'master'
-          branch 'snapshot'
+          branch 'develop'
         }
       }
       steps {
@@ -73,7 +73,7 @@ pipeline {
       when {
         anyOf {
           branch 'master'
-//          branch 'snapshot'
+          branch 'develop'
         }
       }
       steps {
@@ -82,7 +82,7 @@ pipeline {
             if (env.BRANCH_NAME == 'master') {
               color = '#FF0000'
               headerFlavour = "RED ALERT"
-            } else if (env.BRANCH_NAME == 'snapshot') {
+            } else if (env.BRANCH_NAME == 'develop') {
               color = '#FFD700'
             }
             slackSend color: color, channel: "${slackChannel}", message: ":alert: ${headerFlavour}! :alert: Build failed!. \n\tBranch: ${env.BRANCH_NAME}\n\tStage:${failedStage}\n(See ${env.BUILD_URL})\n"
