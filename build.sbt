@@ -2,8 +2,8 @@ name := "amf-metadata"
 organization in ThisBuild := "com.github.amlorg"
 scalaVersion in ThisBuild := "2.12.11"
 
-val amfVocabularyVersion = "1.0.0-SNAPSHOT"
-val amfCanonicalVersion = "1.0.0-SNAPSHOT"
+lazy val amfVocabularyVersion = majorVersionOrSnapshot(1)
+val amfCanonicalVersion = versionOrSnapshot(1, 0)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Root ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -60,3 +60,14 @@ lazy val dependencies = new {
 }
 
 lazy val commonDependencies = Seq(dependencies.scalaTest, dependencies.amfClient)
+
+def majorVersionOrSnapshot(major: Int) = {
+  lazy val branch = sys.env.get("BRANCH_NAME")
+  if (branch.contains("master")) s"$major.0.0" else s"$major.0.0-SNAPSHOT"
+}
+
+def versionOrSnapshot(major: Int, minor: Int) = {
+  lazy val build = sys.env.getOrElse("BUILD_NUMBER", "0")
+  lazy val branch = sys.env.get("BRANCH_NAME")
+  if (branch.contains("master")) s"$major.$minor.$build" else s"$major.${minor + 1}.0-SNAPSHOT"
+}
