@@ -14,14 +14,11 @@ import amf.helpers.AMFRenderer
 import amf.io.FunSuiteCycleTests
 import amf.plugins.document.vocabularies.AMLPlugin
 import amf.plugins.document.vocabularies.model.document.Dialect
-import org.junit.runner.RunWith
 import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers
-import org.scalatestplus.junit.JUnitRunner
 
 import scala.concurrent.Future
 
-@RunWith(classOf[JUnitRunner])
 class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSecrets with Matchers {
 
   val CANONICAL_WEBAPI_DIALECT: String  = "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
