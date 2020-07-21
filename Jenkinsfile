@@ -45,7 +45,7 @@ pipeline {
       when {
         anyOf {
           branch 'master'
-          branch 'develop'
+          branch 'snapshot'
         }
       }
       steps {
