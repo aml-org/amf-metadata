@@ -9,6 +9,7 @@ pipeline {
     dockerfile true
   }
   environment {
+    NEXUS = credentials('exchange-nexus')
     GITHUB_ORG = 'aml-org'
     GITHUB_REPO = 'amf-metadata'
   }
