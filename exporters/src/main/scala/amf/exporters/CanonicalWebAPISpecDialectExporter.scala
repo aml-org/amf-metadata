@@ -56,9 +56,8 @@ object PropertyNodeModel extends DomainElementModel {
 }
 
 // The actual exporter
-object CanonicalWebAPISpecDialectExporter {
+class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
 
-  val DIALECT_FILE = "vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
   val WELL_KNOWN_VOCABULARIES: Map[String, String] = Map[String, String](
     "http://a.ml/vocabularies/document#"    -> "../vocabularies/aml_doc.yaml",
     "http://a.ml/vocabularies/data#"        -> "../vocabularies/data_model.yaml",
@@ -182,15 +181,12 @@ object CanonicalWebAPISpecDialectExporter {
               nodeMappings += (klassName -> nodeMapping)
               Some(nodeMapping)
             case other =>
-              // println(s"Other thing: $other")
               None
           }
         } catch {
           case _: ClassNotFoundException =>
-            // println(s"NOT FOUND '${klassName}'")
             None
           case _: NoSuchFieldException =>
-            // println(s"NOT FIELD '${klassName}'")
             None
         }
     }
@@ -625,16 +621,9 @@ object CanonicalWebAPISpecDialectExporter {
     (compacted, prefix, base)
   }
 
-  def main(args: Array[String]): Unit = {
-
-    val f      = new File(DIALECT_FILE)
-    val writer = new FileWriter(f)
-    dumpDialect(writer)
-  }
-
-  private def dumpDialect(writer: Writer): Unit = {
+  def dumpDialect(writer: Writer): Unit = {
     try {
-      println("*** Processing classes")
+      logger.log("*** Processing classes")
       VocabularyExporter.metaObjects(reflectionsWebApi, parseMetaObject)
       VocabularyExporter.metaObjects(reflectionsShapes, parseMetaObject)
       VocabularyExporter.metaObjects(reflectionsCore, parseMetaObject)
@@ -645,7 +634,7 @@ object CanonicalWebAPISpecDialectExporter {
       VocabularyExporter.metaObjects(reflectionsExtModel, parseMetaObject)
       cleanInheritance()
       val dialectText = renderDialect()
-      println(dialectText)
+      logger.log(dialectText)
       writer.write(dialectText)
     } finally {
       writer.close()
@@ -656,5 +645,18 @@ object CanonicalWebAPISpecDialectExporter {
     val writer = new StringWriter();
     dumpDialect(writer)
     writer.toString
+  }
+}
+
+
+object CanonicalWebAPISpecDialectExporter {
+
+  val DIALECT_FILE = "vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+
+  def main(args: Array[String]): Unit = {
+    val exporter = new CanonicalWebAPISpecDialectExporter()
+    val f      = new File(DIALECT_FILE)
+    val writer = new FileWriter(f)
+    exporter.dumpDialect(writer)
   }
 }
