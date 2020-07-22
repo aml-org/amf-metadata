@@ -21,7 +21,7 @@ import amf.plugins.domain.shapes.DataShapesDomainPlugin
 import amf.plugins.domain.webapi.WebAPIDomainPlugin
 import amf.tools.PropertyNodeModel
 import amf.transform.canonical.CanonicalWebAPISpecExtraModel._
-import amf.tools.canonical.JenaUtils.all
+import amf.transform.jena.JenaUtils.all
 import org.apache.jena.rdf.model.{Model, RDFNode, Resource, Statement}
 
 import scala.collection.mutable

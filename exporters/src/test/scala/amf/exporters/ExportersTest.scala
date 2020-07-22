@@ -5,12 +5,13 @@ import amf.helpers.FileAssertionTest
 import org.scalatest.{Assertion, Succeeded}
 import org.scalatest.funsuite.AsyncFunSuite
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
 class ExportersTest extends AsyncFunSuite with FileAssertionTest{
 
   test("Canonical WebApi Spec Export Test") {
-    validateExport(CanonicalWebAPISpecDialectExporter.writeToString, "vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml")
+    val exporter = new CanonicalWebAPISpecDialectExporter(new DummyLogger())
+    validateExport(exporter.writeToString, "vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml")
   }
 
   test("Validation Profile Exporter Test") {
