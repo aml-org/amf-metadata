@@ -5,7 +5,7 @@ import amf.helpers.FileAssertionTest
 import org.scalatest.{Assertion, Succeeded}
 import org.scalatest.funsuite.AsyncFunSuite
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
 class ExportersTest extends AsyncFunSuite with FileAssertionTest{
 
