@@ -13,6 +13,7 @@ import org.reflections.scanners.SubTypesScanner
 import org.yaml.model.YPart
 import amf.core.utils._
 import amf.transform.canonical.CanonicalWebAPISpecExtraModel._
+import amf.transform.canonical.PropertyNode
 
 import scala.collection.mutable
 
@@ -23,22 +24,6 @@ case class ExtendedDialectNodeMapping(id: String,
                                       extended: Seq[String],
                                       propertyMappings: List[DialectPropertyMapping],
                                       isShape: Boolean)
-
-// This model is just to reify the dynamic properties in an
-// ObjectNode
-class PropertyNode(override val fields: Fields, val annotations: Annotations) extends DomainElement {
-  override def meta: Obj           = PropertyNodeModel
-  override def componentId: String = "/property"
-}
-
-object PropertyNode {
-  def apply(): PropertyNode = apply(Annotations())
-
-  def apply(ast: YPart): PropertyNode = apply(Annotations(ast))
-
-  def apply(annotations: Annotations): PropertyNode =
-    new PropertyNode(Fields(), annotations)
-}
 
 object PropertyNodeModel extends DomainElementModel {
   val Range =

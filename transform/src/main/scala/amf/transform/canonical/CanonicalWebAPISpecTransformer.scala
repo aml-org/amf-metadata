@@ -19,7 +19,6 @@ import amf.plugins.document.webapi.Raml10Plugin
 import amf.plugins.document.webapi.metamodel.{ExtensionModel, OverlayModel}
 import amf.plugins.domain.shapes.DataShapesDomainPlugin
 import amf.plugins.domain.webapi.WebAPIDomainPlugin
-import amf.tools.PropertyNodeModel
 import amf.transform.canonical.CanonicalWebAPISpecExtraModel._
 import amf.transform.jena.JenaUtils.all
 import org.apache.jena.rdf.model.{Model, RDFNode, Resource, Statement}

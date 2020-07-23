@@ -5,7 +5,6 @@ import amf.core.metamodel.Type._
 import amf.core.metamodel.domain.extensions.DomainExtensionModel
 import amf.core.metamodel.domain.{ModelDoc, ModelVocabularies}
 import amf.core.vocabulary.Namespace
-import amf.tools.PropertyNodeModel
 
 object CanonicalWebAPISpecExtraModel {
   val DesignLinkTargetField = Field(
