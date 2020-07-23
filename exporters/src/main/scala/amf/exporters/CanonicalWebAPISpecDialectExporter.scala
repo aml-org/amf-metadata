@@ -61,7 +61,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
   val reflectionsDataNode  = new Reflections("amf.core.metamodel.domain", new SubTypesScanner(false))
   val reflectionsApiDocs   = new Reflections("amf.plugins.document.webapi.metamodel", new SubTypesScanner(false))
   val reflectionsDocs      = new Reflections("amf.core.metamodel.document", new SubTypesScanner(false))
-  val reflectionsExtModel  = new Reflections("amf.tools", new SubTypesScanner(false))
+  val reflectionsExtModel  = new Reflections("amf.transform", new SubTypesScanner(false))
 
   var nodeMappings: Map[String, ExtendedDialectNodeMapping] = Map()
 

@@ -6,6 +6,7 @@ import amf.core.model.domain.AmfObject
 import amf.core.vocabulary.{Namespace, ValueType}
 
 object PropertyNodeModel extends DomainElementModel {
+
   val Range =
     Field(DataNodeModel, Namespace.Data + "range", ModelDoc(ModelVocabularies.Data, "range", "value for a property"))
 

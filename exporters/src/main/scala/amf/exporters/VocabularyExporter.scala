@@ -148,7 +148,7 @@ object VocabularyExporter {
     new Reflections("amf.plugins.document.vocabularies.metamodel.document",
                     new SubTypesScanner(false))
   val reflectionsExtModel =
-    new Reflections("amf.tools", new SubTypesScanner(false))
+    new Reflections("amf.transform", new SubTypesScanner(false))
 
   var files: Map[String, VocabularyFile] = Map()
   var classToFile: Map[String, String] = Map()
