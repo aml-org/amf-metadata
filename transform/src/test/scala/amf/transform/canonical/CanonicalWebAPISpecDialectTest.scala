@@ -6,7 +6,7 @@ import amf.core.AMF
 import amf.core.emitter.RenderOptions
 import amf.core.model.document.ExternalFragment
 import amf.core.parser.errorhandler.UnhandledParserErrorHandler
-import amf.core.remote.{RamlYamlHint, Syntax, Vendor, VocabularyYamlHint}
+import amf.core.remote._
 import amf.core.services.RuntimeValidator
 import amf.core.unsafe.PlatformSecrets
 import amf.facades.{AMFCompiler, Validation}
@@ -21,41 +21,8 @@ import scala.concurrent.Future
 
 class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSecrets with Matchers {
 
-  val CANONICAL_WEBAPI_DIALECT: String  = "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
-  override def basePath: String = "file://transform/src/test/resources/transformations/"
-
-  def checkCanonicalDialectTransformation(source: String, target: String, shouldTranform: Boolean): Future[Assertion] = {
-    val amfWebApi  = basePath + source
-    val goldenYaml = s"$basePath$target.yaml"
-    val goldenJson = s"$basePath$target.json"
-
-    for {
-      _ <- AMF.init()
-      _ <- Future(amf.Core.registerPlugin(AMLPlugin))
-      v <- Validation(platform)
-      d <- AMFCompiler(CANONICAL_WEBAPI_DIALECT, platform, VocabularyYamlHint, eh = UnhandledParserErrorHandler).build()
-      _           <- Future { AMLPlugin().registry.resolveRegisteredDialect(d.asInstanceOf[Dialect].header) }
-      unit        <- AMFCompiler(amfWebApi, platform, RamlYamlHint, eh = DefaultParserErrorHandler()).build()
-      transformed <- CanonicalWebAPISpecTransformer.transform(unit)
-      json        <- new AMFRenderer(transformed, Vendor.AMF, RenderOptions().withPrettyPrint, Some(Syntax.Json)).renderToString
-      yaml        <- new AMFRenderer(transformed, Vendor.AML, RenderOptions().withNodeIds, Some(Syntax.Yaml)).renderToString
-      tmpYaml     <- writeTemporaryFile(goldenYaml)(yaml)
-      tmpJson     <- writeTemporaryFile(goldenJson)(json)
-      res <- {
-        assertDifferences(tmpYaml, goldenYaml)
-        assertDifferences(tmpJson, goldenJson)
-      }
-      report <- {
-        RuntimeValidator(
-          transformed,
-          ProfileName(CanonicalWebAPISpecTransformer.CANONICAL_WEBAPI_NAME)
-        )
-      }
-    } yield {
-      assert(report.conforms)
-      res
-    }
-  }
+  val CANONICAL_WEBAPI_DIALECT: String = "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+  override def basePath: String        = "file://transform/src/test/resources/transformations/"
 
   val tests: Seq[String] = Seq(
     "simple/api.raml",
@@ -79,5 +46,56 @@ class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSec
     val unit = ExternalFragment()
     assertThrows[DocumentExpectedException](CanonicalWebAPISpecTransformer.transform(unit))
   }
-}
 
+  test("Test that canonical transform raises exception on Recursive Unit") {
+    recoverToSucceededIf[RecursiveUnitsPresentException](canonicalTransform(s"${basePath}/recursive-unit/root.json", OasJsonHint))
+  }
+
+  def checkCanonicalDialectTransformation(source: String,
+                                          target: String,
+                                          shouldTranform: Boolean): Future[Assertion] = {
+    val amfWebApi  = basePath + source
+    val goldenYaml = s"$basePath$target.yaml"
+    val goldenJson = s"$basePath$target.json"
+
+    for {
+      transformed <- canonicalTransform(amfWebApi)
+      json        <- new AMFRenderer(transformed, Vendor.AMF, RenderOptions().withPrettyPrint, Some(Syntax.Json)).renderToString
+      yaml        <- new AMFRenderer(transformed, Vendor.AML, RenderOptions().withNodeIds, Some(Syntax.Yaml)).renderToString
+      tmpYaml     <- writeTemporaryFile(goldenYaml)(yaml)
+      tmpJson     <- writeTemporaryFile(goldenJson)(json)
+      res <- {
+        assertDifferences(tmpYaml, goldenYaml)
+        assertDifferences(tmpJson, goldenJson)
+      }
+      report <- {
+        RuntimeValidator(
+          transformed,
+          ProfileName(CanonicalWebAPISpecTransformer.CANONICAL_WEBAPI_NAME)
+        )
+      }
+    } yield {
+      assert(report.conforms)
+      res
+    }
+  }
+
+  private def canonicalTransform(webApiPath: String, hint: Hint = RamlYamlHint) =
+    for {
+      _           <- AMF.init()
+      _           <- Validation(platform)
+      _           <- registerCanonicalDialect()
+      unit        <- AMFCompiler(webApiPath, platform, hint, eh = DefaultParserErrorHandler()).build()
+      transformed <- CanonicalWebAPISpecTransformer.transform(unit)
+    } yield {
+      transformed
+    }
+
+  private def registerCanonicalDialect(): Future[Unit] =
+    for {
+      _ <- Future.successful(amf.Core.registerPlugin(AMLPlugin))
+      d <- AMFCompiler(CANONICAL_WEBAPI_DIALECT, platform, VocabularyYamlHint, eh = UnhandledParserErrorHandler).build()
+    } yield {
+      AMLPlugin().registry.resolveRegisteredDialect(d.asInstanceOf[Dialect].header)
+    }
+}
