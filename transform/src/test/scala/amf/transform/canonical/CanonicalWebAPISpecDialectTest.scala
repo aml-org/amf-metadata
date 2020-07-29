@@ -1,5 +1,7 @@
 package amf.transform.canonical
 
+import java.io.File
+
 import amf.ProfileName
 import amf.client.parse.DefaultParserErrorHandler
 import amf.core.AMF
@@ -38,7 +40,7 @@ class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSec
   tests.foreach { input =>
     val golden = input.replace("api.raml", "webapi")
     test(s"Test '$input' for WebAPI dialect transformation and yaml/json rendering") {
-      checkCanonicalDialectTransformation(input, golden, shouldTranform = false)
+      checkCanonicalDialectTransformation(input, golden, shouldTransform = false)
     }
   }
 
@@ -48,25 +50,24 @@ class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSec
   }
 
   test("Test that canonical transform raises exception on Recursive Unit") {
-    recoverToSucceededIf[RecursiveUnitsPresentException](canonicalTransform(s"${basePath}/recursive-unit/root.json", OasJsonHint))
+    recoverToSucceededIf[RecursiveUnitsPresentException](
+      canonicalTransform(s"${basePath}/recursive-unit/root.json", OasJsonHint))
   }
 
   def checkCanonicalDialectTransformation(source: String,
                                           target: String,
-                                          shouldTranform: Boolean): Future[Assertion] = {
+                                          shouldTransform: Boolean): Future[Assertion] = {
     val amfWebApi  = basePath + source
     val goldenYaml = s"$basePath$target.yaml"
     val goldenJson = s"$basePath$target.json"
 
     for {
       transformed <- canonicalTransform(amfWebApi)
-      json        <- new AMFRenderer(transformed, Vendor.AMF, RenderOptions().withPrettyPrint, Some(Syntax.Json)).renderToString
-      yaml        <- new AMFRenderer(transformed, Vendor.AML, RenderOptions().withNodeIds, Some(Syntax.Yaml)).renderToString
-      tmpYaml     <- writeTemporaryFile(goldenYaml)(yaml)
-      tmpJson     <- writeTemporaryFile(goldenJson)(json)
-      res <- {
-        assertDifferences(tmpYaml, goldenYaml)
-        assertDifferences(tmpJson, goldenJson)
+      yamlDiffOk <- diff(goldenYaml) { () =>
+        new AMFRenderer(transformed, Vendor.AML, RenderOptions().withNodeIds, Some(Syntax.Yaml)).renderToString
+      }
+      jsonDiffOk <- diff(goldenJson) { () =>
+        new AMFRenderer(transformed, Vendor.AMF, RenderOptions().withPrettyPrint, Some(Syntax.Json)).renderToString
       }
       report <- {
         RuntimeValidator(
@@ -74,10 +75,29 @@ class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSec
           ProfileName(CanonicalWebAPISpecTransformer.CANONICAL_WEBAPI_NAME)
         )
       }
+      reportOk <- assert(report.conforms)
     } yield {
-      assert(report.conforms)
-      res
+      val assertions = Seq(yamlDiffOk, jsonDiffOk, reportOk)
+      assert { assertions.forall(_ == succeed) }
     }
+  }
+
+  private def diff(golden: String)(render: () => Future[String]): Future[Assertion] = {
+    if (shouldIgnore(golden)) {
+      Future.successful(succeed)
+    } else {
+      for {
+        actual <- render()
+        tmp    <- writeTemporaryFile(golden)(actual)
+        diff   <- assertDifferences(tmp, golden)
+      } yield {
+        diff
+      }
+    }
+  }
+
+  private def shouldIgnore(golden: String): Boolean = {
+    fs.syncFile(s"$golden.ignore".stripPrefix("file://")).exists
   }
 
   private def canonicalTransform(webApiPath: String, hint: Hint = RamlYamlHint) =

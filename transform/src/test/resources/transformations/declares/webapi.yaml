@@ -1,0 +1,52 @@
+#%WebAPI Spec 1.0
+unitType: Document
+$id: file://transform/src/test/resources/transformations/declares/api.raml#/rootAsset
+declares:
+  -
+    elementType: Node
+    $id: file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee
+    name: Employee
+    property:
+      -
+        $id: file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeType
+        range:
+          shapeType: Scalar
+          $id: file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeType/scalar/employeeType
+          name: employeeType
+          datatype: http://www.w3.org/2001/XMLSchema#string
+          in:
+            -
+              elementType: Scalar
+              $id: file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeType/scalar/employeeType/enum/scalar_3
+              value: intern
+              dataType: http://www.w3.org/2001/XMLSchema#string
+            -
+              elementType: Scalar
+              $id: file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeType/scalar/employeeType/enum/scalar_2
+              value: contractor
+              dataType: http://www.w3.org/2001/XMLSchema#string
+            -
+              elementType: Scalar
+              $id: file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeType/scalar/employeeType/enum/scalar_1
+              value: ft
+              dataType: http://www.w3.org/2001/XMLSchema#string
+        name: employeeType
+        min.Count: 1
+        path: http://a.ml/vocabularies/data#employeeType
+      -
+        $id: file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeId
+        range:
+          shapeType: Scalar
+          $id: file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeId/scalar/employeeId
+          name: employeeId
+          datatype: http://www.w3.org/2001/XMLSchema#string
+        name: employeeId
+        min.Count: 1
+        path: http://a.ml/vocabularies/data#employeeId
+    closed: false
+version: 2.1.0
+root: true
+encodes:
+  elementType: WebAPI
+  $id: file://transform/src/test/resources/transformations/declares/api.raml#/web-api
+  name: Declares API
