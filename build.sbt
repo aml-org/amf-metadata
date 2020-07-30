@@ -39,7 +39,7 @@ lazy val transform = project
     commonSettings,
     name := "amf-transform",
     version := amfCanonicalVersion,
-    libraryDependencies ++= commonDependencies ++ Seq(dependencies.apacheJena)
+    libraryDependencies ++= commonDependencies
   ).sourceDependency(amfClientRef, amfClientLibJVM)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Exporters ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -62,11 +62,9 @@ val commonSettings = Common.settings ++ Common.publish ++ Seq(
 
 lazy val dependencies = new {
   val scalaTestVersion="3.1.2"
-  val amfVersion = "4.2.0-SNAPSHOT"
-  val jenaVersion = "3.11.0"
+  val amfVersion = "4.3.0-SNAPSHOT"
 
   val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion % Test
-  val apacheJena = "org.apache.jena" % "jena-arq" % jenaVersion
 }
 
 lazy val commonDependencies = Seq(dependencies.scalaTest, amfClientLibJVM)
