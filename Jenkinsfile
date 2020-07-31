@@ -85,10 +85,10 @@ pipeline {
             } else if (env.BRANCH_NAME == 'develop') {
               color = '#FFD700'
             }
-            slackSend color: color, channel: "${slackChannel}", message: ":alert: ${headerFlavour}! :alert: Build failed!. \n\tBranch: ${env.BRANCH_NAME}\n\tStage:${failedStage}\n(See ${env.BUILD_URL})\n"
+            slackSend color: color, channel: "${slackChannel}", message: ":alert: ${headerFlavour}! :alert: AMF-METADATA Build failed!. \n\tBranch: ${env.BRANCH_NAME}\n\tStage:${failedStage}\n(See ${env.BUILD_URL})\n"
             currentBuild.status = "FAILURE"
           } else if (env.BRANCH_NAME == 'master') {
-            slackSend color: '#00FF00', channel: "${slackChannel}", message: ":ok_hand: Master Publish OK! :ok_hand:"
+            slackSend color: '#00FF00', channel: "${slackChannel}", message: ":ok_hand: AMF-METADATA Master Publish OK! :ok_hand:"
           }
         }
       }

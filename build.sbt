@@ -71,11 +71,10 @@ lazy val commonDependencies = Seq(dependencies.scalaTest, amfClientLibJVM)
 
 def majorVersionOrSnapshot(major: Int) = {
   lazy val branch = sys.env.get("BRANCH_NAME")
-  if (branch.contains("master")) s"$major.0.0" else s"$major.0.0-SNAPSHOT"
+  if (branch.contains("master")) s"$major.0.0" else s"$major.1.0-SNAPSHOT"
 }
 
 def versionOrSnapshot(major: Int, minor: Int) = {
-  lazy val build = sys.env.getOrElse("BUILD_NUMBER", "0")
   lazy val branch = sys.env.get("BRANCH_NAME")
-  if (branch.contains("master")) s"$major.$minor.$build" else s"$major.${minor + 1}.0-SNAPSHOT"
+  if (branch.contains("master")) s"$major.$minor.0" else s"$major.${minor + 1}.0-SNAPSHOT"
 }
