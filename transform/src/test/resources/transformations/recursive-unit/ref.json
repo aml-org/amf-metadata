@@ -1,0 +1,12 @@
+{
+   "definitions": {
+      "animal": {
+         "type": "object",
+         "properties": {
+            "petRef": {
+               "$ref": "root.json#/definitions/pet"
+            }
+         }
+      }
+   }
+}

@@ -19,9 +19,8 @@ import amf.plugins.document.webapi.Raml10Plugin
 import amf.plugins.document.webapi.metamodel.{ExtensionModel, OverlayModel}
 import amf.plugins.domain.shapes.DataShapesDomainPlugin
 import amf.plugins.domain.webapi.WebAPIDomainPlugin
-import amf.tools.PropertyNodeModel
 import amf.transform.canonical.CanonicalWebAPISpecExtraModel._
-import amf.tools.canonical.JenaUtils.all
+import amf.transform.jena.JenaUtils.all
 import org.apache.jena.rdf.model.{Model, RDFNode, Resource, Statement}
 
 import scala.collection.mutable
@@ -228,13 +227,15 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
 
     // for each document unit that is not the root one, we transform that into the canonical webpi spec asset fragment node
     // defined in the SpecDocument node mapping schema
-    unitUris.foreach { unit =>
+    val (units, recursives) = unitUris.partition(!isRecursiveBaseUnit(_))
+    units.foreach { unit =>
       val unitResource = nativeModel.createResource(unit)
 
       // Let's manipulate the @type of the unit to match the dialect expectations
       mapBaseUnits(unit, dialect, nativeModel)
-
     }
+
+    if (recursives.nonEmpty) throw RecursiveUnitsPresentException(s"Recursive units are not supported in Canonical Transform")
 
     // we introduce a new top level document with the URI of the old top level document
     // we rename the old top level document (now a domain element)
@@ -276,6 +277,8 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
 
     topLevelUnit
   }
+
+  private def isRecursiveBaseUnit(uri: String) = uri.endsWith("recursive")
 
   protected def transformDataNodes(typeMapping: Map[TypeUri, DialectNode], nativeModel: Model): Unit = {
     // we first remove the name from al ldata nodes
@@ -616,3 +619,5 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
 }
 
 case class DocumentExpectedException(message: String) extends RuntimeException(message)
+
+case class RecursiveUnitsPresentException(message: String) extends RuntimeException(message)

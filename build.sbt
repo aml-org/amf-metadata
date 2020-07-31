@@ -2,8 +2,19 @@ name := "amf-metadata"
 organization in ThisBuild := "com.github.amlorg"
 scalaVersion in ThisBuild := "2.12.11"
 
-val amfVocabularyVersion = "1.0.0-SNAPSHOT"
-val amfCanonicalVersion = "1.0.0-SNAPSHOT"
+lazy val amfVocabularyVersion = majorVersionOrSnapshot(1)
+val amfCanonicalVersion = versionOrSnapshot(1, 0)
+
+val ivyLocal = Resolver.file("ivy", file(Path.userHome.absolutePath + "/.ivy2/local"))(Resolver.ivyStylePatterns)
+
+lazy val workspaceDirectory: File =
+  sys.props.get("sbt.mulesoft") match {
+    case Some(x) => file(x)
+    case _       => Path.userHome / "mulesoft"
+  }
+
+lazy val amfClientLibJVM = "com.github.amlorg" %% "amf-client" % dependencies.amfVersion
+lazy val amfClientRef = ProjectRef(workspaceDirectory / "amf", "clientJVM")
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Root ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -28,8 +39,8 @@ lazy val transform = project
     commonSettings,
     name := "amf-transform",
     version := amfCanonicalVersion,
-    libraryDependencies ++= commonDependencies ++ Seq(dependencies.apacheJena)
-  )
+    libraryDependencies ++= commonDependencies
+  ).sourceDependency(amfClientRef, amfClientLibJVM)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Exporters ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -38,25 +49,33 @@ lazy val exporters = project.in(file("exporters"))
   .settings(
     commonSettings,
     libraryDependencies ++= commonDependencies
-  )
+  ).sourceDependency(amfClientRef, amfClientLibJVM)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Common ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 val commonSettings = Common.settings ++ Common.publish ++ Seq(
   organization := "com.github.amlorg",
-  resolvers ++= List(Common.releases, Common.snapshots, Resolver.mavenLocal),
+  resolvers ++= List(ivyLocal, Common.releases, Common.snapshots, Resolver.mavenLocal),
   resolvers += "jitpack" at "https://jitpack.io",
   credentials ++= Common.credentials()
 )
 
 lazy val dependencies = new {
   val scalaTestVersion="3.1.2"
-  val amfVersion = "4.1.3"
-  val jenaVersion = "3.11.0"
+  val amfVersion = "4.2.0"
 
   val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion % Test
-  val apacheJena = "org.apache.jena" % "jena-arq" % jenaVersion
-  val amfClient = "com.github.amlorg" %% "amf-client" % amfVersion
 }
 
-lazy val commonDependencies = Seq(dependencies.scalaTest, dependencies.amfClient)
+lazy val commonDependencies = Seq(dependencies.scalaTest, amfClientLibJVM)
+
+def majorVersionOrSnapshot(major: Int) = {
+  lazy val branch = sys.env.get("BRANCH_NAME")
+  if (branch.contains("master")) s"$major.0.0" else s"$major.1.0-SNAPSHOT"
+}
+
+def versionOrSnapshot(major: Int, minor: Int) = {
+  lazy val build = sys.env.getOrElse("BUILD_NUMBER", "0")
+  lazy val branch = sys.env.get("BRANCH_NAME")
+  if (branch.contains("master")) s"$major.$minor.$build" else s"$major.${minor + 1}.0-SNAPSHOT"
+}
