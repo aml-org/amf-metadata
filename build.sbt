@@ -62,7 +62,7 @@ val commonSettings = Common.settings ++ Common.publish ++ Seq(
 
 lazy val dependencies = new {
   val scalaTestVersion="3.1.2"
-  val amfVersion = "4.3.0-SNAPSHOT"
+  val amfVersion = "4.2.0"
 
   val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion % Test
 }
@@ -71,7 +71,7 @@ lazy val commonDependencies = Seq(dependencies.scalaTest, amfClientLibJVM)
 
 def majorVersionOrSnapshot(major: Int) = {
   lazy val branch = sys.env.get("BRANCH_NAME")
-  if (branch.contains("master")) s"$major.0.0" else s"$major.0.0-SNAPSHOT"
+  if (branch.contains("master")) s"$major.0.0" else s"$major.1.0-SNAPSHOT"
 }
 
 def versionOrSnapshot(major: Int, minor: Int) = {
