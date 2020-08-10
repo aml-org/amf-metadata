@@ -58,6 +58,7 @@ pipeline {
               if (failedStage.isEmpty()) {
                 if (hasChangesIn("transform")) {
                   echo " XXX Has changes in Transform! XXX"
+                  echo " CURRENT BRANCH: ${env.BRANCH_NAME}"
                 }
                 sh '''
                   echo "about to publish in sbt"
