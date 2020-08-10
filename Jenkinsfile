@@ -20,6 +20,7 @@ pipeline {
           script {
             try{
               sh 'sbt -mem 4096 -Dfile.encoding=UTF-8 clean exporters/test'
+              sh 'echo "TEST !!!"'
             } catch (ignored) {
               failedStage = failedStage + " TEST "
               unstable "Failed tests"
