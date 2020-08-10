@@ -12,6 +12,12 @@ class PropertyNode(override val fields: Fields, val annotations: Annotations) ex
   override def componentId: String = "/property"
 }
 
+// COMMMENTS
+// COMMMENTS
+// COMMMENTS
+// COMMMENTS
+// COMMMENTS
+
 object PropertyNode {
   def apply(): PropertyNode = apply(Annotations())
 
