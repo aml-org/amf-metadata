@@ -4,26 +4,6 @@ dialect: WebAPI Spec
 version: 1.0
 
 uses:
-  raml-shapes: ../vocabularies/data_shapes.yaml
-  security: ../vocabularies/security.yaml
-  apiBinding: ../vocabularies/api_binding.yaml
-  data: ../vocabularies/data_model.yaml
-  doc: ../vocabularies/aml_doc.yaml
-  apiContract: ../vocabularies/api_contract.yaml
-  core: ../vocabularies/core.yaml
-  meta: ../vocabularies/aml_meta.yaml
-
-external:
-  shacl: http://www.w3.org/ns/shacl#
-  rdfs: http://www.w3.org/2000/01/rdf-schema#
-
-nodeMappings:
-
-  DataShapesUnion:
-    typeDiscriminatorName: shapeType
-    typeDiscriminator:
-      Union: UnionShape
-      Tuple: TupleShape
       Node: NodeShape
       Array: ArrayShape
       Schema: SchemaShape
