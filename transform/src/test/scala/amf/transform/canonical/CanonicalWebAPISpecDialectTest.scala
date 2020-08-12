@@ -1,7 +1,5 @@
 package amf.transform.canonical
 
-import java.io.File
-
 import amf.ProfileName
 import amf.client.parse.DefaultParserErrorHandler
 import amf.core.AMF
@@ -33,7 +31,9 @@ class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSec
     "modular/api.raml",
     "security/api.raml",
     "declares/api.raml",
-    "tuple-shape-schema/api.raml"
+    "tuple-shape-schema/api.raml",
+    "raml-extension/api.raml",
+    "raml-overlay/api.raml",
     //    "modular-recursion/api.raml"
   )
 
@@ -52,6 +52,11 @@ class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSec
   test("Test that canonical transform raises exception on Recursive Unit") {
     recoverToSucceededIf[RecursiveUnitsPresentException](
       canonicalTransform(s"${basePath}/recursive-unit/root.json", OasJsonHint))
+  }
+
+  test("Test canonical tranformation throws exception if dialect is not found") {
+    recoverToSucceededIf[CanonicalDialectNotFoundException](
+      AMF.init().flatMap(_ => canonicalTransform(s"${basePath}simple/api.raml", RamlYamlHint, UnregisterDialectRegistration())))
   }
 
   def checkCanonicalDialectTransformation(source: String,
@@ -100,22 +105,34 @@ class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSec
     fs.syncFile(s"$golden.ignore".stripPrefix("file://")).exists
   }
 
-  private def canonicalTransform(webApiPath: String, hint: Hint = RamlYamlHint) =
+  private def canonicalTransform(webApiPath: String, hint: Hint = RamlYamlHint,
+                                 dialect: DialectRegistration = CanonicalDialectRegistration()) =
     for {
       _           <- AMF.init()
       _           <- Validation(platform)
-      _           <- registerCanonicalDialect()
       unit        <- AMFCompiler(webApiPath, platform, hint, eh = DefaultParserErrorHandler()).build()
+      _           <- dialect.registerDialect()
       transformed <- CanonicalWebAPISpecTransformer.transform(unit)
     } yield {
       transformed
     }
 
-  private def registerCanonicalDialect(): Future[Unit] =
-    for {
-      _ <- Future.successful(amf.Core.registerPlugin(AMLPlugin))
-      d <- AMFCompiler(CANONICAL_WEBAPI_DIALECT, platform, VocabularyYamlHint, eh = UnhandledParserErrorHandler).build()
-    } yield {
-      AMLPlugin().registry.resolveRegisteredDialect(d.asInstanceOf[Dialect].header)
-    }
+  sealed trait DialectRegistration {
+    def registerDialect(): Future[Unit]
+  }
+
+  case class UnregisterDialectRegistration() extends DialectRegistration {
+    override def registerDialect(): Future[Unit] = Future.successful(AMLPlugin().registry.unregisterDialect(CANONICAL_WEBAPI_DIALECT))
+  }
+
+  case class CanonicalDialectRegistration() extends DialectRegistration {
+
+    def registerDialect(): Future[Unit] =
+      for {
+        _ <- Future.successful(amf.Core.registerPlugin(AMLPlugin))
+        d <- AMFCompiler(CANONICAL_WEBAPI_DIALECT, platform, VocabularyYamlHint, eh = UnhandledParserErrorHandler).build()
+      } yield {
+        AMLPlugin().registry.resolveRegisteredDialect(d.asInstanceOf[Dialect].header)
+      }
+  }
 }

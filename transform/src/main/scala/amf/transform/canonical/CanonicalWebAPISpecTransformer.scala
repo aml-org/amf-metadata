@@ -56,8 +56,7 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
           case (acc, mapping) =>
             acc + (mapping.nodetypeMapping.value() -> mapping.id)
         }
-      case None =>
-        throw new Exception("Cannot find WebAPI 1.0 Dialect in Dialect registry")
+      case None => throw CanonicalDialectNotFoundException("Cannot find WebAPI 1.0 Dialect in Dialect registry")
     }
   }
 
@@ -117,16 +116,12 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
     val mappedDocumentType = if (allTypes.contains((Namespace.ApiContract + "Extension").iri())) {
       ExtensionModel.`type`.head.iri()
     } else if (allTypes.contains((Namespace.ApiContract + "Overlay").iri())) {
-      // (Namespace.ApiContract + "WebAPIDocument").iri()
       OverlayModel.`type`.head.iri()
     } else if (allTypes.contains((Namespace.Document + "Document").iri())) {
-      // (Namespace.ApiContract + "WebAPIDocument").iri()
       DocumentModel.`type`.head.iri()
     } else if (allTypes.contains((Namespace.Document + "Module").iri())) {
-      //(Namespace.ApiContract + "LibraryModule").iri()
       ModuleModel.`type`.head.iri()
     } else if (allTypes.contains((Namespace.Document + "ExternalFragment").iri())) {
-      // (Namespace.Document + "ExternalFragment").iri()
       ExternalFragmentModel.`type`.head.iri()
     } else {
       val cleanTypes = allTypes.filter { t =>
@@ -147,6 +142,7 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
           nativeModel.createResource(nodeMapping.id)
         )
       case _ =>
+        // TODO: should this println be here or should it be part of a logger or even an exception?
         println(s"Couldn't find node mapping for $mappedDocumentType")
     }
 
@@ -162,8 +158,6 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
       nativeModel.createProperty((Namespace.Rdf + "type").iri()),
       nativeModel.createResource((Namespace.Document + "DomainElement").iri())
     )
-
-//    println(s"Generated TYPE: $mappedDocumentType")
 
     // remove the old types
     allTypes.foreach { t =>
@@ -621,3 +615,5 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
 case class DocumentExpectedException(message: String) extends RuntimeException(message)
 
 case class RecursiveUnitsPresentException(message: String) extends RuntimeException(message)
+
+case class CanonicalDialectNotFoundException(message: String) extends RuntimeException(message)
