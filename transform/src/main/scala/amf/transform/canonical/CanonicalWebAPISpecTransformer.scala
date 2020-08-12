@@ -114,22 +114,28 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
     }
 
     val mappedDocumentType = if (allTypes.contains((Namespace.ApiContract + "Extension").iri())) {
-      ExtensionModel.`type`.head.iri()
+      defaultIri(ExtensionModel)
     } else if (allTypes.contains((Namespace.ApiContract + "Overlay").iri())) {
-      OverlayModel.`type`.head.iri()
+      defaultIri(OverlayModel)
     } else if (allTypes.contains((Namespace.Document + "Document").iri())) {
-      DocumentModel.`type`.head.iri()
+      defaultIri(DocumentModel)
     } else if (allTypes.contains((Namespace.Document + "Module").iri())) {
-      ModuleModel.`type`.head.iri()
+      defaultIri(ModuleModel)
     } else if (allTypes.contains((Namespace.Document + "ExternalFragment").iri())) {
-      ExternalFragmentModel.`type`.head.iri()
+      defaultIri(ExternalFragmentModel)
     } else {
       val cleanTypes = allTypes.filter { t =>
         t != (Namespace.Document + "Unit").iri() &&
         t != (Namespace.Document + "Document").iri() &&
         t != (Namespace.Document + "Fragment").iri()
       }
-      cleanTypes.head
+
+      cleanTypes.headOption match {
+        case Some(cleanType) => cleanType
+        case None            =>
+          // Should never have to reach this point. May be reached if AMF model is updated to have another Document/Unit/Fragment type.
+          throw UnknownDocumentTypeMappingException("Couldn't find document type for unit")
+      }
     }
 
     dialect.declares.find { nodeMapping =>
@@ -229,7 +235,8 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
       mapBaseUnits(unit, dialect, nativeModel)
     }
 
-    if (recursives.nonEmpty) throw RecursiveUnitsPresentException(s"Recursive units are not supported in Canonical Transform")
+    if (recursives.nonEmpty)
+      throw RecursiveUnitsPresentException(s"Recursive units are not supported in Canonical Transform")
 
     // we introduce a new top level document with the URI of the old top level document
     // we rename the old top level document (now a domain element)
@@ -279,7 +286,7 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
     // we first list all the data nodes
     val toCleanIt = nativeModel.listSubjectsWithProperty(
       nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-      nativeModel.createResource(DataNodeModel.`type`.head.iri())
+      nativeModel.createResource(defaultIri(DataNodeModel))
     )
     while (toCleanIt.hasNext) {
       val nextToClean = toCleanIt.next()
@@ -298,7 +305,7 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
     // Now we add the reified properties to dynamic object nodes
     val dataNodesIt = nativeModel.listSubjectsWithProperty(
       nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-      nativeModel.createResource(ObjectNodeModel.`type`.head.iri())
+      nativeModel.createResource(defaultIri(ObjectNodeModel))
     )
 
     while (dataNodesIt.hasNext) {
@@ -349,7 +356,7 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
           nativeModel.add(
             pReif,
             nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-            nativeModel.createResource(typeMapping(PropertyNodeModel.`type`.head.iri()))
+            nativeModel.createResource(typeMapping(defaultIri(PropertyNodeModel)))
           )
       }
 
@@ -550,7 +557,7 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
       nativeModel.add(
         reifiedAnnotationUri,
         nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-        nativeModel.createResource(typeMapping(DomainExtensionModel.`type`.head.iri()))
+        nativeModel.createResource(typeMapping(defaultIri(DomainExtensionModel)))
       )
       // the extension
       nativeModel.add(
@@ -569,7 +576,7 @@ object CanonicalWebAPISpecTransformer extends PlatformSecrets {
       nativeModel.add(
         annotationLink,
         nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-        nativeModel.createResource(typeMapping(CustomDomainPropertyModel.`type`.head.iri()))
+        nativeModel.createResource(typeMapping(defaultIri(CustomDomainPropertyModel)))
       )
       nativeModel.add(
         annotationLink,
@@ -617,3 +624,5 @@ case class DocumentExpectedException(message: String) extends RuntimeException(m
 case class RecursiveUnitsPresentException(message: String) extends RuntimeException(message)
 
 case class CanonicalDialectNotFoundException(message: String) extends RuntimeException(message)
+
+case class UnknownDocumentTypeMappingException(message: String) extends RuntimeException(message)
