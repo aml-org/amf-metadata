@@ -1,28 +1,23 @@
 package amf.transform.canonical
 
 import amf.ProfileName
-import amf.client.parse.DefaultParserErrorHandler
 import amf.core.AMF
 import amf.core.emitter.RenderOptions
 import amf.core.model.document.ExternalFragment
-import amf.core.parser.errorhandler.UnhandledParserErrorHandler
 import amf.core.remote._
 import amf.core.services.RuntimeValidator
-import amf.core.unsafe.PlatformSecrets
-import amf.facades.{AMFCompiler, Validation}
 import amf.helpers.AMFRenderer
 import amf.io.FunSuiteCycleTests
-import amf.plugins.document.vocabularies.AMLPlugin
-import amf.plugins.document.vocabularies.model.document.Dialect
 import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
-class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSecrets with Matchers {
+class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with CanonicalTransform with Matchers {
 
-  val CANONICAL_WEBAPI_DIALECT: String = "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
   override def basePath: String        = "file://transform/src/test/resources/transformations/"
+
+  override implicit val executionContext: ExecutionContext = ExecutionContext.Implicits.global
 
   val tests: Seq[String] = Seq(
     "simple/api.raml",
@@ -103,36 +98,5 @@ class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSec
 
   private def shouldIgnore(golden: String): Boolean = {
     fs.syncFile(s"$golden.ignore".stripPrefix("file://")).exists
-  }
-
-  private def canonicalTransform(webApiPath: String, hint: Hint = RamlYamlHint,
-                                 dialect: DialectRegistration = CanonicalDialectRegistration()) =
-    for {
-      _           <- AMF.init()
-      _           <- Validation(platform)
-      unit        <- AMFCompiler(webApiPath, platform, hint, eh = DefaultParserErrorHandler()).build()
-      _           <- dialect.registerDialect()
-      transformed <- CanonicalWebAPISpecTransformer.transform(unit)
-    } yield {
-      transformed
-    }
-
-  sealed trait DialectRegistration {
-    def registerDialect(): Future[Unit]
-  }
-
-  case class UnregisterDialectRegistration() extends DialectRegistration {
-    override def registerDialect(): Future[Unit] = Future.successful(AMLPlugin().registry.unregisterDialect(CANONICAL_WEBAPI_DIALECT))
-  }
-
-  case class CanonicalDialectRegistration() extends DialectRegistration {
-
-    def registerDialect(): Future[Unit] =
-      for {
-        _ <- Future.successful(amf.Core.registerPlugin(AMLPlugin))
-        d <- AMFCompiler(CANONICAL_WEBAPI_DIALECT, platform, VocabularyYamlHint, eh = UnhandledParserErrorHandler).build()
-      } yield {
-        AMLPlugin().registry.resolveRegisteredDialect(d.asInstanceOf[Dialect].header)
-      }
   }
 }
