@@ -417,7 +417,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |      Library: Module
       |      Document: Document
       |      Extension: Extension
-      |      Overlay: OverlayModel
+      |      Overlay: Overlay
       |    union:
       |      - DataTypeFragment
       |      - DocumentationItemFragment
@@ -428,7 +428,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |      - Module
       |      - Document
       |      - Extension
-      |      - OverlayModel
+      |      - Overlay
       |""".stripMargin
 
   def renderDialect(): String = {
