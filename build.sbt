@@ -62,7 +62,7 @@ val commonSettings = Common.settings ++ Common.publish ++ Seq(
 
 lazy val dependencies = new {
   val scalaTestVersion="3.1.2"
-  val amfVersion = "4.3.0-SNAPSHOT"
+  val amfVersion = "4.2.0"
 
   val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion % Test
 }
