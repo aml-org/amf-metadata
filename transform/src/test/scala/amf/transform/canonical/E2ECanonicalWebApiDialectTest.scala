@@ -1,30 +1,23 @@
 package amf.transform.canonical
 
-import java.io.File
-
 import amf.ProfileName
-import amf.client.parse.DefaultParserErrorHandler
 import amf.core.AMF
 import amf.core.emitter.RenderOptions
 import amf.core.model.document.ExternalFragment
-import amf.core.parser.errorhandler.UnhandledParserErrorHandler
 import amf.core.remote._
 import amf.core.services.RuntimeValidator
-import amf.core.unsafe.PlatformSecrets
-import amf.facades.{AMFCompiler, Validation}
 import amf.helpers.AMFRenderer
 import amf.io.FunSuiteCycleTests
-import amf.plugins.document.vocabularies.AMLPlugin
-import amf.plugins.document.vocabularies.model.document.Dialect
 import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
-class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSecrets with Matchers {
+class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTransform with Matchers {
 
-  val CANONICAL_WEBAPI_DIALECT: String = "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
   override def basePath: String        = "file://transform/src/test/resources/transformations/"
+
+  override implicit val executionContext: ExecutionContext = ExecutionContext.Implicits.global
 
   val tests: Seq[String] = Seq(
     "simple/api.raml",
@@ -33,7 +26,9 @@ class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSec
     "modular/api.raml",
     "security/api.raml",
     "declares/api.raml",
-    "tuple-shape-schema/api.raml"
+    "tuple-shape-schema/api.raml",
+    "raml-extension/api.raml",
+    "raml-overlay/api.raml",
     //    "modular-recursion/api.raml"
   )
 
@@ -52,6 +47,11 @@ class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSec
   test("Test that canonical transform raises exception on Recursive Unit") {
     recoverToSucceededIf[RecursiveUnitsPresentException](
       canonicalTransform(s"${basePath}/recursive-unit/root.json", OasJsonHint))
+  }
+
+  test("Test canonical tranformation throws exception if dialect is not found") {
+    recoverToSucceededIf[CanonicalDialectNotFoundException](
+      AMF.init().flatMap(_ => canonicalTransform(s"${basePath}simple/api.raml", RamlYamlHint, UnregisterDialectRegistration())))
   }
 
   def checkCanonicalDialectTransformation(source: String,
@@ -99,23 +99,4 @@ class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with PlatformSec
   private def shouldIgnore(golden: String): Boolean = {
     fs.syncFile(s"$golden.ignore".stripPrefix("file://")).exists
   }
-
-  private def canonicalTransform(webApiPath: String, hint: Hint = RamlYamlHint) =
-    for {
-      _           <- AMF.init()
-      _           <- Validation(platform)
-      _           <- registerCanonicalDialect()
-      unit        <- AMFCompiler(webApiPath, platform, hint, eh = DefaultParserErrorHandler()).build()
-      transformed <- CanonicalWebAPISpecTransformer.transform(unit)
-    } yield {
-      transformed
-    }
-
-  private def registerCanonicalDialect(): Future[Unit] =
-    for {
-      _ <- Future.successful(amf.Core.registerPlugin(AMLPlugin))
-      d <- AMFCompiler(CANONICAL_WEBAPI_DIALECT, platform, VocabularyYamlHint, eh = UnhandledParserErrorHandler).build()
-    } yield {
-      AMLPlugin().registry.resolveRegisteredDialect(d.asInstanceOf[Dialect].header)
-    }
 }

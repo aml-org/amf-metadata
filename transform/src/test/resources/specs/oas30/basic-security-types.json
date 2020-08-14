@@ -1,0 +1,59 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Security objects and requirements",
+    "version": "0.1"
+  },
+  "security": [
+    {
+      "oauth2Type": [
+        "write:pets"
+      ]
+    },
+    {
+      "openIdConnectType": [
+        "some:scope"
+      ]
+    }
+  ],
+  "paths": {},
+  "components": {
+    "securitySchemes": {
+      "openIdConnectType": {
+        "type": "openIdConnect",
+        "openIdConnectUrl": "https://test.com/"
+      },
+      "apiKeyType": {
+        "type": "apiKey",
+        "name": "example",
+        "in": "query"
+      },
+      "httpType": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      },
+      "oauth2Type": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://example.com/api/oauth/dialog",
+            "refreshUrl": "https://example.com",
+            "scopes": {
+              "write:pets": "modify pets in your account",
+              "read:pets": "read your pets"
+            }
+          },
+          "authorizationCode": {
+            "authorizationUrl": "https://example.com/api/oauth/dialog",
+            "tokenUrl": "https://example.com/api/oauth/token",
+            "scopes": {
+              "write:pets": "modify pets in your account",
+              "read:pets": "read your pets"
+            }
+          }
+        }
+      }
+    }
+  }
+}
