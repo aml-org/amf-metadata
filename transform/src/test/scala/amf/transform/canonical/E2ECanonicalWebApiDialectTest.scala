@@ -13,7 +13,7 @@ import org.scalatest.matchers.should.Matchers
 
 import scala.concurrent.{ExecutionContext, Future}
 
-class CanonicalWebAPISpecDialectTest extends FunSuiteCycleTests with CanonicalTransform with Matchers {
+class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTransform with Matchers {
 
   override def basePath: String        = "file://transform/src/test/resources/transformations/"
 
