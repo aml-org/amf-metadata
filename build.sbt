@@ -2,7 +2,7 @@ name := "amf-metadata"
 organization in ThisBuild := "com.github.amlorg"
 scalaVersion in ThisBuild := "2.12.11"
 
-lazy val amfVocabularyVersion = majorVersionOrSnapshot(1)
+lazy val amfVocabularyVersion = majorVersionOrSnapshot(2)
 val amfCanonicalVersion = versionOrSnapshot(1, 0)
 
 val ivyLocal = Resolver.file("ivy", file(Path.userHome.absolutePath + "/.ivy2/local"))(Resolver.ivyStylePatterns)
