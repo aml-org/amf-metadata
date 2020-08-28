@@ -2,7 +2,6 @@
 base: http://a.ml/vocabularies/apiBinding#
 usage: API binding vocabulary
 uses:
-  data: data_model.yaml
   shacl: external/shacl.yaml
 classTerms:
   Amqp091ChannelBinding:
@@ -22,13 +21,6 @@ classTerms:
     displayName: ChannelBinding
   ChannelBindings:
     displayName: ChannelBindings
-  DynamicBinding:
-    displayName: DynamicBinding
-    extends:
-      - ServerBinding
-      - ChannelBinding
-      - OperationBinding
-      - MessageBinding
   EmptyBinding:
     displayName: EmptyBinding
     extends:
@@ -113,10 +105,6 @@ propertyTerms:
     displayName: contentEncoding
     description: MIME encoding for the message content
     range: string
-  definition:
-    displayName: definition
-    description: definition of the unknown dynamic binding
-    range: data.Node
   deliveryMode:
     displayName: deliveryMode
     description: Delivery mode of the message
