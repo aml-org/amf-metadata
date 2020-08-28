@@ -586,21 +586,6 @@ nodeMappings:
         allowMultiple: true
 
 
-  DynamicBinding:
-    classTerm: apiBinding.DynamicBinding
-    mapping:
-      definition:
-        propertyTerm: apiBinding.definition
-        range: DataNodeUnion
-      type:
-        propertyTerm: apiBinding.type
-        range: string
-      designAnnotations:
-        propertyTerm: doc.designAnnotation
-        range: DomainExtension
-        allowMultiple: true
-
-
   EmptyBinding:
     classTerm: apiBinding.EmptyBinding
     mapping:
