@@ -53,7 +53,7 @@ classTerms:
     displayName: Operation
     description: Action that can be executed using a particular HTTP invocation
   Overlay:
-    displayName: Overlay Model
+    displayName: Overlay
     description: Model defining a RAML overlay
     extends:
       - doc.Document

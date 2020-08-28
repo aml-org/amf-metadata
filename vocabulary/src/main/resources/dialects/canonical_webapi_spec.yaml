@@ -144,7 +144,7 @@ nodeMappings:
       Library: Module
       Document: Document
       Extension: Extension
-      Overlay: OverlayModel
+      Overlay: Overlay
     union:
       - DataTypeFragment
       - DocumentationItemFragment
@@ -155,7 +155,7 @@ nodeMappings:
       - Module
       - Document
       - Extension
-      - OverlayModel
+      - Overlay
 
   APIKeySettings:
     classTerm: security.ApiKeySettings
@@ -1373,7 +1373,7 @@ nodeMappings:
         allowMultiple: true
 
 
-  OverlayModel:
+  Overlay:
     classTerm: apiContract.Overlay
     extends: Document
 

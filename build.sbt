@@ -2,8 +2,8 @@ name := "amf-metadata"
 organization in ThisBuild := "com.github.amlorg"
 scalaVersion in ThisBuild := "2.12.11"
 
-lazy val amfVocabularyVersion = majorVersionOrSnapshot(1)
-val amfCanonicalVersion = versionOrSnapshot(1, 0)
+lazy val amfVocabularyVersion = majorVersionOrSnapshot(2)
+val amfCanonicalVersion       = versionOrSnapshot(1, 1)
 
 val ivyLocal = Resolver.file("ivy", file(Path.userHome.absolutePath + "/.ivy2/local"))(Resolver.ivyStylePatterns)
 
@@ -14,7 +14,7 @@ lazy val workspaceDirectory: File =
   }
 
 lazy val amfClientLibJVM = "com.github.amlorg" %% "amf-client" % dependencies.amfVersion
-lazy val amfClientRef = ProjectRef(workspaceDirectory / "amf", "clientJVM")
+lazy val amfClientRef    = ProjectRef(workspaceDirectory / "amf", "clientJVM")
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Root ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -40,16 +40,19 @@ lazy val transform = project
     name := "amf-transform",
     version := amfCanonicalVersion,
     libraryDependencies ++= commonDependencies
-  ).sourceDependency(amfClientRef, amfClientLibJVM)
+  )
+  .sourceDependency(amfClientRef, amfClientLibJVM)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Exporters ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-lazy val exporters = project.in(file("exporters"))
+lazy val exporters = project
+  .in(file("exporters"))
   .dependsOn(transform)
   .settings(
     commonSettings,
     libraryDependencies ++= commonDependencies
-  ).sourceDependency(amfClientRef, amfClientLibJVM)
+  )
+  .sourceDependency(amfClientRef, amfClientLibJVM)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Common ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -61,8 +64,8 @@ val commonSettings = Common.settings ++ Common.publish ++ Seq(
 )
 
 lazy val dependencies = new {
-  val scalaTestVersion="3.1.2"
-  val amfVersion = "4.2.0"
+  val scalaTestVersion = "3.1.2"
+  val amfVersion       = "4.3.0"
 
   val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion % Test
 }
@@ -75,7 +78,6 @@ def majorVersionOrSnapshot(major: Int) = {
 }
 
 def versionOrSnapshot(major: Int, minor: Int) = {
-  lazy val build = sys.env.getOrElse("BUILD_NUMBER", "0")
   lazy val branch = sys.env.get("BRANCH_NAME")
-  if (branch.contains("master")) s"$major.$minor.$build" else s"$major.${minor + 1}.0-SNAPSHOT"
+  if (branch.contains("master")) s"$major.$minor.0" else s"$major.${minor + 1}.0-SNAPSHOT"
 }

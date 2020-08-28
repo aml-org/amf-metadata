@@ -25,21 +25,6 @@ case class ExtendedDialectNodeMapping(id: String,
                                       propertyMappings: List[DialectPropertyMapping],
                                       isShape: Boolean)
 
-object PropertyNodeModel extends DomainElementModel {
-  val Range =
-    Field(DataNodeModel, Namespace.Data + "range", ModelDoc(ModelVocabularies.Data, "range", "value for a property"))
-
-  override def fields: List[Field]      = Range :: DataNodeModel.fields
-  override val `type`: List[ValueType]  = Namespace.Data + "Property" :: DataNodeModel.`type`
-  override def modelInstance: AmfObject = PropertyNode()
-
-  override val doc: ModelDoc = ModelDoc(
-    ModelVocabularies.Data,
-    "Property Node",
-    "Node that represents a dynamic property in a dynamic node"
-  )
-}
-
 // The actual exporter
 class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
 
@@ -417,7 +402,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |      Library: Module
       |      Document: Document
       |      Extension: Extension
-      |      Overlay: OverlayModel
+      |      Overlay: Overlay
       |    union:
       |      - DataTypeFragment
       |      - DocumentationItemFragment
@@ -428,7 +413,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |      - Module
       |      - Document
       |      - Extension
-      |      - OverlayModel
+      |      - Overlay
       |""".stripMargin
 
   def renderDialect(): String = {
