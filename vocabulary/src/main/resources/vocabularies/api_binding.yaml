@@ -149,6 +149,10 @@ propertyTerms:
     displayName: mandatory
     description: Whether the message is mandatory or not
     range: boolean
+  message:
+    displayName: message
+    description: Message used to notify other clients about an ungracefully disconnected client.
+    range: string
   messageKey:
     displayName: key
     description: The message key
