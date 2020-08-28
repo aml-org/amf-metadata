@@ -1089,6 +1089,9 @@ nodeMappings:
       retain:
         propertyTerm: apiBinding.retain
         range: boolean
+      message:
+        propertyTerm: apiBinding.message
+        range: string
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
