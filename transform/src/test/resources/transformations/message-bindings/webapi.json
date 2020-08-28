@@ -1,0 +1,189 @@
+[
+  {
+    "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml",
+    "@type": [
+      "http://a.ml/vocabularies/meta#DialectInstance",
+      "http://a.ml/vocabularies/document#Document",
+      "http://a.ml/vocabularies/document#Fragment",
+      "http://a.ml/vocabularies/document#Module",
+      "http://a.ml/vocabularies/document#Unit"
+    ],
+    "http://a.ml/vocabularies/meta#definedBy": [
+      {
+        "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+      }
+    ],
+    "http://a.ml/vocabularies/document#encodes": [
+      {
+        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/rootAsset",
+        "@type": [
+          "http://a.ml/vocabularies/document#Document",
+          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+          "http://a.ml/vocabularies/meta#DialectDomainElement",
+          "http://a.ml/vocabularies/document#DomainElement"
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#encodes": [
+          {
+            "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api",
+            "@type": [
+              "http://a.ml/vocabularies/apiContract#WebAPI",
+              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+              "http://a.ml/vocabularies/meta#DialectDomainElement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "Amqp message binding"
+              }
+            ],
+            "http://a.ml/vocabularies/core#version": [
+              {
+                "@value": "1.0.0"
+              }
+            ],
+            "http://a.ml/vocabularies/apiContract#endpoint": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel",
+                "@type": [
+                  "http://a.ml/vocabularies/apiContract#EndPoint",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/apiContract#supportedOperation": [
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#Operation",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/apiContract#expects": [
+                      {
+                        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request",
+                        "@type": [
+                          "http://a.ml/vocabularies/apiContract#Request",
+                          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Request",
+                          "http://a.ml/vocabularies/meta#DialectDomainElement",
+                          "http://a.ml/vocabularies/document#DomainElement"
+                        ],
+                        "http://a.ml/vocabularies/apiContract#payload": [
+                          {
+                            "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/default",
+                            "@type": [
+                              "http://a.ml/vocabularies/apiContract#Payload",
+                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
+                              "http://a.ml/vocabularies/meta#DialectDomainElement",
+                              "http://a.ml/vocabularies/document#DomainElement"
+                            ]
+                          }
+                        ],
+                        "http://a.ml/vocabularies/apiBinding#binding": [
+                          {
+                            "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings",
+                            "@type": [
+                              "http://a.ml/vocabularies/apiBinding#MessageBindings",
+                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/MessageBindings",
+                              "http://a.ml/vocabularies/meta#DialectDomainElement",
+                              "http://a.ml/vocabularies/document#DomainElement"
+                            ],
+                            "http://a.ml/vocabularies/apiBinding#binding": [
+                              {
+                                "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/kafka-message",
+                                "@type": [
+                                  "http://a.ml/vocabularies/apiBinding#KafkaMessageBinding",
+                                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/KafkaMessageBinding",
+                                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                                  "http://a.ml/vocabularies/document#DomainElement"
+                                ],
+                                "http://a.ml/vocabularies/apiBinding#type": [
+                                  {
+                                    "@value": "kafka"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/apiBinding#messageKey": [
+                                  {
+                                    "@value": "somekey"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/apiBinding#bindingVersion": [
+                                  {
+                                    "@value": "latest"
+                                  }
+                                ]
+                              },
+                              {
+                                "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/amqp091-message",
+                                "@type": [
+                                  "http://a.ml/vocabularies/apiBinding#Amqp091MessageBinding",
+                                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Amqp091MessageBinding",
+                                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                                  "http://a.ml/vocabularies/document#DomainElement"
+                                ],
+                                "http://a.ml/vocabularies/apiBinding#type": [
+                                  {
+                                    "@value": "amqp"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/apiBinding#messageType": [
+                                  {
+                                    "@value": "sometype"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/apiBinding#contentEncoding": [
+                                  {
+                                    "@value": "some/mime"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/apiBinding#bindingVersion": [
+                                  {
+                                    "@value": "31.07.92"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#method": [
+                      {
+                        "@value": "publish"
+                      }
+                    ]
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#path": [
+                  {
+                    "@value": "some-channel"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "http://a.ml/vocabularies/document#version": [
+          {
+            "@value": "2.1.0"
+          }
+        ]
+      }
+    ],
+    "http://a.ml/vocabularies/document#version": [
+      {
+        "@value": "2.1.0"
+      }
+    ],
+    "http://a.ml/vocabularies/document#root": [
+      {
+        "@value": false
+      }
+    ]
+  }
+]

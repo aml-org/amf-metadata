@@ -9,17 +9,6 @@ class AsyncCanonicalValidationTest extends CanonicalSpecValidationTest {
 
 
   override val ignoredApis: Set[String] = Set(
-    "kafka-operation-binding.yaml",
-    "rpc-server.yaml",
-    "http-message-binding.yaml",
-    "empty-dynamic-binding.yaml",
-    "amqp-message-binding.yaml",
-    "mqtt-message-binding.yaml",
-    "kafka-message-binding.yaml",
-    "mqtt-server-binding.yaml",
-    "amqp-operation-binding.yaml",
-    "components/external-operation-traits.yaml",
-    "components/async-components.yaml",
     "components/operation-traits.yaml"
   )
   override val apiPaths = Set(
@@ -43,7 +32,7 @@ class AsyncCanonicalValidationTest extends CanonicalSpecValidationTest {
     "security-schemes.yaml",
     "ws-channel-binding.yaml",
     "components/async-components.yaml",
-    "components/external-operation-traits.yaml",
+//    "components/external-operation-traits.yaml",
     "components/message-traits.yaml",
     "components/operation-traits.yaml"
   )
