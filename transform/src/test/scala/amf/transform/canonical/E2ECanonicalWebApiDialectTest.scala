@@ -35,8 +35,12 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
   tests.foreach { input =>
     val golden = input.replace("api.raml", "webapi")
     test(s"Test '$input' for WebAPI dialect transformation and yaml/json rendering") {
-      checkCanonicalDialectTransformation(input, golden, shouldTransform = false)
+      checkCanonicalDialectTransformation(input, golden)
     }
+  }
+
+  test("Test that dialect instance with bindings has correct discriminator") {
+    checkCanonicalDialectTransformation("message-bindings/api.yaml", "message-bindings/webapi", AsyncYamlHint)
   }
 
   test("Test that canonical transformer only accepts Documents") {
@@ -54,15 +58,13 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
       AMF.init().flatMap(_ => canonicalTransform(s"${basePath}simple/api.raml", RamlYamlHint, UnregisterDialectRegistration())))
   }
 
-  def checkCanonicalDialectTransformation(source: String,
-                                          target: String,
-                                          shouldTransform: Boolean): Future[Assertion] = {
+  def checkCanonicalDialectTransformation(source: String, target: String, hint: Hint = RamlYamlHint): Future[Assertion] = {
     val amfWebApi  = basePath + source
     val goldenYaml = s"$basePath$target.yaml"
     val goldenJson = s"$basePath$target.json"
 
     for {
-      transformed <- canonicalTransform(amfWebApi)
+      transformed <- canonicalTransform(amfWebApi, hint)
       yamlDiffOk <- diff(goldenYaml) { () =>
         new AMFRenderer(transformed, Vendor.AML, RenderOptions().withNodeIds, Some(Syntax.Yaml)).renderToString
       }

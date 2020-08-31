@@ -60,7 +60,8 @@ val commonSettings = Common.settings ++ Common.publish ++ Seq(
   organization := "com.github.amlorg",
   resolvers ++= List(ivyLocal, Common.releases, Common.snapshots, Resolver.mavenLocal),
   resolvers += "jitpack" at "https://jitpack.io",
-  credentials ++= Common.credentials()
+  credentials ++= Common.credentials(),
+  logBuffered in Test := false
 )
 
 lazy val dependencies = new {
