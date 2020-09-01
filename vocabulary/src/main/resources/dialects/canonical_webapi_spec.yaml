@@ -989,6 +989,10 @@ nodeMappings:
   Message:
     classTerm: apiContract.Message
     mapping:
+      extends:
+        propertyTerm: doc.extends
+        range: Message
+        allowMultiple: true
       name:
         propertyTerm: core.name
         range: string
@@ -1285,8 +1289,10 @@ nodeMappings:
         propertyTerm: doc.extends
         typeDiscriminatorName: type
         typeDiscriminator:
+          SimpleTrait: Operation
           AppliedTrait: ParametrizedTrait
         range:
+          - Operation
           - ParametrizedTrait
         allowMultiple: true
     

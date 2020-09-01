@@ -306,9 +306,18 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |        propertyTerm: doc.extends
       |        typeDiscriminatorName: type
       |        typeDiscriminator:
+      |          SimpleTrait: Operation
       |          AppliedTrait: ParametrizedTrait
       |        range:
+      |          - Operation
       |          - ParametrizedTrait
+      |        allowMultiple: true
+    """.stripMargin
+
+  val messageExtends: String =
+    """      extends:
+      |        propertyTerm: doc.extends
+      |        range: Message
       |        allowMultiple: true
     """.stripMargin
 
@@ -555,6 +564,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
                 stringBuilder.append(endPointExtends + "\n")
               } else if (dialectNodeMapping.classTerm == (Namespace.ApiContract + "Operation").iri()) {
                 stringBuilder.append(operationExtends + "\n")
+              } else if (dialectNodeMapping.classTerm == (Namespace.ApiContract + "Message").iri()) {
+                stringBuilder.append(messageExtends + "\n")
               }
 
               nodeMappingWithProperties.map { propertyMapping =>

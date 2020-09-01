@@ -1,0 +1,25 @@
+#%WebAPI Spec 1.0
+unitType: Document
+$id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/rootAsset
+declares: []
+version: 2.1.0
+root: true
+encodes:
+  elementType: WebAPI
+  $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/web-api
+  name: anOperation
+  version: 1.0.0
+  endpoint:
+    -
+      $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/web-api/end-points/someChannel
+      supportedOperation:
+        -
+          $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/web-api/end-points/someChannel/publish
+          extends:
+            -
+              type: SimpleTrait
+              $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/web-api/end-points/someChannel/publish/default-operation
+              designLink: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait
+          operationID: something
+          method: publish
+      path: someChannel
