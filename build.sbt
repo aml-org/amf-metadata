@@ -1,3 +1,5 @@
+import Versions.versions
+
 name := "amf-metadata"
 organization in ThisBuild := "com.github.amlorg"
 scalaVersion in ThisBuild := "2.12.11"
@@ -66,7 +68,7 @@ val commonSettings = Common.settings ++ Common.publish ++ Seq(
 
 lazy val dependencies = new {
   val scalaTestVersion = "3.1.2"
-  val amfVersion       = "4.4.0-SNAPSHOT"
+  val amfVersion       = versions("transform/dependencies.properties")("amf.client")
 
   val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion % Test
 }
