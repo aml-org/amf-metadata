@@ -43,6 +43,14 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
     checkCanonicalDialectTransformation("message-bindings/api.yaml", "message-bindings/webapi", AsyncYamlHint)
   }
 
+  test("Test that dialect instance with operation traits has operation in extends") {
+    checkCanonicalDialectTransformation("operation-trait/api.yaml", "operation-trait/webapi", AsyncYamlHint)
+  }
+
+  test("Test that dialect instance with message traits has message in extends") {
+    checkCanonicalDialectTransformation("message-trait/api.yaml", "message-trait/webapi", AsyncYamlHint)
+  }
+
   test("Test that canonical transformer only accepts Documents") {
     val unit = ExternalFragment()
     assertThrows[DocumentExpectedException](CanonicalWebAPISpecTransformer.transform(unit))

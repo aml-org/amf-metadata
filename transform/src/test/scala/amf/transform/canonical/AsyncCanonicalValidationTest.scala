@@ -7,10 +7,6 @@ class AsyncCanonicalValidationTest extends CanonicalSpecValidationTest {
   override val basePath: String = "file://transform/src/test/resources/specs/async20/"
   override val hint: Hint = AsyncYamlHint
 
-
-  override val ignoredApis: Set[String] = Set(
-    "components/operation-traits.yaml"
-  )
   override val apiPaths = Set(
     "amqp-exchange-channel-binding.yaml",
     "amqp-message-binding.yaml",
@@ -32,7 +28,7 @@ class AsyncCanonicalValidationTest extends CanonicalSpecValidationTest {
     "security-schemes.yaml",
     "ws-channel-binding.yaml",
     "components/async-components.yaml",
-//    "components/external-operation-traits.yaml",
+    "components/external-operation-traits.yaml",
     "components/message-traits.yaml",
     "components/operation-traits.yaml"
   )
