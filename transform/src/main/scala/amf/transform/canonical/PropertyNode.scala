@@ -7,12 +7,12 @@ import org.yaml.model.YPart
 
 // This model is just to reify the dynamic properties in an
 // ObjectNode
-class PropertyNode(override val fields: Fields, val annotations: Annotations) extends DomainElement {
+private[transform] class PropertyNode(override val fields: Fields, val annotations: Annotations) extends DomainElement {
   override def meta: Obj           = PropertyNodeModel
   override def componentId: String = "/property"
 }
 
-object PropertyNode {
+private[transform] object PropertyNode {
   def apply(): PropertyNode = apply(Annotations())
 
   def apply(ast: YPart): PropertyNode = apply(Annotations(ast))
