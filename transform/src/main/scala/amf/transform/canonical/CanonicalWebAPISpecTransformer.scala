@@ -26,7 +26,7 @@ import org.apache.jena.rdf.model.{Model, RDFNode, Resource, Statement}
 import scala.collection.mutable
 import scala.concurrent.Future
 
-object CanonicalWebAPISpecTransformer extends PlatformSecrets {
+private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets {
   type DomainElementUri = String
   type TypeUri          = String
   type DialectNode      = String
