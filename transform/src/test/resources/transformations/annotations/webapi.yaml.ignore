@@ -123,7 +123,7 @@ declares:
       $id: file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/simple/scalar/schema
       name: schema
       datatype: http://www.w3.org/2001/XMLSchema#string
-version: 2.1.0
+version: 2.1.1
 root: true
 encodes:
   elementType: WebAPI
