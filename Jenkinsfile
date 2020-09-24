@@ -174,7 +174,7 @@ Boolean isDevelop() {
 }
 
 String getNextTag(String artifact) {
-  sh(returnStdout: true, script: "sbt $artifact/version | tail -n 1 | grep -o '[0-9].[0-9].[0-9].*").trim()
+  sh(returnStdout: true, script: "sbt $artifact/version | tail -n 1 | grep -o '[0-9].[0-9].[0-9].*'").trim()
 }
 
 String tagCommit(String tag) {
