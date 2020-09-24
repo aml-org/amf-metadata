@@ -99,8 +99,8 @@ propertyTerms:
     range: boolean
   clientId:
     displayName: clientId
-    description: Id of the consumer inside a consumer group
-    range: string
+    description: Schema that defines the id of the consumer inside a consumer group
+    range: shacl.Shape
   contentEncoding:
     displayName: contentEncoding
     description: MIME encoding for the message content
@@ -127,8 +127,8 @@ propertyTerms:
     range: integer
   groupId:
     displayName: groupId
-    description: Id of the consumer group
-    range: string
+    description: Schema that defines the id of the consumer group
+    range: shacl.Shape
   headers:
     displayName: headers
     description: A Schema object containing the definitions for HTTP-specific headers
@@ -155,8 +155,8 @@ propertyTerms:
     range: string
   messageKey:
     displayName: key
-    description: The message key
-    range: string
+    description: Schema that defines the message key
+    range: shacl.Shape
   messageType:
     displayName: messageType
     description: Application-specific message type
