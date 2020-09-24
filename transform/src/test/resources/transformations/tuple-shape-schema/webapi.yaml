@@ -1,7 +1,7 @@
 #%WebAPI Spec 1.0
 unitType: Document
 $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/rootAsset
-version: 2.1.1
+version: 2.1.2
 root: true
 references: []
 encodes:

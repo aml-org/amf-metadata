@@ -109,7 +109,7 @@
                                 ],
                                 "http://a.ml/vocabularies/apiBinding#messageKey": [
                                   {
-                                    "@value": "somekey"
+                                    "@value": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema"
                                   }
                                 ],
                                 "http://a.ml/vocabularies/apiBinding#bindingVersion": [
@@ -170,14 +170,14 @@
         ],
         "http://a.ml/vocabularies/document#version": [
           {
-            "@value": "2.1.1"
+            "@value": "2.1.2"
           }
         ]
       }
     ],
     "http://a.ml/vocabularies/document#version": [
       {
-        "@value": "2.1.1"
+        "@value": "2.1.2"
       }
     ],
     "http://a.ml/vocabularies/document#root": [
