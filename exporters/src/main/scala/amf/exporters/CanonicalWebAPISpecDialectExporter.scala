@@ -306,9 +306,18 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |        propertyTerm: doc.extends
       |        typeDiscriminatorName: type
       |        typeDiscriminator:
+      |          SimpleTrait: Operation
       |          AppliedTrait: ParametrizedTrait
       |        range:
+      |          - Operation
       |          - ParametrizedTrait
+      |        allowMultiple: true
+    """.stripMargin
+
+  val messageExtends: String =
+    """      extends:
+      |        propertyTerm: doc.extends
+      |        range: Message
       |        allowMultiple: true
     """.stripMargin
 
@@ -416,6 +425,68 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |      - Overlay
       |""".stripMargin
 
+  val channelBindingUnionDeclaration: String = "ChannelBindingUnion"
+  val channelBindingUnion: String =
+  s"""  $channelBindingUnionDeclaration:
+    |    typeDiscriminatorName: bindingType
+    |    typeDiscriminator:
+    |      WebSockets: WebSocketsChannelBinding
+    |      Amqp091: Amqp091ChannelBinding
+    |      Empty: EmptyBinding
+    |    union:
+    |      - WebSocketsChannelBinding
+    |      - Amqp091ChannelBinding
+    |      - EmptyBinding
+    |""".stripMargin
+
+  val serverBindingUnionDeclaration: String = "ServerBindingUnion"
+  val serverBindingUnion: String =
+    s"""  $serverBindingUnionDeclaration:
+       |    typeDiscriminatorName: bindingType
+       |    typeDiscriminator:
+       |      Mqtt: MqttServerBinding
+       |      Empty: EmptyBinding
+       |    union:
+       |      - MqttServerBinding
+       |      - EmptyBinding
+       |""".stripMargin
+
+  val operationBindingUnionDeclaration: String = "OperationBindingUnion"
+  val operationBindingUnion: String =
+    s"""  $operationBindingUnionDeclaration:
+       |    typeDiscriminatorName: bindingType
+       |    typeDiscriminator:
+       |      Amqp091: Amqp091OperationBinding
+       |      Mqtt: MqttOperationBinding
+       |      Http: HttpOperationBinding
+       |      Kafka: KafkaOperationBinding
+       |      Empty: EmptyBinding
+       |    union:
+       |      - Amqp091OperationBinding
+       |      - MqttOperationBinding
+       |      - HttpOperationBinding
+       |      - KafkaOperationBinding
+       |      - EmptyBinding
+       |""".stripMargin
+
+  val messageBindingUnionDeclaration: String = "MessageBindingUnion"
+  val messageBindingUnion: String =
+    s"""  $messageBindingUnionDeclaration:
+       |    typeDiscriminatorName: bindingType
+       |    typeDiscriminator:
+       |      Amqp091: Amqp091MessageBinding
+       |      Mqtt: MqttMessageBinding
+       |      Http: HttpMessageBinding
+       |      Kafka: KafkaMessageBinding
+       |      Empty: EmptyBinding
+       |    union:
+       |      - Amqp091MessageBinding
+       |      - MqttMessageBinding
+       |      - HttpMessageBinding
+       |      - KafkaMessageBinding
+       |      - EmptyBinding
+       |""".stripMargin
+
   def renderDialect(): String = {
     val stringBuilder                              = new StringBuilder()
     val externals: mutable.HashMap[String, String] = mutable.HashMap()
@@ -443,6 +514,15 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
 
     // Parsed unit union
     stringBuilder.append(parsedUnitUnion + "\n")
+
+    // Channel binding union
+    stringBuilder.append(channelBindingUnion + "\n")
+    // Server binding union
+    stringBuilder.append(serverBindingUnion + "\n")
+    // Message binding union
+    stringBuilder.append(messageBindingUnion + "\n")
+    // Operation binding union
+    stringBuilder.append(operationBindingUnion + "\n")
 
     val orderedNodeMappings = nodeMappings.values.toSeq.sortBy(_.name).map(_.id)
     orderedNodeMappings.foreach { nodeMappingId =>
@@ -484,6 +564,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
                 stringBuilder.append(endPointExtends + "\n")
               } else if (dialectNodeMapping.classTerm == (Namespace.ApiContract + "Operation").iri()) {
                 stringBuilder.append(operationExtends + "\n")
+              } else if (dialectNodeMapping.classTerm == (Namespace.ApiContract + "Message").iri()) {
+                stringBuilder.append(messageExtends + "\n")
               }
 
               nodeMappingWithProperties.map { propertyMapping =>
@@ -516,6 +598,14 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
                   stringBuilder.append(s"        range: $parsedUnitUnionDeclaration\n")
                 } else if (propertyMapping.range == "DataNode") {
                   stringBuilder.append(s"        range: $dataNodeUnionDeclaration\n")
+                } else if (propertyMapping.range == "ChannelBinding") {
+                  stringBuilder.append(s"        range: $channelBindingUnionDeclaration\n")
+                } else if (propertyMapping.range == "ServerBinding") {
+                  stringBuilder.append(s"        range: $serverBindingUnionDeclaration\n")
+                } else if (propertyMapping.range == "MessageBinding") {
+                  stringBuilder.append(s"        range: $messageBindingUnionDeclaration\n")
+                } else if (propertyMapping.range == "OperationBinding") {
+                  stringBuilder.append(s"        range: $operationBindingUnionDeclaration\n")
                 } else if (propertyMapping.range == "uri") {
                   stringBuilder.append(s"        range: link\n")
                 } else {

@@ -1,9 +1,11 @@
+import Versions.versions
+
 name := "amf-metadata"
 organization in ThisBuild := "com.github.amlorg"
 scalaVersion in ThisBuild := "2.12.11"
 
-lazy val amfVocabularyVersion = majorVersionOrSnapshot(2)
-val amfCanonicalVersion       = versionOrSnapshot(1, 1)
+lazy val amfVocabularyVersion = majorVersionOrSnapshot(3)
+val amfCanonicalVersion       = versionOrSnapshot(1, 2)
 
 val ivyLocal = Resolver.file("ivy", file(Path.userHome.absolutePath + "/.ivy2/local"))(Resolver.ivyStylePatterns)
 
@@ -60,12 +62,13 @@ val commonSettings = Common.settings ++ Common.publish ++ Seq(
   organization := "com.github.amlorg",
   resolvers ++= List(ivyLocal, Common.releases, Common.snapshots, Resolver.mavenLocal),
   resolvers += "jitpack" at "https://jitpack.io",
-  credentials ++= Common.credentials()
+  credentials ++= Common.credentials(),
+  logBuffered in Test := false
 )
 
 lazy val dependencies = new {
   val scalaTestVersion = "3.1.2"
-  val amfVersion       = "4.3.0"
+  val amfVersion       = versions("transform/dependencies.properties")("amf.client")
 
   val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion % Test
 }

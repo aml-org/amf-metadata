@@ -50,7 +50,7 @@ declares:
           description: |
             Used to send a valid OAuth 2 access token.
           datatype: http://www.w3.org/2001/XMLSchema#string
-version: 2.1.0
+version: 2.1.1
 root: true
 encodes:
   elementType: WebAPI

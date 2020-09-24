@@ -157,6 +157,56 @@ nodeMappings:
       - Extension
       - Overlay
 
+  ChannelBindingUnion:
+    typeDiscriminatorName: bindingType
+    typeDiscriminator:
+      WebSockets: WebSocketsChannelBinding
+      Amqp091: Amqp091ChannelBinding
+      Empty: EmptyBinding
+    union:
+      - WebSocketsChannelBinding
+      - Amqp091ChannelBinding
+      - EmptyBinding
+
+  ServerBindingUnion:
+    typeDiscriminatorName: bindingType
+    typeDiscriminator:
+      Mqtt: MqttServerBinding
+      Empty: EmptyBinding
+    union:
+      - MqttServerBinding
+      - EmptyBinding
+
+  MessageBindingUnion:
+    typeDiscriminatorName: bindingType
+    typeDiscriminator:
+      Amqp091: Amqp091MessageBinding
+      Mqtt: MqttMessageBinding
+      Http: HttpMessageBinding
+      Kafka: KafkaMessageBinding
+      Empty: EmptyBinding
+    union:
+      - Amqp091MessageBinding
+      - MqttMessageBinding
+      - HttpMessageBinding
+      - KafkaMessageBinding
+      - EmptyBinding
+
+  OperationBindingUnion:
+    typeDiscriminatorName: bindingType
+    typeDiscriminator:
+      Amqp091: Amqp091OperationBinding
+      Mqtt: MqttOperationBinding
+      Http: HttpOperationBinding
+      Kafka: KafkaOperationBinding
+      Empty: EmptyBinding
+    union:
+      - Amqp091OperationBinding
+      - MqttOperationBinding
+      - HttpOperationBinding
+      - KafkaOperationBinding
+      - EmptyBinding
+
   APIKeySettings:
     classTerm: security.ApiKeySettings
     extends: Settings
@@ -442,7 +492,7 @@ nodeMappings:
         range: string
       binding:
         propertyTerm: apiBinding.binding
-        range: ChannelBinding
+        range: ChannelBindingUnion
         allowMultiple: true
       designLink:
         propertyTerm: doc.design-link-target
@@ -579,21 +629,6 @@ nodeMappings:
         range: DataNodeUnion
       element:
         propertyTerm: doc.element
-        range: string
-      designAnnotations:
-        propertyTerm: doc.designAnnotation
-        range: DomainExtension
-        allowMultiple: true
-
-
-  DynamicBinding:
-    classTerm: apiBinding.DynamicBinding
-    mapping:
-      definition:
-        propertyTerm: apiBinding.definition
-        range: DataNodeUnion
-      type:
-        propertyTerm: apiBinding.type
         range: string
       designAnnotations:
         propertyTerm: doc.designAnnotation
@@ -954,6 +989,10 @@ nodeMappings:
   Message:
     classTerm: apiContract.Message
     mapping:
+      extends:
+        propertyTerm: doc.extends
+        range: Message
+        allowMultiple: true
       name:
         propertyTerm: core.name
         range: string
@@ -1026,7 +1065,7 @@ nodeMappings:
         range: string
       binding:
         propertyTerm: apiBinding.binding
-        range: MessageBinding
+        range: MessageBindingUnion
         allowMultiple: true
       designLink:
         propertyTerm: doc.design-link-target
@@ -1104,6 +1143,9 @@ nodeMappings:
       retain:
         propertyTerm: apiBinding.retain
         range: boolean
+      message:
+        propertyTerm: apiBinding.message
+        range: string
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
@@ -1247,8 +1289,10 @@ nodeMappings:
         propertyTerm: doc.extends
         typeDiscriminatorName: type
         typeDiscriminator:
+          SimpleTrait: Operation
           AppliedTrait: ParametrizedTrait
         range:
+          - Operation
           - ParametrizedTrait
         allowMultiple: true
     
@@ -1344,7 +1388,7 @@ nodeMappings:
         range: string
       binding:
         propertyTerm: apiBinding.binding
-        range: OperationBinding
+        range: OperationBindingUnion
         allowMultiple: true
       designLink:
         propertyTerm: doc.design-link-target
@@ -1811,7 +1855,7 @@ nodeMappings:
         range: string
       binding:
         propertyTerm: apiBinding.binding
-        range: ServerBinding
+        range: ServerBindingUnion
         allowMultiple: true
       designLink:
         propertyTerm: doc.design-link-target

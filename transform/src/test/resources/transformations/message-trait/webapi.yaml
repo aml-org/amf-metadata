@@ -1,0 +1,36 @@
+#%WebAPI Spec 1.0
+unitType: Document
+$id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/rootAsset
+declares: []
+version: 2.1.1
+root: true
+encodes:
+  elementType: WebAPI
+  $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api
+  name: anApi
+  version: 1.0.0
+  endpoint:
+    -
+      $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel
+      supportedOperation:
+        -
+          $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish
+          expects:
+            -
+              $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish/request
+              extends:
+                -
+                  $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish/request/message
+                  designLink: file://transform/src/test/resources/transformations/message-trait/api.yaml#/declarations/messageTraits/myMessageTrait
+              payload:
+                -
+                  $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish/request/default
+                  schema:
+                    shapeType: Scalar
+                    $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish/request/default/scalar/schema
+                    name: schema
+                    datatype: http://www.w3.org/2001/XMLSchema#string
+              displayName: aMessage
+          operationID: something
+          method: publish
+      path: aChannel

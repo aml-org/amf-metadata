@@ -1,0 +1,40 @@
+#%WebAPI Spec 1.0
+unitType: Document
+$id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/rootAsset
+version: 2.1.1
+root: true
+encodes:
+  elementType: WebAPI
+  $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api
+  name: Amqp message binding
+  version: 1.0.0
+  endpoint:
+    -
+      $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel
+      supportedOperation:
+        -
+          $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish
+          expects:
+            -
+              $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request
+              binding:
+                $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings
+                binding:
+                  -
+                    bindingType: Kafka
+                    $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/kafka-message
+                    key: somekey
+                    bindingVersion: latest
+                    type: kafka
+                  -
+                    bindingType: Amqp091
+                    $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/amqp091-message
+                    contentEncoding: some/mime
+                    bindingVersion: 31.07.92
+                    type: amqp
+                    messageType: sometype
+              payload:
+                -
+                  $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/default
+          method: publish
+      path: some-channel

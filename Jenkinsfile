@@ -4,6 +4,8 @@ def failedStage = ""
 def color = '#FF8C00'
 def headerFlavour = "WARNING"
 def artifacts = ""
+def PUBLISHED_VOCABULARY = false
+def PUBLISHED_TRANSFORM = false
 
 pipeline {
   agent {
@@ -59,6 +61,7 @@ pipeline {
                   sbt vocabulary/publish && echo "sbt publishing of amf-vocabulary successful"
               '''
               artifacts += "[amf-vocabulary]"
+              PUBLISHED_VOCABULARY = true
             }
           } catch(ignored) {
             failedStage = failedStage + " PUBLISH "
@@ -84,10 +87,37 @@ pipeline {
                   sbt transform/publish && echo "sbt publishing of amf-vocabulary successful"
               '''
               artifacts += "[amf-transform]"
+              PUBLISHED_TRANSFORM = true
             }
           } catch(ignored) {
             failedStage = failedStage + " PUBLISH "
             unstable "Failed publication"
+          }
+        }
+      }
+    }
+    stage('Tag published artifacts') {
+      when {
+        anyOf {
+          branch 'master'
+        }
+      }
+      steps {
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'github-salt', passwordVariable: 'GITHUB_PASS', usernameVariable: 'GITHUB_USER']]) {
+          script {
+            try{
+              if (PUBLISHED_TRANSFORM) {
+                String tag = getNextTag("transform")
+                tagCommit(tag)
+              }
+              if (PUBLISHED_VOCABULARY) {
+                String tag = getNextTag("vocabulary")
+                tagCommit(tag)
+              }
+            } catch(ignored) {
+              failedStage = failedStage + " TAGGING "
+              unstable "Failed tagging"
+            }
           }
         }
       }
@@ -141,4 +171,17 @@ Boolean hasChangesIn(String artifact, String directory) {
 
 Boolean isDevelop() {
   env.BRANCH_NAME == "develop"
+}
+
+String getNextTag(String artifact) {
+  sh(returnStdout: true, script: "sbt $artifact/version | tail -n 1 | grep -o '[0-9].[0-9].[0-9].*").trim()
+}
+
+String tagCommit(String tag) {
+  sh """#!/bin/bash
+        echo "about to tag the commit with the new version = $tag"
+        url="https://\${GITHUB_USER}:\${GITHUB_PASS}@github.com/\${GITHUB_ORG}/\${GITHUB_REPO}"
+        git tag $tag
+        git push \$url \$version && echo "tagging successful"
+     """
 }
