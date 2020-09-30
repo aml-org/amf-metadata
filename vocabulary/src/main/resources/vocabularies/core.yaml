@@ -21,7 +21,7 @@ propertyTerms:
     range: string
   correlationId:
     displayName: correlationId
-    description: an identifier that can be used for message tracing and correlation
+    description: An identifier that can be used for message tracing and correlation
     range: CorrelationId
   deprecated:
     displayName: deprecated

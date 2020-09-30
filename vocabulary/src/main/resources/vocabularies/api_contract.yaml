@@ -148,7 +148,7 @@ propertyTerms:
     range: string
   callback:
     displayName: callback
-    description: associated callbacks
+    description: Associated callbacks
     range: Callback
   contentType:
     displayName: content type
@@ -178,7 +178,7 @@ propertyTerms:
     range: boolean
   expression:
     displayName: expression
-    description: structural location of the information to fulfill the callback
+    description: Structural location of the information to fulfill the callback
     range: string
   guiSummary:
     displayName: gui summary

@@ -195,7 +195,7 @@ propertyTerms:
     range: string
   xmlSerialization:
     displayName: XML serialization
-    description: information about how to serialize
+    description: Information about how to serialize
     range: XMLSerializer
   xmlWrapped:
     displayName: xml wrapped

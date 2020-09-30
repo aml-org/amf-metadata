@@ -203,7 +203,7 @@ propertyTerms:
     range: string
   type:
     displayName: type
-    description: binding for a corresponding known type
+    description: Binding for a corresponding known type
     range: string
   userId:
     displayName: userId
