@@ -3,7 +3,7 @@ package amf.transform.canonical
 import amf.core.model.document.{BaseUnit, Document}
 import amf.core.parser.errorhandler.UnhandledParserErrorHandler
 import amf.core.plugin.{CorePlugin, PluginContext}
-import amf.core.rdf.RdfModelParser
+import amf.core.rdf.{RdfModel, RdfModelParser}
 import amf.core.unsafe.PlatformSecrets
 import amf.core.vocabulary.{Namespace, ValueType}
 import amf.plugins.document.graph.AMFGraphPlugin
@@ -33,8 +33,42 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   val REPO_LINK_LABEL     = "http://anypoint.com/vocabs/digital-repository#link-label"
   val REPO_EXTENDS        = "http://anypoint.com/vocabs/digital-repository#extends"
 
-  protected def findWebAPIDialect: Option[Dialect] =
-    AMLPlugin().registry.allDialects().find(_.nameAndVersion() == CANONICAL_WEBAPI_NAME)
+  /**
+   * Transforms a WebAPI model parsed by AMF from a RAML/OAS document into a canonical WebAPI model compatible with the canonical WebAPI AML dialect
+   */
+  def transform(unit: BaseUnit): Future[BaseUnit] = unit match {
+    case _: Document => Future.successful(cleanAMFModel(unit))
+    case _           => throw DocumentExpectedException("Expected Document for CanonicalWebAPISpecTransformation")
+  }
+
+  /**
+   * Cleans the input WebAPI model adding the required information to the
+   * underlying RDF graph and uses it to build the canonical WebAPI dialect
+   * instance as output
+   *
+   * @param unit a AMF WebAPI model parsed from RAML / OAS
+   * @return Equivalent Canonical WebAPI AML dialect instance
+   */
+  protected def cleanAMFModel(unit: BaseUnit): BaseUnit = {
+    val typeMapping = buildCanonicalClassMapping
+    val model       = unit.toNativeRdfModel()
+
+    val nativeModel = model.native().asInstanceOf[Model]
+
+    val baseUnitId = preProcessUnits(nativeModel)
+
+    findWebAPIDialect match {
+      case Some(dialect) => updateToDialectInstance(nativeModel, baseUnitId, dialect)
+      case None => // ignore
+    }
+
+    // transform dynamic data nodes to list the properties
+    transformDataNodes(typeMapping, nativeModel)
+
+    transformDomainElements(typeMapping, nativeModel)
+
+    parseRdfToInstance(model, baseUnitId)
+  }
 
   /**
     * Creates a map from the node mapping in the canonical web api dialect to the mapped
@@ -53,48 +87,21 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
     }
   }
 
-  /**
-    * Renames the URI of a resource node in the RDF graph: incoming and outgoing edges
-    */
-  def renameResource(source: String, target: String, nativeModel: Model): Unit = {
-    // remove matching S(source)-p-o statements, add S(target)-p-o statements
-    val subjectsIterator = nativeModel.listStatements(nativeModel.createResource(source), null, null)
-    val acc              = mutable.ArrayBuffer[Statement]()
-    while (subjectsIterator.hasNext) {
-      val nextStatement = subjectsIterator.nextStatement()
-      acc += nextStatement
-    }
-    acc.foreach { st =>
-      nativeModel.remove(st)
-      val updatedStatement = nativeModel.createStatement(
-        nativeModel.createResource(target),
-        st.getPredicate,
-        st.getObject
-      )
-      nativeModel.add(updatedStatement)
-    }
 
-    // remove matching s-p-O(source) statements, add s-p-O(target) statements
-    val objectsIterator = nativeModel.listStatements(null, null, nativeModel.createResource(source))
-    acc.clear()
-    while (objectsIterator.hasNext) {
-      val nextStatement = objectsIterator.nextStatement()
-      acc += nextStatement
-    }
-    acc.foreach { st =>
-      nativeModel.remove(st)
-      val updatedStatement = nativeModel.createStatement(
-        st.getSubject,
-        st.getPredicate,
-        nativeModel.createResource(target)
-      )
-      nativeModel.add(updatedStatement)
-    }
+  protected def findWebAPIDialect: Option[Dialect] =
+    AMLPlugin().registry.allDialects().find(_.nameAndVersion() == CANONICAL_WEBAPI_NAME)
+
+  private def updateToDialectInstance(nativeModel: Model, baseUnitId: String, dialect: Dialect) = {
+    nativeModel.add(
+      nativeModel.createResource(baseUnitId),
+      nativeModel.createProperty((Namespace.Meta + "definedBy").iri()),
+      nativeModel.createResource(dialect.id)
+    )
   }
 
   /**
-    * Transforms the doc:Units in the graph into the domain elements for assets in the canonical web api spec dialect
-    */
+   * Transforms the doc:Units in the graph into the domain elements for assets in the canonical web api spec dialect
+   */
   def preProcessUnits(nativeModel: Model): String = {
     // we need the dialect ID in this particular instance of AMF
     val dialect = findWebAPIDialect.get
@@ -181,53 +188,54 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
       .getURI
   }
 
-  private def isRecursiveBaseUnit(uri: String) = uri.endsWith("recursive")
-
   /**
-    * Cleans the input WebAPI model adding the required information to the
-    * underlying RDF graph and uses it to build the canonical WebAPI dialect
-    * instance as output
-    *
-    * @param unit a AMF WebAPI model parsed from RAML / OAS
-    * @return Equivalent Canonical WebAPI AML dialect instance
+    * Renames the URI of a resource node in the RDF graph: incoming and outgoing edges
     */
-  protected def cleanAMFModel(unit: BaseUnit): BaseUnit = {
-    val typeMapping = buildCanonicalClassMapping
-    val model       = unit.toNativeRdfModel()
-
-    val nativeModel = model.native().asInstanceOf[Model]
-
-    val baseUnitId = preProcessUnits(nativeModel)
-
-    // First update document to DialectInstance document
-    findWebAPIDialect match {
-      case Some(dialect) =>
-        nativeModel.add(
-          nativeModel.createResource(baseUnitId),
-          nativeModel.createProperty((Namespace.Meta + "definedBy").iri()),
-          nativeModel.createResource(dialect.id)
-        )
-      case None => // ignore
+  def renameResource(source: String, target: String, nativeModel: Model): Unit = {
+    // remove matching S(source)-p-o statements, add S(target)-p-o statements
+    val subjectsIterator = nativeModel.listStatements(nativeModel.createResource(source), null, null)
+    val acc              = mutable.ArrayBuffer[Statement]()
+    while (subjectsIterator.hasNext) {
+      val nextStatement = subjectsIterator.nextStatement()
+      acc += nextStatement
+    }
+    acc.foreach { st =>
+      nativeModel.remove(st)
+      val updatedStatement = nativeModel.createStatement(
+        nativeModel.createResource(target),
+        st.getPredicate,
+        st.getObject
+      )
+      nativeModel.add(updatedStatement)
     }
 
-    // transform dynamic data nodes to list the properties
-    transformDataNodes(typeMapping, nativeModel)
+    // remove matching s-p-O(source) statements, add s-p-O(target) statements
+    val objectsIterator = nativeModel.listStatements(null, null, nativeModel.createResource(source))
+    acc.clear()
+    while (objectsIterator.hasNext) {
+      val nextStatement = objectsIterator.nextStatement()
+      acc += nextStatement
+    }
+    acc.foreach { st =>
+      nativeModel.remove(st)
+      val updatedStatement = nativeModel.createStatement(
+        st.getSubject,
+        st.getPredicate,
+        nativeModel.createResource(target)
+      )
+      nativeModel.add(updatedStatement)
+    }
+  }
 
-    transformDomainElements(typeMapping, nativeModel)
+  private def isRecursiveBaseUnit(uri: String) = uri.endsWith("recursive")
 
+
+  private def parseRdfToInstance(model: RdfModel, baseUnitId: String): BaseUnit = {
     val plugins = PluginContext(
       blacklist = Seq(CorePlugin, WebAPIDomainPlugin, DataShapesDomainPlugin, AMFGraphPlugin, Raml10Plugin))
 
     RdfModelParser(errorHandler = UnhandledParserErrorHandler, plugins = plugins)
       .parse(model, baseUnitId)
-  }
-
-  /**
-    * Transforms a WebAPI model parsed by AMF from a RAML/OAS document into a canonical WebAPI model compatible with the canonical WebAPI AML dialect
-    */
-  def transform(unit: BaseUnit): Future[BaseUnit] = unit match {
-    case _: Document => Future.successful(cleanAMFModel(unit))
-    case _           => throw DocumentExpectedException("Expected Document for CanonicalWebAPISpecTransformation")
   }
 }
 
