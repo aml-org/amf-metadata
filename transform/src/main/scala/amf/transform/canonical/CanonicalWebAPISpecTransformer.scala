@@ -9,7 +9,7 @@ import amf.core.parser.errorhandler.UnhandledParserErrorHandler
 import amf.core.plugin.{CorePlugin, PluginContext}
 import amf.core.rdf.RdfModelParser
 import amf.core.unsafe.PlatformSecrets
-import amf.core.vocabulary.Namespace
+import amf.core.vocabulary.{Namespace, ValueType}
 import amf.plugins.document.graph.AMFGraphPlugin
 import amf.plugins.document.vocabularies.AMLPlugin
 import amf.plugins.document.vocabularies.metamodel.domain.NodeMappingModel
@@ -21,9 +21,11 @@ import amf.plugins.domain.shapes.DataShapesDomainPlugin
 import amf.plugins.domain.webapi.WebAPIDomainPlugin
 import amf.transform.canonical.CanonicalWebAPISpecExtraModel._
 import amf.transform.jena.JenaUtils.all
-import org.apache.jena.rdf.model.{Model, RDFNode, Resource, Statement}
+import org.apache.jena.rdf.model.{Model, RDFNode, ResIterator, Resource, Statement}
 
+import scala.collection.JavaConverters._
 import scala.collection.mutable
+import scala.collection.mutable.ListBuffer
 import scala.concurrent.Future
 
 private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets {
@@ -207,23 +209,13 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets {
     val dialect = findWebAPIDialect.get
 
     // we save the top level document we will not transform into a domain level asset
-    val topLevelUnit = nativeModel
-      .listSubjectsWithProperty(
-        nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-        nativeModel.createResource((Namespace.Document + "Document").iri())
-      )
-      .next()
-      .getURI
+    val topLevelUnitUri = queryTopLevelDocument(nativeModel)
 
     // get all the document units
-    val unitsIterator = nativeModel.listSubjectsWithProperty(
-      nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-      nativeModel.createResource((Namespace.Document + "Unit").iri())
-    )
-    val unitUris = mutable.ArrayBuffer[String]()
-    while (unitsIterator.hasNext) {
-      unitUris += unitsIterator.nextResource().getURI
-    }
+    val unitUris = querySubjectsWith(nativeModel, Namespace.Rdf + "type", Namespace.Document + "Unit")
+      .toList
+      .asScala
+      .map(_.getURI)
 
     // for each document unit that is not the root one, we transform that into the canonical webpi spec asset fragment node
     // defined in the SpecDocument node mapping schema
@@ -238,11 +230,27 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets {
     if (recursives.nonEmpty)
       throw RecursiveUnitsPresentException(s"Recursive units are not supported in Canonical Transform")
 
-    // we introduce a new top level document with the URI of the old top level document
+    introduceNewTopLevelDocument(nativeModel, topLevelUnitUri)
+    topLevelUnitUri
+  }
+
+  private def introduceNewTopLevelDocument(nativeModel: Model, topLevelUnitUri: String) = {
     // we rename the old top level document (now a domain element)
-    val encodedElement = topLevelUnit + "#/rootAsset" // picking this URI is safe, not present in the model
+    val encodedElement = getUriNotPresentInModel(topLevelUnitUri)
     // rename so we can reuse the old main root URI
-    renameResource(topLevelUnit, encodedElement, nativeModel)
+    renameResource(topLevelUnitUri, encodedElement, nativeModel)
+    val nextTopLevelUnit = createNextTopLevelUnit(nativeModel, topLevelUnitUri)
+    // connect the new root with the old root encoded as a domain element
+    nativeModel.add(
+      nextTopLevelUnit,
+      nativeModel.createProperty((Namespace.Document + "encodes").iri()),
+      nativeModel.createResource(encodedElement)
+    )
+  }
+
+  private def getUriNotPresentInModel(topLevelUnit: DomainElementUri) = topLevelUnit + "#/rootAsset"
+
+  private def createNextTopLevelUnit(nativeModel: Model, topLevelUnit: DomainElementUri) = {
     val topLevel = nativeModel.createResource(topLevelUnit)
     nativeModel.add(
       topLevel,
@@ -269,14 +277,38 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets {
       nativeModel.createProperty((Namespace.Rdf + "type").iri()),
       nativeModel.createResource((Namespace.Document + "Unit").iri())
     )
-    // connect the new root with the old root encoded as a domain element
-    nativeModel.add(
-      topLevel,
-      nativeModel.createProperty((Namespace.Document + "encodes").iri()),
-      nativeModel.createResource(encodedElement)
-    )
+    topLevel
+  }
 
-    topLevelUnit
+  private def queryObjectsWith(nativeModel: Model, subjectUri: DomainElementUri, property: ValueType) = {
+    nativeModel.listObjectsOfProperty(
+      nativeModel.createResource(subjectUri),
+      nativeModel.createProperty(property.iri())
+    )
+  }
+
+  private def querySubjectsWith(nativeModel: Model, property: ValueType, resource: ValueType) = {
+    nativeModel.listSubjectsWithProperty(
+      nativeModel.createProperty(property.iri()),
+      nativeModel.createResource(resource.iri())
+    )
+  }
+
+  private def querySubjectsWith(nativeModel: Model, property: ValueType, resourceUri: String) = {
+    nativeModel.listSubjectsWithProperty(
+      nativeModel.createProperty(property.iri()),
+      nativeModel.createResource(resourceUri)
+    )
+  }
+
+  private def queryTopLevelDocument(nativeModel: Model) = {
+    nativeModel
+      .listSubjectsWithProperty(
+        nativeModel.createProperty((Namespace.Rdf + "type").iri()),
+        nativeModel.createResource((Namespace.Document + "Document").iri())
+      )
+      .next()
+      .getURI
   }
 
   private def isRecursiveBaseUnit(uri: String) = uri.endsWith("recursive")
@@ -284,102 +316,102 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets {
   protected def transformDataNodes(typeMapping: Map[TypeUri, DialectNode], nativeModel: Model): Unit = {
     // we first remove the name from al ldata nodes
     // we first list all the data nodes
-    val toCleanIt = nativeModel.listSubjectsWithProperty(
-      nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-      nativeModel.createResource(defaultIri(DataNodeModel))
-    )
-    while (toCleanIt.hasNext) {
-      val nextToClean = toCleanIt.next()
-      val namesIt =
-        nativeModel.listObjectsOfProperty(nextToClean, nativeModel.createProperty(DataNodeModel.Name.value.iri()))
-      if (namesIt.hasNext) {
-        nativeModel.remove(
-          nativeModel.createStatement(
-            nextToClean,
-            nativeModel.createProperty(DataNodeModel.Name.value.iri()),
-            namesIt.next()
-          ))
-      }
-    }
-
+    val dataNodes = querySubjectsWith(nativeModel, Namespace.Rdf + "type", defaultIri(DataNodeModel)).toList.asScala
+    dataNodes.foreach(removeDataNodeName(nativeModel, _))
     // Now we add the reified properties to dynamic object nodes
-    val dataNodesIt = nativeModel.listSubjectsWithProperty(
-      nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-      nativeModel.createResource(defaultIri(ObjectNodeModel))
-    )
+    val objectNodes = querySubjectsWith(nativeModel, Namespace.Rdf + "type", defaultIri(ObjectNodeModel))
 
-    while (dataNodesIt.hasNext) {
-      val nextDataNode = dataNodesIt.nextResource()
-      val propertiesIt = nativeModel.listStatements(nextDataNode, null, null)
-      val props        = mutable.ListBuffer[(Resource, RDFNode)]()
-      while (propertiesIt.hasNext) {
-        val nextStatement = propertiesIt.next()
-        val nextProperty  = nextStatement.getPredicate.asResource()
-        val nextValue     = nextStatement.getObject
-        if (nextProperty.getURI.startsWith(Namespace.Data.base)) {
-          props.+=((nextProperty, nextValue))
-        }
-      }
+    while (objectNodes.hasNext) {
+      val nextDataNode = objectNodes.nextResource()
+      val props: ListBuffer[(Resource, RDFNode)] = queryDynamicProperties(nativeModel, nextDataNode)
 
       props.foreach {
-        case (p, v) =>
-          val name  = p.getURI.split("#").last.split("/").last
-          val pReif = nativeModel.createResource(nextDataNode.getURI + "_prop_" + name)
+        case (property, propertyValue) =>
+          val name  = propertyName(property)
+          val reifiedProperty = nativeModel.createResource(nextDataNode.getURI + "_prop_" + name)
 
           // link parent node and the reified property
           nativeModel.add(
             nextDataNode,
             nativeModel.createProperty(DataPropertiesField.value.iri()),
-            pReif
+            reifiedProperty
           )
 
           // name
           nativeModel.add(
-            pReif,
+            reifiedProperty,
             nativeModel.createProperty(DataNodeModel.Name.value.iri()),
             nativeModel.createLiteral(name)
           )
 
           // range
           nativeModel.add(
-            pReif,
+            reifiedProperty,
             nativeModel.createProperty(PropertyNodeModel.Range.value.iri()),
-            v
+            propertyValue
           )
 
           // types
           nativeModel.add(
-            pReif,
+            reifiedProperty,
             nativeModel.createProperty((Namespace.Rdf + "type").iri()),
             nativeModel.createResource((Namespace.Meta + "DialectDomainElement").iri())
           )
           nativeModel.add(
-            pReif,
+            reifiedProperty,
             nativeModel.createProperty((Namespace.Rdf + "type").iri()),
             nativeModel.createResource(typeMapping(defaultIri(PropertyNodeModel)))
           )
       }
 
       props.foreach {
-        case (p, v) =>
-          val toRemove = nativeModel.createStatement(nextDataNode, nativeModel.createProperty(p.getURI), v)
-          nativeModel.remove(toRemove)
+        case (property, propertyValue) => removeOldProperty(nativeModel, nextDataNode, property, propertyValue)
       }
     }
   }
 
+  private def removeOldProperty(nativeModel: Model, nextDataNode: Resource, p: Resource, v: RDFNode) = {
+    val toRemove = nativeModel.createStatement(nextDataNode, nativeModel.createProperty(p.getURI), v)
+    nativeModel.remove(toRemove)
+  }
+
+  private def queryDynamicProperties(nativeModel: Model, nextDataNode: Resource) = {
+    val propertiesIt = nativeModel.listStatements(nextDataNode, null, null)
+    val props = mutable.ListBuffer[(Resource, RDFNode)]()
+    while (propertiesIt.hasNext) {
+      val nextStatement = propertiesIt.next()
+      val nextProperty = nextStatement.getPredicate.asResource()
+      val nextValue = nextStatement.getObject
+      if (nextProperty.getURI.startsWith(Namespace.Data.base)) {
+        props.+=((nextProperty, nextValue))
+      }
+    }
+    props
+  }
+
+  private def propertyName(p: Resource) = {
+    p.getURI.split("#").last.split("/").last
+  }
+
+  private def removeDataNodeName(nativeModel: Model, node: Resource) = {
+    val propertyNames = nativeModel
+      .listObjectsOfProperty(node, nativeModel.createProperty(DataNodeModel.Name.value.iri()))
+      .toList.asScala
+    propertyNames.foreach { name =>
+      nativeModel.remove(
+        nativeModel.createStatement(
+          node,
+          nativeModel.createProperty(DataNodeModel.Name.value.iri()),
+          name
+        ))
+    }
+  }
+
   def domainElementsFrom(nativeModel: Model): Seq[DomainElementUri] = {
-    val domainElements = nativeModel.listSubjectsWithProperty(
-      nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-      nativeModel.createResource((Namespace.Document + "DomainElement").iri())
-    )
+    val domainElements = querySubjectsWith(nativeModel, Namespace.Rdf + "type", Namespace.Document + "DomainElement").toList.asScala
+    val shapes = querySubjectsWith(nativeModel, Namespace.Rdf + "type", Namespace.Shapes + "Shape").toList.asScala
 
-    val shapes = nativeModel.listSubjectsWithProperty(
-      nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-      nativeModel.createResource((Namespace.Shapes + "Shape").iri())
-    )
-
-    all(domainElements) ++ all(shapes) map { _.getURI }
+    domainElements ++ shapes map { _.getURI }
   }
 
   /**
@@ -438,10 +470,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets {
   }
 
   def transformType(nativeModel: Model, domainElement: DomainElementUri, mapping: Map[TypeUri, DialectNode]): Unit = {
-    val typesIterator = nativeModel.listObjectsOfProperty(
-      nativeModel.createResource(domainElement),
-      nativeModel.createProperty((Namespace.Rdf + "type").iri())
-    )
+    val typesIterator = queryObjectsWith(nativeModel, domainElement, Namespace.Rdf + "type")
 
     // We need to deal with node shape inheritance
     // These flags allow us to track if we found any shape or shape in case
@@ -498,10 +527,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets {
   }
 
   protected def transformLink(nativeModel: Model, domainElement: DomainElementUri): Unit = {
-    val linksIt = nativeModel.listObjectsOfProperty(
-      nativeModel.createResource(domainElement),
-      nativeModel.createProperty(LinkableElementModel.TargetId.value.iri())
-    )
+    val linksIt = queryObjectsWith(nativeModel, domainElement, LinkableElementModel.TargetId.value)
     while (linksIt.hasNext) {
       val nextLink = linksIt.next()
       nativeModel.remove(
@@ -520,10 +546,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets {
   protected def transformAnnotations(nativeModel: Model,
                                      typeMapping: Map[TypeUri, DialectNode],
                                      domainElement: DomainElementUri) {
-    val annotsIt = nativeModel.listObjectsOfProperty(
-      nativeModel.createResource(domainElement),
-      nativeModel.createProperty(DomainElementModel.CustomDomainProperties.value.iri())
-    )
+    val annotsIt = queryObjectsWith(nativeModel, domainElement, DomainElementModel.CustomDomainProperties.value)
     var c = 0
     while (annotsIt.hasNext) {
       val nextAnnotation = annotsIt.next()
