@@ -1,0 +1,67 @@
+#%WebAPI Spec 1.0
+unitType: AnnotationTypeFragment
+$id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/rootAsset
+version: 2.1.2
+root: true
+encodes:
+  elementType: CustomDomainProperty
+  $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation
+  name: annotation
+  domain:
+    - http://a.ml/vocabularies/apiContract#Operation
+  schema:
+    shapeType: Node
+    $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema
+    displayName: Method handler function path
+    name: schema
+    property:
+      -
+        $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path
+        range:
+          shapeType: Scalar
+          $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path
+          name: path
+          description: |
+            A string that is passed to the pathResolver function in order to return
+            a route handler function.
+          datatype: http://www.w3.org/2001/XMLSchema#string
+          examples:
+            -
+              $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example2
+              raw: server.controllers.user.findUser
+              name: example2
+              description: |
+                Dot separated path to method
+              strict: true
+              structuredValue:
+                elementType: Scalar
+                $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example2/scalar_1
+                value: server.controllers.user.findUser
+                dataType: http://www.w3.org/2001/XMLSchema#string
+            -
+              $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example1
+              raw: ./folderrfolder/file.js
+              name: example1
+              description: |
+                A relative file that export a default function
+              strict: true
+              structuredValue:
+                elementType: Scalar
+                $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example1/scalar_1
+                value: ./folderrfolder/file.js
+                dataType: http://www.w3.org/2001/XMLSchema#string
+        name: path
+        min.Count: 1
+        path: http://a.ml/vocabularies/data#path
+      -
+        $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/config
+        range:
+          shapeType: Node
+          $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/config/config%3F
+          name: config?
+          description: Config object will be passed as the first parameter to the controller on every call
+          closed: false
+        name: config
+        min.Count: 0
+        path: http://a.ml/vocabularies/data#config
+    closed: false

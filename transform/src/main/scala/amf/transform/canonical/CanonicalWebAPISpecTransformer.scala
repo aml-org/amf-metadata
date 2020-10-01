@@ -1,10 +1,12 @@
 package amf.transform.canonical
 
+import amf.core.metamodel.document.BaseUnitModel
 import amf.core.model.document.{BaseUnit, Document}
 import amf.core.parser.errorhandler.UnhandledParserErrorHandler
 import amf.core.plugin.{CorePlugin, PluginContext}
 import amf.core.rdf.{RdfModel, RdfModelParser}
 import amf.core.unsafe.PlatformSecrets
+import amf.core.vocabulary.Namespace.XsdTypes
 import amf.core.vocabulary.{Namespace, ValueType}
 import amf.plugins.document.graph.AMFGraphPlugin
 import amf.plugins.document.vocabularies.AMLPlugin
@@ -36,10 +38,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   /**
    * Transforms a WebAPI model parsed by AMF from a RAML/OAS document into a canonical WebAPI model compatible with the canonical WebAPI AML dialect
    */
-  def transform(unit: BaseUnit): Future[BaseUnit] = unit match {
-    case _: Document => Future.successful(cleanAMFModel(unit))
-    case _           => throw DocumentExpectedException("Expected Document for CanonicalWebAPISpecTransformation")
-  }
+  def transform(unit: BaseUnit): Future[BaseUnit] = Future.successful { cleanAMFModel(unit) }
 
   /**
    * Cleans the input WebAPI model adding the required information to the
@@ -181,8 +180,8 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   private def queryTopLevelDocument(nativeModel: Model) = {
     nativeModel
       .listSubjectsWithProperty(
-        nativeModel.createProperty((Namespace.Rdf + "type").iri()),
-        nativeModel.createResource((Namespace.Document + "Document").iri())
+        nativeModel.createProperty(BaseUnitModel.Root.value.iri()),
+        nativeModel.createTypedLiteral("true", XsdTypes.xsdBoolean.iri())
       )
       .next()
       .getURI

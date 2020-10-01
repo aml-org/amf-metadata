@@ -29,7 +29,15 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
     "tuple-shape-schema/api.raml",
     "raml-extension/api.raml",
     "raml-overlay/api.raml",
-    //    "modular-recursion/api.raml"
+    "raml-library/api.raml",
+    "fragments/raml/annotation-declaration/api.raml",
+    "fragments/raml/datatype/api.raml",
+    "fragments/raml/documentation-item/api.raml",
+    "fragments/raml/named-example/api.raml",
+    "fragments/raml/resource-type/api.raml",
+    "fragments/raml/security-scheme/api.raml",
+    "fragments/raml/trait/api.raml",
+//        "modular-recursion/api.raml"
   )
 
   tests.foreach { input =>
@@ -51,7 +59,7 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
     checkCanonicalDialectTransformation("message-trait/api.yaml", "message-trait/webapi", AsyncYamlHint)
   }
 
-  test("Test that canonical transformer only accepts Documents") {
+  ignore("Test that canonical transformer only accepts Documents") {
     val unit = ExternalFragment()
     assertThrows[DocumentExpectedException](CanonicalWebAPISpecTransformer.transform(unit))
   }
