@@ -33,7 +33,7 @@ class ExportersTest extends AsyncFunSuite with FileAssertionTest{
   private def validateExport(exportedText: String, golden: String) = {
     for {
       tmpFile   <- writeTemporaryFile(golden)(exportedText)
-      assertion <- assertLinesDifferences(tmpFile, golden)
+      assertion <- assertDifferences(tmpFile, golden)
     } yield {
       assertion
     }
