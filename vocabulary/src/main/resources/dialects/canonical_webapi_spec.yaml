@@ -936,7 +936,7 @@ nodeMappings:
     mapping:
       key:
         propertyTerm: apiBinding.messageKey
-        range: string
+        range: DataShapesUnion
       bindingVersion:
         propertyTerm: apiBinding.bindingVersion
         range: string
@@ -948,10 +948,10 @@ nodeMappings:
     mapping:
       groupId:
         propertyTerm: apiBinding.groupId
-        range: string
+        range: DataShapesUnion
       clientId:
         propertyTerm: apiBinding.clientId
-        range: string
+        range: DataShapesUnion
       bindingVersion:
         propertyTerm: apiBinding.bindingVersion
         range: string
@@ -993,6 +993,7 @@ nodeMappings:
         propertyTerm: doc.extends
         range: Message
         allowMultiple: true
+
       name:
         propertyTerm: core.name
         range: string

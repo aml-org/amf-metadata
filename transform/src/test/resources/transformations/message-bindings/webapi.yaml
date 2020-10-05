@@ -23,7 +23,17 @@ encodes:
                   -
                     bindingType: Kafka
                     $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/kafka-message
-                    key: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema
+                    key:
+                      shapeType: Scalar
+                      $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema
+                      name: schema
+                      datatype: http://www.w3.org/2001/XMLSchema#string
+                      in:
+                        -
+                          elementType: Scalar
+                          $id: null/enum/scalar_1
+                          value: somekey
+                          dataType: http://www.w3.org/2001/XMLSchema#string
                     bindingVersion: latest
                     type: kafka
                   -

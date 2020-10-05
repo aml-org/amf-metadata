@@ -109,7 +109,50 @@
                                 ],
                                 "http://a.ml/vocabularies/apiBinding#messageKey": [
                                   {
-                                    "@value": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema"
+                                    "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema",
+                                    "@type": [
+                                      "http://a.ml/vocabularies/shapes#ScalarShape",
+                                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+                                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                                      "http://a.ml/vocabularies/document#DomainElement"
+                                    ],
+                                    "http://www.w3.org/ns/shacl#datatype": [
+                                      {
+                                        "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                      }
+                                    ],
+                                    "http://www.w3.org/ns/shacl#name": [
+                                      {
+                                        "@value": "schema"
+                                      }
+                                    ],
+                                    "http://www.w3.org/ns/shacl#in": [
+                                      {
+                                        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema/list",
+                                        "@type": "http://www.w3.org/2000/01/rdf-schema#Seq",
+                                        "http://www.w3.org/2000/01/rdf-schema#_1": [
+                                          {
+                                            "@id": "null/enum/scalar_1",
+                                            "@type": [
+                                              "http://a.ml/vocabularies/data#Scalar",
+                                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
+                                              "http://a.ml/vocabularies/meta#DialectDomainElement",
+                                              "http://a.ml/vocabularies/document#DomainElement"
+                                            ],
+                                            "http://a.ml/vocabularies/data#value": [
+                                              {
+                                                "@value": "somekey"
+                                              }
+                                            ],
+                                            "http://www.w3.org/ns/shacl#datatype": [
+                                              {
+                                                "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
                                   }
                                 ],
                                 "http://a.ml/vocabularies/apiBinding#bindingVersion": [
