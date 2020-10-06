@@ -21,6 +21,10 @@ lazy val amfClientRef    = ProjectRef(workspaceDirectory / "amf", "clientJVM")
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Root ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 lazy val root = project.in(file("."))
+  .aggregate(vocabulary, transform, exporters)
+  .settings(
+    publish / aggregate := false
+  )
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Vocabulary ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
