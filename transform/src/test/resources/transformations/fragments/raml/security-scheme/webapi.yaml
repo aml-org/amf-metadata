@@ -3,6 +3,7 @@ unitType: SecuritySchemeFragment
 $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/rootAsset
 version: 2.1.2
 root: true
+location: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml
 encodes:
   elementType: SecurityScheme
   $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#fragment

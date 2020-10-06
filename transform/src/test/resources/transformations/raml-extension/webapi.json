@@ -45,6 +45,11 @@
                     "@value": false
                   }
                 ],
+                "http://a.ml/vocabularies/document#location": [
+                  {
+                    "@value": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml"
+                  }
+                ],
                 "http://a.ml/vocabularies/document#encodes": [
                   {
                     "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml#/web-api",
@@ -93,6 +98,11 @@
                 "@value": false
               }
             ],
+            "http://a.ml/vocabularies/document#location": [
+              {
+                "@value": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml"
+              }
+            ],
             "http://a.ml/vocabularies/document#references": [
               {
                 "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml",
@@ -105,6 +115,11 @@
                 "http://a.ml/vocabularies/document#root": [
                   {
                     "@value": false
+                  }
+                ],
+                "http://a.ml/vocabularies/document#location": [
+                  {
+                    "@value": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml"
                   }
                 ],
                 "http://a.ml/vocabularies/document#encodes": [
@@ -222,6 +237,11 @@
             "@value": true
           }
         ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/raml-extension/api.raml"
+          }
+        ],
         "http://a.ml/vocabularies/document#references": [
           {
             "@id": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml",
@@ -243,6 +263,11 @@
                 "http://a.ml/vocabularies/document#root": [
                   {
                     "@value": false
+                  }
+                ],
+                "http://a.ml/vocabularies/document#location": [
+                  {
+                    "@value": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml"
                   }
                 ],
                 "http://a.ml/vocabularies/document#encodes": [
@@ -293,6 +318,11 @@
                 "@value": false
               }
             ],
+            "http://a.ml/vocabularies/document#location": [
+              {
+                "@value": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml"
+              }
+            ],
             "http://a.ml/vocabularies/document#references": [
               {
                 "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml",
@@ -305,6 +335,11 @@
                 "http://a.ml/vocabularies/document#root": [
                   {
                     "@value": false
+                  }
+                ],
+                "http://a.ml/vocabularies/document#location": [
+                  {
+                    "@value": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml"
                   }
                 ],
                 "http://a.ml/vocabularies/document#encodes": [

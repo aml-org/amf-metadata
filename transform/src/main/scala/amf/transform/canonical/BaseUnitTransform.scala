@@ -1,11 +1,10 @@
 package amf.transform.canonical
 
-import amf.core.metamodel.document.{DocumentModel, ExternalFragmentModel, ModuleModel}
+import amf.core.metamodel.document.{BaseUnitModel, DocumentModel, ExternalFragmentModel, ModuleModel}
 import amf.core.vocabulary.Namespace
 import amf.plugins.document.vocabularies.metamodel.domain.NodeMappingModel
 import amf.plugins.document.vocabularies.model.document.Dialect
 import amf.plugins.document.webapi.metamodel.{ExtensionModel, OverlayModel}
-import amf.transform.canonical.CanonicalWebAPISpecTransformer.{REPO_ASSET_LOCATION, defaultIri}
 import org.apache.jena.rdf.model.Model
 
 import scala.collection.mutable
@@ -95,7 +94,7 @@ trait BaseUnitTransform extends TransformHelpers {
     // add the new asset location property
     nativeModel.add(
       unitResource,
-      nativeModel.createProperty(REPO_ASSET_LOCATION),
+      nativeModel.createProperty(BaseUnitModel.Location.value.iri()),
       nativeModel.createLiteral(unit)
     )
 

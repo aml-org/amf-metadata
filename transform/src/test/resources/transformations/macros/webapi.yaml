@@ -100,6 +100,7 @@ declares:
             dataType: http://www.w3.org/2001/XMLSchema#string
 version: 2.1.2
 root: true
+location: file://transform/src/test/resources/transformations/macros/api.raml
 encodes:
   elementType: WebAPI
   $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api

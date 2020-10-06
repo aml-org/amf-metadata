@@ -27,6 +27,11 @@
             "@value": true
           }
         ],
+        "doc:location": [
+          {
+            "@value": "file://transform/src/test/resources/client/api.raml"
+          }
+        ],
         "doc:encodes": [
           {
             "@id": "#/web-api",

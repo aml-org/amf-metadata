@@ -32,6 +32,11 @@
             "@value": "Apply this to any method that needs to be secured"
           }
         ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#"
+          }
+        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait",

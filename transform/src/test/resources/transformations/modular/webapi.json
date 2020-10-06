@@ -27,6 +27,11 @@
             "@value": true
           }
         ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/modular/api.raml"
+          }
+        ],
         "http://a.ml/vocabularies/document#references": [
           {
             "@id": "file://transform/src/test/resources/transformations/modular/lib.raml",
@@ -41,6 +46,11 @@
                 "@value": false
               }
             ],
+            "http://a.ml/vocabularies/document#location": [
+              {
+                "@value": "file://transform/src/test/resources/transformations/modular/lib.raml"
+              }
+            ],
             "http://a.ml/vocabularies/document#references": [
               {
                 "@id": "file://transform/src/test/resources/transformations/modular/fragment1.raml",
@@ -53,6 +63,11 @@
                 "http://a.ml/vocabularies/document#root": [
                   {
                     "@value": false
+                  }
+                ],
+                "http://a.ml/vocabularies/document#location": [
+                  {
+                    "@value": "file://transform/src/test/resources/transformations/modular/fragment1.raml"
                   }
                 ],
                 "http://a.ml/vocabularies/document#encodes": [
@@ -310,6 +325,11 @@
             "http://a.ml/vocabularies/document#root": [
               {
                 "@value": false
+              }
+            ],
+            "http://a.ml/vocabularies/document#location": [
+              {
+                "@value": "file://transform/src/test/resources/transformations/modular/fragment2.raml"
               }
             ],
             "http://a.ml/vocabularies/document#encodes": [

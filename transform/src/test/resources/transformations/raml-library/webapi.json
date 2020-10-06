@@ -27,6 +27,11 @@
             "@value": true
           }
         ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/raml-library/api.raml"
+          }
+        ],
         "http://a.ml/vocabularies/document#declares": [
           {
             "@id": "file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/User",

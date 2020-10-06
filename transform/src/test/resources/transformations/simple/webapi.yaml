@@ -30,6 +30,7 @@ declares:
     closed: false
 version: 2.1.2
 root: true
+location: file://transform/src/test/resources/transformations/simple/api.raml
 encodes:
   elementType: WebAPI
   $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api

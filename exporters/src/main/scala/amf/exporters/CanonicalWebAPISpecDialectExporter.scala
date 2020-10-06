@@ -288,6 +288,13 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |        range: CustomDomainProperty
       |""".stripMargin
 
+  val baseUnitLocation: String =
+    """
+      |      location:
+      |        propertyTerm: doc.location
+      |        range: string
+      |""".stripMargin
+
   val endPointExtends: String =
     """      extends:
       |        propertyTerm: doc.extends
@@ -566,6 +573,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
                 stringBuilder.append(operationExtends + "\n")
               } else if (dialectNodeMapping.classTerm == (Namespace.ApiContract + "Message").iri()) {
                 stringBuilder.append(messageExtends + "\n")
+              } else if (dialectNodeMapping.classTerm == (Namespace.Document + "Unit").iri()) {
+                stringBuilder.append(baseUnitLocation)
               }
 
               nodeMappingWithProperties.map { propertyMapping =>
@@ -627,8 +636,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
                 stringBuilder.append(s"        range: link\n")
               }
 
-              val annotationMapping = dialectNodeMapping.propertyMappings.find(
-                _.propertyTerm == DomainElementModel.CustomDomainProperties.value.iri())
+              val annotationMapping = dialectNodeMapping.propertyMappings.find(_.propertyTerm == DomainElementModel.CustomDomainProperties.value.iri())
               if (annotationMapping.isDefined) {
                 stringBuilder.append(s"      designAnnotations:\n")
                 val (compacted, _, _) = compact(DesignAnnotationField.value.iri())

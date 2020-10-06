@@ -3,6 +3,7 @@ unitType: AnnotationTypeFragment
 $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/rootAsset
 version: 2.1.2
 root: true
+location: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml
 encodes:
   elementType: CustomDomainProperty
   $id: file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation

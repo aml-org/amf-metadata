@@ -27,6 +27,11 @@
             "@value": true
           }
         ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/message-trait/api.yaml"
+          }
+        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api",

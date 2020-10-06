@@ -28,13 +28,6 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
 
   val CANONICAL_WEBAPI_NAME = "WebAPI Spec 1.0"
 
-  // Properties that will be inserted in the graph
-  val REPO_INTERNAL_REF   = "http://anypoint.com/vocabs/digital-repository#internalReference"
-  val REPO_ASSET_LOCATION = "http://anypoint.com/vocabs/digital-repository#location"
-  val REPO_LINK_TARGET    = "http://anypoint.com/vocabs/digital-repository#link-target"
-  val REPO_LINK_LABEL     = "http://anypoint.com/vocabs/digital-repository#link-label"
-  val REPO_EXTENDS        = "http://anypoint.com/vocabs/digital-repository#extends"
-
   /**
    * Transforms a WebAPI model parsed by AMF from a RAML/OAS document into a canonical WebAPI model compatible with the canonical WebAPI AML dialect
    */

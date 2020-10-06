@@ -36,6 +36,11 @@
                 "@value": false
               }
             ],
+            "http://a.ml/vocabularies/document#location": [
+              {
+                "@value": "file://transform/src/test/resources/transformations/raml-overlay/base.raml"
+              }
+            ],
             "http://a.ml/vocabularies/document#encodes": [
               {
                 "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api",
@@ -182,6 +187,11 @@
             "@value": "Spanish localization"
           }
         ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/raml-overlay/api.raml"
+          }
+        ],
         "http://a.ml/vocabularies/document#references": [
           {
             "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml",
@@ -194,6 +204,11 @@
             "http://a.ml/vocabularies/document#root": [
               {
                 "@value": false
+              }
+            ],
+            "http://a.ml/vocabularies/document#location": [
+              {
+                "@value": "file://transform/src/test/resources/transformations/raml-overlay/base.raml"
               }
             ],
             "http://a.ml/vocabularies/document#encodes": [

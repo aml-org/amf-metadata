@@ -10,6 +10,7 @@ references:
     $id: file://transform/src/test/resources/transformations/raml-overlay/base.raml
     version: 2.1.2
     root: false
+    location: file://transform/src/test/resources/transformations/raml-overlay/base.raml
     encodes:
       elementType: WebAPI
       $id: file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api
@@ -42,6 +43,7 @@ references:
           path: /books
       contentType:
         - application/json
+location: file://transform/src/test/resources/transformations/raml-overlay/api.raml
 encodes:
   elementType: WebAPI
   $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api

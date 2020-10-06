@@ -15,6 +15,7 @@ references:
         $id: file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml
         version: 2.1.2
         root: false
+        location: file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml
         encodes:
           elementType: WebAPI
           $id: file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml#/web-api
@@ -26,6 +27,7 @@ references:
           version: v1
           contentType:
             - application/json
+    location: file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml
     encodes:
       elementType: WebAPI
       $id: file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml#/web-api
@@ -40,6 +42,7 @@ references:
         -
           $id: file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml#/web-api/end-points/%2F_core
           path: /_core
+location: file://transform/src/test/resources/transformations/raml-extension/api.raml
 encodes:
   elementType: WebAPI
   $id: file://transform/src/test/resources/transformations/raml-extension/api.raml#/web-api

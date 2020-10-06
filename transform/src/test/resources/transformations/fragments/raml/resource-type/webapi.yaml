@@ -4,6 +4,7 @@ $id: file://transform/src/test/resources/transformations/fragments/raml/resource
 version: 2.1.2
 usage: Use this to describe resource that list items
 root: true
+location: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#
 encodes:
   elementType: ResourceType
   $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType

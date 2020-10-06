@@ -3,3 +3,4 @@ unitType: ExternalFragment
 $id: file://transform/src/test/resources/transformations/fragments/raml/named-example/api.raml#/rootAsset
 version: 2.1.2
 root: true
+location: file://transform/src/test/resources/transformations/fragments/raml/named-example/api.raml

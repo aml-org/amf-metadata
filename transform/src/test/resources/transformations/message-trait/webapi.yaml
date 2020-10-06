@@ -4,6 +4,7 @@ $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#
 declares: []
 version: 2.1.2
 root: true
+location: file://transform/src/test/resources/transformations/message-trait/api.yaml
 encodes:
   elementType: WebAPI
   $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api
