@@ -27,9 +27,7 @@ trait CanonicalTransform extends PlatformSecrets {
 
   val CANONICAL_WEBAPI_DIALECT: String = "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
 
-  def canonicalTransform(webApiPath: String, hint: Hint = RamlYamlHint, dialect: DialectRegistration = CanonicalDialectRegistration()): Future[BaseUnit] = canonicalTransform(webApiPath, Some(hint), dialect)
-
-  def canonicalTransform(webApiPath: String, hint: Option[Hint], dialect: DialectRegistration): Future[BaseUnit] =
+  def canonicalTransform(webApiPath: String, hint: Option[Hint], dialect: DialectRegistration = CanonicalDialectRegistration()): Future[BaseUnit] =
     for {
       _           <- AMF.init()
       _           <- Validation(platform)
