@@ -4,7 +4,7 @@ title:
     (basic): title
 description: api description
 version: 1.0
-baseUri: http://base.uri/{version}/{param1}/{param2}/{param3}/{param4}
+baseUri: http://base.uri/{version}/{param1}
 mediaType: application/json
 protocols: [HTTP, HTTPS]
 
@@ -15,14 +15,6 @@ baseUriParameters:
         type: string
         maxLength: 10
         example: one
-    param2?:
-        type: string
-    param3?:
-        type: string
-        required: true
-    param4?:
-        type: string
-        required: false
 
 documentation:
     - title: doc title 1
@@ -239,7 +231,7 @@ annotationTypes:
                         "age": 66
                     }
             application/xml:
-                schema: |
+                type: |
                   <?xml version="1.0" encoding="utf-16"?>
                   <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                     <xsd:element name="first" type="xsd:string" />
@@ -265,8 +257,6 @@ annotationTypes:
         uriParameters:
             childId?:
                 type: integer
-            childId2?:
-                required: true
         post:
             body:
-                schema: UserJson
+                type: UserJson

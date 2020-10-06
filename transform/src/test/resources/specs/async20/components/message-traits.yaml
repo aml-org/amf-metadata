@@ -16,5 +16,3 @@ components:
   messageTraits:
     myMessageTrait:
       title: something
-      payload: no me importa porque no lo parseo
-

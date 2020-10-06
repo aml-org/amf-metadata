@@ -35,8 +35,6 @@ channels:
         externalDocs:
           url: http://www.google.com
         examples:
-          someExample: {
+          - {
             "key": "value"
           }
-#        bindings:
-#        traits:

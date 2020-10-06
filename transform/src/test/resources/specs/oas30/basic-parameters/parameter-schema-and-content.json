@@ -18,6 +18,9 @@
             "value": [1,2,3,4]
           }
         },
+        "schema": {
+          "type": "string"
+        },
         "explode": true,
         "style": "simple"
       },
@@ -30,9 +33,6 @@
         "example": {
           "lat": 5,
           "long": 4
-        },
-        "schema": {
-          "type": "object"
         },
         "content": {
           "application/json": {

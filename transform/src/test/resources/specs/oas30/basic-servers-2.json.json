@@ -4,9 +4,6 @@
     "title": "Basic servers",
     "version": "0.1"
   },
-  "schemes": [
-    "https"
-  ],
   "servers": [
     {
       "url": "{username}.gigantic-server.com:{port}/{basePath}",

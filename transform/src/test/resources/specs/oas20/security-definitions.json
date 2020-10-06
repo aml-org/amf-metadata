@@ -40,7 +40,9 @@
     },
     "apiKey": {
       "type": "apiKey",
-      "description": "API Key"
+      "description": "API Key",
+      "name": "",
+      "in": "header"
     }
   },
   "security": [

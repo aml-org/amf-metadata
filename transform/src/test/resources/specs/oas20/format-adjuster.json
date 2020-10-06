@@ -13,8 +13,7 @@
           "format": "Country code"
         },
         "value": {
-          "type": "number",
-          "format": "currency"
+          "type": "number"
         }
       }
     }
@@ -31,7 +30,12 @@
               "$ref": "#/definitions/transaction"
             }
           }
-        ]
+        ],
+        "responses": {
+          "default": {
+            "description": "Something"
+          }
+        }
       }
     }
   }
