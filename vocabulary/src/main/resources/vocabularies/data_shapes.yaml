@@ -7,45 +7,45 @@ uses:
   apiContract: api_contract.yaml
 classTerms:
   AnyShape:
-    displayName: Any Shape
+    displayName: AnyShape
     description: Base class for all shapes stored in the graph model
     extends: Shape
   ArrayShape:
-    displayName: Array Shape
+    displayName: ArrayShape
     description: Shape that contains a nested collection of data shapes
     extends: AnyShape
   DataTypeFragment:
-    displayName: Data Type Fragment
+    displayName: DataTypeFragment
     description: Fragment encoding a RAML data type
     extends:
       - doc.Fragment
       - doc.Unit
   FileShape:
-    displayName: File Shape
+    displayName: FileShape
     description: Shape describing data uploaded in an API request
     extends: AnyShape
   MatrixShape:
-    displayName: Matrix Shape
+    displayName: MatrixShape
     description: Data shape containing nested multi-dimensional collection shapes
     extends:
       - ArrayShape
       - AnyShape
   NilShape:
-    displayName: Nil Shape
+    displayName: NilShape
     description: Data shape representing the null/nil value in the input schema
     extends: AnyShape
   PropertyDependencies:
-    displayName: Property Dependencies
+    displayName: PropertyDependencies
     description: Dependency between sets of property shapes
   RecursiveShape:
-    displayName: Recursive Shape
+    displayName: RecursiveShape
     description: Recursion on a Shape structure, used when expanding a shape and finding the canonical representation of that shape.
   ScalarShape:
-    displayName: Scalar Shape
+    displayName: ScalarShape
     description: Data shape describing a scalar value in the input data model, reified as an scalar node in the mapped graph
     extends: AnyShape
   SchemaShape:
-    displayName: Schema Shape
+    displayName: SchemaShape
     description: Raw schema that cannot be parsed using AMF shapes model
     extends: AnyShape
   Shape:
@@ -56,37 +56,37 @@ classTerms:
       Shapes can be recursive and inherit from other shapes.
     extends: shacl.Shape
   TupleShape:
-    displayName: Tuple Shape
+    displayName: TupleShape
     description: Data shape containing a multi-valued collection of shapes
     extends:
       - ArrayShape
       - AnyShape
   UnionShape:
-    displayName: Union Shape
+    displayName: UnionShape
     description: Shape representing the union of many alternative data shapes
     extends: AnyShape
   XMLSerializer:
-    displayName: XML Serializer
+    displayName: XMLSerializer
     description: Information about how to encode into XML a particular data shape
 propertyTerms:
   additionalItemsSchema:
-    displayName: additional items schema
+    displayName: additionalItemsSchema
     description: Controls whether it’s valid to have additional items in the array beyond what is defined
     range: shacl.Shape
   anyOf:
-    displayName: any of
+    displayName: anyOf
     description: Data shapes in the union
     range: shacl.Shape
   closedItems:
-    displayName: closed items
+    displayName: closedItems
     description: Constraint limiting additional shapes in the collection
     range: boolean
   closure:
-    displayName: inheritance closure
+    displayName: inheritanceClosure
     description: Transitive closure of data shapes this particular shape inherits structure from
     range: uri
   collectionFormat:
-    displayName: collection format
+    displayName: collectionFormat
     description: Input collection format information
     range: string
   contains:
@@ -106,15 +106,15 @@ propertyTerms:
     description: Discriminator property
     range: string
   discriminatorMapping:
-    displayName: discriminator mapping
-    description: Mappping of acceptable values for the ndoe discriminator
+    displayName: discriminatorMapping
+    description: Mappping of acceptable values for the node discriminator
     range: apiContract.IriTemplateMapping
   discriminatorValue:
-    displayName: discriminator value
+    displayName: discriminatorValue
     description: Values for the discriminator property
     range: string
   fileType:
-    displayName: file type
+    displayName: fileType
     description: Type of file described by this shape
     range: string
   fixPoint:
@@ -134,11 +134,11 @@ propertyTerms:
     description: Shapes inside the data arrangement
     range: shacl.Shape
   maxProperties:
-    displayName: max properties
+    displayName: maxProperties
     description: Maximum number of properties in the input node constraint
     range: integer
   minProperties:
-    displayName: min properties
+    displayName: minProperties
     description: Minimum number of properties in the input node constraint
     range: integer
   multipleOf:
@@ -146,15 +146,15 @@ propertyTerms:
     description: Multiple of constraint
     range: double
   patternName:
-    displayName: pattern name
+    displayName: patternName
     description: Patterned property constraint
     range: string
   propertySource:
-    displayName: property source
+    displayName: propertySource
     description: Source property shape in the dependency
     range: uri
   propertyTarget:
-    displayName: property target
+    displayName: propertyTarget
     description: Target property shape in the dependency
     range: uri
   range:
@@ -162,7 +162,7 @@ propertyTerms:
     description: Range property constraint
     range: shacl.Shape
   readOnly:
-    displayName: read only
+    displayName: readOnly
     description: Read only property constraint
     range: boolean
   schema:
@@ -170,34 +170,34 @@ propertyTerms:
     description: Schema for an entity
     range: shacl.Shape
   uniqueItems:
-    displayName: uinque items
+    displayName: uniqueItems
     description: Unique items constraint
     range: boolean
   writeOnly:
-    displayName: write only
+    displayName: writeOnly
     description: Write only property constraint
     range: boolean
   xmlAttribute:
-    displayName: xml attribute
+    displayName: xmlAttribute
     description: XML attribute mapping
     range: boolean
   xmlName:
-    displayName: xml name
+    displayName: xmlName
     description: XML name mapping
     range: string
   xmlNamespace:
-    displayName: xml namespace
+    displayName: xmlNamespace
     description: XML namespace mapping
     range: string
   xmlPrefix:
-    displayName: xml prefix
+    displayName: xmlPrefix
     description: XML prefix mapping
     range: string
   xmlSerialization:
-    displayName: XML serialization
+    displayName: XmlSerialization
     description: Information about how to serialize
     range: XMLSerializer
   xmlWrapped:
-    displayName: xml wrapped
+    displayName: xmlWrapped
     description: XML wrapped mapping flag
     range: boolean

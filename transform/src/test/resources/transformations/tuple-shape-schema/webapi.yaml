@@ -48,11 +48,11 @@ encodes:
                                     name: childProp
                                     datatype: http://www.w3.org/2001/XMLSchema#string
                                   name: childProp
-                                  min.Count: 0
+                                  minCount: 0
                                   path: http://a.ml/vocabularies/data#childProp
                               closed: false
                         name: parentProp
-                        min.Count: 0
+                        minCount: 0
                         path: http://a.ml/vocabularies/data#parentProp
                     referenceId: file://transform/src/test/resources/transformations/tuple-shape-schema/schema.json#/external
                     closed: false

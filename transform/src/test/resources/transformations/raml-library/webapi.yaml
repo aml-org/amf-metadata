@@ -31,7 +31,7 @@ declares:
           name: identifier
           datatype: http://www.w3.org/2001/XMLSchema#string
         name: identifier
-        min.Count: 1
+        minCount: 1
         path: http://a.ml/vocabularies/data#identifier
     closed: true
 version: 2.1.2
