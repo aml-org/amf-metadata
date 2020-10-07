@@ -26,10 +26,10 @@ encodes:
               description: Aircraft specifications and type
               datatype: http://www.w3.org/2001/XMLSchema#string
             name: type
-            min.Count: 1
+            minCount: 1
             path: http://a.ml/vocabularies/data#type
         closed: false
       name: plane
-      min.Count: 1
+      minCount: 1
       path: http://a.ml/vocabularies/data#plane
   closed: false

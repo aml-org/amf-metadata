@@ -41,16 +41,6 @@
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
             ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "annotation"
-              }
-            ],
-            "http://www.w3.org/2000/01/rdf-schema#domain": [
-              {
-                "@id": "http://a.ml/vocabularies/apiContract#Operation"
-              }
-            ],
             "http://a.ml/vocabularies/shapes#schema": [
               {
                 "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema",
@@ -202,14 +192,14 @@
                         ]
                       }
                     ],
-                    "http://www.w3.org/ns/shacl#minCount": [
-                      {
-                        "@value": 1
-                      }
-                    ],
                     "http://www.w3.org/ns/shacl#name": [
                       {
                         "@value": "path"
+                      }
+                    ],
+                    "http://www.w3.org/ns/shacl#minCount": [
+                      {
+                        "@value": 1
                       }
                     ],
                     "http://www.w3.org/ns/shacl#path": [
@@ -252,14 +242,14 @@
                         ]
                       }
                     ],
-                    "http://www.w3.org/ns/shacl#minCount": [
-                      {
-                        "@value": 0
-                      }
-                    ],
                     "http://www.w3.org/ns/shacl#name": [
                       {
                         "@value": "config"
+                      }
+                    ],
+                    "http://www.w3.org/ns/shacl#minCount": [
+                      {
+                        "@value": 0
                       }
                     ],
                     "http://www.w3.org/ns/shacl#path": [
@@ -279,6 +269,16 @@
                     "@value": false
                   }
                 ]
+              }
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "annotation"
+              }
+            ],
+            "http://www.w3.org/2000/01/rdf-schema#domain": [
+              {
+                "@id": "http://a.ml/vocabularies/apiContract#Operation"
               }
             ]
           }

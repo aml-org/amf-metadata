@@ -32,6 +32,6 @@ encodes:
                     name: schema
                     datatype: http://www.w3.org/2001/XMLSchema#string
               displayName: aMessage
-          operationID: something
+          operationId: something
           method: publish
       path: aChannel

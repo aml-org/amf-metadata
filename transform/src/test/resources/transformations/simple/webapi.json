@@ -162,14 +162,14 @@
                                         ]
                                       }
                                     ],
-                                    "http://www.w3.org/ns/shacl#minCount": [
-                                      {
-                                        "@value": 1
-                                      }
-                                    ],
                                     "http://www.w3.org/ns/shacl#name": [
                                       {
                                         "@value": "c"
+                                      }
+                                    ],
+                                    "http://www.w3.org/ns/shacl#minCount": [
+                                      {
+                                        "@value": 1
                                       }
                                     ],
                                     "http://www.w3.org/ns/shacl#path": [
@@ -286,14 +286,14 @@
                     ]
                   }
                 ],
-                "http://www.w3.org/ns/shacl#minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
                 "http://www.w3.org/ns/shacl#name": [
                   {
                     "@value": "b"
+                  }
+                ],
+                "http://www.w3.org/ns/shacl#minCount": [
+                  {
+                    "@value": 1
                   }
                 ],
                 "http://www.w3.org/ns/shacl#path": [
@@ -331,14 +331,14 @@
                     ]
                   }
                 ],
-                "http://www.w3.org/ns/shacl#minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
                 "http://www.w3.org/ns/shacl#name": [
                   {
                     "@value": "a"
+                  }
+                ],
+                "http://www.w3.org/ns/shacl#minCount": [
+                  {
+                    "@value": 1
                   }
                 ],
                 "http://www.w3.org/ns/shacl#path": [

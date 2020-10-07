@@ -162,14 +162,14 @@
                                         ]
                                       }
                                     ],
-                                    "shacl:minCount": [
-                                      {
-                                        "@value": 1
-                                      }
-                                    ],
                                     "shacl:name": [
                                       {
                                         "@value": "c"
+                                      }
+                                    ],
+                                    "shacl:minCount": [
+                                      {
+                                        "@value": 1
                                       }
                                     ],
                                     "shacl:path": [
@@ -286,14 +286,14 @@
                     ]
                   }
                 ],
-                "shacl:minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
                 "shacl:name": [
                   {
                     "@value": "b"
+                  }
+                ],
+                "shacl:minCount": [
+                  {
+                    "@value": 1
                   }
                 ],
                 "shacl:path": [
@@ -331,14 +331,14 @@
                     ]
                   }
                 ],
-                "shacl:minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
                 "shacl:name": [
                   {
                     "@value": "a"
+                  }
+                ],
+                "shacl:minCount": [
+                  {
+                    "@value": 1
                   }
                 ],
                 "shacl:path": [

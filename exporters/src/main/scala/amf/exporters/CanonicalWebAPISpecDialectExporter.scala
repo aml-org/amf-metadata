@@ -257,7 +257,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |      OAuth2: OAuth2Settings
       |      OAuth1: OAuth1Settings
       |      APIKey: APIKeySettings
-      |      Http: HTTPSettings
+      |      Http: HttpSettings
       |      OpenID: OpenIDSettings
     """.stripMargin
 
@@ -265,7 +265,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
     """      - OAuth2Settings
       |      - OAuth1Settings
       |      - APIKeySettings
-      |      - HTTPSettings
+      |      - HttpSettings
       |      - OpenIDSettings
     """.stripMargin
 

@@ -6,13 +6,13 @@ external:
   data: http://a.ml/vocabularies/data#
 classTerms:
   NodeShape:
-    displayName: Node Shape
+    displayName: NodeShape
     description: Shape that validates a record of fields, like a JS object
     extends:
       - shapes.AnyShape
       - Shape
   PropertyShape:
-    displayName: Property Shape
+    displayName: PropertyShape
     description: Constraint over a property in a data shape.
     extends: Shape
   Shape:
@@ -20,7 +20,7 @@ classTerms:
     description: shacl:Shape is the SHACL superclass of those two shape types in the SHACL vocabulary. Its subclasses shacl:NodeShape and shacl:PropertyShape can be used as SHACL type of node and property shapes, respectively.
 propertyTerms:
   additionalPropertiesSchema:
-    displayName: additional properties schema
+    displayName: additionalPropertiesSchema
     description: Additional properties schema
     range: Shape
   and:
@@ -36,11 +36,11 @@ propertyTerms:
     description: Data type of value for an scalar dynamic node
     range: uri
   defaultValue:
-    displayName: default value
+    displayName: defaultValue
     description: Default value parsed for a data shape property
     range: data.Node
   defaultValueStr:
-    displayName: default value String
+    displayName: defaultValueString
     description: Textual representation of the parsed default value for the shape property
     range: string
   else:
@@ -56,7 +56,7 @@ propertyTerms:
     description: Enumeration of possible values for a data shape property
     range: data.Node
   maxCount:
-    displayName: max. count
+    displayName: maxCount
     description: Maximum count property constraint
     range: integer
   maxExclusive:
@@ -68,11 +68,11 @@ propertyTerms:
     description: Maximum inclusive constraint
     range: double
   maxLength:
-    displayName: max. length
+    displayName: maxLength
     description: Maximum length constraint
     range: integer
   minCount:
-    displayName: min. count
+    displayName: minCount
     description: Minimum count property constraint
     range: integer
   minExclusive:
@@ -80,11 +80,11 @@ propertyTerms:
     description: Minimum exclusive constraint
     range: boolean
   minInclusive:
-    displayName: min. inclusive
+    displayName: minInclusive
     description: Minimum inclusive constraint
     range: double
   minLength:
-    displayName: min. length
+    displayName: minLength
     description: Minimum lenght constraint
     range: integer
   name:
@@ -116,11 +116,11 @@ propertyTerms:
     description: Properties associated to this node
     range: PropertyShape
   propertyNames:
-    displayName: property names
+    displayName: propertyNames
     description: Property names schema
     range: Shape
   targetClass:
-    displayName: target class
+    displayName: targetClass
     description: Target class whose instances will need to match the constraint described for the node
     range: uri
   then:
@@ -128,6 +128,6 @@ propertyTerms:
     description: Composition of data shape when if data shape is valid
     range: Shape
   xone:
-    displayName: exclusive or
+    displayName: exclusiveOr
     description: Logical exclusive or composition of data shapes
     range: Shape

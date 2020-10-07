@@ -219,14 +219,14 @@
                                                         ]
                                                       }
                                                     ],
-                                                    "http://www.w3.org/ns/shacl#minCount": [
-                                                      {
-                                                        "@value": 0
-                                                      }
-                                                    ],
                                                     "http://www.w3.org/ns/shacl#name": [
                                                       {
                                                         "@value": "childProp"
+                                                      }
+                                                    ],
+                                                    "http://www.w3.org/ns/shacl#minCount": [
+                                                      {
+                                                        "@value": 0
                                                       }
                                                     ],
                                                     "http://www.w3.org/ns/shacl#path": [
@@ -257,14 +257,14 @@
                                         ]
                                       }
                                     ],
-                                    "http://www.w3.org/ns/shacl#minCount": [
-                                      {
-                                        "@value": 0
-                                      }
-                                    ],
                                     "http://www.w3.org/ns/shacl#name": [
                                       {
                                         "@value": "parentProp"
+                                      }
+                                    ],
+                                    "http://www.w3.org/ns/shacl#minCount": [
+                                      {
+                                        "@value": 0
                                       }
                                     ],
                                     "http://www.w3.org/ns/shacl#path": [
