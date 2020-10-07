@@ -12,7 +12,8 @@
     },
     "api_key2": {
       "type": "apiKey",
-      "in": "query"
+      "in": "query",
+      "name": "something"
     }
   },
   "paths": {}

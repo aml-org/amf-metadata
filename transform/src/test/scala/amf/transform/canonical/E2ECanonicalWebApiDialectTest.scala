@@ -29,13 +29,21 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
     "tuple-shape-schema/api.raml",
     "raml-extension/api.raml",
     "raml-overlay/api.raml",
-    //    "modular-recursion/api.raml"
+    "raml-library/api.raml",
+    "fragments/raml/annotation-declaration/api.raml",
+    "fragments/raml/datatype/api.raml",
+    "fragments/raml/documentation-item/api.raml",
+    "fragments/raml/named-example/api.raml",
+    "fragments/raml/resource-type/api.raml",
+    "fragments/raml/security-scheme/api.raml",
+    "fragments/raml/trait/api.raml",
+//        "modular-recursion/api.raml"
   )
 
   tests.foreach { input =>
     val golden = input.replace("api.raml", "webapi")
     test(s"Test '$input' for WebAPI dialect transformation and yaml/json rendering") {
-      checkCanonicalDialectTransformation(input, golden)
+      checkCanonicalDialectTransformation(input, golden, RamlYamlHint)
     }
   }
 
@@ -51,28 +59,30 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
     checkCanonicalDialectTransformation("message-trait/api.yaml", "message-trait/webapi", AsyncYamlHint)
   }
 
-  test("Test that canonical transformer only accepts Documents") {
-    val unit = ExternalFragment()
-    assertThrows[DocumentExpectedException](CanonicalWebAPISpecTransformer.transform(unit))
+  test("Test transformation of an ExternalFragment") {
+    checkCanonicalDialectTransformation("fragments/external/fragment.yaml", "fragments/external/webapi", None)
   }
 
   test("Test that canonical transform raises exception on Recursive Unit") {
     recoverToSucceededIf[RecursiveUnitsPresentException](
-      canonicalTransform(s"${basePath}/recursive-unit/root.json", OasJsonHint))
+      canonicalTransform(s"${basePath}/recursive-unit/root.json", Some(OasJsonHint))
+    )
   }
 
   test("Test canonical tranformation throws exception if dialect is not found") {
     recoverToSucceededIf[CanonicalDialectNotFoundException](
-      AMF.init().flatMap(_ => canonicalTransform(s"${basePath}simple/api.raml", RamlYamlHint, UnregisterDialectRegistration())))
+      AMF.init().flatMap(_ => canonicalTransform(s"${basePath}simple/api.raml", Some(RamlYamlHint), UnregisterDialectRegistration())))
   }
 
-  def checkCanonicalDialectTransformation(source: String, target: String, hint: Hint = RamlYamlHint): Future[Assertion] = {
+  def checkCanonicalDialectTransformation(source: String, target: String, hint: Hint = RamlYamlHint): Future[Assertion] = checkCanonicalDialectTransformation(source, target, Some(hint))
+
+  def checkCanonicalDialectTransformation(source: String, target: String, hint: Option[Hint]): Future[Assertion] = {
     val amfWebApi  = basePath + source
     val goldenYaml = s"$basePath$target.yaml"
     val goldenJson = s"$basePath$target.json"
 
     for {
-      transformed <- canonicalTransform(amfWebApi, hint)
+      transformed <- canonicalTransform(amfWebApi, hint, CanonicalDialectRegistration())
       yamlDiffOk <- diff(goldenYaml) { () =>
         new AMFRenderer(transformed, Vendor.AML, RenderOptions().withNodeIds, Some(Syntax.Yaml)).renderToString
       }

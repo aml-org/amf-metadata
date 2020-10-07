@@ -40,7 +40,7 @@ trait CanonicalSpecValidationTest extends AsyncFunSuite with CanonicalTransform 
 
   private def validate(apiPath: String, hint: Hint): Future[Assertion] = {
     for {
-      transformed <- canonicalTransform(apiPath, hint)
+      transformed <- canonicalTransform(apiPath, Some(hint))
       report <- {
         RuntimeValidator(
           transformed,

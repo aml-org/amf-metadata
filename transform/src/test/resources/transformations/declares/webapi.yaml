@@ -46,6 +46,7 @@ declares:
     closed: false
 version: 2.1.2
 root: true
+location: file://transform/src/test/resources/transformations/declares/api.raml
 encodes:
   elementType: WebAPI
   $id: file://transform/src/test/resources/transformations/declares/api.raml#/web-api

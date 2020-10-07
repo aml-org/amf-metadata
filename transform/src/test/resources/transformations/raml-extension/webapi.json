@@ -1,6 +1,6 @@
 [
   {
-    "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml",
+    "@id": "file://transform/src/test/resources/transformations/raml-extension/api.raml",
     "@type": [
       "http://a.ml/vocabularies/meta#DialectInstance",
       "http://a.ml/vocabularies/document#Document",
@@ -15,21 +15,446 @@
     ],
     "http://a.ml/vocabularies/document#encodes": [
       {
-        "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml#/rootAsset",
+        "@id": "file://transform/src/test/resources/transformations/raml-extension/api.raml#/rootAsset",
         "@type": [
-          "http://a.ml/vocabularies/document#Document",
-          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+          "http://a.ml/vocabularies/apiContract#Extension",
+          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Extension",
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
+        "http://a.ml/vocabularies/document#extends": [
+          {
+            "@id": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml",
+            "@type": [
+              "http://a.ml/vocabularies/apiContract#Extension",
+              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Extension",
+              "http://a.ml/vocabularies/meta#DialectDomainElement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/document#extends": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml",
+                "@type": [
+                  "http://a.ml/vocabularies/document#Document",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/document#root": [
+                  {
+                    "@value": false
+                  }
+                ],
+                "http://a.ml/vocabularies/document#location": [
+                  {
+                    "@value": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml"
+                  }
+                ],
+                "http://a.ml/vocabularies/document#encodes": [
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml#/web-api",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#WebAPI",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "Unsecure Template (Override me)"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#scheme": [
+                      {
+                        "@value": "HTTPS"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#accepts": [
+                      {
+                        "@value": "application/json"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/core#version": [
+                      {
+                        "@value": "v1"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#contentType": [
+                      {
+                        "@value": "application/json"
+                      }
+                    ]
+                  }
+                ],
+                "http://a.ml/vocabularies/document#version": [
+                  {
+                    "@value": "2.1.2"
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/document#root": [
+              {
+                "@value": false
+              }
+            ],
+            "http://a.ml/vocabularies/document#location": [
+              {
+                "@value": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml"
+              }
+            ],
+            "http://a.ml/vocabularies/document#references": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml",
+                "@type": [
+                  "http://a.ml/vocabularies/document#Document",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/document#root": [
+                  {
+                    "@value": false
+                  }
+                ],
+                "http://a.ml/vocabularies/document#location": [
+                  {
+                    "@value": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml"
+                  }
+                ],
+                "http://a.ml/vocabularies/document#encodes": [
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml#/web-api",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#WebAPI",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "Unsecure Template (Override me)"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#scheme": [
+                      {
+                        "@value": "HTTPS"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#accepts": [
+                      {
+                        "@value": "application/json"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/core#version": [
+                      {
+                        "@value": "v1"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#contentType": [
+                      {
+                        "@value": "application/json"
+                      }
+                    ]
+                  }
+                ],
+                "http://a.ml/vocabularies/document#version": [
+                  {
+                    "@value": "2.1.2"
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/document#encodes": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml#/web-api",
+                "@type": [
+                  "http://a.ml/vocabularies/apiContract#WebAPI",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "Secure Extension Template (Override me)"
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#endpoint": [
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml#/web-api/end-points/%2F_core%2Fsecure%2Fping",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#EndPoint",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/apiContract#path": [
+                      {
+                        "@value": "/_core/secure/ping"
+                      }
+                    ]
+                  },
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml#/web-api/end-points/%2F_core%2Fsecure",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#EndPoint",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/apiContract#path": [
+                      {
+                        "@value": "/_core/secure"
+                      }
+                    ]
+                  },
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml#/web-api/end-points/%2F_core",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#EndPoint",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/apiContract#path": [
+                      {
+                        "@value": "/_core"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/document#version": [
+              {
+                "@value": "2.1.2"
+              }
+            ]
+          }
+        ],
         "http://a.ml/vocabularies/document#root": [
           {
-            "@value": false
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/raml-extension/api.raml"
+          }
+        ],
+        "http://a.ml/vocabularies/document#references": [
+          {
+            "@id": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml",
+            "@type": [
+              "http://a.ml/vocabularies/apiContract#Extension",
+              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Extension",
+              "http://a.ml/vocabularies/meta#DialectDomainElement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/document#extends": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml",
+                "@type": [
+                  "http://a.ml/vocabularies/document#Document",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/document#root": [
+                  {
+                    "@value": false
+                  }
+                ],
+                "http://a.ml/vocabularies/document#location": [
+                  {
+                    "@value": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml"
+                  }
+                ],
+                "http://a.ml/vocabularies/document#encodes": [
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml#/web-api",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#WebAPI",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "Unsecure Template (Override me)"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#scheme": [
+                      {
+                        "@value": "HTTPS"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#accepts": [
+                      {
+                        "@value": "application/json"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/core#version": [
+                      {
+                        "@value": "v1"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#contentType": [
+                      {
+                        "@value": "application/json"
+                      }
+                    ]
+                  }
+                ],
+                "http://a.ml/vocabularies/document#version": [
+                  {
+                    "@value": "2.1.2"
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/document#root": [
+              {
+                "@value": false
+              }
+            ],
+            "http://a.ml/vocabularies/document#location": [
+              {
+                "@value": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml"
+              }
+            ],
+            "http://a.ml/vocabularies/document#references": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml",
+                "@type": [
+                  "http://a.ml/vocabularies/document#Document",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/document#root": [
+                  {
+                    "@value": false
+                  }
+                ],
+                "http://a.ml/vocabularies/document#location": [
+                  {
+                    "@value": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml"
+                  }
+                ],
+                "http://a.ml/vocabularies/document#encodes": [
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml#/web-api",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#WebAPI",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#name": [
+                      {
+                        "@value": "Unsecure Template (Override me)"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#scheme": [
+                      {
+                        "@value": "HTTPS"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#accepts": [
+                      {
+                        "@value": "application/json"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/core#version": [
+                      {
+                        "@value": "v1"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/apiContract#contentType": [
+                      {
+                        "@value": "application/json"
+                      }
+                    ]
+                  }
+                ],
+                "http://a.ml/vocabularies/document#version": [
+                  {
+                    "@value": "2.1.2"
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/document#encodes": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml#/web-api",
+                "@type": [
+                  "http://a.ml/vocabularies/apiContract#WebAPI",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "Secure Extension Template (Override me)"
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#endpoint": [
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml#/web-api/end-points/%2F_core%2Fsecure%2Fping",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#EndPoint",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/apiContract#path": [
+                      {
+                        "@value": "/_core/secure/ping"
+                      }
+                    ]
+                  },
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml#/web-api/end-points/%2F_core%2Fsecure",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#EndPoint",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/apiContract#path": [
+                      {
+                        "@value": "/_core/secure"
+                      }
+                    ]
+                  },
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml#/web-api/end-points/%2F_core",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#EndPoint",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/apiContract#path": [
+                      {
+                        "@value": "/_core"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/document#version": [
+              {
+                "@value": "2.1.2"
+              }
+            ]
           }
         ],
         "http://a.ml/vocabularies/document#encodes": [
           {
-            "@id": "file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml#/web-api",
+            "@id": "file://transform/src/test/resources/transformations/raml-extension/api.raml#/web-api",
             "@type": [
               "http://a.ml/vocabularies/apiContract#WebAPI",
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
@@ -38,27 +463,12 @@
             ],
             "http://a.ml/vocabularies/core#name": [
               {
-                "@value": "Unsecure Template (Override me)"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#scheme": [
-              {
-                "@value": "HTTPS"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#accepts": [
-              {
-                "@value": "application/json"
+                "@value": "HTA Tax Authority API"
               }
             ],
             "http://a.ml/vocabularies/core#version": [
               {
                 "@value": "v1"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#contentType": [
-              {
-                "@value": "application/json"
               }
             ]
           }

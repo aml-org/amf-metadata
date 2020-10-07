@@ -7,5 +7,8 @@
   "externalDocs": {
     "description": "Specification within Ignite Service Design Platform",
     "url": "https://csd.anthem-ignite.com/ICS/serviceSpecification.jsp?id=5925201"
+  },
+  "paths": {
+
   }
 }

@@ -39,7 +39,6 @@ class Oas30CanonicalValidationTest extends CanonicalSpecValidationTest {
     "basic-parameters/parameter-multiple-content-entries.json",
     "basic-parameters/parameter-schema-and-content.json",
     "components/basic-components.json",
-    "components/invalid-component-keys.json",
     "discriminator-object/discriminator-object.json",
     "parameter-payload-resolution/parameter-payload-examples.json",
     "summary-description-in-path/description-applied-to-operations.json"

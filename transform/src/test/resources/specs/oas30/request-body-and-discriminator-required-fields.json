@@ -11,7 +11,12 @@
         "operationId": "test",
         "requestBody": {
           "description": "description of the request",
-          "required": false
+          "required": false,
+          "content": {
+            "application/json": {
+
+            }
+          }
         },
         "responses": {
           "200": {
@@ -21,6 +26,7 @@
                 "schema": {
                   "type": "object",
                   "discriminator": {
+                    "propertyName": "something"
                   },
                   "properties": {
                     "c": {

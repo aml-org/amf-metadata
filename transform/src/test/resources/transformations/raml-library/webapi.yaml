@@ -1,0 +1,39 @@
+#%WebAPI Spec 1.0
+unitType: Library
+$id: file://transform/src/test/resources/transformations/raml-library/api.raml#/rootAsset
+declares:
+  -
+    elementType: Node
+    $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/User
+    designLink: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/Identifier
+    name: User
+  -
+    elementType: Node
+    $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/RestrictedObject
+    name: RestrictedObject
+    closed: true
+  -
+    elementType: Node
+    $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/Identifier
+    inherits:
+      -
+        shapeType: Node
+        $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/RestrictedObject/link-1165733302
+        designLink: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/RestrictedObject
+        name: RestrictedObject
+    name: Identifier
+    property:
+      -
+        $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/Identifier/property/identifier
+        range:
+          shapeType: Scalar
+          $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/Identifier/property/identifier/scalar/identifier
+          name: identifier
+          datatype: http://www.w3.org/2001/XMLSchema#string
+        name: identifier
+        min.Count: 1
+        path: http://a.ml/vocabularies/data#identifier
+    closed: true
+version: 2.1.2
+root: true
+location: file://transform/src/test/resources/transformations/raml-library/api.raml

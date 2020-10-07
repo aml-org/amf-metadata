@@ -436,6 +436,9 @@ nodeMappings:
   BaseUnit:
     classTerm: doc.Unit
     mapping:
+      location:
+        propertyTerm: doc.location
+        range: string
       version:
         propertyTerm: doc.version
         range: string
@@ -993,7 +996,7 @@ nodeMappings:
         propertyTerm: doc.extends
         range: Message
         allowMultiple: true
-
+    
       name:
         propertyTerm: core.name
         range: string
