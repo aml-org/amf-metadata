@@ -27,6 +27,11 @@
             "@value": true
           }
         ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/annotations/api.raml"
+          }
+        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api",
@@ -177,14 +182,14 @@
                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                           "http://a.ml/vocabularies/document#DomainElement"
                         ],
-                        "http://a.ml/vocabularies/core#name": [
-                          {
-                            "@value": "clearanceLevel"
-                          }
-                        ],
                         "http://a.ml/vocabularies/document#design-link-target": [
                           {
                             "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/clearanceLevel"
+                          }
+                        ],
+                        "http://a.ml/vocabularies/core#name": [
+                          {
+                            "@value": "clearanceLevel"
                           }
                         ]
                       }
@@ -258,14 +263,14 @@
                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                           "http://a.ml/vocabularies/document#DomainElement"
                         ],
-                        "http://a.ml/vocabularies/core#name": [
-                          {
-                            "@value": "arrAnot"
-                          }
-                        ],
                         "http://a.ml/vocabularies/document#design-link-target": [
                           {
                             "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/arrAnot"
+                          }
+                        ],
+                        "http://a.ml/vocabularies/core#name": [
+                          {
+                            "@value": "arrAnot"
                           }
                         ]
                       }
@@ -334,14 +339,14 @@
                                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                                   "http://a.ml/vocabularies/document#DomainElement"
                                 ],
-                                "http://a.ml/vocabularies/core#name": [
-                                  {
-                                    "@value": "simple"
-                                  }
-                                ],
                                 "http://a.ml/vocabularies/document#design-link-target": [
                                   {
                                     "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/simple"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/core#name": [
+                                  {
+                                    "@value": "simple"
                                   }
                                 ]
                               }
@@ -412,14 +417,14 @@
                                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                                   "http://a.ml/vocabularies/document#DomainElement"
                                 ],
-                                "http://a.ml/vocabularies/core#name": [
-                                  {
-                                    "@value": "annot"
-                                  }
-                                ],
                                 "http://a.ml/vocabularies/document#design-link-target": [
                                   {
                                     "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/annot"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/core#name": [
+                                  {
+                                    "@value": "annot"
                                   }
                                 ]
                               }
@@ -484,14 +489,14 @@
                                         ]
                                       }
                                     ],
-                                    "http://www.w3.org/ns/shacl#minCount": [
-                                      {
-                                        "@value": 1
-                                      }
-                                    ],
                                     "http://www.w3.org/ns/shacl#name": [
                                       {
                                         "@value": "c"
+                                      }
+                                    ],
+                                    "http://www.w3.org/ns/shacl#minCount": [
+                                      {
+                                        "@value": 1
                                       }
                                     ],
                                     "http://www.w3.org/ns/shacl#path": [
@@ -608,14 +613,14 @@
                     ]
                   }
                 ],
-                "http://www.w3.org/ns/shacl#minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
                 "http://www.w3.org/ns/shacl#name": [
                   {
                     "@value": "b"
+                  }
+                ],
+                "http://www.w3.org/ns/shacl#minCount": [
+                  {
+                    "@value": 1
                   }
                 ],
                 "http://www.w3.org/ns/shacl#path": [
@@ -653,14 +658,14 @@
                     ]
                   }
                 ],
-                "http://www.w3.org/ns/shacl#minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
                 "http://www.w3.org/ns/shacl#name": [
                   {
                     "@value": "a"
+                  }
+                ],
+                "http://www.w3.org/ns/shacl#minCount": [
+                  {
+                    "@value": 1
                   }
                 ],
                 "http://www.w3.org/ns/shacl#path": [
@@ -689,11 +694,6 @@
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
             ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "simple"
-              }
-            ],
             "http://a.ml/vocabularies/shapes#schema": [
               {
                 "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/simple/scalar/schema",
@@ -714,6 +714,11 @@
                   }
                 ]
               }
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "simple"
+              }
             ]
           },
           {
@@ -723,11 +728,6 @@
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/CustomDomainProperty",
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "clearanceLevel"
-              }
             ],
             "http://a.ml/vocabularies/shapes#schema": [
               {
@@ -773,14 +773,14 @@
                         ]
                       }
                     ],
-                    "http://www.w3.org/ns/shacl#minCount": [
-                      {
-                        "@value": 1
-                      }
-                    ],
                     "http://www.w3.org/ns/shacl#name": [
                       {
                         "@value": "signature"
+                      }
+                    ],
+                    "http://www.w3.org/ns/shacl#minCount": [
+                      {
+                        "@value": 1
                       }
                     ],
                     "http://www.w3.org/ns/shacl#path": [
@@ -887,14 +887,14 @@
                         ]
                       }
                     ],
-                    "http://www.w3.org/ns/shacl#minCount": [
-                      {
-                        "@value": 1
-                      }
-                    ],
                     "http://www.w3.org/ns/shacl#name": [
                       {
                         "@value": "level"
+                      }
+                    ],
+                    "http://www.w3.org/ns/shacl#minCount": [
+                      {
+                        "@value": 1
                       }
                     ],
                     "http://www.w3.org/ns/shacl#path": [
@@ -915,6 +915,11 @@
                   }
                 ]
               }
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "clearanceLevel"
+              }
             ]
           },
           {
@@ -924,11 +929,6 @@
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/CustomDomainProperty",
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "arrAnot"
-              }
             ],
             "http://a.ml/vocabularies/shapes#schema": [
               {
@@ -966,6 +966,11 @@
                   }
                 ]
               }
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "arrAnot"
+              }
             ]
           },
           {
@@ -975,11 +980,6 @@
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/CustomDomainProperty",
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "annot"
-              }
             ],
             "http://a.ml/vocabularies/shapes#schema": [
               {
@@ -1034,14 +1034,14 @@
                             ]
                           }
                         ],
-                        "http://www.w3.org/ns/shacl#minCount": [
-                          {
-                            "@value": 1
-                          }
-                        ],
                         "http://www.w3.org/ns/shacl#name": [
                           {
                             "@value": "lala"
+                          }
+                        ],
+                        "http://www.w3.org/ns/shacl#minCount": [
+                          {
+                            "@value": 1
                           }
                         ],
                         "http://www.w3.org/ns/shacl#path": [
@@ -1069,19 +1069,24 @@
                   }
                 ]
               }
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "annot"
+              }
             ]
           }
         ],
         "http://a.ml/vocabularies/document#version": [
           {
-            "@value": "2.1.1"
+            "@value": "2.1.2"
           }
         ]
       }
     ],
     "http://a.ml/vocabularies/document#version": [
       {
-        "@value": "2.1.1"
+        "@value": "2.1.2"
       }
     ],
     "http://a.ml/vocabularies/document#root": [

@@ -13,10 +13,13 @@
         }
       },
       "invalid-array-type": {
-        "type": "array"
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
       },
       "union-type": {
-        "type": ["string", "null"]
+        "type": "string"
       }
     }
   },

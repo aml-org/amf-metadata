@@ -13,4 +13,6 @@ channels:
             messageType: sometype
             contentEncoding: some/mime
           kafka:
-            key: somekey
+            key:
+              type: string
+              enum: ["somekey"]

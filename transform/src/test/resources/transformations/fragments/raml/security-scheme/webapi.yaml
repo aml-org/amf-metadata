@@ -1,0 +1,66 @@
+#%WebAPI Spec 1.0
+unitType: SecuritySchemeFragment
+$id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/rootAsset
+version: 2.1.2
+root: true
+location: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml
+encodes:
+  elementType: SecurityScheme
+  $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#fragment
+  parameter:
+    -
+      $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/access_token
+      required: true
+      paramName: access_token
+      name: access_token
+      description: |
+        Used to send a valid OAuth 2 access token. Do not use together with the "Authorization" header.
+      binding: query
+      schema:
+        shapeType: Scalar
+        $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/access_token/scalar/schema
+        name: schema
+        description: |
+          Used to send a valid OAuth 2 access token. Do not use together with the "Authorization" header.
+        datatype: http://www.w3.org/2001/XMLSchema#string
+  description: Apply the OAuth 2.0 security policy to resource methods for authenticating API requests
+  response:
+    -
+      $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/403
+      name: "403"
+      description: |
+        Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.
+      statusCode: "403"
+    -
+      $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/401
+      name: "401"
+      description: |
+        Bad or expired token. This can happen if the API consumer uses a revoked or expired access token. To fix, you should re-authenticate the user.
+      statusCode: "401"
+  type: OAuth 2.0
+  settings:
+    settingsType: OAuth2
+    $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2
+    flows:
+      -
+        $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2/default-flow
+        authorizationURI: https://placeholder.com/oauth2/authorize
+        accessTokenURI: https://placeholder.com/oauth2/access_token
+    authorizationGrant:
+      - authorization_code
+  header:
+    -
+      $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/Authorization
+      required: true
+      paramName: Authorization
+      name: Authorization
+      description: |
+        Used to send a valid OAuth 2 access token. Do not use with the "access_token" query. string parameter.
+      binding: header
+      schema:
+        shapeType: Scalar
+        $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/Authorization/scalar/schema
+        name: schema
+        description: |
+          Used to send a valid OAuth 2 access token. Do not use with the "access_token" query. string parameter.
+        datatype: http://www.w3.org/2001/XMLSchema#string

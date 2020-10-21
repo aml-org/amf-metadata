@@ -7,7 +7,7 @@ uses:
   data: data_model.yaml
 classTerms:
   AbstractDeclaration:
-    displayName: Abstract Declaration
+    displayName: AbstractDeclaration
     description: |-
       Graph template that can be used to declare a re-usable graph structure that can be applied to different domain elements
       in order to re-use common semantics. Similar to a Lisp macro or a C++ template.
@@ -23,14 +23,14 @@ classTerms:
       - Module
       - Unit
   DocumentExtension:
-    displayName: Document Extension
+    displayName: DocumentExtension
     description: A Document that extends a target document, overwriting part of the information or overlaying additional information.
     extends: Unit
   DomainElement:
-    displayName: Domain element
+    displayName: DomainElement
     description: Base class for any element describing a domain model. Domain Elements are encoded or declared into base units
   DomainProperty:
-    displayName: Custom Domain Property
+    displayName: CustomDomainProperty
     description: |-
       Definition of an extension to the domain model defined directly by a user in the RAML/OpenAPI document.
       This can be achieved by using an annotationType in RAML. In OpenAPI thy don't need to
@@ -41,23 +41,23 @@ classTerms:
       It can be validated using a SHACL shape
     extends: rdf.Property
   ExternalDomainElement:
-    displayName: External Domain Element
+    displayName: ExternalDomainElement
     description: Domain element containing foreign information that cannot be included into the model semantics
   ExternalFragment:
-    displayName: External Fragment
+    displayName: ExternalFragment
     description: Fragment encoding an external entity
     extends:
       - Fragment
       - Unit
   ExternalSource:
-    displayName: External Source Element
+    displayName: ExternalSourceElement
     description: Inlined fragment of information
   Fragment:
     displayName: Fragment
     description: A Fragment is a parsing Unit that encodes a DomainElement
     extends: Unit
   Linkable:
-    displayName: Linkable Element
+    displayName: LinkableElement
     description: |-
       Reification of a link between elements in the model. Used when we want to capture the structure of the source document
       in the graph itself. Linkable elements are just replaced by regular links after resolution.
@@ -68,23 +68,23 @@ classTerms:
       It main purpose is to expose the declared references so they can be re-used
     extends: Unit
   ParametrizedDeclaration:
-    displayName: Parametrized Declaration
+    displayName: ParametrizedDeclaration
     description: Generic graph template supporting variables that can be transformed into a domain element
   Unit:
-    displayName: Base Unit
+    displayName: BaseUnit
     description: Base class for every single document model unit. After parsing a document the parser generate parsing Units. Units encode the domain elements and can reference other units to re-use descriptions.
   VariableValue:
-    displayName: Variable Value
+    displayName: VariableValue
     description: Value for a variable in a graph template
 propertyTerms:
   alias:
     displayName: alias
     range: string
   customDomainProperties:
-    displayName: custom domain properties
+    displayName: customDomainProperties
     description: Extensions provided for a particular domain element.
   dataNode:
-    displayName: data node
+    displayName: dataNode
     description: Associated dynamic structure for the declaration
     range: data.Node
   declares:
@@ -93,7 +93,7 @@ propertyTerms:
       The declares relationship exposes a DomainElement as a re-usable unit that can be referenced from other units.
       URIs for the declared DomainElement are considered to be stable and safe to reference from other DomainElements.
   definedBy:
-    displayName: defined by
+    displayName: definedBy
     description: Definition for the extended entity
     range: DomainProperty
   deprecated:
@@ -124,18 +124,18 @@ propertyTerms:
     description: Data structure associated to the extension
     range: data.Node
   externalValue:
-    displayName: external value
+    displayName: externalValue
     description: Raw text containing an unparsable example
     range: string
   graphDependencies:
     displayName: graphDependencies
     range: uri
   link-label:
-    displayName: link label
+    displayName: linkLabel
     description: Label for the type of link
     range: string
   link-target:
-    displayName: link target
+    displayName: linkTarget
     description: URI of the linked element
     range: uri
   location:
@@ -147,14 +147,14 @@ propertyTerms:
     description: Raw textual information that cannot be processed for the current model semantics.
     range: string
   recursive:
-    displayName: supports recursion
+    displayName: supportsRecursion
     description: Indication taht this kind of linkable element can support recursive links
     range: boolean
   reference:
     displayName: reference
     range: string
   reference-id:
-    displayName: reference id
+    displayName: referenceId
     description: Internal identifier for an inlined fragment
     range: uri
   references:
@@ -170,7 +170,7 @@ propertyTerms:
     description: Indicates if this example should be validated against an associated schema
     range: boolean
   structuredValue:
-    displayName: structured value
+    displayName: structuredValue
     description: Data structure containing the value of the example
     range: data.Node
   target:

@@ -15,7 +15,7 @@ classTerms:
       - doc.Module
       - doc.Unit
   DialectFragment:
-    displayName: Dialect Fragment
+    displayName: DialectFragment
     description: AML dialect mapping fragment that can be included in multiple AML dialects
     extends:
       - doc.Fragment
@@ -45,7 +45,7 @@ classTerms:
       - doc.DocumentExtension
       - doc.Unit
   DialectLibrary:
-    displayName: Dialect Library
+    displayName: DialectLibrary
     description: Library of AML mappings that can be reused in different AML dialects
     extends:
       - doc.Document
@@ -53,10 +53,10 @@ classTerms:
       - doc.Module
       - doc.Unit
   DocumentMapping:
-    displayName: Document Mapping
+    displayName: DocumentMapping
     description: Mapping for a particular dialect document into a graph base unit
   DocumentsModel:
-    displayName: Documents Model
+    displayName: DocumentsModel
     description: Mapping from different type of dialect documents to base units in the parsed graph
   ExternalVocabulary:
     displayName: ExternalVocabulary
@@ -64,12 +64,12 @@ classTerms:
     displayName: NodeMapping
     extends: shacl.Shape
   NodePropertyMapping:
-    displayName: Node Property Mapping
+    displayName: NodePropertyMapping
     description: Semantic mapping from an input AST in a dialect document to the output graph of information for a class of output node
   Property:
     displayName: Property
   PublicNodeMapping:
-    displayName: Public Node Mapping
+    displayName: PublicNodeMapping
     description: Mapping for a graph node mapping to a particular function in a dialect
   UnionNodeMapping:
     displayName: UnionNodeMapping
@@ -85,7 +85,7 @@ classTerms:
     displayName: VocabularyReference
 propertyTerms:
   allowMultiple:
-    displayName: allow multiple
+    displayName: allowMultiple
     description: Allows multiple mapped nodes for the property mapping
     range: boolean
   base:
@@ -93,18 +93,18 @@ propertyTerms:
     description: Base URI for the external model
     range: string
   declarationsPath:
-    displayName: declarations path
+    displayName: declarationsPath
     description: Information about the AST location of the declarations to be parsed as declared domain elements
     range: string
   declaredNode:
-    displayName: declared node
+    displayName: declaredNode
     description: Node in the dialect declared in the target mappend base unit
     range: PublicNodeMapping
   definedBy:
     displayName: definedBy
     range: uri
   describedBy:
-    displayName: described by
+    displayName: describedBy
     description: Link to the AML dialect describing a particular subgraph of information
     range: uri
   documents:
@@ -112,7 +112,7 @@ propertyTerms:
     description: Document mapping for the the dialect
     range: DocumentsModel
   encodedNode:
-    displayName: encoded node
+    displayName: encodedNode
     description: Node in the dialect encoded in the target mapped base unit
     range: uri
   externallyLinkable:
@@ -130,7 +130,7 @@ propertyTerms:
     description: Mapping of fragment base unit for a particular dialect
     range: DocumentMapping
   keyProperty:
-    displayName: key property
+    displayName: keyProperty
     description: Information about whether the dialect is defined by the header or a key property
     range: boolean
   library:
@@ -138,27 +138,27 @@ propertyTerms:
     description: Mappig of module base unit for a particular dialect
     range: DocumentMapping
   mapProperty:
-    displayName: map label property
+    displayName: mapLabelProperty
     description: Marks the mapping as a 'map' mapping syntax. Directly related with mapTermKeyProperty
     range: string
   mapTermProperty:
-    displayName: map term property uri
+    displayName: mapTermPropertyUri
     description: "Marks the mapping as a 'map' mapping syntax. "
     range: uri
   mapTermValueProperty:
-    displayName: map term value property
+    displayName: mapTermValueProperty
     description: Marks the mapping as a 'map value' mapping syntax
     range: uri
   mapValueProperty:
-    displayName: map label value property
+    displayName: mapLabelValueProperty
     description: Marks the mapping as a 'map value' mapping syntax. Directly related with mapTermValueProperty
     range: string
   mappedNode:
-    displayName: mapped node
+    displayName: mappedNode
     description: Node in the dialect definition associated to this mapping
     range: uri
   mergePolicy:
-    displayName: merge policy
+    displayName: mergePolicy
     description: Indication of how to merge this graph node when applying a patch document
     range: string
   properties:
@@ -166,18 +166,18 @@ propertyTerms:
     description: Properties that have the ClassTerm in the domain
     range: uri
   referenceStyle:
-    displayName: reference style
+    displayName: referenceStyle
     description: Determines the style for inclusions (RamlStyle or JsonSchemaStyle)
     range: string
   resolvedExtends:
     displayName: resolvedExtends
     range: uri
   rootDocument:
-    displayName: root document
+    displayName: rootDocument
     description: Root node encoded in a mapped document base unit
     range: DocumentMapping
   selfEncoded:
-    displayName: self encoded
+    displayName: selfEncoded
     description: Information about if the base unit URL should be the same as the URI of the parsed root nodes in the unit
     range: boolean
   sorted:
@@ -185,11 +185,11 @@ propertyTerms:
     description: Marks the mapping as requiring order in the mapped collection of nodes
     range: boolean
   typeDiscriminatorMap:
-    displayName: type discriminator map
+    displayName: typeDiscriminatorMap
     description: Information about the discriminator values in the source AST for the property mapping
     range: string
   typeDiscriminatorName:
-    displayName: type discriminator name
+    displayName: typeDiscriminatorName
     description: Information about the field in the source AST to be used as discrimintaro in the property mapping
     range: string
   unique:

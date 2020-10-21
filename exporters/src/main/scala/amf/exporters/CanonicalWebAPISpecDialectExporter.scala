@@ -257,7 +257,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |      OAuth2: OAuth2Settings
       |      OAuth1: OAuth1Settings
       |      APIKey: APIKeySettings
-      |      Http: HTTPSettings
+      |      Http: HttpSettings
       |      OpenID: OpenIDSettings
     """.stripMargin
 
@@ -265,7 +265,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
     """      - OAuth2Settings
       |      - OAuth1Settings
       |      - APIKeySettings
-      |      - HTTPSettings
+      |      - HttpSettings
       |      - OpenIDSettings
     """.stripMargin
 
@@ -286,6 +286,13 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |      customDomainProperties:
       |        propertyTerm: doc.customDomainProperties
       |        range: CustomDomainProperty
+      |""".stripMargin
+
+  val baseUnitLocation: String =
+    """
+      |      location:
+      |        propertyTerm: doc.location
+      |        range: string
       |""".stripMargin
 
   val endPointExtends: String =
@@ -566,6 +573,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
                 stringBuilder.append(operationExtends + "\n")
               } else if (dialectNodeMapping.classTerm == (Namespace.ApiContract + "Message").iri()) {
                 stringBuilder.append(messageExtends + "\n")
+              } else if (dialectNodeMapping.classTerm == (Namespace.Document + "Unit").iri()) {
+                stringBuilder.append(baseUnitLocation)
               }
 
               nodeMappingWithProperties.map { propertyMapping =>
@@ -627,8 +636,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
                 stringBuilder.append(s"        range: link\n")
               }
 
-              val annotationMapping = dialectNodeMapping.propertyMappings.find(
-                _.propertyTerm == DomainElementModel.CustomDomainProperties.value.iri())
+              val annotationMapping = dialectNodeMapping.propertyMappings.find(_.propertyTerm == DomainElementModel.CustomDomainProperties.value.iri())
               if (annotationMapping.isDefined) {
                 stringBuilder.append(s"      designAnnotations:\n")
                 val (compacted, _, _) = compact(DesignAnnotationField.value.iri())

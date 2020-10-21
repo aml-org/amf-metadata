@@ -1,8 +1,9 @@
 #%WebAPI Spec 1.0
 unitType: Document
 $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/rootAsset
-version: 2.1.1
+version: 2.1.2
 root: true
+location: file://transform/src/test/resources/transformations/message-bindings/api.yaml
 encodes:
   elementType: WebAPI
   $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api
@@ -23,7 +24,17 @@ encodes:
                   -
                     bindingType: Kafka
                     $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/kafka-message
-                    key: somekey
+                    key:
+                      shapeType: Scalar
+                      $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/web-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema
+                      name: schema
+                      datatype: http://www.w3.org/2001/XMLSchema#string
+                      in:
+                        -
+                          elementType: Scalar
+                          $id: null/enum/scalar_1
+                          value: somekey
+                          dataType: http://www.w3.org/2001/XMLSchema#string
                     bindingVersion: latest
                     type: kafka
                   -

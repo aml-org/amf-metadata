@@ -4,8 +4,8 @@ name := "amf-metadata"
 organization in ThisBuild := "com.github.amlorg"
 scalaVersion in ThisBuild := "2.12.11"
 
-lazy val amfVocabularyVersion = majorVersionOrSnapshot(3)
-val amfCanonicalVersion       = versionOrSnapshot(1, 2)
+lazy val amfVocabularyVersion = majorVersionOrSnapshot(4)
+val amfCanonicalVersion       = versionOrSnapshot(1, 3)
 
 val ivyLocal = Resolver.file("ivy", file(Path.userHome.absolutePath + "/.ivy2/local"))(Resolver.ivyStylePatterns)
 
@@ -21,6 +21,10 @@ lazy val amfClientRef    = ProjectRef(workspaceDirectory / "amf", "clientJVM")
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Root ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 lazy val root = project.in(file("."))
+  .aggregate(vocabulary, transform, exporters)
+  .settings(
+    publish / aggregate := false
+  )
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Vocabulary ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

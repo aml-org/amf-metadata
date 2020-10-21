@@ -2,8 +2,9 @@
 unitType: Document
 $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/rootAsset
 declares: []
-version: 2.1.1
+version: 2.1.2
 root: true
+location: file://transform/src/test/resources/transformations/message-trait/api.yaml
 encodes:
   elementType: WebAPI
   $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api
@@ -31,6 +32,6 @@ encodes:
                     name: schema
                     datatype: http://www.w3.org/2001/XMLSchema#string
               displayName: aMessage
-          operationID: something
+          operationId: something
           method: publish
       path: aChannel

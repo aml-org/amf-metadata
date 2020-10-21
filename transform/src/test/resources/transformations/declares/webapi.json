@@ -27,6 +27,11 @@
             "@value": true
           }
         ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/declares/api.raml"
+          }
+        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/web-api",
@@ -151,14 +156,14 @@
                     ]
                   }
                 ],
-                "http://www.w3.org/ns/shacl#minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
                 "http://www.w3.org/ns/shacl#name": [
                   {
                     "@value": "employeeType"
+                  }
+                ],
+                "http://www.w3.org/ns/shacl#minCount": [
+                  {
+                    "@value": 1
                   }
                 ],
                 "http://www.w3.org/ns/shacl#path": [
@@ -196,14 +201,14 @@
                     ]
                   }
                 ],
-                "http://www.w3.org/ns/shacl#minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
                 "http://www.w3.org/ns/shacl#name": [
                   {
                     "@value": "employeeId"
+                  }
+                ],
+                "http://www.w3.org/ns/shacl#minCount": [
+                  {
+                    "@value": 1
                   }
                 ],
                 "http://www.w3.org/ns/shacl#path": [
@@ -227,14 +232,14 @@
         ],
         "http://a.ml/vocabularies/document#version": [
           {
-            "@value": "2.1.1"
+            "@value": "2.1.2"
           }
         ]
       }
     ],
     "http://a.ml/vocabularies/document#version": [
       {
-        "@value": "2.1.1"
+        "@value": "2.1.2"
       }
     ],
     "http://a.ml/vocabularies/document#root": [

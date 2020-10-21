@@ -27,6 +27,11 @@
             "@value": true
           }
         ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/security/api.raml"
+          }
+        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api",
@@ -548,14 +553,14 @@
         ],
         "http://a.ml/vocabularies/document#version": [
           {
-            "@value": "2.1.1"
+            "@value": "2.1.2"
           }
         ]
       }
     ],
     "http://a.ml/vocabularies/document#version": [
       {
-        "@value": "2.1.1"
+        "@value": "2.1.2"
       }
     ],
     "http://a.ml/vocabularies/document#root": [

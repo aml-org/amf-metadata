@@ -52,14 +52,14 @@ nodeMappings:
       OAuth2: OAuth2Settings
       OAuth1: OAuth1Settings
       APIKey: APIKeySettings
-      Http: HTTPSettings
+      Http: HttpSettings
       OpenID: OpenIDSettings
     
     union:
       - OAuth2Settings
       - OAuth1Settings
       - APIKeySettings
-      - HTTPSettings
+      - HttpSettings
       - OpenIDSettings
     
 
@@ -378,7 +378,7 @@ nodeMappings:
       documentation:
         propertyTerm: core.documentation
         range: CreativeWork
-      XMLSerialization:
+      XmlSerialization:
         propertyTerm: raml-shapes.xmlSerialization
         range: XMLSerializer
       comment:
@@ -425,7 +425,7 @@ nodeMappings:
       maxCount:
         propertyTerm: shacl.maxCount
         range: integer
-      uinqueItems:
+      uniqueItems:
         propertyTerm: raml-shapes.uniqueItems
         range: boolean
       collectionFormat:
@@ -436,6 +436,10 @@ nodeMappings:
   BaseUnit:
     classTerm: doc.Unit
     mapping:
+
+      location:
+        propertyTerm: doc.location
+        range: string
       version:
         propertyTerm: doc.version
         range: string
@@ -561,10 +565,6 @@ nodeMappings:
       designLink:
         propertyTerm: doc.design-link-target
         range: link
-      designAnnotations:
-        propertyTerm: doc.designAnnotation
-        range: DomainExtension
-        allowMultiple: true
 
 
   DataNode:
@@ -826,13 +826,13 @@ nodeMappings:
       pattern:
         propertyTerm: shacl.pattern
         range: string
-      min.Length:
+      minLength:
         propertyTerm: shacl.minLength
         range: integer
-      max.Length:
+      maxLength:
         propertyTerm: shacl.maxLength
         range: integer
-      min.Inclusive:
+      minInclusive:
         propertyTerm: shacl.minInclusive
         range: double
       max.Inclusive:
@@ -859,18 +859,6 @@ nodeMappings:
       encodes:
         propertyTerm: doc.encodes
         range: DomainElementUnion
-
-
-  HTTPSettings:
-    classTerm: security.HttpSettings
-    extends: Settings
-    mapping:
-      scheme:
-        propertyTerm: security.scheme
-        range: string
-      bearerFormat:
-        propertyTerm: security.bearerFormat
-        range: string
 
 
   HttpAPIKeySettings:
@@ -915,6 +903,18 @@ nodeMappings:
         range: string
 
 
+  HttpSettings:
+    classTerm: security.HttpSettings
+    extends: Settings
+    mapping:
+      scheme:
+        propertyTerm: security.scheme
+        range: string
+      bearerFormat:
+        propertyTerm: security.bearerFormat
+        range: string
+
+
   IriTemplate:
     classTerm: apiContract.IriTemplateMapping
     mapping:
@@ -936,7 +936,7 @@ nodeMappings:
     mapping:
       key:
         propertyTerm: apiBinding.messageKey
-        range: string
+        range: DataShapesUnion
       bindingVersion:
         propertyTerm: apiBinding.bindingVersion
         range: string
@@ -948,10 +948,10 @@ nodeMappings:
     mapping:
       groupId:
         propertyTerm: apiBinding.groupId
-        range: string
+        range: DataShapesUnion
       clientId:
         propertyTerm: apiBinding.clientId
-        range: string
+        range: DataShapesUnion
       bindingVersion:
         propertyTerm: apiBinding.bindingVersion
         range: string
@@ -993,6 +993,7 @@ nodeMappings:
         propertyTerm: doc.extends
         range: Message
         allowMultiple: true
+    
       name:
         propertyTerm: core.name
         range: string
@@ -1273,7 +1274,7 @@ nodeMappings:
     classTerm: security.OpenIdConnectSettings
     extends: Settings
     mapping:
-      OpenIDConnectURL:
+      openIdConnectUrl:
         propertyTerm: security.openIdConnectUrl
         range: string
       scope:
@@ -1356,7 +1357,7 @@ nodeMappings:
       isAbstract:
         propertyTerm: apiContract.isAbstract
         range: boolean
-      operationID:
+      operationId:
         propertyTerm: apiContract.operationId
         range: string
       designLink:
@@ -1601,10 +1602,10 @@ nodeMappings:
       range:
         propertyTerm: raml-shapes.range
         range: DataShapesUnion
-      min.Count:
+      minCount:
         propertyTerm: shacl.minCount
         range: integer
-      max.Count:
+      maxCount:
         propertyTerm: shacl.maxCount
         range: integer
       patternName:
@@ -1690,13 +1691,13 @@ nodeMappings:
       pattern:
         propertyTerm: shacl.pattern
         range: string
-      min.Length:
+      minLength:
         propertyTerm: shacl.minLength
         range: integer
-      max.Length:
+      maxLength:
         propertyTerm: shacl.maxLength
         range: integer
-      min.Inclusive:
+      minInclusive:
         propertyTerm: shacl.minInclusive
         range: double
       max.Inclusive:
@@ -1993,7 +1994,7 @@ nodeMappings:
       template:
         propertyTerm: apiContract.template
         range: string
-      operationID:
+      operationId:
         propertyTerm: apiContract.operationId
         range: string
       mapping:

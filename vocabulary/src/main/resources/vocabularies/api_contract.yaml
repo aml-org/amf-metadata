@@ -7,7 +7,7 @@ uses:
   shacl: external/shacl.yaml
 classTerms:
   AnnotationTypeDeclarationFragment:
-    displayName: Annotation Type Fragment
+    displayName: AnnotationTypeFragment
     description: Fragment encoding a RAML annotation type
     extends:
       - doc.Fragment
@@ -16,7 +16,7 @@ classTerms:
     displayName: Callback
     description: Model defining the information for a HTTP callback/ webhook
   DomainExtension:
-    displayName: Domain Extension
+    displayName: DomainExtension
     description: |-
       Extension to the model being parsed from RAML annotation or OpenAPI extensions
       They must be a DomainPropertySchema (only in RAML) defining them.
@@ -40,11 +40,11 @@ classTerms:
       - doc.Unit
       - doc.DocumentExtension
   IriTemplateMapping:
-    displayName: Iri Template
+    displayName: IriTemplate
   Message:
     displayName: Message
   NamedExampleFragment:
-    displayName: Named Example Fragment
+    displayName: NamedExampleFragment
     description: Fragment encoding a RAML named example
     extends:
       - doc.Fragment
@@ -65,18 +65,18 @@ classTerms:
     displayName: Parameter
     description: Piece of data required or returned by an Operation
   ParametrizedResourceType:
-    displayName: Parametrized Resource Type
+    displayName: ParametrizedResourceType
     description: RAML resource type that can accept parameters
     extends: doc.ParametrizedDeclaration
   ParametrizedTrait:
-    displayName: Parametrized Trait
+    displayName: ParametrizedTrait
     description: RAML trait with declared parameters
     extends: doc.ParametrizedDeclaration
   Payload:
     displayName: Payload
     description: Encoded payload using certain media-type
   PayloadFragment:
-    displayName: Payload Fragment
+    displayName: PayloadFragment
     description: Fragment encoding HTTP payload information
     extends:
       - doc.Fragment
@@ -86,11 +86,11 @@ classTerms:
     description: Request information for an operation
     extends: Message
   ResourceType:
-    displayName: Resource Type
+    displayName: ResourceType
     description: Type of document base unit encoding a RAML resource type
     extends: doc.AbstractDeclaration
   ResourceTypeFragment:
-    displayName: Resource Type Fragment
+    displayName: ResourceTypeFragment
     description: Fragment encoding a RAML resource type
     extends:
       - doc.Fragment
@@ -103,32 +103,32 @@ classTerms:
     displayName: Server
     description: Information about the network accessible locations where the API is available
   ShapeExtension:
-    displayName: Shape Extension
+    displayName: ShapeExtension
     description: Custom extensions for a data shape definition inside an API definition
   Tag:
     displayName: Tag
     description: Categorical information provided by some API spec format. Tags are extensions to the model supported directly in the input API spec format.
   TemplatedLink:
-    displayName: Templated Link
+    displayName: TemplatedLink
     description: Templated link containing URL template and variables mapping
   Trait:
     displayName: Trait
     description: Type of document base unit encoding a RAML trait
     extends: doc.AbstractDeclaration
   TraitFragment:
-    displayName: Trait Fragment
+    displayName: TraitFragment
     description: Fragment encoding a RAML trait
     extends:
       - doc.Fragment
       - doc.Unit
   UserDocumentationFragment:
-    displayName: Documentation Item Fragment
+    displayName: DocumentationItemFragment
     description: Fragment encoding a RAML documentation item
     extends:
       - doc.Fragment
       - doc.Unit
   WebAPI:
-    displayName: Web API
+    displayName: WebAPI
     description: Top level element describing a HTTP API
 propertyTerms:
   accepts:
@@ -136,11 +136,11 @@ propertyTerms:
     description: Media-types accepted in a API request
     range: string
   allowEmptyValue:
-    displayName: allow empty value
+    displayName: allowEmptyValue
     description: Parameter can be passed without value
     range: boolean
   allowReserved:
-    displayName: allow reserved
+    displayName: allowReserved
     range: boolean
   binding:
     displayName: binding
@@ -148,14 +148,14 @@ propertyTerms:
     range: string
   callback:
     displayName: callback
-    description: associated callbacks
+    description: Associated callbacks
     range: Callback
   contentType:
-    displayName: content type
+    displayName: contentType
     description: Media types returned by a API response
     range: string
   cookieParameter:
-    displayName: cookie parameter
+    displayName: cookieParameter
     range: Parameter
   encoding:
     displayName: encoding
@@ -178,10 +178,10 @@ propertyTerms:
     range: boolean
   expression:
     displayName: expression
-    description: structural location of the information to fulfill the callback
+    description: Structural location of the information to fulfill the callback
     range: string
   guiSummary:
-    displayName: gui summary
+    displayName: guiSummary
     description: Human readable description of the operation
     extends: core.description
     range: string
@@ -198,7 +198,7 @@ propertyTerms:
     description: Structural definition of links on the source data shape AST
     range: TemplatedLink
   linkExpression:
-    displayName: link expression
+    displayName: linkExpression
     description: OAS 3 link expression
     range: string
   mapping:
@@ -210,11 +210,11 @@ propertyTerms:
     description: HTTP method required to invoke the operation
     range: string
   operationId:
-    displayName: operation ID
+    displayName: operationId
     description: Identifier of the target operation
     range: string
   paramName:
-    displayName: param name
+    displayName: paramName
     description: Name of a parameter
     extends: core.name
     range: string
@@ -231,7 +231,7 @@ propertyTerms:
     description: Main payload data required or returned by an operation
     range: Payload
   propertyName:
-    displayName: property name
+    displayName: propertyName
     range: string
   protocol:
     displayName: protocol
@@ -242,11 +242,11 @@ propertyTerms:
     description: The version of the protocol used for connection
     range: string
   queryString:
-    displayName: query string
+    displayName: queryString
     description: Query string for the communication model
     range: shacl.Shape
   requestBody:
-    displayName: request body
+    displayName: requestBody
     range: string
   required:
     displayName: required
@@ -273,7 +273,7 @@ propertyTerms:
     description: Specific information about the server where the endpoint is accessible
     range: Server
   statusCode:
-    displayName: status code
+    displayName: statusCode
     description: HTTP status code returned by a response
     range: string
   style:
@@ -281,7 +281,7 @@ propertyTerms:
     description: Describes how a specific property value will be serialized depending on its type.
     range: string
   supportedOperation:
-    displayName: supported operation
+    displayName: supportedOperation
     description: Operations supported by an endpoint
     range: Operation
   tag:

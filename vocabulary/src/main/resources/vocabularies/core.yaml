@@ -6,7 +6,7 @@ classTerms:
     displayName: CorrelationId
     description: Model defining an identifier that can used for message tracing and correlation
   CreativeWork:
-    displayName: Creative Work
+    displayName: CreativeWork
     description: The most generic kind of creative work, including books, movies, photographs, software programs, etc.
   License:
     displayName: License
@@ -21,7 +21,7 @@ propertyTerms:
     range: string
   correlationId:
     displayName: correlationId
-    description: an identifier that can be used for message tracing and correlation
+    description: An identifier that can be used for message tracing and correlation
     range: CorrelationId
   deprecated:
     displayName: deprecated
@@ -32,7 +32,7 @@ propertyTerms:
     description: Human readable description of an element
     range: string
   displayName:
-    displayName: display name
+    displayName: displayName
     description: Human readable name for the term
     range: string
   documentation:
@@ -76,7 +76,7 @@ propertyTerms:
     description: Human readable short description of the endpoint
     range: string
   termsOfService:
-    displayName: terms of service
+    displayName: termsOfService
     description: Terms and conditions when using the API
     range: string
   title:

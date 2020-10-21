@@ -50,8 +50,9 @@ declares:
           description: |
             Used to send a valid OAuth 2 access token.
           datatype: http://www.w3.org/2001/XMLSchema#string
-version: 2.1.1
+version: 2.1.2
 root: true
+location: file://transform/src/test/resources/transformations/security/api.raml
 encodes:
   elementType: WebAPI
   $id: file://transform/src/test/resources/transformations/security/api.raml#/web-api

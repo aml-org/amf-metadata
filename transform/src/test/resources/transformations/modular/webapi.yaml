@@ -15,7 +15,7 @@ declares:
           name: b
           datatype: http://www.w3.org/2001/XMLSchema#integer
         name: b
-        min.Count: 1
+        minCount: 1
         path: http://a.ml/vocabularies/data#b
       -
         $id: file://transform/src/test/resources/transformations/modular/api.raml#/declarations/types/A/property/a
@@ -25,10 +25,10 @@ declares:
           name: a
           datatype: http://www.w3.org/2001/XMLSchema#string
         name: a
-        min.Count: 1
+        minCount: 1
         path: http://a.ml/vocabularies/data#a
     closed: false
-version: 2.1.1
+version: 2.1.2
 root: true
 references:
   -
@@ -48,7 +48,7 @@ references:
               designLink: file://transform/src/test/resources/transformations/modular/fragment1.raml#/type
               name: c
             name: c
-            min.Count: 1
+            minCount: 1
             path: http://a.ml/vocabularies/data#c
           -
             $id: file://transform/src/test/resources/transformations/modular/lib.raml#/declarations/types/A/property/b
@@ -58,7 +58,7 @@ references:
               name: b
               datatype: http://www.w3.org/2001/XMLSchema#string
             name: b
-            min.Count: 1
+            minCount: 1
             path: http://a.ml/vocabularies/data#b
           -
             $id: file://transform/src/test/resources/transformations/modular/lib.raml#/declarations/types/A/property/a
@@ -68,17 +68,18 @@ references:
               name: a
               datatype: http://www.w3.org/2001/XMLSchema#string
             name: a
-            min.Count: 1
+            minCount: 1
             path: http://a.ml/vocabularies/data#a
         closed: false
-    version: 2.1.1
+    version: 2.1.2
     root: false
     references:
       -
         unitType: DataTypeFragment
         $id: file://transform/src/test/resources/transformations/modular/fragment1.raml
-        version: 2.1.1
+        version: 2.1.2
         root: false
+        location: file://transform/src/test/resources/transformations/modular/fragment1.raml
         encodes:
           elementType: Node
           $id: file://transform/src/test/resources/transformations/modular/fragment1.raml#/type
@@ -92,14 +93,16 @@ references:
                 name: p1
                 datatype: http://www.w3.org/2001/XMLSchema#string
               name: p1
-              min.Count: 1
+              minCount: 1
               path: http://a.ml/vocabularies/data#p1
           closed: false
+    location: file://transform/src/test/resources/transformations/modular/lib.raml
   -
     unitType: DataTypeFragment
     $id: file://transform/src/test/resources/transformations/modular/fragment2.raml
-    version: 2.1.1
+    version: 2.1.2
     root: false
+    location: file://transform/src/test/resources/transformations/modular/fragment2.raml
     encodes:
       elementType: Node
       $id: file://transform/src/test/resources/transformations/modular/fragment2.raml#/type
@@ -113,9 +116,10 @@ references:
             name: p2
             datatype: http://www.w3.org/2001/XMLSchema#string
           name: p2
-          min.Count: 1
+          minCount: 1
           path: http://a.ml/vocabularies/data#p2
       closed: false
+location: file://transform/src/test/resources/transformations/modular/api.raml
 encodes:
   elementType: WebAPI
   $id: file://transform/src/test/resources/transformations/modular/api.raml#/web-api
@@ -160,7 +164,7 @@ encodes:
                           designLink: file://transform/src/test/resources/transformations/modular/fragment2.raml#/type
                           name: d
                         name: d
-                        min.Count: 1
+                        minCount: 1
                         path: http://a.ml/vocabularies/data#d
                       -
                         $id: file://transform/src/test/resources/transformations/modular/api.raml#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema/property/c
@@ -170,7 +174,7 @@ encodes:
                           designLink: file://transform/src/test/resources/transformations/modular/lib.raml#/declarations/types/A
                           name: c
                         name: c
-                        min.Count: 1
+                        minCount: 1
                         path: http://a.ml/vocabularies/data#c
                     closed: false
                   mediaType: application/json

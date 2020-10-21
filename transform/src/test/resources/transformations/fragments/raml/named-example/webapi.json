@@ -1,0 +1,74 @@
+[
+  {
+    "@id": "file://transform/src/test/resources/transformations/fragments/raml/named-example/api.raml",
+    "@type": [
+      "http://a.ml/vocabularies/meta#DialectInstance",
+      "http://a.ml/vocabularies/document#Document",
+      "http://a.ml/vocabularies/document#Fragment",
+      "http://a.ml/vocabularies/document#Module",
+      "http://a.ml/vocabularies/document#Unit"
+    ],
+    "http://a.ml/vocabularies/meta#definedBy": [
+      {
+        "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+      }
+    ],
+    "http://a.ml/vocabularies/document#encodes": [
+      {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/named-example/api.raml#/rootAsset",
+        "@type": [
+          "http://a.ml/vocabularies/document#ExternalFragment",
+          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalFragment",
+          "http://a.ml/vocabularies/meta#DialectDomainElement",
+          "http://a.ml/vocabularies/document#DomainElement"
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/fragments/raml/named-example/api.raml"
+          }
+        ],
+        "http://a.ml/vocabularies/document#encodes": [
+          {
+            "@id": "file://transform/src/test/resources/transformations/fragments/raml/named-example/api.raml#/external",
+            "@type": [
+              "http://a.ml/vocabularies/document#ExternalDomainElement",
+              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalDomainElement",
+              "http://a.ml/vocabularies/meta#DialectDomainElement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/document#raw": [
+              {
+                "@value": "#%RAML 1.0 NamedExample\nvalue:\n  ID: 1\n  code: GQ574\n  price: 399\n  departureDate: 2016/12/20\n  origin: ORD\n  destination: SFO\n  emptySeats: 200\n  plane:\n    type: Boeing 747\n    totalSeats: 400"
+              }
+            ],
+            "http://a.ml/vocabularies/core#mediaType": [
+              {
+                "@value": "application/yaml"
+              }
+            ]
+          }
+        ],
+        "http://a.ml/vocabularies/document#version": [
+          {
+            "@value": "2.1.2"
+          }
+        ]
+      }
+    ],
+    "http://a.ml/vocabularies/document#version": [
+      {
+        "@value": "2.1.2"
+      }
+    ],
+    "http://a.ml/vocabularies/document#root": [
+      {
+        "@value": false
+      }
+    ]
+  }
+]

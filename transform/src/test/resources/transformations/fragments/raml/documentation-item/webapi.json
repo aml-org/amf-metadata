@@ -1,0 +1,74 @@
+[
+  {
+    "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml",
+    "@type": [
+      "http://a.ml/vocabularies/meta#DialectInstance",
+      "http://a.ml/vocabularies/document#Document",
+      "http://a.ml/vocabularies/document#Fragment",
+      "http://a.ml/vocabularies/document#Module",
+      "http://a.ml/vocabularies/document#Unit"
+    ],
+    "http://a.ml/vocabularies/meta#definedBy": [
+      {
+        "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+      }
+    ],
+    "http://a.ml/vocabularies/document#encodes": [
+      {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml#/rootAsset",
+        "@type": [
+          "http://a.ml/vocabularies/apiContract#UserDocumentationFragment",
+          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/DocumentationItemFragment",
+          "http://a.ml/vocabularies/meta#DialectDomainElement",
+          "http://a.ml/vocabularies/document#DomainElement"
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml"
+          }
+        ],
+        "http://a.ml/vocabularies/document#encodes": [
+          {
+            "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml/creative-work/Home",
+            "@type": [
+              "http://a.ml/vocabularies/core#CreativeWork",
+              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/CreativeWork",
+              "http://a.ml/vocabularies/meta#DialectDomainElement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#title": [
+              {
+                "@value": "Home"
+              }
+            ],
+            "http://a.ml/vocabularies/core#description": [
+              {
+                "@value": "Welcome to the _Zencoder API_ Documentation. The _Zencoder API_\nallows you to connect your application to our encoding service\nand encode videos without going through the web  interface. You\nmay also benefit from one of our\n[integration libraries](https://app.zencoder.com/docs/faq/basics/libraries)\nfor different languages."
+              }
+            ]
+          }
+        ],
+        "http://a.ml/vocabularies/document#version": [
+          {
+            "@value": "2.1.2"
+          }
+        ]
+      }
+    ],
+    "http://a.ml/vocabularies/document#version": [
+      {
+        "@value": "2.1.2"
+      }
+    ],
+    "http://a.ml/vocabularies/document#root": [
+      {
+        "@value": false
+      }
+    ]
+  }
+]

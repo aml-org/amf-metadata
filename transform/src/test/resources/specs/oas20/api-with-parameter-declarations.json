@@ -9,7 +9,7 @@
       "name": "my-body-parameter",
       "in": "body",
       "schema": {
-        "$ref": "my-type"
+        "type": "string"
       }
     },
     "my-query-parameter": {
