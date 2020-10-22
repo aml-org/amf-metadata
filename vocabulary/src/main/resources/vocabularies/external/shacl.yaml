@@ -119,6 +119,10 @@ propertyTerms:
     displayName: propertyNames
     description: Property names schema
     range: Shape
+  qualifiedMinCount:
+    displayName: qualifiedMinCount
+    description: Minimum number of value nodes constraint
+    range: integer
   targetClass:
     displayName: targetClass
     description: Target class whose instances will need to match the constraint described for the node
