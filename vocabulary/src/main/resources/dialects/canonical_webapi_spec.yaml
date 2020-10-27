@@ -1046,6 +1046,10 @@ nodeMappings:
       isAbstract:
         propertyTerm: apiContract.isAbstract
         range: boolean
+      headerExamples:
+        propertyTerm: apiContract.headerExamples
+        range: Example
+        allowMultiple: true
       designLink:
         propertyTerm: doc.design-link-target
         range: link

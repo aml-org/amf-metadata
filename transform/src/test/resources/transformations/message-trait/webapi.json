@@ -104,27 +104,6 @@
                             "@value": "aMessage"
                           }
                         ],
-                        "http://a.ml/vocabularies/document#extends": [
-                          {
-                            "@id": "file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish/request/message",
-                            "@type": [
-                              "http://a.ml/vocabularies/apiContract#Message",
-                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Message",
-                              "http://a.ml/vocabularies/meta#DialectDomainElement",
-                              "http://a.ml/vocabularies/document#DomainElement"
-                            ],
-                            "http://a.ml/vocabularies/document#link-label": [
-                              {
-                                "@value": "myMessageTrait"
-                              }
-                            ],
-                            "http://a.ml/vocabularies/document#design-link-target": [
-                              {
-                                "@id": "file://transform/src/test/resources/transformations/message-trait/api.yaml#/declarations/messageTraits/myMessageTrait"
-                              }
-                            ]
-                          }
-                        ],
                         "http://a.ml/vocabularies/apiContract#payload": [
                           {
                             "@id": "file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish/request/default",
@@ -153,6 +132,27 @@
                                     "@value": "schema"
                                   }
                                 ]
+                              }
+                            ]
+                          }
+                        ],
+                        "http://a.ml/vocabularies/document#extends": [
+                          {
+                            "@id": "file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish/request/message",
+                            "@type": [
+                              "http://a.ml/vocabularies/apiContract#Message",
+                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Message",
+                              "http://a.ml/vocabularies/meta#DialectDomainElement",
+                              "http://a.ml/vocabularies/document#DomainElement"
+                            ],
+                            "http://a.ml/vocabularies/document#link-label": [
+                              {
+                                "@value": "myMessageTrait"
+                              }
+                            ],
+                            "http://a.ml/vocabularies/document#design-link-target": [
+                              {
+                                "@id": "file://transform/src/test/resources/transformations/message-trait/api.yaml#/declarations/messageTraits/myMessageTrait"
                               }
                             ]
                           }
