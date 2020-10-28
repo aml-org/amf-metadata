@@ -189,6 +189,10 @@ propertyTerms:
     displayName: header
     description: Parameter passed as a header to an operation for communication models
     range: Parameter
+  headerExamples:
+    displayName: headerExamples
+    description: Examples for a header definition
+    range: Example
   isAbstract:
     displayName: isAbstract
     description: Defines a model as abstract

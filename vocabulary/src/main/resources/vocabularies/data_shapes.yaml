@@ -93,6 +93,10 @@ propertyTerms:
     displayName: contains
     description: One of the shapes in the data arrangement
     range: shacl.Shape
+  contentSchema:
+    displayName: contentSchema
+    description: Describes the content's value structure
+    range: shacl.Shape
   dependencies:
     displayName: dependencies
     description: Dependent properties constraint
@@ -112,6 +116,10 @@ propertyTerms:
   discriminatorValue:
     displayName: discriminatorValue
     description: Values for the discriminator property
+    range: string
+  encoding:
+    displayName: encoding
+    description: Describes the contents' value encoding
     range: string
   fileType:
     displayName: fileType
@@ -137,6 +145,10 @@ propertyTerms:
     displayName: maxProperties
     description: Maximum number of properties in the input node constraint
     range: integer
+  mediaType:
+    displayName: mediaType
+    description: Describes the content's value mediatype
+    range: string
   minProperties:
     displayName: minProperties
     description: Minimum number of properties in the input node constraint
@@ -149,6 +161,10 @@ propertyTerms:
     displayName: patternName
     description: Patterned property constraint
     range: string
+  propertyAppliedShape:
+    displayName: propertyAppliedShape
+    description: Target applied shape in the dependency
+    range: shacl.Shape
   propertySource:
     displayName: propertySource
     description: Source property shape in the dependency
@@ -168,6 +184,14 @@ propertyTerms:
   schema:
     displayName: schema
     description: Schema for an entity
+    range: shacl.Shape
+  unevaluatedItems:
+    displayName: unevaluatedItems
+    description: Items that may not be evaluated in schema validation
+    range: shacl.Shape
+  unevaluatedProperties:
+    displayName: unevaluatedProperties
+    description: Properties that may not be evaluated in schema validation
     range: shacl.Shape
   uniqueItems:
     displayName: uniqueItems

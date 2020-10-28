@@ -431,6 +431,15 @@ nodeMappings:
       collectionFormat:
         propertyTerm: raml-shapes.collectionFormat
         range: string
+      unevaluatedItems:
+        propertyTerm: raml-shapes.unevaluatedItems
+        range: DataShapesUnion
+      qualifiedMinCount:
+        propertyTerm: shacl.qualifiedMinCount
+        range: integer
+      qualifiedMaxCount:
+        propertyTerm: shacl.qualifiedMaxCount
+        range: integer
 
 
   BaseUnit:
@@ -1037,6 +1046,10 @@ nodeMappings:
       isAbstract:
         propertyTerm: apiContract.isAbstract
         range: boolean
+      headerExamples:
+        propertyTerm: apiContract.headerExamples
+        range: Example
+        allowMultiple: true
       designLink:
         propertyTerm: doc.design-link-target
         range: link
@@ -1200,6 +1213,9 @@ nodeMappings:
         propertyTerm: raml-shapes.dependencies
         range: PropertyDependencies
         allowMultiple: true
+      unevaluatedProperties:
+        propertyTerm: raml-shapes.unevaluatedProperties
+        range: DataShapesUnion
 
 
   OAuth1Settings:
@@ -1577,6 +1593,9 @@ nodeMappings:
         propertyTerm: raml-shapes.propertyTarget
         range: link
         allowMultiple: true
+      propertyAppliedShape:
+        propertyTerm: raml-shapes.propertyAppliedShape
+        range: DataShapesUnion
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
@@ -1688,6 +1707,15 @@ nodeMappings:
       datatype:
         propertyTerm: shacl.datatype
         range: link
+      encoding:
+        propertyTerm: raml-shapes.encoding
+        range: string
+      mediaType:
+        propertyTerm: raml-shapes.mediaType
+        range: string
+      contentSchema:
+        propertyTerm: raml-shapes.contentSchema
+        range: DataShapesUnion
       pattern:
         propertyTerm: shacl.pattern
         range: string
