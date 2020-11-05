@@ -44,6 +44,9 @@ classTerms:
     displayName: ScalarShape
     description: Data shape describing a scalar value in the input data model, reified as an scalar node in the mapped graph
     extends: AnyShape
+  SchemaDependencies:
+    displayName: SchemaDependencies
+    description: Dependency between a property shape and a schema
   SchemaShape:
     displayName: SchemaShape
     description: Raw schema that cannot be parsed using AMF shapes model
@@ -161,10 +164,6 @@ propertyTerms:
     displayName: patternName
     description: Patterned property constraint
     range: string
-  propertyAppliedShape:
-    displayName: propertyAppliedShape
-    description: Target applied shape in the dependency
-    range: shacl.Shape
   propertySource:
     displayName: propertySource
     description: Source property shape in the dependency
@@ -185,12 +184,28 @@ propertyTerms:
     displayName: schema
     description: Schema for an entity
     range: shacl.Shape
+  schemaDependencies:
+    displayName: schemaDependencies
+    description: Applied schemas if property exists constraint
+    range: SchemaDependencies
+  schemaTarget:
+    displayName: schemaTarget
+    description: Target applied shape in the dependency
+    range: shacl.Shape
   unevaluatedItems:
     displayName: unevaluatedItems
+    description: Accepts that items may not be evaluated in schema validation
+    range: boolean
+  unevaluatedItemsSchema:
+    displayName: unevaluatedItemsSchema
     description: Items that may not be evaluated in schema validation
     range: shacl.Shape
   unevaluatedProperties:
     displayName: unevaluatedProperties
+    description: Accepts that properties may not be evaluated in schema validation
+    range: boolean
+  unevaluatedPropertiesSchema:
+    displayName: unevaluatedPropertiesSchema
     description: Properties that may not be evaluated in schema validation
     range: shacl.Shape
   uniqueItems:
