@@ -433,6 +433,9 @@ nodeMappings:
         range: string
       unevaluatedItems:
         propertyTerm: raml-shapes.unevaluatedItems
+        range: boolean
+      unevaluatedItemsSchema:
+        propertyTerm: raml-shapes.unevaluatedItemsSchema
         range: DataShapesUnion
       qualifiedMinCount:
         propertyTerm: shacl.qualifiedMinCount
@@ -1213,8 +1216,15 @@ nodeMappings:
         propertyTerm: raml-shapes.dependencies
         range: PropertyDependencies
         allowMultiple: true
+      schemaDependencies:
+        propertyTerm: raml-shapes.schemaDependencies
+        range: SchemaDependencies
+        allowMultiple: true
       unevaluatedProperties:
         propertyTerm: raml-shapes.unevaluatedProperties
+        range: boolean
+      unevaluatedPropertiesSchema:
+        propertyTerm: raml-shapes.unevaluatedPropertiesSchema
         range: DataShapesUnion
 
 
@@ -1593,9 +1603,6 @@ nodeMappings:
         propertyTerm: raml-shapes.propertyTarget
         range: link
         allowMultiple: true
-      propertyAppliedShape:
-        propertyTerm: raml-shapes.propertyAppliedShape
-        range: DataShapesUnion
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
@@ -1743,6 +1750,21 @@ nodeMappings:
       multipleOf:
         propertyTerm: raml-shapes.multipleOf
         range: double
+
+
+  SchemaDependencies:
+    classTerm: raml-shapes.SchemaDependencies
+    mapping:
+      propertySource:
+        propertyTerm: raml-shapes.propertySource
+        range: link
+      schemaTarget:
+        propertyTerm: raml-shapes.schemaTarget
+        range: DataShapesUnion
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
 
 
   SchemaShape:
