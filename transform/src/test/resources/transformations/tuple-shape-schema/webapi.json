@@ -88,11 +88,6 @@
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
             ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "API"
-              }
-            ],
             "http://a.ml/vocabularies/apiContract#endpoint": [
               {
                 "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist",
@@ -307,6 +302,11 @@
                     "@value": "/list"
                   }
                 ]
+              }
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "API"
               }
             ]
           }

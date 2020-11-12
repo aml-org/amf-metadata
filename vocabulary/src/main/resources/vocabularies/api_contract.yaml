@@ -6,12 +6,19 @@ uses:
   core: core.yaml
   shacl: external/shacl.yaml
 classTerms:
+  API:
+    displayName: API
+    description: Top level element describing any kind of API
   AnnotationTypeDeclarationFragment:
     displayName: AnnotationTypeFragment
     description: Fragment encoding a RAML annotation type
     extends:
       - doc.Fragment
       - doc.Unit
+  AsyncAPI:
+    displayName: AsyncAPI
+    description: Top level element describing a asynchronous API
+    extends: API
   Callback:
     displayName: Callback
     description: Model defining the information for a HTTP callback/ webhook
@@ -130,6 +137,7 @@ classTerms:
   WebAPI:
     displayName: WebAPI
     description: Top level element describing a HTTP API
+    extends: API
 propertyTerms:
   accepts:
     displayName: accepts

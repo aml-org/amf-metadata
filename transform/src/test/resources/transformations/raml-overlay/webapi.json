@@ -50,37 +50,6 @@
                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                   "http://a.ml/vocabularies/document#DomainElement"
                 ],
-                "http://a.ml/vocabularies/core#name": [
-                  {
-                    "@value": "test"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#server": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/falsedomain.com%2Fapis",
-                    "@type": [
-                      "http://a.ml/vocabularies/apiContract#Server",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/core#urlTemplate": [
-                      {
-                        "@value": "falsedomain.com/apis"
-                      }
-                    ]
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#accepts": [
-                  {
-                    "@value": "application/json"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#version": [
-                  {
-                    "@value": "1.0"
-                  }
-                ],
                 "http://a.ml/vocabularies/apiContract#endpoint": [
                   {
                     "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D",
@@ -163,9 +132,40 @@
                     ]
                   }
                 ],
+                "http://a.ml/vocabularies/apiContract#accepts": [
+                  {
+                    "@value": "application/json"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "test"
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#server": [
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/falsedomain.com%2Fapis",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#Server",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#urlTemplate": [
+                      {
+                        "@value": "falsedomain.com/apis"
+                      }
+                    ]
+                  }
+                ],
                 "http://a.ml/vocabularies/apiContract#contentType": [
                   {
                     "@value": "application/json"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#version": [
+                  {
+                    "@value": "1.0"
                   }
                 ]
               }
@@ -220,37 +220,6 @@
                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                   "http://a.ml/vocabularies/document#DomainElement"
                 ],
-                "http://a.ml/vocabularies/core#name": [
-                  {
-                    "@value": "test"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#server": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/falsedomain.com%2Fapis",
-                    "@type": [
-                      "http://a.ml/vocabularies/apiContract#Server",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/core#urlTemplate": [
-                      {
-                        "@value": "falsedomain.com/apis"
-                      }
-                    ]
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#accepts": [
-                  {
-                    "@value": "application/json"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#version": [
-                  {
-                    "@value": "1.0"
-                  }
-                ],
                 "http://a.ml/vocabularies/apiContract#endpoint": [
                   {
                     "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D",
@@ -333,9 +302,40 @@
                     ]
                   }
                 ],
+                "http://a.ml/vocabularies/apiContract#accepts": [
+                  {
+                    "@value": "application/json"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "test"
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#server": [
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/falsedomain.com%2Fapis",
+                    "@type": [
+                      "http://a.ml/vocabularies/apiContract#Server",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/core#urlTemplate": [
+                      {
+                        "@value": "falsedomain.com/apis"
+                      }
+                    ]
+                  }
+                ],
                 "http://a.ml/vocabularies/apiContract#contentType": [
                   {
                     "@value": "application/json"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#version": [
+                  {
+                    "@value": "1.0"
                   }
                 ]
               }
