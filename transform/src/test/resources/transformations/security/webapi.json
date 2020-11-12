@@ -41,32 +41,6 @@
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
             ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "GitHub API"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#server": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/https%3A%2F%2Fapi.github.com",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#Server",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/core#urlTemplate": [
-                  {
-                    "@value": "https://api.github.com"
-                  }
-                ]
-              }
-            ],
-            "http://a.ml/vocabularies/core#version": [
-              {
-                "@value": "v3"
-              }
-            ],
             "http://a.ml/vocabularies/apiContract#endpoint": [
               {
                 "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists",
@@ -374,6 +348,32 @@
                     "@value": "/users/{userid}/gists"
                   }
                 ]
+              }
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "GitHub API"
+              }
+            ],
+            "http://a.ml/vocabularies/apiContract#server": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/https%3A%2F%2Fapi.github.com",
+                "@type": [
+                  "http://a.ml/vocabularies/apiContract#Server",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/core#urlTemplate": [
+                  {
+                    "@value": "https://api.github.com"
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/core#version": [
+              {
+                "@value": "v3"
               }
             ]
           }

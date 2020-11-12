@@ -98,6 +98,8 @@ nodeMappings:
       Callback: Callback
       Tag: Tag
       WebAPI: WebAPI
+      API: API
+      AsyncAPI: AsyncAPI
       Example: Example
       Trait: Trait
       TemplatedLink: TemplatedLink
@@ -123,6 +125,8 @@ nodeMappings:
       - Callback
       - Tag
       - WebAPI
+      - API
+      - AsyncAPI
       - Example
       - Trait
       - TemplatedLink
@@ -206,6 +210,68 @@ nodeMappings:
       - HttpOperationBinding
       - KafkaOperationBinding
       - EmptyBinding
+
+  API:
+    classTerm: apiContract.API
+    mapping:
+      name:
+        propertyTerm: core.name
+        range: string
+      description:
+        propertyTerm: core.description
+        range: string
+      identifier:
+        propertyTerm: core.identifier
+        range: string
+      server:
+        propertyTerm: apiContract.server
+        range: Server
+        allowMultiple: true
+      accepts:
+        propertyTerm: apiContract.accepts
+        range: string
+        allowMultiple: true
+      contentType:
+        propertyTerm: apiContract.contentType
+        range: string
+        allowMultiple: true
+      scheme:
+        propertyTerm: apiContract.scheme
+        range: string
+        allowMultiple: true
+      version:
+        propertyTerm: core.version
+        range: string
+      termsOfService:
+        propertyTerm: core.termsOfService
+        range: string
+      provider:
+        propertyTerm: core.provider
+        range: Organization
+      license:
+        propertyTerm: core.license
+        range: License
+      documentation:
+        propertyTerm: core.documentation
+        range: CreativeWork
+        allowMultiple: true
+      endpoint:
+        propertyTerm: apiContract.endpoint
+        range: EndPoint
+        allowMultiple: true
+      security:
+        propertyTerm: security.security
+        range: SecurityRequirement
+        allowMultiple: true
+      tag:
+        propertyTerm: apiContract.tag
+        range: Tag
+        allowMultiple: true
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
 
   APIKeySettings:
     classTerm: security.ApiKeySettings
@@ -443,6 +509,11 @@ nodeMappings:
       qualifiedMaxCount:
         propertyTerm: shacl.qualifiedMaxCount
         range: integer
+
+
+  AsyncAPI:
+    classTerm: apiContract.AsyncAPI
+    extends: API
 
 
   BaseUnit:
@@ -2123,64 +2194,7 @@ nodeMappings:
 
   WebAPI:
     classTerm: apiContract.WebAPI
-    mapping:
-      name:
-        propertyTerm: core.name
-        range: string
-      description:
-        propertyTerm: core.description
-        range: string
-      identifier:
-        propertyTerm: core.identifier
-        range: string
-      server:
-        propertyTerm: apiContract.server
-        range: Server
-        allowMultiple: true
-      accepts:
-        propertyTerm: apiContract.accepts
-        range: string
-        allowMultiple: true
-      contentType:
-        propertyTerm: apiContract.contentType
-        range: string
-        allowMultiple: true
-      scheme:
-        propertyTerm: apiContract.scheme
-        range: string
-        allowMultiple: true
-      version:
-        propertyTerm: core.version
-        range: string
-      termsOfService:
-        propertyTerm: core.termsOfService
-        range: string
-      provider:
-        propertyTerm: core.provider
-        range: Organization
-      license:
-        propertyTerm: core.license
-        range: License
-      documentation:
-        propertyTerm: core.documentation
-        range: CreativeWork
-        allowMultiple: true
-      endpoint:
-        propertyTerm: apiContract.endpoint
-        range: EndPoint
-        allowMultiple: true
-      security:
-        propertyTerm: security.security
-        range: SecurityRequirement
-        allowMultiple: true
-      tag:
-        propertyTerm: apiContract.tag
-        range: Tag
-        allowMultiple: true
-      designAnnotations:
-        propertyTerm: doc.designAnnotation
-        range: DomainExtension
-        allowMultiple: true
+    extends: API
 
 
   WebSocketsChannelBinding:
