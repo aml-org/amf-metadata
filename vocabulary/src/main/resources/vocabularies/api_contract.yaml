@@ -201,6 +201,10 @@ propertyTerms:
     displayName: headerExamples
     description: Examples for a header definition
     range: Example
+  headerSchema:
+    displayName: headerSchema
+    description: Object Schema who's properties are headers for the message.
+    range: shacl.NodeShape
   isAbstract:
     displayName: isAbstract
     description: Defines a model as abstract
