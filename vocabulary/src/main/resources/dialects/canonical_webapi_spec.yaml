@@ -1124,6 +1124,9 @@ nodeMappings:
         propertyTerm: apiContract.headerExamples
         range: Example
         allowMultiple: true
+      headerSchema:
+        propertyTerm: apiContract.headerSchema
+        range: NodeShape
       designLink:
         propertyTerm: doc.design-link-target
         range: link
