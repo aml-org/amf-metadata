@@ -14,7 +14,7 @@ import amf.plugins.document.vocabularies.model.document.Dialect
 import amf.plugins.document.vocabularies.model.domain.NodeMapping
 import amf.plugins.document.webapi.Raml10Plugin
 import amf.plugins.domain.shapes.DataShapesDomainPlugin
-import amf.plugins.domain.webapi.WebAPIDomainPlugin
+import amf.plugins.domain.webapi.APIDomainPlugin
 import org.apache.jena.rdf.model.{Model, Statement}
 
 import scala.collection.JavaConverters._
@@ -224,7 +224,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
 
   private def parseRdfToInstance(model: RdfModel, baseUnitId: String): BaseUnit = {
     val plugins = PluginContext(
-      blacklist = Seq(CorePlugin, WebAPIDomainPlugin, DataShapesDomainPlugin, AMFGraphPlugin, Raml10Plugin))
+      blacklist = Seq(CorePlugin, APIDomainPlugin, DataShapesDomainPlugin, AMFGraphPlugin, Raml10Plugin))
 
     RdfModelParser(errorHandler = UnhandledParserErrorHandler, plugins = plugins)
       .parse(model, baseUnitId)

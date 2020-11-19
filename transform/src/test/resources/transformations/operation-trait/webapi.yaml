@@ -2,24 +2,24 @@
 unitType: Document
 $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/rootAsset
 declares: []
-version: 2.1.2
+version: 2.2.0
 root: true
 location: file://transform/src/test/resources/transformations/operation-trait/api.yaml
 encodes:
-  elementType: WebAPI
-  $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/web-api
+  elementType: AsyncAPI
+  $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api
   name: anOperation
   version: 1.0.0
   endpoint:
     -
-      $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/web-api/end-points/someChannel
+      $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel
       supportedOperation:
         -
-          $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/web-api/end-points/someChannel/publish
+          $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/publish
           extends:
             -
               type: SimpleTrait
-              $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/web-api/end-points/someChannel/publish/default-operation
+              $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/publish/default-operation
               designLink: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait
           operationId: something
           method: publish

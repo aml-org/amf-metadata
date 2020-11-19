@@ -2,33 +2,33 @@
 unitType: Document
 $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/rootAsset
 declares: []
-version: 2.1.2
+version: 2.2.0
 root: true
 location: file://transform/src/test/resources/transformations/message-trait/api.yaml
 encodes:
-  elementType: WebAPI
-  $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api
+  elementType: AsyncAPI
+  $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api
   name: anApi
   version: 1.0.0
   endpoint:
     -
-      $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel
+      $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel
       supportedOperation:
         -
-          $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish
+          $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/publish
           expects:
             -
-              $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish/request
+              $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/publish/request
               extends:
                 -
-                  $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish/request/message
+                  $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/publish/request/message
                   designLink: file://transform/src/test/resources/transformations/message-trait/api.yaml#/declarations/messageTraits/myMessageTrait
               payload:
                 -
-                  $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish/request/default
+                  $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/publish/request/default
                   schema:
                     shapeType: Scalar
-                    $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/web-api/end-points/aChannel/publish/request/default/scalar/schema
+                    $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/publish/request/default/scalar/schema
                     name: schema
                     datatype: http://www.w3.org/2001/XMLSchema#string
               displayName: aMessage

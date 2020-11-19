@@ -369,6 +369,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |      Callback: Callback
       |      Tag: Tag
       |      WebAPI: WebAPI
+      |      API: API
+      |      AsyncAPI: AsyncAPI
       |      Example: Example
       |      Trait: Trait
       |      TemplatedLink: TemplatedLink
@@ -394,6 +396,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
       |      - Callback
       |      - Tag
       |      - WebAPI
+      |      - API
+      |      - AsyncAPI
       |      - Example
       |      - Trait
       |      - TemplatedLink

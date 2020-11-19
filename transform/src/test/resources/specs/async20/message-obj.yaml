@@ -36,5 +36,5 @@ channels:
           url: http://www.google.com
         examples:
           - {
-            "key": "value"
+            "payload": "value"
           }

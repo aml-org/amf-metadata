@@ -44,6 +44,9 @@ classTerms:
     displayName: ScalarShape
     description: Data shape describing a scalar value in the input data model, reified as an scalar node in the mapped graph
     extends: AnyShape
+  SchemaDependencies:
+    displayName: SchemaDependencies
+    description: Dependency between a property shape and a schema
   SchemaShape:
     displayName: SchemaShape
     description: Raw schema that cannot be parsed using AMF shapes model
@@ -93,6 +96,10 @@ propertyTerms:
     displayName: contains
     description: One of the shapes in the data arrangement
     range: shacl.Shape
+  contentSchema:
+    displayName: contentSchema
+    description: Describes the content's value structure
+    range: shacl.Shape
   dependencies:
     displayName: dependencies
     description: Dependent properties constraint
@@ -112,6 +119,10 @@ propertyTerms:
   discriminatorValue:
     displayName: discriminatorValue
     description: Values for the discriminator property
+    range: string
+  encoding:
+    displayName: encoding
+    description: Describes the contents' value encoding
     range: string
   fileType:
     displayName: fileType
@@ -137,6 +148,10 @@ propertyTerms:
     displayName: maxProperties
     description: Maximum number of properties in the input node constraint
     range: integer
+  mediaType:
+    displayName: mediaType
+    description: Describes the content's value mediatype
+    range: string
   minProperties:
     displayName: minProperties
     description: Minimum number of properties in the input node constraint
@@ -168,6 +183,30 @@ propertyTerms:
   schema:
     displayName: schema
     description: Schema for an entity
+    range: shacl.Shape
+  schemaDependencies:
+    displayName: schemaDependencies
+    description: Applied schemas if property exists constraint
+    range: SchemaDependencies
+  schemaTarget:
+    displayName: schemaTarget
+    description: Target applied shape in the dependency
+    range: shacl.Shape
+  unevaluatedItems:
+    displayName: unevaluatedItems
+    description: Accepts that items may not be evaluated in schema validation
+    range: boolean
+  unevaluatedItemsSchema:
+    displayName: unevaluatedItemsSchema
+    description: Items that may not be evaluated in schema validation
+    range: shacl.Shape
+  unevaluatedProperties:
+    displayName: unevaluatedProperties
+    description: Accepts that properties may not be evaluated in schema validation
+    range: boolean
+  unevaluatedPropertiesSchema:
+    displayName: unevaluatedPropertiesSchema
+    description: Properties that may not be evaluated in schema validation
     range: shacl.Shape
   uniqueItems:
     displayName: uniqueItems

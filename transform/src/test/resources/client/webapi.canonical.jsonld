@@ -41,37 +41,6 @@
               "meta:DialectDomainElement",
               "doc:DomainElement"
             ],
-            "core:name": [
-              {
-                "@value": "test"
-              }
-            ],
-            "apiContract:server": [
-              {
-                "@id": "#/web-api/falsedomain.com%2Fapis",
-                "@type": [
-                  "apiContract:Server",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
-                  "meta:DialectDomainElement",
-                  "doc:DomainElement"
-                ],
-                "core:urlTemplate": [
-                  {
-                    "@value": "falsedomain.com/apis"
-                  }
-                ]
-              }
-            ],
-            "apiContract:accepts": [
-              {
-                "@value": "application/json"
-              }
-            ],
-            "core:version": [
-              {
-                "@value": "1.0"
-              }
-            ],
             "apiContract:endpoint": [
               {
                 "@id": "#/web-api/end-points/%2Ftest",
@@ -240,9 +209,40 @@
                 ]
               }
             ],
+            "apiContract:accepts": [
+              {
+                "@value": "application/json"
+              }
+            ],
+            "core:name": [
+              {
+                "@value": "test"
+              }
+            ],
+            "apiContract:server": [
+              {
+                "@id": "#/web-api/falsedomain.com%2Fapis",
+                "@type": [
+                  "apiContract:Server",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
+                  "meta:DialectDomainElement",
+                  "doc:DomainElement"
+                ],
+                "core:urlTemplate": [
+                  {
+                    "@value": "falsedomain.com/apis"
+                  }
+                ]
+              }
+            ],
             "apiContract:contentType": [
               {
                 "@value": "application/json"
+              }
+            ],
+            "core:version": [
+              {
+                "@value": "1.0"
               }
             ]
           }
@@ -362,14 +362,14 @@
         ],
         "doc:version": [
           {
-            "@value": "2.1.2"
+            "@value": "2.2.0"
           }
         ]
       }
     ],
     "doc:version": [
       {
-        "@value": "2.1.2"
+        "@value": "2.2.0"
       }
     ],
     "doc:root": [

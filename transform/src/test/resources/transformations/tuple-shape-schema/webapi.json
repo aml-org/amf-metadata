@@ -74,7 +74,7 @@
             ],
             "http://a.ml/vocabularies/document#version": [
               {
-                "@value": "2.1.2"
+                "@value": "2.2.0"
               }
             ]
           }
@@ -87,11 +87,6 @@
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "API"
-              }
             ],
             "http://a.ml/vocabularies/apiContract#endpoint": [
               {
@@ -308,19 +303,24 @@
                   }
                 ]
               }
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "API"
+              }
             ]
           }
         ],
         "http://a.ml/vocabularies/document#version": [
           {
-            "@value": "2.1.2"
+            "@value": "2.2.0"
           }
         ]
       }
     ],
     "http://a.ml/vocabularies/document#version": [
       {
-        "@value": "2.1.2"
+        "@value": "2.2.0"
       }
     ],
     "http://a.ml/vocabularies/document#root": [

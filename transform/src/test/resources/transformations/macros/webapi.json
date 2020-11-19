@@ -41,11 +41,6 @@
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
             ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "Example with headers"
-              }
-            ],
             "http://a.ml/vocabularies/apiContract#endpoint": [
               {
                 "@id": "file://transform/src/test/resources/transformations/macros/api.raml#/web-api/end-points/%2Fusers",
@@ -659,6 +654,11 @@
                   }
                 ]
               }
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "Example with headers"
+              }
             ]
           }
         ],
@@ -1051,14 +1051,14 @@
         ],
         "http://a.ml/vocabularies/document#version": [
           {
-            "@value": "2.1.2"
+            "@value": "2.2.0"
           }
         ]
       }
     ],
     "http://a.ml/vocabularies/document#version": [
       {
-        "@value": "2.1.2"
+        "@value": "2.2.0"
       }
     ],
     "http://a.ml/vocabularies/document#root": [

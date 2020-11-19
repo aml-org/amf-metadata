@@ -41,15 +41,25 @@ trait DomainElementTransform extends AnnotationTransform with TransformHelpers {
     var foundShape: Option[String]      = None
     var foundAnyShape: Option[String]   = None
     var foundArrayShape: Option[String] = None
+    var foundApi: Option[String]        = None
     var found                           = false
     var mappedDialectNode               = ""
+
+    def isNotShape(dialectNode: DialectNode) = {
+      !dialectNode.endsWith("#/declarations/Shape") && !dialectNode.endsWith("#/declarations/AnyShape") && !dialectNode
+        .endsWith("#/declarations/DataNode") && !dialectNode.endsWith("#/declarations/ArrayShape")
+    }
+
+    def isNotApi(dialectNode: DialectNode) = {
+      !dialectNode.endsWith("#/declarations/API")
+    }
+
     while (typesIterator.hasNext) {
       val nextType = typesIterator.next().asResource().getURI
       mapping.get(nextType) match {
         case Some(dialectNode) =>
           // dealing with inheritance here
-          if (!dialectNode.endsWith("#/declarations/Shape") && !dialectNode.endsWith("#/declarations/AnyShape") && !dialectNode
-            .endsWith("#/declarations/DataNode") && !dialectNode.endsWith("#/declarations/ArrayShape")) {
+          if (isNotShape(dialectNode) && isNotApi(dialectNode)) {
             found = true
             mappedDialectNode = dialectNode
           } else if (dialectNode.endsWith("#/declarations/Shape")) {
@@ -58,6 +68,8 @@ trait DomainElementTransform extends AnnotationTransform with TransformHelpers {
             foundAnyShape = Some(dialectNode)
           } else if (dialectNode.endsWith("#/declarations/ArrayShape")) {
             foundArrayShape = Some(dialectNode)
+          } else if (dialectNode.endsWith("#/declarations/API")) {
+            foundApi = Some(dialectNode)
           }
         case _ => // ignore
       }
@@ -74,6 +86,10 @@ trait DomainElementTransform extends AnnotationTransform with TransformHelpers {
     }
     if (!found && foundShape.isDefined) {
       mappedDialectNode = foundShape.get
+      found = true
+    }
+    if (!found && foundApi.isDefined) {
+      mappedDialectNode = foundApi.get
       found = true
     }
 
