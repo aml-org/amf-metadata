@@ -1672,10 +1672,10 @@ nodeMappings:
     mapping:
       propertySource:
         propertyTerm: raml-shapes.propertySource
-        range: link
+        range: string
       propertyTarget:
         propertyTerm: raml-shapes.propertyTarget
-        range: link
+        range: string
         allowMultiple: true
       designAnnotations:
         propertyTerm: doc.designAnnotation
@@ -1831,7 +1831,7 @@ nodeMappings:
     mapping:
       propertySource:
         propertyTerm: raml-shapes.propertySource
-        range: link
+        range: string
       schemaTarget:
         propertyTerm: raml-shapes.schemaTarget
         range: DataShapesUnion

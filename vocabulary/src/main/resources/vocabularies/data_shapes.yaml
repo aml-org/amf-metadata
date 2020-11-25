@@ -166,12 +166,12 @@ propertyTerms:
     range: string
   propertySource:
     displayName: propertySource
-    description: Source property shape in the dependency
-    range: uri
+    description: Source property name in the dependency
+    range: string
   propertyTarget:
     displayName: propertyTarget
-    description: Target property shape in the dependency
-    range: uri
+    description: Target property name in the dependency
+    range: string
   range:
     displayName: range
     description: Range property constraint
