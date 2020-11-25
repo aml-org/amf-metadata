@@ -1,19 +1,19 @@
 #%WebAPI Spec 1.0
 unitType: Extension
 $id: file://transform/src/test/resources/transformations/raml-extension/api.raml#/rootAsset
-version: 2.2.0
+version: 2.3.0
 root: true
 references:
   -
     unitType: Extension
     $id: file://transform/src/test/resources/transformations/raml-extension/secure-extension.raml
-    version: 2.2.0
+    version: 2.3.0
     root: false
     references:
       -
         unitType: Document
         $id: file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml
-        version: 2.2.0
+        version: 2.3.0
         root: false
         location: file://transform/src/test/resources/transformations/raml-extension/unsecure-template.raml
         encodes:
