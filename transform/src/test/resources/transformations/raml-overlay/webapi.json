@@ -61,7 +61,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#parameter": [
                       {
-                        "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/customer_id",
+                        "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Parameter",
                           "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
@@ -90,7 +90,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/customer_id/scalar/schema",
+                            "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/default-binding/customer_id/scalar/schema",
                             "@type": [
                               "http://a.ml/vocabularies/shapes#ScalarShape",
                               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -231,7 +231,7 @@
                     ],
                     "http://a.ml/vocabularies/apiContract#parameter": [
                       {
-                        "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/customer_id",
+                        "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id",
                         "@type": [
                           "http://a.ml/vocabularies/apiContract#Parameter",
                           "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
@@ -260,7 +260,7 @@
                         ],
                         "http://a.ml/vocabularies/shapes#schema": [
                           {
-                            "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/customer_id/scalar/schema",
+                            "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/default-binding/customer_id/scalar/schema",
                             "@type": [
                               "http://a.ml/vocabularies/shapes#ScalarShape",
                               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
