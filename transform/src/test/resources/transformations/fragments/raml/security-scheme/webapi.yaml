@@ -9,7 +9,7 @@ encodes:
   $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#fragment
   parameter:
     -
-      $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/access_token
+      $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token
       required: true
       paramName: access_token
       name: access_token
@@ -18,7 +18,7 @@ encodes:
       binding: query
       schema:
         shapeType: Scalar
-        $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/access_token/scalar/schema
+        $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/default-binding/access_token/scalar/schema
         name: schema
         description: |
           Used to send a valid OAuth 2 access token. Do not use together with the "Authorization" header.
@@ -50,7 +50,7 @@ encodes:
       - authorization_code
   header:
     -
-      $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/Authorization
+      $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization
       required: true
       paramName: Authorization
       name: Authorization
@@ -59,7 +59,7 @@ encodes:
       binding: header
       schema:
         shapeType: Scalar
-        $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/Authorization/scalar/schema
+        $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/default-binding/Authorization/scalar/schema
         name: schema
         description: |
           Used to send a valid OAuth 2 access token. Do not use with the "access_token" query. string parameter.

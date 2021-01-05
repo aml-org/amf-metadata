@@ -26,7 +26,7 @@ case class ExtendedDialectNodeMapping(id: String,
                                       isShape: Boolean)
 
 // The actual exporter
-class CanonicalWebAPISpecDialectExporter(logger: Logger = new ConsoleLogger()) {
+class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
 
   val WELL_KNOWN_VOCABULARIES: Map[String, String] = Map[String, String](
     "http://a.ml/vocabularies/document#"    -> "../vocabularies/aml_doc.yaml",
