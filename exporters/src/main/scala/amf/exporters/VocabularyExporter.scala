@@ -663,7 +663,7 @@ object VocabularyExporter {
 
   def main(args: Array[String]): Unit = {
 
-    dumpVocabularies(createFileWriter)
+    dumpVocabularies(createFileWriter, logger = ConsoleLogger)
 
     def createFileWriter: ExportedVocabulary => Unit = exported => {
       val ExportedVocabulary(vocab, export) = exported
@@ -678,7 +678,7 @@ object VocabularyExporter {
     }
   }
 
-  def getVocabularyFileUrl(vocab: ModelVocabulary) = {
+  def getVocabularyFileUrl(vocab: ModelVocabulary): String = {
     if (ExternalModelVocabularies.all.contains(vocab)) {
       s"vocabulary/src/main/resources/vocabularies/external/${vocab.filename}"
     } else {
@@ -686,17 +686,17 @@ object VocabularyExporter {
     }
   }
 
-  def dumpVocabularies(writeVocabulary: ExportedVocabulary => Unit, vocabularies: Seq[ModelVocabulary] = exportableVocabularies): Unit = {
-    generateVocabularies(vocabularies).foreach(exported => writeVocabulary(exported))
+  def dumpVocabularies(writeVocabulary: ExportedVocabulary => Unit, vocabularies: Seq[ModelVocabulary] = exportableVocabularies, logger: Logger): Unit = {
+    generateVocabularies(vocabularies, logger).foreach(exported => writeVocabulary(exported))
   }
 
-  def generateVocabularies(vocabularies: Seq[ModelVocabulary] = exportableVocabularies): Seq[ExportedVocabulary] = {
-    println("*** Starting")
+  private def generateVocabularies(vocabularies: Seq[ModelVocabulary] = exportableVocabularies, logger: Logger): Seq[ExportedVocabulary] = {
+    logger.log("*** Starting")
 
     // let's initialize the files
     fillInitialFiles()
 
-    println("*** Processing classes")
+    logger.log("*** Processing classes")
     metaObjects(reflectionsExtensions, parseMetaObject)
     metaObjects(reflectionsCoreDoc, parseMetaObject)
     metaObjects(reflectionsCoreDomain, parseMetaObject)
@@ -709,14 +709,14 @@ object VocabularyExporter {
     metaObjects(reflectionsExtModel, parseMetaObject)
 
     // review
-    println(s"*** Parsed classes: ${classes.keys.toSeq.size}")
+    logger.log(s"*** Parsed classes: ${classes.keys.toSeq.size}")
     //classes.keys.toSeq.sorted.foreach(k => println(s" - ${k}"))
 
-    println(s"*** Parsed properties: ${properties.keys.toSeq.size}")
+    logger.log(s"*** Parsed properties: ${properties.keys.toSeq.size}")
     //properties.keys.toSeq.sorted.foreach(k => println(s" - ${k}"))
 
     vocabularies.map { vocab =>
-      println(s"**** RENDERING ${vocab.filename}")
+      logger.log(s"**** RENDERING ${vocab.filename}")
       val text = renderVocabulary(vocab)
       ExportedVocabulary(vocab, text)
     }
@@ -735,9 +735,9 @@ object VocabularyExporter {
     ModelVocabularies.Meta
   ) ++ ExternalModelVocabularies.all
 
-  def getVocabulariesAsString: Seq[ExportedVocabulary] = {
+  def getVocabulariesAsString(logger: Logger): Seq[ExportedVocabulary] = {
     var accumulated = Seq[ExportedVocabulary]()
-    dumpVocabularies(exported => accumulated = accumulated :+ exported)
+    dumpVocabularies(exported => accumulated = accumulated :+ exported, logger = logger)
     accumulated
   }
 }
