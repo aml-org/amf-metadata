@@ -123,6 +123,7 @@ encodes:
                 value: usuarios
                 dataType: http://www.w3.org/2001/XMLSchema#string
           target:
+            elementType: ResourceType
             $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/collection
             name: collection
             variable:
@@ -180,6 +181,7 @@ encodes:
               $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/end-points/%2Fusers/get/traceable
               name: traceable
               target:
+                elementType: Trait
                 $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/end-points/%2Fusers/get/traceable/default-abstract
                 designLink: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/traceable
           method: get
