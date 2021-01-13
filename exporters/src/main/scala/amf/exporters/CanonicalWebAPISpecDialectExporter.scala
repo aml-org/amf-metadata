@@ -269,6 +269,17 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
       |      - OpenIDSettings
     """.stripMargin
 
+  val abstractDeclarationUnion: String =
+    """
+      |  AbstractDeclarationUnion:
+      |    typeDiscriminatorName: elementType
+      |    typeDiscriminator:
+      |      Trait: Trait
+      |      ResourceType: ResourceType
+      |    union:
+      |      - Trait
+      |      - ResourceType""".stripMargin
+
   val abstractDeclarationsRange: String =
     """          - ResourceType
       |          - Trait
@@ -523,6 +534,9 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     // domain element union
     stringBuilder.append(domainElementUnion + "\n")
 
+    // abstract declaration union
+    stringBuilder.append(abstractDeclarationUnion + "\n")
+
     // Parsed unit union
     stringBuilder.append(parsedUnitUnion + "\n")
 
@@ -603,8 +617,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
                 } else if (propertyMapping.range == "Settings") {
                   stringBuilder.append(s"        range: $settingsUnionDeclaration\n")
                 } else if (propertyMapping.range == "AbstractDeclaration") {
-                  stringBuilder.append(s"        range:\n")
-                  stringBuilder.append(abstractDeclarationsRange ++ "\n")
+                  stringBuilder.append(s"        range: AbstractDeclarationUnion\n")
                 } else if (propertyMapping.range == "DomainElement") {
                   stringBuilder.append(s"        range: $domainElementUnionDeclaration\n")
                 } else if (propertyMapping.range == "BaseUnit") {
