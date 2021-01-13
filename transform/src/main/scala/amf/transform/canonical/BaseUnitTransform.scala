@@ -4,7 +4,10 @@ import amf.core.metamodel.document.{BaseUnitModel, DocumentModel, ExternalFragme
 import amf.core.vocabulary.Namespace
 import amf.plugins.document.vocabularies.metamodel.domain.NodeMappingModel
 import amf.plugins.document.vocabularies.model.document.Dialect
+import amf.plugins.document.vocabularies.model.domain.NodeMapping
+import amf.plugins.document.webapi.metamodel.FragmentsTypesModels.DocumentationItemFragmentModel
 import amf.plugins.document.webapi.metamodel.{ExtensionModel, OverlayModel}
+import amf.plugins.document.webapi.model.DocumentationItemFragment
 import org.apache.jena.rdf.model.Model
 
 import scala.collection.mutable
@@ -24,6 +27,8 @@ trait BaseUnitTransform extends TransformHelpers {
       allTypes += allTypesIterator.next().asResource().getURI
     }
 
+    // This somehow adds some 'ordering' to what type is chosen from the list of types from the most specific to the most abstract. Ex: Document and Module
+    // The last filter is to avoid using abstract models, not sure why 'Document' is there though.
     val mappedDocumentType = if (allTypes.contains((Namespace.ApiContract + "Extension").iri())) {
       defaultIri(ExtensionModel)
     } else if (allTypes.contains((Namespace.ApiContract + "Overlay").iri())) {
@@ -49,8 +54,13 @@ trait BaseUnitTransform extends TransformHelpers {
       }
     }
 
-    dialect.declares.find { nodeMapping =>
-      nodeMapping.id.split("#").last.split("/").last == mappedDocumentType.split("#").last
+    dialect.declares.find {
+      case nodeMapping: NodeMapping =>
+        val optionalClassTerm = Option(nodeMapping.nodetypeMapping.value())
+        optionalClassTerm.exists { classTerm =>
+          classTerm.split("#").last.split("/").last == mappedDocumentType.split("#").last
+        }
+      case _ => false
     } match {
       case Some(nodeMapping) =>
         nativeModel.remove(
