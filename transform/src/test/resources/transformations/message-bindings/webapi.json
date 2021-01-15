@@ -68,17 +68,6 @@
                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                           "http://a.ml/vocabularies/document#DomainElement"
                         ],
-                        "http://a.ml/vocabularies/apiContract#payload": [
-                          {
-                            "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/default",
-                            "@type": [
-                              "http://a.ml/vocabularies/apiContract#Payload",
-                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
-                              "http://a.ml/vocabularies/meta#DialectDomainElement",
-                              "http://a.ml/vocabularies/document#DomainElement"
-                            ]
-                          }
-                        ],
                         "http://a.ml/vocabularies/apiBinding#binding": [
                           {
                             "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings",
