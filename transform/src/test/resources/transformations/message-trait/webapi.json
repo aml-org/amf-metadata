@@ -199,17 +199,6 @@
                 "@value": "something"
               }
             ],
-            "http://a.ml/vocabularies/apiContract#payload": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/message-trait/api.yaml#/declarations/messageTraits/myMessageTrait/default",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#Payload",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ]
-              }
-            ],
             "http://a.ml/vocabularies/apiContract#isAbstract": [
               {
                 "@value": true
