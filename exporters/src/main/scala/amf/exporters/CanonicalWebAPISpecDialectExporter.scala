@@ -700,9 +700,9 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
   }
 
   def compact(url: String): (String, String, String) = {
-    val compacted = Namespace.compact(url).replace(":", ".")
+    val compacted = Namespace.staticAliases.compact(url).replace(":", ".")
     val prefix    = compacted.split("\\.").head
-    val base      = Namespace.ns(prefix).base
+    val base      = Namespace.staticAliases.ns(prefix).base
     (compacted, prefix, base)
   }
 
