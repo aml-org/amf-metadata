@@ -2,7 +2,7 @@
 unitType: Document
 $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/rootAsset
 declares: []
-version: 2.3.0
+version: 2.4.0
 root: true
 location: file://transform/src/test/resources/transformations/operation-trait/api.yaml
 encodes:
