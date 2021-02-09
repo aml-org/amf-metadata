@@ -4,8 +4,10 @@ name := "amf-metadata"
 organization in ThisBuild := "com.github.amlorg"
 scalaVersion in ThisBuild := "2.12.11"
 
-lazy val amfVocabularyVersion = majorVersionOrSnapshot(6)
-val amfCanonicalVersion       = versionOrSnapshot(1, 6)
+val artifactVersions = new {
+  val vocabularyVersion = versions("versions.yaml")("amf.vocabulary")
+  val transformVersion = versions("versions.yaml")("amf.transform")
+}
 
 val ivyLocal = Resolver.file("ivy", file(Path.userHome.absolutePath + "/.ivy2/local"))(Resolver.ivyStylePatterns)
 
@@ -33,8 +35,8 @@ lazy val vocabulary = project
   .settings(
     commonSettings,
     name := "amf-vocabulary",
-    version := amfVocabularyVersion
-  )
+    version := artifactVersions.vocabularyVersion
+  ).disablePlugins(SonarPlugin)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Canonical ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -44,10 +46,11 @@ lazy val transform = project
   .settings(
     commonSettings,
     name := "amf-transform",
-    version := amfCanonicalVersion,
+    version := artifactVersions.transformVersion,
     libraryDependencies ++= commonDependencies
   )
   .sourceDependency(amfClientRef, amfClientLibJVM)
+  .disablePlugins(SonarPlugin)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Exporters ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -59,6 +62,7 @@ lazy val exporters = project
     libraryDependencies ++= commonDependencies
   )
   .sourceDependency(amfClientRef, amfClientLibJVM)
+  .disablePlugins(SonarPlugin)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Common ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -85,6 +89,24 @@ def majorVersionOrSnapshot(major: Int) = {
 }
 
 def versionOrSnapshot(major: Int, minor: Int) = {
-  lazy val branch = sys.env.get("BRANCH_NAME")
   if (branch.contains("master")) s"$major.$minor.0" else s"$major.${minor + 1}.0-SNAPSHOT"
 }
+
+lazy val sonarUrl   = sys.env.getOrElse("SONAR_SERVER_URL", "Not found url.")
+lazy val sonarToken = sys.env.getOrElse("SONAR_SERVER_TOKEN", "Not found token.")
+lazy val branch = sys.env.getOrElse("BRANCH_NAME", "develop")
+
+//enablePlugins(ScalaJSBundlerPlugin)
+
+sonarProperties ++= Map(
+  "sonar.login"                      -> sonarToken,
+  "sonar.projectKey"                 -> "mulesoft.amf-metadata",
+  "sonar.projectName"                -> "AMF-Metadata",
+  "sonar.projectVersion"             -> artifactVersions.transformVersion,
+  "sonar.sourceEncoding"             -> "UTF-8",
+  "sonar.github.repository"          -> "mulesoft/amf-metadata",
+  "sonar.branch.name"                -> branch,
+  "sonar.scala.coverage.reportPaths" -> "transform/target/scala-2.12/scoverage-report/scoverage.xml,exporters/target/scala-2.12/scoverage-report/scoverage.xml",
+  "sonar.sources"                    -> "transform/src/main/scala,exporters/src/main/scala",
+  "sonar.tests"                      -> "transform/src/test/scala,exporters/src/test/scala"
+)

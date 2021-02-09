@@ -1,7 +1,7 @@
 #%WebAPI Spec 1.0
 unitType: Document
 $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/rootAsset
-version: 2.3.0
+version: 2.4.0
 root: true
 location: file://transform/src/test/resources/transformations/message-bindings/api.yaml
 encodes:
@@ -44,8 +44,5 @@ encodes:
                     bindingVersion: 31.07.92
                     type: amqp
                     messageType: sometype
-              payload:
-                -
-                  $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/default
           method: publish
       path: some-channel

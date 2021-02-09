@@ -16,15 +16,16 @@ pipeline {
   }
   environment {
     NEXUS = credentials('exchange-nexus')
+    NEXUSIQ = credentials('nexus-iq')
     GITHUB_ORG = 'aml-org'
     GITHUB_REPO = 'amf-metadata'
   }
   stages {
-    stage('Exporters Test') {
+    stage('Test') {
       steps {
         script {
           try{
-            sh 'sbt -mem 4096 -Dfile.encoding=UTF-8 clean exporters/test'
+            sh 'sbt -mem 4096 -Dfile.encoding=UTF-8 clean coverage test coverageReport'
           } catch (ignored) {
             failedStage = failedStage + " TEST "
             unstable "Failed tests"
@@ -32,14 +33,47 @@ pipeline {
         }
       }
     }
-    stage('Transform Test') {
+    stage('SonarQube Analysis') {
+      when {
+        anyOf {
+          branch 'master'
+          branch 'develop'
+        }
+      }
       steps {
-        script {
-          try{
-            sh 'sbt -mem 4096 -Dfile.encoding=UTF-8 clean transform/test'
-          } catch (ignored) {
-            failedStage = failedStage + " TEST "
-            unstable "Failed tests"
+        wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
+          withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'sonarqube-official', passwordVariable: 'SONAR_SERVER_TOKEN', usernameVariable: 'SONAR_SERVER_URL']]) {
+            script {
+              try {
+                if (failedStage.isEmpty()) {
+                  sh 'sbt -Dsonar.host.url=${SONAR_SERVER_URL} sonarScan'
+                }
+              } catch (ignored) {
+                failedStage = failedStage + " COVERAGE "
+                unstable "Failed coverage"
+              }
+            }
+          }
+        }
+      }
+    }
+    stage('Nexus IQ') {
+      when {
+        anyOf {
+          branch 'develop'
+        }
+      }
+      steps {
+        wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
+          script {
+            try{
+              if (failedStage.isEmpty()){
+                sh './gradlew nexusIq'
+              }
+            } catch(ignored) {
+              failedStage = failedStage + " NEXUSIQ "
+              unstable "Failed Nexus IQ"
+            }
           }
         }
       }

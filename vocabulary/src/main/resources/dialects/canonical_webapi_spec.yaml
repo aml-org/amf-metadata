@@ -134,6 +134,15 @@ nodeMappings:
       - ResourceType
       - CustomDomainProperty
 
+
+  AbstractDeclarationUnion:
+    typeDiscriminatorName: elementType
+    typeDiscriminator:
+      Trait: Trait
+      ResourceType: ResourceType
+    union:
+      - Trait
+      - ResourceType
   ParsedUnitUnion:
     typeDiscriminatorName: unitType
     typeDiscriminator:
@@ -1584,10 +1593,7 @@ nodeMappings:
         range: string
       target:
         propertyTerm: doc.target
-        range:
-          - ResourceType
-          - Trait
-    
+        range: AbstractDeclarationUnion
       variable:
         propertyTerm: doc.variable
         range: VariableValue
