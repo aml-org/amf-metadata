@@ -22,16 +22,6 @@
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml"
-          }
-        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation",
@@ -49,11 +39,6 @@
                   "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                   "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/core#name": [
-                  {
-                    "@value": "Method handler function path"
-                  }
                 ],
                 "http://www.w3.org/ns/shacl#property": [
                   {
@@ -73,19 +58,9 @@
                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                           "http://a.ml/vocabularies/document#DomainElement"
                         ],
-                        "http://a.ml/vocabularies/core#description": [
-                          {
-                            "@value": "A string that is passed to the pathResolver function in order to return\na route handler function.\n"
-                          }
-                        ],
                         "http://www.w3.org/ns/shacl#datatype": [
                           {
                             "@id": "http://www.w3.org/2001/XMLSchema#string"
-                          }
-                        ],
-                        "http://www.w3.org/ns/shacl#name": [
-                          {
-                            "@value": "path"
                           }
                         ],
                         "http://a.ml/vocabularies/apiContract#examples": [
@@ -126,14 +101,14 @@
                                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                                   "http://a.ml/vocabularies/document#DomainElement"
                                 ],
-                                "http://a.ml/vocabularies/data#value": [
-                                  {
-                                    "@value": "server.controllers.user.findUser"
-                                  }
-                                ],
                                 "http://www.w3.org/ns/shacl#datatype": [
                                   {
                                     "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/data#value": [
+                                  {
+                                    "@value": "server.controllers.user.findUser"
                                   }
                                 ]
                               }
@@ -176,25 +151,30 @@
                                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                                   "http://a.ml/vocabularies/document#DomainElement"
                                 ],
-                                "http://a.ml/vocabularies/data#value": [
-                                  {
-                                    "@value": "./folderrfolder/file.js"
-                                  }
-                                ],
                                 "http://www.w3.org/ns/shacl#datatype": [
                                   {
                                     "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/data#value": [
+                                  {
+                                    "@value": "./folderrfolder/file.js"
                                   }
                                 ]
                               }
                             ]
                           }
+                        ],
+                        "http://www.w3.org/ns/shacl#name": [
+                          {
+                            "@value": "path"
+                          }
+                        ],
+                        "http://a.ml/vocabularies/core#description": [
+                          {
+                            "@value": "A string that is passed to the pathResolver function in order to return\na route handler function.\n"
+                          }
                         ]
-                      }
-                    ],
-                    "http://www.w3.org/ns/shacl#name": [
-                      {
-                        "@value": "path"
                       }
                     ],
                     "http://www.w3.org/ns/shacl#minCount": [
@@ -205,6 +185,11 @@
                     "http://www.w3.org/ns/shacl#path": [
                       {
                         "@id": "http://a.ml/vocabularies/data#path"
+                      }
+                    ],
+                    "http://www.w3.org/ns/shacl#name": [
+                      {
+                        "@value": "path"
                       }
                     ]
                   },
@@ -225,9 +210,9 @@
                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                           "http://a.ml/vocabularies/document#DomainElement"
                         ],
-                        "http://a.ml/vocabularies/core#description": [
+                        "http://www.w3.org/ns/shacl#closed": [
                           {
-                            "@value": "Config object will be passed as the first parameter to the controller on every call"
+                            "@value": false
                           }
                         ],
                         "http://www.w3.org/ns/shacl#name": [
@@ -235,16 +220,11 @@
                             "@value": "config?"
                           }
                         ],
-                        "http://www.w3.org/ns/shacl#closed": [
+                        "http://a.ml/vocabularies/core#description": [
                           {
-                            "@value": false
+                            "@value": "Config object will be passed as the first parameter to the controller on every call"
                           }
                         ]
-                      }
-                    ],
-                    "http://www.w3.org/ns/shacl#name": [
-                      {
-                        "@value": "config"
                       }
                     ],
                     "http://www.w3.org/ns/shacl#minCount": [
@@ -256,17 +236,27 @@
                       {
                         "@id": "http://a.ml/vocabularies/data#config"
                       }
+                    ],
+                    "http://www.w3.org/ns/shacl#name": [
+                      {
+                        "@value": "config"
+                      }
                     ]
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#name": [
-                  {
-                    "@value": "schema"
                   }
                 ],
                 "http://www.w3.org/ns/shacl#closed": [
                   {
                     "@value": false
+                  }
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "Method handler function path"
+                  }
+                ],
+                "http://www.w3.org/ns/shacl#name": [
+                  {
+                    "@value": "schema"
                   }
                 ]
               }
@@ -286,6 +276,16 @@
         "http://a.ml/vocabularies/document#version": [
           {
             "@value": "2.4.0"
+          }
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml"
           }
         ]
       }

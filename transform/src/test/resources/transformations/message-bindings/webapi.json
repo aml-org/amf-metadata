@@ -22,16 +22,6 @@
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/message-bindings/api.yaml"
-          }
-        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api",
@@ -40,6 +30,16 @@
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/AsyncAPI",
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "Amqp message binding"
+              }
+            ],
+            "http://a.ml/vocabularies/core#version": [
+              {
+                "@value": "1.0.0"
+              }
             ],
             "http://a.ml/vocabularies/apiContract#endpoint": [
               {
@@ -86,11 +86,6 @@
                                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                                   "http://a.ml/vocabularies/document#DomainElement"
                                 ],
-                                "http://a.ml/vocabularies/apiBinding#type": [
-                                  {
-                                    "@value": "kafka"
-                                  }
-                                ],
                                 "http://a.ml/vocabularies/apiBinding#messageKey": [
                                   {
                                     "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema",
@@ -123,14 +118,14 @@
                                               "http://a.ml/vocabularies/meta#DialectDomainElement",
                                               "http://a.ml/vocabularies/document#DomainElement"
                                             ],
-                                            "http://a.ml/vocabularies/data#value": [
-                                              {
-                                                "@value": "somekey"
-                                              }
-                                            ],
                                             "http://www.w3.org/ns/shacl#datatype": [
                                               {
                                                 "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                              }
+                                            ],
+                                            "http://a.ml/vocabularies/data#value": [
+                                              {
+                                                "@value": "somekey"
                                               }
                                             ]
                                           }
@@ -143,6 +138,11 @@
                                   {
                                     "@value": "latest"
                                   }
+                                ],
+                                "http://a.ml/vocabularies/apiBinding#type": [
+                                  {
+                                    "@value": "kafka"
+                                  }
                                 ]
                               },
                               {
@@ -153,9 +153,9 @@
                                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                                   "http://a.ml/vocabularies/document#DomainElement"
                                 ],
-                                "http://a.ml/vocabularies/apiBinding#type": [
+                                "http://a.ml/vocabularies/apiBinding#contentEncoding": [
                                   {
-                                    "@value": "amqp"
+                                    "@value": "some/mime"
                                   }
                                 ],
                                 "http://a.ml/vocabularies/apiBinding#messageType": [
@@ -163,14 +163,14 @@
                                     "@value": "sometype"
                                   }
                                 ],
-                                "http://a.ml/vocabularies/apiBinding#contentEncoding": [
-                                  {
-                                    "@value": "some/mime"
-                                  }
-                                ],
                                 "http://a.ml/vocabularies/apiBinding#bindingVersion": [
                                   {
                                     "@value": "31.07.92"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/apiBinding#type": [
+                                  {
+                                    "@value": "amqp"
                                   }
                                 ]
                               }
@@ -192,22 +192,22 @@
                   }
                 ]
               }
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "Amqp message binding"
-              }
-            ],
-            "http://a.ml/vocabularies/core#version": [
-              {
-                "@value": "1.0.0"
-              }
             ]
           }
         ],
         "http://a.ml/vocabularies/document#version": [
           {
             "@value": "2.4.0"
+          }
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/message-bindings/api.yaml"
           }
         ]
       }

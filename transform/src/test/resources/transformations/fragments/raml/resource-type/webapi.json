@@ -22,21 +22,6 @@
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#usage": [
-          {
-            "@value": "Use this to describe resource that list items"
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#"
-          }
-        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType",
@@ -45,6 +30,11 @@
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ResourceType",
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "resourceType"
+              }
             ],
             "http://a.ml/vocabularies/document#dataNode": [
               {
@@ -109,14 +99,14 @@
                                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                                           "http://a.ml/vocabularies/document#DomainElement"
                                         ],
-                                        "http://a.ml/vocabularies/data#value": [
-                                          {
-                                            "@value": ""
-                                          }
-                                        ],
                                         "http://www.w3.org/ns/shacl#datatype": [
                                           {
                                             "@id": "http://www.w3.org/2001/XMLSchema#nil"
+                                          }
+                                        ],
+                                        "http://a.ml/vocabularies/data#value": [
+                                          {
+                                            "@value": ""
                                           }
                                         ]
                                       }
@@ -153,14 +143,14 @@
                                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                                   "http://a.ml/vocabularies/document#DomainElement"
                                 ],
-                                "http://a.ml/vocabularies/data#value": [
-                                  {
-                                    "@value": "Add an item"
-                                  }
-                                ],
                                 "http://www.w3.org/ns/shacl#datatype": [
                                   {
                                     "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/data#value": [
+                                  {
+                                    "@value": "Add an item"
                                   }
                                 ]
                               }
@@ -215,14 +205,14 @@
                                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                                   "http://a.ml/vocabularies/document#DomainElement"
                                 ],
-                                "http://a.ml/vocabularies/data#value": [
-                                  {
-                                    "@value": "Retrieve all items"
-                                  }
-                                ],
                                 "http://www.w3.org/ns/shacl#datatype": [
                                   {
                                     "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                  }
+                                ],
+                                "http://a.ml/vocabularies/data#value": [
+                                  {
+                                    "@value": "Retrieve all items"
                                   }
                                 ]
                               }
@@ -259,14 +249,14 @@
                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                           "http://a.ml/vocabularies/document#DomainElement"
                         ],
-                        "http://a.ml/vocabularies/data#value": [
-                          {
-                            "@value": "A collection resource"
-                          }
-                        ],
                         "http://www.w3.org/ns/shacl#datatype": [
                           {
                             "@id": "http://www.w3.org/2001/XMLSchema#string"
+                          }
+                        ],
+                        "http://a.ml/vocabularies/data#value": [
+                          {
+                            "@value": "A collection resource"
                           }
                         ]
                       }
@@ -279,17 +269,27 @@
                   }
                 ]
               }
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "resourceType"
-              }
             ]
           }
         ],
         "http://a.ml/vocabularies/document#version": [
           {
             "@value": "2.4.0"
+          }
+        ],
+        "http://a.ml/vocabularies/document#usage": [
+          {
+            "@value": "Use this to describe resource that list items"
+          }
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#"
           }
         ]
       }

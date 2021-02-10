@@ -22,16 +22,6 @@
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml"
-          }
-        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type",
@@ -77,11 +67,6 @@
                               "http://a.ml/vocabularies/meta#DialectDomainElement",
                               "http://a.ml/vocabularies/document#DomainElement"
                             ],
-                            "http://a.ml/vocabularies/core#description": [
-                              {
-                                "@value": "Aircraft specifications and type"
-                              }
-                            ],
                             "http://www.w3.org/ns/shacl#datatype": [
                               {
                                 "@id": "http://www.w3.org/2001/XMLSchema#string"
@@ -91,12 +76,12 @@
                               {
                                 "@value": "type"
                               }
+                            ],
+                            "http://a.ml/vocabularies/core#description": [
+                              {
+                                "@value": "Aircraft specifications and type"
+                              }
                             ]
-                          }
-                        ],
-                        "http://www.w3.org/ns/shacl#name": [
-                          {
-                            "@value": "type"
                           }
                         ],
                         "http://www.w3.org/ns/shacl#minCount": [
@@ -108,12 +93,17 @@
                           {
                             "@id": "http://a.ml/vocabularies/data#type"
                           }
+                        ],
+                        "http://www.w3.org/ns/shacl#name": [
+                          {
+                            "@value": "type"
+                          }
                         ]
                       }
                     ],
-                    "http://a.ml/vocabularies/core#description": [
+                    "http://www.w3.org/ns/shacl#closed": [
                       {
-                        "@value": "the type of plane"
+                        "@value": false
                       }
                     ],
                     "http://www.w3.org/ns/shacl#name": [
@@ -121,16 +111,11 @@
                         "@value": "plane"
                       }
                     ],
-                    "http://www.w3.org/ns/shacl#closed": [
+                    "http://a.ml/vocabularies/core#description": [
                       {
-                        "@value": false
+                        "@value": "the type of plane"
                       }
                     ]
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#name": [
-                  {
-                    "@value": "plane"
                   }
                 ],
                 "http://www.w3.org/ns/shacl#minCount": [
@@ -142,17 +127,22 @@
                   {
                     "@id": "http://a.ml/vocabularies/data#plane"
                   }
+                ],
+                "http://www.w3.org/ns/shacl#name": [
+                  {
+                    "@value": "plane"
+                  }
                 ]
-              }
-            ],
-            "http://www.w3.org/ns/shacl#name": [
-              {
-                "@value": "type"
               }
             ],
             "http://www.w3.org/ns/shacl#closed": [
               {
                 "@value": false
+              }
+            ],
+            "http://www.w3.org/ns/shacl#name": [
+              {
+                "@value": "type"
               }
             ]
           }
@@ -160,6 +150,16 @@
         "http://a.ml/vocabularies/document#version": [
           {
             "@value": "2.4.0"
+          }
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml"
           }
         ]
       }
