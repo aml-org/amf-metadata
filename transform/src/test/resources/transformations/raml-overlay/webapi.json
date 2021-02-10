@@ -162,7 +162,7 @@
             ],
             "http://a.ml/vocabularies/document#version": [
               {
-                "@value": "2.4.0"
+                "@value": "3.0.0"
               }
             ],
             "http://a.ml/vocabularies/document#root": [
@@ -211,7 +211,7 @@
         ],
         "http://a.ml/vocabularies/document#version": [
           {
-            "@value": "2.4.0"
+            "@value": "3.0.0"
           }
         ],
         "http://a.ml/vocabularies/document#usage": [
@@ -364,7 +364,7 @@
             ],
             "http://a.ml/vocabularies/document#version": [
               {
-                "@value": "2.4.0"
+                "@value": "3.0.0"
               }
             ],
             "http://a.ml/vocabularies/document#root": [
@@ -388,7 +388,7 @@
     ],
     "http://a.ml/vocabularies/document#version": [
       {
-        "@value": "2.4.0"
+        "@value": "3.0.0"
       }
     ],
     "http://a.ml/vocabularies/document#root": [
