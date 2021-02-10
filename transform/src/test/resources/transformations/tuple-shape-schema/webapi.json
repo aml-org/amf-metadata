@@ -22,63 +22,6 @@
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml"
-          }
-        ],
-        "http://a.ml/vocabularies/document#references": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/schema.json",
-            "@type": [
-              "http://a.ml/vocabularies/document#ExternalFragment",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalFragment",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/document#root": [
-              {
-                "@value": false
-              }
-            ],
-            "http://a.ml/vocabularies/document#location": [
-              {
-                "@value": "file://transform/src/test/resources/transformations/tuple-shape-schema/schema.json"
-              }
-            ],
-            "http://a.ml/vocabularies/document#encodes": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/schema.json#/external",
-                "@type": [
-                  "http://a.ml/vocabularies/document#ExternalDomainElement",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalDomainElement",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/document#raw": [
-                  {
-                    "@value": "{\r\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"parentProp\": {\r\n      \"type\": \"array\",\r\n      \"items\": [\r\n        {\r\n          \"type\": \"object\",\r\n          \"properties\": {\r\n            \"childProp\": {\r\n              \"type\": \"string\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#mediaType": [
-                  {
-                    "@value": "application/json"
-                  }
-                ]
-              }
-            ],
-            "http://a.ml/vocabularies/document#version": [
-              {
-                "@value": "2.4.0"
-              }
-            ]
-          }
-        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api",
@@ -87,6 +30,11 @@
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "API"
+              }
             ],
             "http://a.ml/vocabularies/apiContract#endpoint": [
               {
@@ -148,11 +96,6 @@
                                   "http://a.ml/vocabularies/meta#DialectDomainElement",
                                   "http://a.ml/vocabularies/document#DomainElement"
                                 ],
-                                "http://www.w3.org/ns/shacl#name": [
-                                  {
-                                    "@value": "schema"
-                                  }
-                                ],
                                 "http://a.ml/vocabularies/shapes#inherits": [
                                   {
                                     "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/schema/schema",
@@ -161,11 +104,6 @@
                                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
                                       "http://a.ml/vocabularies/meta#DialectDomainElement",
                                       "http://a.ml/vocabularies/document#DomainElement"
-                                    ],
-                                    "http://a.ml/vocabularies/document#reference-id": [
-                                      {
-                                        "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/schema.json#/external"
-                                      }
                                     ],
                                     "http://www.w3.org/ns/shacl#property": [
                                       {
@@ -228,11 +166,6 @@
                                                             ]
                                                           }
                                                         ],
-                                                        "http://www.w3.org/ns/shacl#name": [
-                                                          {
-                                                            "@value": "childProp"
-                                                          }
-                                                        ],
                                                         "http://www.w3.org/ns/shacl#minCount": [
                                                           {
                                                             "@value": 0
@@ -242,17 +175,22 @@
                                                           {
                                                             "@id": "http://a.ml/vocabularies/data#childProp"
                                                           }
+                                                        ],
+                                                        "http://www.w3.org/ns/shacl#name": [
+                                                          {
+                                                            "@value": "childProp"
+                                                          }
                                                         ]
-                                                      }
-                                                    ],
-                                                    "http://www.w3.org/ns/shacl#name": [
-                                                      {
-                                                        "@value": "member0"
                                                       }
                                                     ],
                                                     "http://www.w3.org/ns/shacl#closed": [
                                                       {
                                                         "@value": false
+                                                      }
+                                                    ],
+                                                    "http://www.w3.org/ns/shacl#name": [
+                                                      {
+                                                        "@value": "member0"
                                                       }
                                                     ]
                                                   }
@@ -266,11 +204,6 @@
                                             ]
                                           }
                                         ],
-                                        "http://www.w3.org/ns/shacl#name": [
-                                          {
-                                            "@value": "parentProp"
-                                          }
-                                        ],
                                         "http://www.w3.org/ns/shacl#minCount": [
                                           {
                                             "@value": 0
@@ -280,19 +213,34 @@
                                           {
                                             "@id": "http://a.ml/vocabularies/data#parentProp"
                                           }
+                                        ],
+                                        "http://www.w3.org/ns/shacl#name": [
+                                          {
+                                            "@value": "parentProp"
+                                          }
                                         ]
-                                      }
-                                    ],
-                                    "http://www.w3.org/ns/shacl#name": [
-                                      {
-                                        "@value": "schema"
                                       }
                                     ],
                                     "http://www.w3.org/ns/shacl#closed": [
                                       {
                                         "@value": false
                                       }
+                                    ],
+                                    "http://a.ml/vocabularies/document#reference-id": [
+                                      {
+                                        "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/schema.json#/external"
+                                      }
+                                    ],
+                                    "http://www.w3.org/ns/shacl#name": [
+                                      {
+                                        "@value": "schema"
+                                      }
                                     ]
+                                  }
+                                ],
+                                "http://www.w3.org/ns/shacl#name": [
+                                  {
+                                    "@value": "schema"
                                   }
                                 ]
                               }
@@ -319,17 +267,69 @@
                   }
                 ]
               }
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "API"
-              }
             ]
           }
         ],
         "http://a.ml/vocabularies/document#version": [
           {
             "@value": "2.4.0"
+          }
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#references": [
+          {
+            "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/schema.json",
+            "@type": [
+              "http://a.ml/vocabularies/document#ExternalFragment",
+              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalFragment",
+              "http://a.ml/vocabularies/meta#DialectDomainElement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/document#encodes": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/schema.json#/external",
+                "@type": [
+                  "http://a.ml/vocabularies/document#ExternalDomainElement",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalDomainElement",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/document#raw": [
+                  {
+                    "@value": "{\r\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r\n  \"type\": \"object\",\r\n  \"properties\": {\r\n    \"parentProp\": {\r\n      \"type\": \"array\",\r\n      \"items\": [\r\n        {\r\n          \"type\": \"object\",\r\n          \"properties\": {\r\n            \"childProp\": {\r\n              \"type\": \"string\"\r\n            }\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#mediaType": [
+                  {
+                    "@value": "application/json"
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/document#version": [
+              {
+                "@value": "2.4.0"
+              }
+            ],
+            "http://a.ml/vocabularies/document#root": [
+              {
+                "@value": false
+              }
+            ],
+            "http://a.ml/vocabularies/document#location": [
+              {
+                "@value": "file://transform/src/test/resources/transformations/tuple-shape-schema/schema.json"
+              }
+            ]
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml"
           }
         ]
       }

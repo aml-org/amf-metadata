@@ -22,14 +22,40 @@
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
-        "http://a.ml/vocabularies/document#root": [
+        "http://a.ml/vocabularies/document#declares": [
           {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/operation-trait/api.yaml"
+            "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait",
+            "@type": [
+              "http://a.ml/vocabularies/apiContract#Operation",
+              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+              "http://a.ml/vocabularies/meta#DialectDomainElement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "firstTrait"
+              }
+            ],
+            "http://a.ml/vocabularies/apiContract#guiSummary": [
+              {
+                "@value": "aSummary"
+              }
+            ],
+            "http://a.ml/vocabularies/apiContract#operationId": [
+              {
+                "@value": "traitThing"
+              }
+            ],
+            "http://a.ml/vocabularies/apiContract#isAbstract": [
+              {
+                "@value": true
+              }
+            ],
+            "http://a.ml/vocabularies/apiContract#method": [
+              {
+                "@value": "firstTrait"
+              }
+            ]
           }
         ],
         "http://a.ml/vocabularies/document#encodes": [
@@ -40,6 +66,16 @@
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/AsyncAPI",
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "anOperation"
+              }
+            ],
+            "http://a.ml/vocabularies/core#version": [
+              {
+                "@value": "1.0.0"
+              }
             ],
             "http://a.ml/vocabularies/apiContract#endpoint": [
               {
@@ -119,58 +155,22 @@
                   }
                 ]
               }
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "anOperation"
-              }
-            ],
-            "http://a.ml/vocabularies/core#version": [
-              {
-                "@value": "1.0.0"
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#declares": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait",
-            "@type": [
-              "http://a.ml/vocabularies/apiContract#Operation",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "firstTrait"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#guiSummary": [
-              {
-                "@value": "aSummary"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#operationId": [
-              {
-                "@value": "traitThing"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#isAbstract": [
-              {
-                "@value": true
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#method": [
-              {
-                "@value": "firstTrait"
-              }
             ]
           }
         ],
         "http://a.ml/vocabularies/document#version": [
           {
             "@value": "2.4.0"
+          }
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/operation-trait/api.yaml"
           }
         ]
       }

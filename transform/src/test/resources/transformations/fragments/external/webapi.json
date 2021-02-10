@@ -22,16 +22,6 @@
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml"
-          }
-        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml#/external",
@@ -56,6 +46,16 @@
         "http://a.ml/vocabularies/document#version": [
           {
             "@value": "2.4.0"
+          }
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml"
           }
         ]
       }

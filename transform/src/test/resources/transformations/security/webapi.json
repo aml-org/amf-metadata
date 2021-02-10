@@ -22,14 +22,177 @@
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
-        "http://a.ml/vocabularies/document#root": [
+        "http://a.ml/vocabularies/document#declares": [
           {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/security/api.raml"
+            "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0",
+            "@type": [
+              "http://a.ml/vocabularies/security#SecurityScheme",
+              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/SecurityScheme",
+              "http://a.ml/vocabularies/meta#DialectDomainElement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "oauth_2_0"
+              }
+            ],
+            "http://a.ml/vocabularies/core#description": [
+              {
+                "@value": "Dropbox supports OAuth 2.0 for authenticating all API requests.\n"
+              }
+            ],
+            "http://a.ml/vocabularies/apiContract#response": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/401",
+                "@type": [
+                  "http://a.ml/vocabularies/apiContract#Response",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/apiContract#statusCode": [
+                  {
+                    "@value": "401"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "401"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "Bad or expired token. This can happen if the user or Dropbox\nrevoked or expired an access token. To fix, re-authenticate\nthe user.\n"
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/security#type": [
+              {
+                "@value": "OAuth 2.0"
+              }
+            ],
+            "http://a.ml/vocabularies/security#settings": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2",
+                "@type": [
+                  "http://a.ml/vocabularies/security#OAuth2Settings",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Settings",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/security#authorizationGrant": [
+                  {
+                    "@value": "urn:ietf:params:oauth:grant-type:saml2-bearer"
+                  },
+                  {
+                    "@value": "implicit"
+                  },
+                  {
+                    "@value": "authorization_code"
+                  }
+                ],
+                "http://a.ml/vocabularies/security#flows": [
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2/default-flow",
+                    "@type": [
+                      "http://a.ml/vocabularies/security#OAuth2Flow",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Flow",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://a.ml/vocabularies/security#authorizationUri": [
+                      {
+                        "@value": "https://www.dropbox.com/1/oauth2/authorize"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/security#scope": [
+                      {
+                        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2/default-flow/ADMINISTRATOR",
+                        "@type": [
+                          "http://a.ml/vocabularies/security#Scope",
+                          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Scope",
+                          "http://a.ml/vocabularies/meta#DialectDomainElement",
+                          "http://a.ml/vocabularies/document#DomainElement"
+                        ],
+                        "http://a.ml/vocabularies/core#name": [
+                          {
+                            "@value": "ADMINISTRATOR"
+                          }
+                        ]
+                      }
+                    ],
+                    "http://a.ml/vocabularies/security#accessTokenUri": [
+                      {
+                        "@value": "https://api.dropbox.com/1/oauth2/token"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/apiContract#header": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/parameter/header/Authorization",
+                "@type": [
+                  "http://a.ml/vocabularies/apiContract#Parameter",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/apiContract#required": [
+                  {
+                    "@value": true
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#paramName": [
+                  {
+                    "@value": "Authorization"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#name": [
+                  {
+                    "@value": "Authorization"
+                  }
+                ],
+                "http://a.ml/vocabularies/core#description": [
+                  {
+                    "@value": "Used to send a valid OAuth 2 access token.\n"
+                  }
+                ],
+                "http://a.ml/vocabularies/apiContract#binding": [
+                  {
+                    "@value": "header"
+                  }
+                ],
+                "http://a.ml/vocabularies/shapes#schema": [
+                  {
+                    "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/parameter/default-binding/Authorization/scalar/schema",
+                    "@type": [
+                      "http://a.ml/vocabularies/shapes#ScalarShape",
+                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+                      "http://a.ml/vocabularies/meta#DialectDomainElement",
+                      "http://a.ml/vocabularies/document#DomainElement"
+                    ],
+                    "http://www.w3.org/ns/shacl#datatype": [
+                      {
+                        "@id": "http://www.w3.org/2001/XMLSchema#string"
+                      }
+                    ],
+                    "http://www.w3.org/ns/shacl#name": [
+                      {
+                        "@value": "schema"
+                      }
+                    ],
+                    "http://a.ml/vocabularies/core#description": [
+                      {
+                        "@value": "Used to send a valid OAuth 2 access token.\n"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ],
         "http://a.ml/vocabularies/document#encodes": [
@@ -40,6 +203,32 @@
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "GitHub API"
+              }
+            ],
+            "http://a.ml/vocabularies/apiContract#server": [
+              {
+                "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/https%3A%2F%2Fapi.github.com",
+                "@type": [
+                  "http://a.ml/vocabularies/apiContract#Server",
+                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
+                  "http://a.ml/vocabularies/meta#DialectDomainElement",
+                  "http://a.ml/vocabularies/document#DomainElement"
+                ],
+                "http://a.ml/vocabularies/core#urlTemplate": [
+                  {
+                    "@value": "https://api.github.com"
+                  }
+                ]
+              }
+            ],
+            "http://a.ml/vocabularies/core#version": [
+              {
+                "@value": "v3"
+              }
             ],
             "http://a.ml/vocabularies/apiContract#endpoint": [
               {
@@ -157,11 +346,6 @@
                                       "http://a.ml/vocabularies/meta#DialectDomainElement",
                                       "http://a.ml/vocabularies/document#DomainElement"
                                     ],
-                                    "http://a.ml/vocabularies/core#description": [
-                                      {
-                                        "@value": "Bad or expired token. This can happen if the user or Dropbox\nrevoked or expired an access token. To fix, re-authenticate\nthe user.\n"
-                                      }
-                                    ],
                                     "http://a.ml/vocabularies/apiContract#statusCode": [
                                       {
                                         "@value": "401"
@@ -170,6 +354,11 @@
                                     "http://a.ml/vocabularies/core#name": [
                                       {
                                         "@value": "401"
+                                      }
+                                    ],
+                                    "http://a.ml/vocabularies/core#description": [
+                                      {
+                                        "@value": "Bad or expired token. This can happen if the user or Dropbox\nrevoked or expired an access token. To fix, re-authenticate\nthe user.\n"
                                       }
                                     ]
                                   }
@@ -187,6 +376,17 @@
                                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Settings",
                                       "http://a.ml/vocabularies/meta#DialectDomainElement",
                                       "http://a.ml/vocabularies/document#DomainElement"
+                                    ],
+                                    "http://a.ml/vocabularies/security#authorizationGrant": [
+                                      {
+                                        "@value": "urn:ietf:params:oauth:grant-type:saml2-bearer"
+                                      },
+                                      {
+                                        "@value": "implicit"
+                                      },
+                                      {
+                                        "@value": "authorization_code"
+                                      }
                                     ],
                                     "http://a.ml/vocabularies/security#flows": [
                                       {
@@ -223,17 +423,6 @@
                                             "@value": "https://api.dropbox.com/1/oauth2/token"
                                           }
                                         ]
-                                      }
-                                    ],
-                                    "http://a.ml/vocabularies/security#authorizationGrant": [
-                                      {
-                                        "@value": "urn:ietf:params:oauth:grant-type:saml2-bearer"
-                                      },
-                                      {
-                                        "@value": "implicit"
-                                      },
-                                      {
-                                        "@value": "authorization_code"
                                       }
                                     ]
                                   }
@@ -281,11 +470,6 @@
                                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                                           "http://a.ml/vocabularies/document#DomainElement"
                                         ],
-                                        "http://a.ml/vocabularies/core#description": [
-                                          {
-                                            "@value": "Used to send a valid OAuth 2 access token.\n"
-                                          }
-                                        ],
                                         "http://www.w3.org/ns/shacl#datatype": [
                                           {
                                             "@id": "http://www.w3.org/2001/XMLSchema#string"
@@ -294,6 +478,11 @@
                                         "http://www.w3.org/ns/shacl#name": [
                                           {
                                             "@value": "schema"
+                                          }
+                                        ],
+                                        "http://a.ml/vocabularies/core#description": [
+                                          {
+                                            "@value": "Used to send a valid OAuth 2 access token.\n"
                                           }
                                         ]
                                       }
@@ -349,211 +538,22 @@
                   }
                 ]
               }
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "GitHub API"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#server": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/https%3A%2F%2Fapi.github.com",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#Server",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/core#urlTemplate": [
-                  {
-                    "@value": "https://api.github.com"
-                  }
-                ]
-              }
-            ],
-            "http://a.ml/vocabularies/core#version": [
-              {
-                "@value": "v3"
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#declares": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0",
-            "@type": [
-              "http://a.ml/vocabularies/security#SecurityScheme",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/SecurityScheme",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "oauth_2_0"
-              }
-            ],
-            "http://a.ml/vocabularies/core#description": [
-              {
-                "@value": "Dropbox supports OAuth 2.0 for authenticating all API requests.\n"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#response": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/401",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#Response",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/core#description": [
-                  {
-                    "@value": "Bad or expired token. This can happen if the user or Dropbox\nrevoked or expired an access token. To fix, re-authenticate\nthe user.\n"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#statusCode": [
-                  {
-                    "@value": "401"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#name": [
-                  {
-                    "@value": "401"
-                  }
-                ]
-              }
-            ],
-            "http://a.ml/vocabularies/security#type": [
-              {
-                "@value": "OAuth 2.0"
-              }
-            ],
-            "http://a.ml/vocabularies/security#settings": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2",
-                "@type": [
-                  "http://a.ml/vocabularies/security#OAuth2Settings",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Settings",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/security#flows": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2/default-flow",
-                    "@type": [
-                      "http://a.ml/vocabularies/security#OAuth2Flow",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Flow",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/security#authorizationUri": [
-                      {
-                        "@value": "https://www.dropbox.com/1/oauth2/authorize"
-                      }
-                    ],
-                    "http://a.ml/vocabularies/security#scope": [
-                      {
-                        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2/default-flow/ADMINISTRATOR",
-                        "@type": [
-                          "http://a.ml/vocabularies/security#Scope",
-                          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Scope",
-                          "http://a.ml/vocabularies/meta#DialectDomainElement",
-                          "http://a.ml/vocabularies/document#DomainElement"
-                        ],
-                        "http://a.ml/vocabularies/core#name": [
-                          {
-                            "@value": "ADMINISTRATOR"
-                          }
-                        ]
-                      }
-                    ],
-                    "http://a.ml/vocabularies/security#accessTokenUri": [
-                      {
-                        "@value": "https://api.dropbox.com/1/oauth2/token"
-                      }
-                    ]
-                  }
-                ],
-                "http://a.ml/vocabularies/security#authorizationGrant": [
-                  {
-                    "@value": "urn:ietf:params:oauth:grant-type:saml2-bearer"
-                  },
-                  {
-                    "@value": "implicit"
-                  },
-                  {
-                    "@value": "authorization_code"
-                  }
-                ]
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#header": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/parameter/header/Authorization",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#Parameter",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/apiContract#required": [
-                  {
-                    "@value": true
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#paramName": [
-                  {
-                    "@value": "Authorization"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#name": [
-                  {
-                    "@value": "Authorization"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#description": [
-                  {
-                    "@value": "Used to send a valid OAuth 2 access token.\n"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#binding": [
-                  {
-                    "@value": "header"
-                  }
-                ],
-                "http://a.ml/vocabularies/shapes#schema": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/parameter/default-binding/Authorization/scalar/schema",
-                    "@type": [
-                      "http://a.ml/vocabularies/shapes#ScalarShape",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/core#description": [
-                      {
-                        "@value": "Used to send a valid OAuth 2 access token.\n"
-                      }
-                    ],
-                    "http://www.w3.org/ns/shacl#datatype": [
-                      {
-                        "@id": "http://www.w3.org/2001/XMLSchema#string"
-                      }
-                    ],
-                    "http://www.w3.org/ns/shacl#name": [
-                      {
-                        "@value": "schema"
-                      }
-                    ]
-                  }
-                ]
-              }
             ]
           }
         ],
         "http://a.ml/vocabularies/document#version": [
           {
             "@value": "2.4.0"
+          }
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/security/api.raml"
           }
         ]
       }
