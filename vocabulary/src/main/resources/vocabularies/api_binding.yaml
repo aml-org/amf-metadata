@@ -83,12 +83,16 @@ propertyTerms:
     range: string
   binding:
     displayName: binding
-    description: List of operation bindings
-    range: OperationBinding
+    description: Bindings for this server
+    range: ServerBindings
   bindingVersion:
     displayName: bindingVersion
     description: The version of this binding
     range: string
+  bindings:
+    displayName: bindings
+    description: List of operation bindings
+    range: OperationBinding
   cc:
     displayName: cc
     description: The routing keys the message should be routed to at the time of publishing
