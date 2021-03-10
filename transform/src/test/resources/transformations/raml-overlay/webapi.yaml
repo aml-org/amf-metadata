@@ -34,7 +34,7 @@ references:
               binding: path
               schema:
                 shapeType: Scalar
-                $id: file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/default-binding/customer_id/scalar/schema
+                $id: file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id/scalar/schema
                 name: schema
                 datatype: http://www.w3.org/2001/XMLSchema#string
           path: /books/{customer_id}
