@@ -57,27 +57,6 @@ pipeline {
         }
       }
     }
-    stage('Nexus IQ') {
-      when {
-        anyOf {
-          branch 'develop'
-        }
-      }
-      steps {
-        wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
-          script {
-            try{
-              if (failedStage.isEmpty()){
-                sh './gradlew nexusIq'
-              }
-            } catch(ignored) {
-              failedStage = failedStage + " NEXUSIQ "
-              unstable "Failed Nexus IQ"
-            }
-          }
-        }
-      }
-    }
     stage('Publish Vocabulary Artifact') {
       when {
         anyOf {
@@ -151,6 +130,27 @@ pipeline {
             } catch(ignored) {
               failedStage = failedStage + " TAGGING "
               unstable "Failed tagging"
+            }
+          }
+        }
+      }
+    }
+    stage('Nexus IQ') {
+      when {
+        anyOf {
+          branch 'develop'
+        }
+      }
+      steps {
+        wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
+          script {
+            try{
+              if (failedStage.isEmpty()){
+                sh './gradlew nexusIq'
+              }
+            } catch(ignored) {
+              failedStage = failedStage + " NEXUSIQ "
+              unstable "Failed Nexus IQ"
             }
           }
         }
