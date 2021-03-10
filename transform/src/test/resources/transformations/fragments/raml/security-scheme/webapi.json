@@ -67,7 +67,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/default-binding/access_token/scalar/schema",
+                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token/scalar/schema",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -226,7 +226,7 @@
                 ],
                 "http://a.ml/vocabularies/shapes#schema": [
                   {
-                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/default-binding/Authorization/scalar/schema",
+                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization/scalar/schema",
                     "@type": [
                       "http://a.ml/vocabularies/shapes#ScalarShape",
                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",

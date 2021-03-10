@@ -18,7 +18,7 @@ encodes:
       binding: query
       schema:
         shapeType: Scalar
-        $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/default-binding/access_token/scalar/schema
+        $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token/scalar/schema
         name: schema
         description: |
           Used to send a valid OAuth 2 access token. Do not use together with the "Authorization" header.
@@ -59,7 +59,7 @@ encodes:
       binding: header
       schema:
         shapeType: Scalar
-        $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/default-binding/Authorization/scalar/schema
+        $id: file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization/scalar/schema
         name: schema
         description: |
           Used to send a valid OAuth 2 access token. Do not use with the "access_token" query. string parameter.
