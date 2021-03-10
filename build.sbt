@@ -83,15 +83,6 @@ lazy val dependencies = new {
 
 lazy val commonDependencies = Seq(dependencies.scalaTest, amfClientLibJVM)
 
-def majorVersionOrSnapshot(major: Int) = {
-  lazy val branch = sys.env.get("BRANCH_NAME")
-  if (branch.contains("master")) s"$major.0.0" else s"$major.1.0-SNAPSHOT"
-}
-
-def versionOrSnapshot(major: Int, minor: Int) = {
-  if (branch.contains("master")) s"$major.$minor.0" else s"$major.${minor + 1}.0-SNAPSHOT"
-}
-
 lazy val sonarUrl   = sys.env.getOrElse("SONAR_SERVER_URL", "Not found url.")
 lazy val sonarToken = sys.env.getOrElse("SONAR_SERVER_TOKEN", "Not found token.")
 lazy val branch = sys.env.getOrElse("BRANCH_NAME", "develop")
