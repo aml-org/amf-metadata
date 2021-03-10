@@ -4,8 +4,8 @@ def failedStage = ""
 def color = '#FF8C00'
 def headerFlavour = "WARNING"
 def artifacts = ""
-def PUBLISHED_VOCABULARY = false
-def PUBLISHED_TRANSFORM = false
+def HAS_PUBLISHED_VOCABULARY = false
+def HAS_PUBLISHED_TRANSFORM = false
 
 pipeline {
   agent {
@@ -95,7 +95,7 @@ pipeline {
                   sbt vocabulary/publish && echo "sbt publishing of amf-vocabulary successful"
               '''
               artifacts += "[amf-vocabulary]"
-              PUBLISHED_VOCABULARY = true
+              HAS_PUBLISHED_VOCABULARY = true
             }
           } catch(ignored) {
             failedStage = failedStage + " PUBLISH "
@@ -118,10 +118,10 @@ pipeline {
             if (failedStage.isEmpty()) {
               sh '''
                   echo "about to publish amf-transform in sbt"
-                  sbt transform/publish && echo "sbt publishing of amf-vocabulary successful"
+                  sbt transform/publish && echo "sbt publishing of amf-transform successful"
               '''
               artifacts += "[amf-transform]"
-              PUBLISHED_TRANSFORM = true
+              HAS_PUBLISHED_TRANSFORM = true
             }
           } catch(ignored) {
             failedStage = failedStage + " PUBLISH "
@@ -140,11 +140,11 @@ pipeline {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'github-salt', passwordVariable: 'GITHUB_PASS', usernameVariable: 'GITHUB_USER']]) {
           script {
             try{
-              if (PUBLISHED_TRANSFORM) {
+              if (HAS_PUBLISHED_TRANSFORM) {
                 String tag = getNextTag("transform")
                 tagCommit(tag)
               }
-              if (PUBLISHED_VOCABULARY) {
+              if (HAS_PUBLISHED_VOCABULARY) {
                 String tag = getNextTag("vocabulary")
                 tagCommit(tag)
               }
@@ -192,7 +192,7 @@ Boolean hasChangesIn(String artifact, String directory) {
        echo "Fetching tags"
        git fetch --tags
      '''
-  def TAG_REF = "refs/tags/$artifact"
+  String TAG_REF = "refs/tags/$artifact"
   def LAST_TAG_COMMIT = sh(returnStdout: true, script: "git for-each-ref $TAG_REF --format='%(objectname)' --sort=-taggerdate --count=1").trim()
   def MASTER_HEAD = sh(returnStdout: true, script: "git rev-parse HEAD").trim()
   echo "Commit sha from $TAG_REF is $LAST_TAG_COMMIT"
@@ -208,14 +208,15 @@ Boolean isDevelop() {
 }
 
 String getNextTag(String artifact) {
-  sh(returnStdout: true, script: "sbt $artifact/version | tail -n 1 | grep -o '[0-9].[0-9].[0-9].*'").trim()
+  String semver = sh(returnStdout: true, script: "sbt $artifact/version | tail -n 1 | grep -o '[0-9].[0-9].[0-9].*'").trim()
+  return "$artifact/$semver"
 }
 
 String tagCommit(String tag) {
   sh """#!/bin/bash
         echo "about to tag the commit with the new version = $tag"
-        url="https://\${GITHUB_USER}:\${GITHUB_PASS}@github.com/\${GITHUB_ORG}/\${GITHUB_REPO}"
         git tag $tag
-        git push \$url \$version && echo "tagging successful"
+        url="https://\$GITHUB_USER:\$GITHUB_PASS@github.com/\$GITHUB_ORG/\$GITHUB_REPO"
+        git push \$url --tags && echo "tagging successful"
      """
 }

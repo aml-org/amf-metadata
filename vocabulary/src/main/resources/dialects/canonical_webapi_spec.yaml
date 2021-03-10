@@ -586,8 +586,8 @@ nodeMappings:
       name:
         propertyTerm: core.name
         range: string
-      binding:
-        propertyTerm: apiBinding.binding
+      bindings:
+        propertyTerm: apiBinding.bindings
         range: ChannelBindingUnion
         allowMultiple: true
       designLink:
@@ -1163,8 +1163,8 @@ nodeMappings:
       name:
         propertyTerm: core.name
         range: string
-      binding:
-        propertyTerm: apiBinding.binding
+      bindings:
+        propertyTerm: apiBinding.bindings
         range: MessageBindingUnion
         allowMultiple: true
       designLink:
@@ -1496,8 +1496,8 @@ nodeMappings:
       name:
         propertyTerm: core.name
         range: string
-      binding:
-        propertyTerm: apiBinding.binding
+      bindings:
+        propertyTerm: apiBinding.bindings
         range: OperationBindingUnion
         allowMultiple: true
       designLink:
@@ -1984,8 +1984,8 @@ nodeMappings:
       name:
         propertyTerm: core.name
         range: string
-      binding:
-        propertyTerm: apiBinding.binding
+      bindings:
+        propertyTerm: apiBinding.bindings
         range: ServerBindingUnion
         allowMultiple: true
       designLink:

@@ -22,16 +22,6 @@
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/raml-library/api.raml"
-          }
-        ],
         "http://a.ml/vocabularies/document#declares": [
           {
             "@id": "file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/User",
@@ -65,14 +55,14 @@
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
             ],
-            "http://www.w3.org/ns/shacl#name": [
-              {
-                "@value": "RestrictedObject"
-              }
-            ],
             "http://www.w3.org/ns/shacl#closed": [
               {
                 "@value": true
+              }
+            ],
+            "http://www.w3.org/ns/shacl#name": [
+              {
+                "@value": "RestrictedObject"
               }
             ]
           },
@@ -114,11 +104,6 @@
                     ]
                   }
                 ],
-                "http://www.w3.org/ns/shacl#name": [
-                  {
-                    "@value": "identifier"
-                  }
-                ],
                 "http://www.w3.org/ns/shacl#minCount": [
                   {
                     "@value": 1
@@ -128,12 +113,17 @@
                   {
                     "@id": "http://a.ml/vocabularies/data#identifier"
                   }
+                ],
+                "http://www.w3.org/ns/shacl#name": [
+                  {
+                    "@value": "identifier"
+                  }
                 ]
               }
             ],
-            "http://www.w3.org/ns/shacl#name": [
+            "http://www.w3.org/ns/shacl#closed": [
               {
-                "@value": "Identifier"
+                "@value": true
               }
             ],
             "http://a.ml/vocabularies/shapes#inherits": [
@@ -162,23 +152,33 @@
                 ]
               }
             ],
-            "http://www.w3.org/ns/shacl#closed": [
+            "http://www.w3.org/ns/shacl#name": [
               {
-                "@value": true
+                "@value": "Identifier"
               }
             ]
           }
         ],
         "http://a.ml/vocabularies/document#version": [
           {
-            "@value": "2.4.0"
+            "@value": "3.0.0"
+          }
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/raml-library/api.raml"
           }
         ]
       }
     ],
     "http://a.ml/vocabularies/document#version": [
       {
-        "@value": "2.4.0"
+        "@value": "3.0.0"
       }
     ],
     "http://a.ml/vocabularies/document#root": [

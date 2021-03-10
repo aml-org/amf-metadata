@@ -22,21 +22,6 @@
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#usage": [
-          {
-            "@value": "Apply this to any method that needs to be secured"
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#"
-          }
-        ],
         "http://a.ml/vocabularies/document#encodes": [
           {
             "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait",
@@ -45,6 +30,16 @@
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Trait",
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "trait"
+              }
+            ],
+            "http://a.ml/vocabularies/document#variable": [
+              {
+                "@value": "tokenName"
+              }
             ],
             "http://a.ml/vocabularies/document#dataNode": [
               {
@@ -109,14 +104,14 @@
                                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                                           "http://a.ml/vocabularies/document#DomainElement"
                                         ],
-                                        "http://a.ml/vocabularies/data#value": [
-                                          {
-                                            "@value": "A valid <<tokenName>> is required"
-                                          }
-                                        ],
                                         "http://www.w3.org/ns/shacl#datatype": [
                                           {
                                             "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                          }
+                                        ],
+                                        "http://a.ml/vocabularies/data#value": [
+                                          {
+                                            "@value": "A valid <<tokenName>> is required"
                                           }
                                         ]
                                       }
@@ -198,14 +193,14 @@
                                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                                           "http://a.ml/vocabularies/document#DomainElement"
                                         ],
-                                        "http://a.ml/vocabularies/data#value": [
-                                          {
-                                            "@value": "true"
-                                          }
-                                        ],
                                         "http://www.w3.org/ns/shacl#datatype": [
                                           {
                                             "@id": "http://www.w3.org/2001/XMLSchema#boolean"
+                                          }
+                                        ],
+                                        "http://a.ml/vocabularies/data#value": [
+                                          {
+                                            "@value": "true"
                                           }
                                         ]
                                       }
@@ -233,14 +228,14 @@
                                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                                           "http://a.ml/vocabularies/document#DomainElement"
                                         ],
-                                        "http://a.ml/vocabularies/data#value": [
-                                          {
-                                            "@value": "5757gh76"
-                                          }
-                                        ],
                                         "http://www.w3.org/ns/shacl#datatype": [
                                           {
                                             "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                          }
+                                        ],
+                                        "http://a.ml/vocabularies/data#value": [
+                                          {
+                                            "@value": "5757gh76"
                                           }
                                         ]
                                       }
@@ -268,14 +263,14 @@
                                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                                           "http://a.ml/vocabularies/document#DomainElement"
                                         ],
-                                        "http://a.ml/vocabularies/data#value": [
-                                          {
-                                            "@value": "Access Token"
-                                          }
-                                        ],
                                         "http://www.w3.org/ns/shacl#datatype": [
                                           {
                                             "@id": "http://www.w3.org/2001/XMLSchema#string"
+                                          }
+                                        ],
+                                        "http://a.ml/vocabularies/data#value": [
+                                          {
+                                            "@value": "Access Token"
                                           }
                                         ]
                                       }
@@ -321,14 +316,14 @@
                           "http://a.ml/vocabularies/meta#DialectDomainElement",
                           "http://a.ml/vocabularies/document#DomainElement"
                         ],
-                        "http://a.ml/vocabularies/data#value": [
-                          {
-                            "@value": "Some requests require authentication."
-                          }
-                        ],
                         "http://www.w3.org/ns/shacl#datatype": [
                           {
                             "@id": "http://www.w3.org/2001/XMLSchema#string"
+                          }
+                        ],
+                        "http://a.ml/vocabularies/data#value": [
+                          {
+                            "@value": "Some requests require authentication."
                           }
                         ]
                       }
@@ -341,29 +336,34 @@
                   }
                 ]
               }
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "trait"
-              }
-            ],
-            "http://a.ml/vocabularies/document#variable": [
-              {
-                "@value": "tokenName"
-              }
             ]
           }
         ],
         "http://a.ml/vocabularies/document#version": [
           {
-            "@value": "2.4.0"
+            "@value": "3.0.0"
+          }
+        ],
+        "http://a.ml/vocabularies/document#usage": [
+          {
+            "@value": "Apply this to any method that needs to be secured"
+          }
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#"
           }
         ]
       }
     ],
     "http://a.ml/vocabularies/document#version": [
       {
-        "@value": "2.4.0"
+        "@value": "3.0.0"
       }
     ],
     "http://a.ml/vocabularies/document#root": [

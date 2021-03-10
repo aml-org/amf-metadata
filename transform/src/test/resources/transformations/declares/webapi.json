@@ -22,32 +22,6 @@
           "http://a.ml/vocabularies/meta#DialectDomainElement",
           "http://a.ml/vocabularies/document#DomainElement"
         ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/declares/api.raml"
-          }
-        ],
-        "http://a.ml/vocabularies/document#encodes": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/web-api",
-            "@type": [
-              "http://a.ml/vocabularies/apiContract#WebAPI",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "Declares API"
-              }
-            ]
-          }
-        ],
         "http://a.ml/vocabularies/document#declares": [
           {
             "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee",
@@ -98,14 +72,14 @@
                               "http://a.ml/vocabularies/meta#DialectDomainElement",
                               "http://a.ml/vocabularies/document#DomainElement"
                             ],
-                            "http://a.ml/vocabularies/data#value": [
-                              {
-                                "@value": "intern"
-                              }
-                            ],
                             "http://www.w3.org/ns/shacl#datatype": [
                               {
                                 "@id": "http://www.w3.org/2001/XMLSchema#string"
+                              }
+                            ],
+                            "http://a.ml/vocabularies/data#value": [
+                              {
+                                "@value": "intern"
                               }
                             ]
                           }
@@ -119,14 +93,14 @@
                               "http://a.ml/vocabularies/meta#DialectDomainElement",
                               "http://a.ml/vocabularies/document#DomainElement"
                             ],
-                            "http://a.ml/vocabularies/data#value": [
-                              {
-                                "@value": "contractor"
-                              }
-                            ],
                             "http://www.w3.org/ns/shacl#datatype": [
                               {
                                 "@id": "http://www.w3.org/2001/XMLSchema#string"
+                              }
+                            ],
+                            "http://a.ml/vocabularies/data#value": [
+                              {
+                                "@value": "contractor"
                               }
                             ]
                           }
@@ -140,25 +114,20 @@
                               "http://a.ml/vocabularies/meta#DialectDomainElement",
                               "http://a.ml/vocabularies/document#DomainElement"
                             ],
-                            "http://a.ml/vocabularies/data#value": [
-                              {
-                                "@value": "ft"
-                              }
-                            ],
                             "http://www.w3.org/ns/shacl#datatype": [
                               {
                                 "@id": "http://www.w3.org/2001/XMLSchema#string"
+                              }
+                            ],
+                            "http://a.ml/vocabularies/data#value": [
+                              {
+                                "@value": "ft"
                               }
                             ]
                           }
                         ]
                       }
                     ]
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#name": [
-                  {
-                    "@value": "employeeType"
                   }
                 ],
                 "http://www.w3.org/ns/shacl#minCount": [
@@ -169,6 +138,11 @@
                 "http://www.w3.org/ns/shacl#path": [
                   {
                     "@id": "http://a.ml/vocabularies/data#employeeType"
+                  }
+                ],
+                "http://www.w3.org/ns/shacl#name": [
+                  {
+                    "@value": "employeeType"
                   }
                 ]
               },
@@ -201,11 +175,6 @@
                     ]
                   }
                 ],
-                "http://www.w3.org/ns/shacl#name": [
-                  {
-                    "@value": "employeeId"
-                  }
-                ],
                 "http://www.w3.org/ns/shacl#minCount": [
                   {
                     "@value": 1
@@ -215,31 +184,62 @@
                   {
                     "@id": "http://a.ml/vocabularies/data#employeeId"
                   }
+                ],
+                "http://www.w3.org/ns/shacl#name": [
+                  {
+                    "@value": "employeeId"
+                  }
                 ]
-              }
-            ],
-            "http://www.w3.org/ns/shacl#name": [
-              {
-                "@value": "Employee"
               }
             ],
             "http://www.w3.org/ns/shacl#closed": [
               {
                 "@value": false
               }
+            ],
+            "http://www.w3.org/ns/shacl#name": [
+              {
+                "@value": "Employee"
+              }
+            ]
+          }
+        ],
+        "http://a.ml/vocabularies/document#encodes": [
+          {
+            "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/web-api",
+            "@type": [
+              "http://a.ml/vocabularies/apiContract#WebAPI",
+              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+              "http://a.ml/vocabularies/meta#DialectDomainElement",
+              "http://a.ml/vocabularies/document#DomainElement"
+            ],
+            "http://a.ml/vocabularies/core#name": [
+              {
+                "@value": "Declares API"
+              }
             ]
           }
         ],
         "http://a.ml/vocabularies/document#version": [
           {
-            "@value": "2.4.0"
+            "@value": "3.0.0"
+          }
+        ],
+        "http://a.ml/vocabularies/document#root": [
+          {
+            "@value": true
+          }
+        ],
+        "http://a.ml/vocabularies/document#location": [
+          {
+            "@value": "file://transform/src/test/resources/transformations/declares/api.raml"
           }
         ]
       }
     ],
     "http://a.ml/vocabularies/document#version": [
       {
-        "@value": "2.4.0"
+        "@value": "3.0.0"
       }
     ],
     "http://a.ml/vocabularies/document#root": [
