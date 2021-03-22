@@ -1,7 +1,14 @@
 #%WebAPI Spec 1.0
 unitType: Document
 $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/rootAsset
-declares: []
+declares:
+  -
+    elementType: Message
+    $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/declarations/messageTraits/myMessageTrait
+    name: myMessageTrait
+    title: something
+    isAbstract: true
+    displayName: human friendly name
 version: 3.0.0
 root: true
 location: file://transform/src/test/resources/transformations/message-trait/api.yaml
