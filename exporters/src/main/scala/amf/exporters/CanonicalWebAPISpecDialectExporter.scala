@@ -388,6 +388,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
       |      Server: Server
       |      ResourceType: ResourceType
       |      CustomDomainProperty: CustomDomainProperty
+      |      Operation: Operation
+      |      Message: Message
       |
       |    union:
       |      - UnionShape
@@ -415,6 +417,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
       |      - Server
       |      - ResourceType
       |      - CustomDomainProperty
+      |      - Operation
+      |      - Message
       |""".stripMargin
 
   val parsedUnitUnionDeclaration = "ParsedUnitUnion"
