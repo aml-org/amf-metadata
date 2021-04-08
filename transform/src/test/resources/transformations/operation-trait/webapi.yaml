@@ -1,7 +1,15 @@
 #%WebAPI Spec 1.0
 unitType: Document
 $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/rootAsset
-declares: []
+declares:
+  -
+    elementType: Operation
+    $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait
+    name: firstTrait
+    guiSummary: aSummary
+    operationId: traitThing
+    isAbstract: true
+    method: firstTrait
 version: 3.0.0
 root: true
 location: file://transform/src/test/resources/transformations/operation-trait/api.yaml
