@@ -289,7 +289,7 @@
                                 ],
                                 "raml-shapes:inherits": [
                                   {
-                                    "@id": "#/declarations/types/A/link-1274297401",
+                                    "@id": "#/declarations/types/A/link-389825518",
                                     "@type": [
                                       "shacl:NodeShape",
                                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",

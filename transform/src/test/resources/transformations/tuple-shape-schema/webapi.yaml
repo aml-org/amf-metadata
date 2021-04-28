@@ -25,7 +25,7 @@ encodes:
                   $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson
                   schema:
                     shapeType: Node
-                    $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/schema
+                    $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/application%2Fjson
                     inherits:
                       -
                         shapeType: Node
@@ -60,7 +60,7 @@ encodes:
                             path: http://a.ml/vocabularies/data#parentProp
                         referenceId: file://transform/src/test/resources/transformations/tuple-shape-schema/schema.json#/external
                         closed: false
-                    name: schema
+                    name: application/json
                   mediaType: application/json
               statusCode: "200"
           method: get

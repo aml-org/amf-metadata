@@ -62,7 +62,7 @@ encodes:
                     inherits:
                       -
                         shapeType: Node
-                        $id: file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A/link-1274297401
+                        $id: file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A/link-389825518
                         designLink: file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A
                         name: A
                     name: schema

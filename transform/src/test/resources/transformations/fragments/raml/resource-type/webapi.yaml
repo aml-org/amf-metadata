@@ -7,62 +7,61 @@ root: true
 location: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#
 encodes:
   elementType: ResourceType
-  $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType
-  name: resourceType
+  $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract
   dataNode:
     elementType: Object
-    $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1
+    $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1
     properties:
       -
-        $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1_prop_post
+        $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1_prop_post
         name: post
         range:
           elementType: Object
-          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1/object_5
+          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5
           properties:
             -
-              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1/object_5_prop_responses
+              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5_prop_responses
               name: responses
               range:
                 elementType: Object
-                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1/object_5/object_7
+                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5/object_7
                 properties:
                   -
-                    $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1/object_5/object_7_prop_201
+                    $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5/object_7_prop_201
                     name: "201"
                     range:
                       elementType: Scalar
-                      $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1/object_5/object_7/scalar_8
+                      $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5/object_7/scalar_8
                       value: ""
                       dataType: http://www.w3.org/2001/XMLSchema#nil
             -
-              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1/object_5_prop_description
+              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5_prop_description
               name: description
               range:
                 elementType: Scalar
-                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1/object_5/scalar_6
+                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5/scalar_6
                 value: Add an item
                 dataType: http://www.w3.org/2001/XMLSchema#string
       -
-        $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1_prop_get
+        $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1_prop_get
         name: get
         range:
           elementType: Object
-          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1/object_3
+          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_3
           properties:
             -
-              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1/object_3_prop_description
+              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_3_prop_description
               name: description
               range:
                 elementType: Scalar
-                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1/object_3/scalar_4
+                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_3/scalar_4
                 value: Retrieve all items
                 dataType: http://www.w3.org/2001/XMLSchema#string
       -
-        $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1_prop_description
+        $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1_prop_description
         name: description
         range:
           elementType: Scalar
-          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/object_1/scalar_2
+          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/scalar_2
           value: A collection resource
           dataType: http://www.w3.org/2001/XMLSchema#string

@@ -89,7 +89,7 @@
                             ],
                             "http://a.ml/vocabularies/shapes#schema": [
                               {
-                                "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/schema",
+                                "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/application%2Fjson",
                                 "@type": [
                                   "http://www.w3.org/ns/shacl#NodeShape",
                                   "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
@@ -240,7 +240,7 @@
                                 ],
                                 "http://www.w3.org/ns/shacl#name": [
                                   {
-                                    "@value": "schema"
+                                    "@value": "application/json"
                                   }
                                 ]
                               }

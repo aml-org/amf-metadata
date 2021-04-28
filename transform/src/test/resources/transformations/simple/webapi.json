@@ -289,7 +289,7 @@
                                 ],
                                 "http://a.ml/vocabularies/shapes#inherits": [
                                   {
-                                    "@id": "file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A/link-1274297401",
+                                    "@id": "file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A/link-389825518",
                                     "@type": [
                                       "http://www.w3.org/ns/shacl#NodeShape",
                                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
