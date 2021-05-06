@@ -20,6 +20,9 @@ classTerms:
     extends:
       - doc.Fragment
       - doc.Unit
+  DiscriminatorValueMapping:
+    displayName: DiscriminatorValueMapping
+    description: Mapping that relates a certain discriminator value to a certain shape
   FileShape:
     displayName: FileShape
     description: Shape describing data uploaded in an API request
@@ -114,12 +117,20 @@ propertyTerms:
     range: string
   discriminatorMapping:
     displayName: discriminatorMapping
-    description: Mappping of acceptable values for the node discriminator
+    description: Mapping of acceptable values for the node discriminator
     range: apiContract.IriTemplateMapping
   discriminatorValue:
     displayName: discriminatorValue
-    description: Values for the discriminator property
+    description: Value given to a discriminator that identifies a target Shape
     range: string
+  discriminatorValueMapping:
+    displayName: discriminatorValueMapping
+    description: Mapping of acceptable values for the node discriminator
+    range: DiscriminatorValueMapping
+  discriminatorValueTarget:
+    displayName: discriminatorValueTarget
+    description: Target shape for a certain discriminator value
+    range: shacl.Shape
   encoding:
     displayName: encoding
     description: Describes the contents' value encoding
