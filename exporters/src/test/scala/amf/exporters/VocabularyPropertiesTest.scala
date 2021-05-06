@@ -5,7 +5,7 @@ import org.scalatest.funsuite.AsyncFunSuite
 
 import scala.concurrent.ExecutionContext
 
-class VocabularyPropertiesTest extends AsyncFunSuite with VocabularyTest{
+class VocabularyPropertiesTest extends AsyncFunSuite with VocabularyTest {
 
   override implicit val executionContext: ExecutionContext = ExecutionContext.Implicits.global
 
@@ -38,7 +38,7 @@ class VocabularyPropertiesTest extends AsyncFunSuite with VocabularyTest{
   }
 
   test("Vocabularies parsing data_shapes") {
-    testVocabulary(data_shapes, 15, 42)
+    testVocabulary(data_shapes, 16, 44)
   }
 
   test("Vocabularies parsing security_model") {

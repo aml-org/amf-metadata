@@ -1,7 +1,7 @@
 #%WebAPI Spec 1.0
 unitType: TraitFragment
 $id: file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml##/rootAsset
-version: 3.0.0
+version: 3.1.0
 usage: Apply this to any method that needs to be secured
 root: true
 location: file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#

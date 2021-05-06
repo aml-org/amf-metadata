@@ -680,6 +680,21 @@ nodeMappings:
     extends: Fragment
 
 
+  DiscriminatorValueMapping:
+    classTerm: raml-shapes.DiscriminatorValueMapping
+    mapping:
+      discriminatorValue:
+        propertyTerm: raml-shapes.discriminatorValue
+        range: string
+      discriminatorValueTarget:
+        propertyTerm: raml-shapes.discriminatorValueTarget
+        range: DataShapesUnion
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
   Document:
     classTerm: doc.Document
     extends: BaseUnit
@@ -1291,6 +1306,10 @@ nodeMappings:
       discriminatorMapping:
         propertyTerm: raml-shapes.discriminatorMapping
         range: IriTemplate
+        allowMultiple: true
+      discriminatorValueMapping:
+        propertyTerm: raml-shapes.discriminatorValueMapping
+        range: DiscriminatorValueMapping
         allowMultiple: true
       property:
         propertyTerm: shacl.property
