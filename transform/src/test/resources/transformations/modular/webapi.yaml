@@ -28,7 +28,7 @@ declares:
         minCount: 1
         path: http://a.ml/vocabularies/data#a
     closed: false
-version: 3.0.0
+version: 3.1.0
 root: true
 references:
   -
@@ -71,13 +71,13 @@ references:
             minCount: 1
             path: http://a.ml/vocabularies/data#a
         closed: false
-    version: 3.0.0
+    version: 3.1.0
     root: false
     references:
       -
         unitType: DataTypeFragment
         $id: file://transform/src/test/resources/transformations/modular/fragment1.raml
-        version: 3.0.0
+        version: 3.1.0
         root: false
         location: file://transform/src/test/resources/transformations/modular/fragment1.raml
         encodes:
@@ -100,7 +100,7 @@ references:
   -
     unitType: DataTypeFragment
     $id: file://transform/src/test/resources/transformations/modular/fragment2.raml
-    version: 3.0.0
+    version: 3.1.0
     root: false
     location: file://transform/src/test/resources/transformations/modular/fragment2.raml
     encodes:
