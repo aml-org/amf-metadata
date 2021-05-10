@@ -875,7 +875,7 @@
                                 ],
                                 "http://a.ml/vocabularies/shapes#inherits": [
                                   {
-                                    "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/types/A/link-1777247175",
+                                    "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/types/A/link-128955040",
                                     "@type": [
                                       "http://www.w3.org/ns/shacl#NodeShape",
                                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
