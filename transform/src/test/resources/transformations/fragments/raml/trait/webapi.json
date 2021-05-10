@@ -24,17 +24,12 @@
         ],
         "http://a.ml/vocabularies/document#encodes": [
           {
-            "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait",
+            "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract",
             "@type": [
               "http://a.ml/vocabularies/apiContract#Trait",
               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Trait",
               "http://a.ml/vocabularies/meta#DialectDomainElement",
               "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "trait"
-              }
             ],
             "http://a.ml/vocabularies/document#variable": [
               {
@@ -43,7 +38,7 @@
             ],
             "http://a.ml/vocabularies/document#dataNode": [
               {
-                "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1",
+                "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1",
                 "@type": [
                   "http://a.ml/vocabularies/data#Object",
                   "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
@@ -52,7 +47,7 @@
                 ],
                 "http://a.ml/vocabularies/data#properties": [
                   {
-                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1_prop_queryParameters",
+                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1_prop_queryParameters",
                     "@type": [
                       "http://a.ml/vocabularies/data#Property",
                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -61,7 +56,7 @@
                     ],
                     "http://a.ml/vocabularies/data#range": [
                       {
-                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_3",
+                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_3",
                         "@type": [
                           "http://a.ml/vocabularies/data#Object",
                           "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
@@ -70,7 +65,7 @@
                         ],
                         "http://a.ml/vocabularies/data#properties": [
                           {
-                            "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_3_prop_%3C%3CtokenName%3E%3E",
+                            "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_3_prop_%3C%3CtokenName%3E%3E",
                             "@type": [
                               "http://a.ml/vocabularies/data#Property",
                               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -79,7 +74,7 @@
                             ],
                             "http://a.ml/vocabularies/data#range": [
                               {
-                                "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_3/object_4",
+                                "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_3/object_4",
                                 "@type": [
                                   "http://a.ml/vocabularies/data#Object",
                                   "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
@@ -88,7 +83,7 @@
                                 ],
                                 "http://a.ml/vocabularies/data#properties": [
                                   {
-                                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_3/object_4_prop_description",
+                                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_3/object_4_prop_description",
                                     "@type": [
                                       "http://a.ml/vocabularies/data#Property",
                                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -97,7 +92,7 @@
                                     ],
                                     "http://a.ml/vocabularies/data#range": [
                                       {
-                                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_3/object_4/scalar_5",
+                                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_3/object_4/scalar_5",
                                         "@type": [
                                           "http://a.ml/vocabularies/data#Scalar",
                                           "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -141,7 +136,7 @@
                     ]
                   },
                   {
-                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1_prop_headers",
+                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1_prop_headers",
                     "@type": [
                       "http://a.ml/vocabularies/data#Property",
                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -150,7 +145,7 @@
                     ],
                     "http://a.ml/vocabularies/data#range": [
                       {
-                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_6",
+                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_6",
                         "@type": [
                           "http://a.ml/vocabularies/data#Object",
                           "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
@@ -159,7 +154,7 @@
                         ],
                         "http://a.ml/vocabularies/data#properties": [
                           {
-                            "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_6_prop_access_token",
+                            "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_6_prop_access_token",
                             "@type": [
                               "http://a.ml/vocabularies/data#Property",
                               "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -168,7 +163,7 @@
                             ],
                             "http://a.ml/vocabularies/data#range": [
                               {
-                                "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_6/object_7",
+                                "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_6/object_7",
                                 "@type": [
                                   "http://a.ml/vocabularies/data#Object",
                                   "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
@@ -177,7 +172,7 @@
                                 ],
                                 "http://a.ml/vocabularies/data#properties": [
                                   {
-                                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_6/object_7_prop_required",
+                                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_6/object_7_prop_required",
                                     "@type": [
                                       "http://a.ml/vocabularies/data#Property",
                                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -186,7 +181,7 @@
                                     ],
                                     "http://a.ml/vocabularies/data#range": [
                                       {
-                                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_6/object_7/scalar_10",
+                                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_6/object_7/scalar_10",
                                         "@type": [
                                           "http://a.ml/vocabularies/data#Scalar",
                                           "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -212,7 +207,7 @@
                                     ]
                                   },
                                   {
-                                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_6/object_7_prop_example",
+                                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_6/object_7_prop_example",
                                     "@type": [
                                       "http://a.ml/vocabularies/data#Property",
                                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -221,7 +216,7 @@
                                     ],
                                     "http://a.ml/vocabularies/data#range": [
                                       {
-                                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_6/object_7/scalar_9",
+                                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_6/object_7/scalar_9",
                                         "@type": [
                                           "http://a.ml/vocabularies/data#Scalar",
                                           "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -247,7 +242,7 @@
                                     ]
                                   },
                                   {
-                                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_6/object_7_prop_description",
+                                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_6/object_7_prop_description",
                                     "@type": [
                                       "http://a.ml/vocabularies/data#Property",
                                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -256,7 +251,7 @@
                                     ],
                                     "http://a.ml/vocabularies/data#range": [
                                       {
-                                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/object_6/object_7/scalar_8",
+                                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/object_6/object_7/scalar_8",
                                         "@type": [
                                           "http://a.ml/vocabularies/data#Scalar",
                                           "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -300,7 +295,7 @@
                     ]
                   },
                   {
-                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1_prop_description",
+                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1_prop_description",
                     "@type": [
                       "http://a.ml/vocabularies/data#Property",
                       "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -309,7 +304,7 @@
                     ],
                     "http://a.ml/vocabularies/data#range": [
                       {
-                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/object_1/scalar_2",
+                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/trait/api.raml#/trait/default-abstract/object_1/scalar_2",
                         "@type": [
                           "http://a.ml/vocabularies/data#Scalar",
                           "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",

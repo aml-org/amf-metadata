@@ -18,7 +18,7 @@ declares:
     inherits:
       -
         shapeType: Node
-        $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/RestrictedObject/link-1165733302
+        $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/RestrictedObject/link--318044002
         designLink: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/RestrictedObject
         name: RestrictedObject
     name: Identifier
