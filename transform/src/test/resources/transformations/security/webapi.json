@@ -270,7 +270,7 @@
                     ],
                     "http://a.ml/vocabularies/shapes#schema": [
                       {
-                        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/parameter/default-binding/userid/scalar/userid",
+                        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/parameter/path/userid/scalar/userid",
                         "@type": [
                           "http://a.ml/vocabularies/shapes#ScalarShape",
                           "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
