@@ -1,13 +1,9 @@
 package amf.transform.canonical
 
-import amf.ProfileName
-import amf.client.parse.DefaultParserErrorHandler
-import amf.core.AMF
-import amf.core.remote.Hint
-import amf.core.services.RuntimeValidator
-import amf.core.validation.AMFValidationReport
-import amf.core.validation.core.ValidationReport
-import amf.facades.{AMFCompiler, Validation}
+import amf.apicontract.client.scala.APIConfiguration
+import amf.core.client.common.validation.ProfileName
+import amf.core.client.scala.validation.AMFValidationReport
+import amf.core.internal.remote.Hint
 import org.scalatest.{Assertion, BeforeAndAfterAll}
 import org.scalatest.funsuite.AsyncFunSuite
 import org.scalatest.matchers.should.Matchers
@@ -39,10 +35,12 @@ trait CanonicalSpecValidationTest extends AsyncFunSuite with CanonicalTransform 
   case class Fixture(apiPath: String, hint: Hint)
 
   private def validate(apiPath: String, hint: Hint): Future[Assertion] = {
+
     for {
-      transformed <- canonicalTransform(apiPath, Some(hint))
+      config <- CanonicalDialectRegistration.registerDialect(APIConfiguration.API())
+      transformed <- canonicalTransform(apiPath, config)
       report <- {
-        RuntimeValidator(
+        config.createClient().validate(
           transformed,
           ProfileName(CanonicalWebAPISpecTransformer.CANONICAL_WEBAPI_NAME)
         )

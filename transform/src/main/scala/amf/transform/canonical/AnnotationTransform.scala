@@ -1,9 +1,8 @@
 package amf.transform.canonical
 
-import amf.core.metamodel.Obj
-import amf.core.metamodel.domain.DomainElementModel
-import amf.core.metamodel.domain.extensions.{CustomDomainPropertyModel, DomainExtensionModel}
-import amf.core.vocabulary.{Namespace, ValueType}
+import amf.core.client.scala.vocabulary.Namespace
+import amf.core.internal.metamodel.domain.DomainElementModel
+import amf.core.internal.metamodel.domain.extensions.{CustomDomainPropertyModel, DomainExtensionModel}
 import amf.transform.canonical.CanonicalWebAPISpecExtraModel.{DesignAnnotationField, DesignLinkTargetField}
 import amf.transform.canonical.CanonicalWebAPISpecTransformer.{DialectNode, DomainElementUri, TypeUri}
 import org.apache.jena.rdf.model.Model

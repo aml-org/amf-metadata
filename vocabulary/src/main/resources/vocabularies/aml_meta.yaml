@@ -58,8 +58,13 @@ classTerms:
   DocumentsModel:
     displayName: DocumentsModel
     description: Mapping from different type of dialect documents to base units in the parsed graph
+  ExtensionMapping:
+    displayName: SemanticExtension
+    description: Mapping a particular extension name to an extension definition
   ExternalVocabulary:
     displayName: ExternalVocabulary
+  NodeAnnotationMapping:
+    displayName: NodeAnnotationMapping
   NodeMapping:
     displayName: NodeMapping
     extends: shacl.Shape
@@ -115,6 +120,14 @@ propertyTerms:
     displayName: encodedNode
     description: Node in the dialect encoded in the target mapped base unit
     range: uri
+  extensionMappingDefinition:
+    displayName: extensionMappingDefinition
+    description: Extension mapping (annotation mapping) definition used to parse a certain extension identified with the ExtensionName
+    range: uri
+  extensions:
+    displayName: extensions
+    description: Extensions mappings derived from annotation mappings declarations in a dialect
+    range: ExtensionMapping
   externallyLinkable:
     displayName: linkable
     description: Marks this object property as supporting external links

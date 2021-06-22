@@ -1,17 +1,15 @@
 package amf.exporters
 
-import java.io.{File, FileWriter, StringWriter, Writer}
+import amf.core.client.scala.vocabulary.Namespace
 
-import amf.core.metamodel.Type.Scalar
-import amf.core.metamodel.{Field, Obj, Type}
-import amf.core.metamodel.domain.{DataNodeModel, DomainElementModel, LinkableElementModel, ModelDoc, ModelVocabularies, ObjectNodeModel}
-import amf.core.model.domain.{AmfObject, DomainElement}
-import amf.core.parser.{Annotations, Fields}
-import amf.core.vocabulary.{Namespace, ValueType}
+import java.io.{File, FileWriter, StringWriter, Writer}
+import amf.core.internal.metamodel.Type.Scalar
+import amf.core.internal.metamodel.{Field, Obj, Type}
+import amf.core.internal.metamodel.domain.{DataNodeModel, DomainElementModel, LinkableElementModel, ModelDoc, ModelVocabularies, ObjectNodeModel}
 import org.reflections.Reflections
 import org.reflections.scanners.SubTypesScanner
 import org.yaml.model.YPart
-import amf.core.utils._
+import amf.core.internal.utils._
 import amf.transform.canonical.CanonicalWebAPISpecExtraModel._
 import amf.transform.canonical.PropertyNode
 
@@ -39,13 +37,13 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     "http://a.ml/vocabularies/shapes#"      -> "../vocabularies/data_shapes.yaml"
   )
 
-  val reflectionsWebApi    = new Reflections("amf.plugins.domain.webapi.metamodel", new SubTypesScanner(false))
-  val reflectionsShapes    = new Reflections("amf.plugins.domain.shapes.metamodel", new SubTypesScanner(false))
-  val reflectionsCore      = new Reflections("amf.core.metamodel.domain.extensions", new SubTypesScanner(false))
-  val reflectionsTemplates = new Reflections("amf.core.metamodel.domain.templates", new SubTypesScanner(false))
-  val reflectionsDataNode  = new Reflections("amf.core.metamodel.domain", new SubTypesScanner(false))
-  val reflectionsApiDocs   = new Reflections("amf.plugins.document.webapi.metamodel", new SubTypesScanner(false))
-  val reflectionsDocs      = new Reflections("amf.core.metamodel.document", new SubTypesScanner(false))
+  val reflectionsWebApi    = new Reflections("amf.apicontract.internal.metamodel.domain", new SubTypesScanner(false))
+  val reflectionsShapes    = new Reflections("amf.shapes.internal.domain.metamodel", new SubTypesScanner(false))
+  val reflectionsCore      = new Reflections("amf.core.internal.metamodel.domain.extensions", new SubTypesScanner(false))
+  val reflectionsTemplates = new Reflections("amf.core.internal.metamodel.domain.templates", new SubTypesScanner(false))
+  val reflectionsDataNode  = new Reflections("amf.core.internal.metamodel.domain", new SubTypesScanner(false))
+  val reflectionsApiDocs   = new Reflections("amf.apicontract.internal.metamodel.document", new SubTypesScanner(false))
+  val reflectionsDocs      = new Reflections("amf.core.internal.metamodel.document", new SubTypesScanner(false))
   val reflectionsExtModel  = new Reflections("amf.transform", new SubTypesScanner(false))
 
   var nodeMappings: Map[String, ExtendedDialectNodeMapping] = Map()
@@ -704,9 +702,9 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
   }
 
   def compact(url: String): (String, String, String) = {
-    val compacted = Namespace.staticAliases.compact(url).replace(":", ".")
+    val compacted = Namespace.defaultAliases.compact(url).replace(":", ".")
     val prefix    = compacted.split("\\.").head
-    val base      = Namespace.staticAliases.ns(prefix).base
+    val base      = Namespace.defaultAliases.ns(prefix).base
     (compacted, prefix, base)
   }
 

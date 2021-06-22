@@ -1,12 +1,9 @@
 package amf.transform.canonical
 
-import amf.ProfileName
-import amf.core.AMF
-import amf.core.emitter.RenderOptions
-import amf.core.model.document.ExternalFragment
-import amf.core.remote._
-import amf.core.services.RuntimeValidator
-import amf.helpers.AMFRenderer
+import amf.apicontract.client.scala.APIConfiguration
+import amf.core.client.common.validation.ProfileName
+import amf.core.client.scala.config.RenderOptions
+import amf.core.internal.remote.{Async20YamlHint, Hint, Oas20JsonHint, Raml10YamlHint, Vendor}
 import amf.io.FunSuiteCycleTests
 import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers
@@ -43,20 +40,20 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
   tests.foreach { input =>
     val golden = input.replace("api.raml", "webapi")
     test(s"Test '$input' for WebAPI dialect transformation and yaml/json rendering") {
-      checkCanonicalDialectTransformation(input, golden, RamlYamlHint)
+      checkCanonicalDialectTransformation(input, golden, Raml10YamlHint)
     }
   }
 
   test("Test that dialect instance with bindings has correct discriminator") {
-    checkCanonicalDialectTransformation("message-bindings/api.yaml", "message-bindings/webapi", AsyncYamlHint)
+    checkCanonicalDialectTransformation("message-bindings/api.yaml", "message-bindings/webapi", Async20YamlHint)
   }
 
   test("Test that dialect instance with operation traits has operation in extends") {
-    checkCanonicalDialectTransformation("operation-trait/api.yaml", "operation-trait/webapi", AsyncYamlHint)
+    checkCanonicalDialectTransformation("operation-trait/api.yaml", "operation-trait/webapi", Async20YamlHint)
   }
 
   test("Test that dialect instance with message traits has message in extends") {
-    checkCanonicalDialectTransformation("message-trait/api.yaml", "message-trait/webapi", AsyncYamlHint)
+    checkCanonicalDialectTransformation("message-trait/api.yaml", "message-trait/webapi", Async20YamlHint)
   }
 
   test("Test transformation of an ExternalFragment") {
@@ -64,17 +61,23 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
   }
 
   test("Test that canonical transform raises exception on Recursive Unit") {
-    recoverToSucceededIf[RecursiveUnitsPresentException](
-      canonicalTransform(s"${basePath}/recursive-unit/root.json", Some(OasJsonHint))
-    )
+    val transformRecursive = {
+      for {
+        conf <- CanonicalDialectRegistration.registerDialect(APIConfiguration.API())
+        _ <- canonicalTransform(s"${basePath}/recursive-unit/root.json", conf)
+      } yield assert(false)
+    }
+    recoverToSucceededIf[RecursiveUnitsPresentException](transformRecursive)
   }
 
   test("Test canonical tranformation throws exception if dialect is not found") {
     recoverToSucceededIf[CanonicalDialectNotFoundException](
-      AMF.init().flatMap(_ => canonicalTransform(s"${basePath}simple/api.raml", Some(RamlYamlHint), UnregisterDialectRegistration())))
+      // does not register dialect
+      canonicalTransform(s"${basePath}simple/api.raml", APIConfiguration.API())
+    )
   }
 
-  def checkCanonicalDialectTransformation(source: String, target: String, hint: Hint = RamlYamlHint): Future[Assertion] = checkCanonicalDialectTransformation(source, target, Some(hint))
+  def checkCanonicalDialectTransformation(source: String, target: String, hint: Hint = Raml10YamlHint): Future[Assertion] = checkCanonicalDialectTransformation(source, target, Some(hint))
 
   def checkCanonicalDialectTransformation(source: String, target: String, hint: Option[Hint]): Future[Assertion] = {
     val amfWebApi  = basePath + source
@@ -82,15 +85,18 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
     val goldenJson = s"$basePath$target.json"
 
     for {
-      transformed <- canonicalTransform(amfWebApi, hint, CanonicalDialectRegistration())
+      config <- CanonicalDialectRegistration.registerDialect(APIConfiguration.API())
+      transformed <- canonicalTransform(amfWebApi, config)
       yamlDiffOk <- diff(goldenYaml) { () =>
-        new AMFRenderer(transformed, Vendor.AML, RenderOptions().withNodeIds, Some(Syntax.Yaml)).renderToString
+        val client = config.withRenderOptions(RenderOptions().withNodeIds).createClient()
+        client.render(transformed, Vendor.AML.mediaType + "+yaml")
       }
       jsonDiffOk <- diff(goldenJson) { () =>
-        new AMFRenderer(transformed, Vendor.AMF, RenderOptions().withPrettyPrint, Some(Syntax.Json)).renderToString
+        val client = config.withRenderOptions(RenderOptions().withPrettyPrint).createClient()
+        client.render(transformed, Vendor.AMF.mediaType)
       }
       report <- {
-        RuntimeValidator(
+        config.createClient().validate(
           transformed,
           ProfileName(CanonicalWebAPISpecTransformer.CANONICAL_WEBAPI_NAME)
         )
@@ -102,12 +108,12 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
     }
   }
 
-  private def diff(golden: String)(render: () => Future[String]): Future[Assertion] = {
+  private def diff(golden: String)(render: () => String): Future[Assertion] = {
     if (shouldIgnore(golden)) {
       Future.successful(succeed)
     } else {
       for {
-        actual <- render()
+        actual <- Future.successful(render())
         tmp    <- writeTemporaryFile(golden)(actual)
         diff   <- assertDifferences(tmp, golden)
       } yield {

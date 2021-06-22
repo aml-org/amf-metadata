@@ -1,6 +1,7 @@
 package amf.transform.canonical
 
-import amf.core.remote.{Hint, OasJsonHint, OasYamlHint}
+import amf.core.internal.remote.{Hint, Oas20JsonHint}
+
 
 class Oas20CanonicalValidationTest extends CanonicalSpecValidationTest {
 
@@ -50,7 +51,7 @@ class Oas20CanonicalValidationTest extends CanonicalSpecValidationTest {
     "with-nested-external-ref-array.json",
     "with-nested-external-ref-object.json"
   )
-  override val hint: Hint = OasJsonHint
+  override val hint: Hint = Oas20JsonHint
 
   runValidations()
 }

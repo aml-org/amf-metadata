@@ -1,7 +1,7 @@
 package amf.transform.canonical
 
-import amf.core.metamodel.domain.LinkableElementModel
-import amf.core.vocabulary.{Namespace, ValueType}
+import amf.core.client.scala.vocabulary.Namespace
+import amf.core.internal.metamodel.domain.LinkableElementModel
 import amf.transform.canonical.CanonicalWebAPISpecExtraModel.DesignLinkTargetField
 import amf.transform.canonical.CanonicalWebAPISpecTransformer.{DialectNode, DomainElementUri, TypeUri}
 import org.apache.jena.rdf.model.Model

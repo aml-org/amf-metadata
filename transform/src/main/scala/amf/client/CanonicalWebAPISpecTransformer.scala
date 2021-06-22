@@ -1,21 +1,20 @@
 package amf.client
 
-import amf.client.convert.CoreClientConverters
-import amf.client.convert.CoreClientConverters.BaseUnitMatcher._
-import amf.client.convert.CoreClientConverters.ClientFuture
-import amf.client.execution.{DefaultExecutionEnvironment, ExecutionEnvironment}
-import amf.client.model.document.BaseUnit
+import amf.apicontract.client.scala.AMFConfiguration
+import amf.core.client.platform.AMFGraphConfiguration
+import amf.core.internal.convert.CoreClientConverters._
+import amf.core.internal.convert.CoreClientConverters
+import amf.core.internal.convert.CoreClientConverters.ClientFuture
+import amf.core.client.platform.model.document.BaseUnit
 import amf.transform.canonical.{CanonicalWebAPISpecTransformer => CanonicalTransformation}
 
 import scala.concurrent.ExecutionContext
 
 class CanonicalWebAPISpecTransformer() {
 
-  def transform(unit: BaseUnit): ClientFuture[BaseUnit] = transform(unit, DefaultExecutionEnvironment())
-
-  def transform(unit: BaseUnit, executionEnvironment: ExecutionEnvironment): ClientFuture[BaseUnit] = {
-    val executionContext: ExecutionContext = executionEnvironment._internal.context
-    val transformed = CanonicalTransformation.transform(asInternal(unit))
-    CoreClientConverters.InternalFutureOps(transformed)(CoreClientConverters.BaseUnitMatcher, executionContext).asClient
+  def transform(unit: BaseUnit, config: AMFGraphConfiguration): ClientFuture[BaseUnit] = {
+    val executionContext: ExecutionContext = config.getExecutionContext
+    val transformed = CanonicalTransformation.transform(BaseUnitMatcher.asInternal(unit), AMFGraphConfigurationMatcher.asInternal(config))
+    CoreClientConverters.InternalFutureOps(transformed)(BaseUnitMatcher, executionContext).asClient
   }
 }

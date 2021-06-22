@@ -1,11 +1,12 @@
 package amf.transform.canonical
 
-import amf.core.remote.{AsyncYamlHint, Hint}
+import amf.core.internal.remote.{Async20YamlHint, Hint}
+
 
 class AsyncCanonicalValidationTest extends CanonicalSpecValidationTest {
 
   override val basePath: String = "file://transform/src/test/resources/specs/async20/"
-  override val hint: Hint = AsyncYamlHint
+  override val hint: Hint = Async20YamlHint
 
   override val apiPaths = Set(
     "amqp-exchange-channel-binding.yaml",

@@ -1,7 +1,7 @@
 package amf.transform.canonical
 
-import amf.core.metamodel.Obj
-import amf.core.vocabulary.ValueType
+import amf.core.client.scala.vocabulary.ValueType
+import amf.core.internal.metamodel.Obj
 import amf.transform.canonical.CanonicalWebAPISpecTransformer.DomainElementUri
 import org.apache.jena.rdf.model.Model
 

@@ -1,8 +1,8 @@
 package amf.transform.canonical
 
-import amf.core.metamodel.Obj
-import amf.core.model.domain.DomainElement
-import amf.core.parser.{Annotations, Fields}
+import amf.core.client.scala.model.domain.DomainElement
+import amf.core.internal.metamodel.Obj
+import amf.core.internal.parser.domain.{Annotations, Fields}
 import org.yaml.model.YPart
 
 // This model is just to reify the dynamic properties in an

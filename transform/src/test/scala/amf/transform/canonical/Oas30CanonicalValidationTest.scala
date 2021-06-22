@@ -1,5 +1,6 @@
 package amf.transform.canonical
-import amf.core.remote.{Hint, OasJsonHint, OasYamlHint}
+
+import amf.core.internal.remote.{Hint, Oas30JsonHint}
 
 class Oas30CanonicalValidationTest extends CanonicalSpecValidationTest {
 
@@ -43,7 +44,7 @@ class Oas30CanonicalValidationTest extends CanonicalSpecValidationTest {
     "parameter-payload-resolution/parameter-payload-examples.json",
     "summary-description-in-path/description-applied-to-operations.json"
   )
-  override val hint: Hint = OasJsonHint
+  override val hint: Hint = Oas30JsonHint
 
   runValidations()
 }

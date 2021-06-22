@@ -38,7 +38,7 @@
             ],
             "http://a.ml/vocabularies/core#mediaType": [
               {
-                "@value": "application/yaml"
+                "@value": "application/raml+yaml"
               }
             ]
           }

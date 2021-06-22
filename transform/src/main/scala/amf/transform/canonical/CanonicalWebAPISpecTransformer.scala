@@ -1,21 +1,22 @@
 package amf.transform.canonical
 
-import amf.core.metamodel.document.BaseUnitModel
-import amf.core.model.document.{BaseUnit, Document}
-import amf.core.parser.errorhandler.UnhandledParserErrorHandler
-import amf.core.plugin.{CorePlugin, PluginContext}
-import amf.core.rdf.{RdfModel, RdfModelParser}
-import amf.core.unsafe.PlatformSecrets
-import amf.core.vocabulary.Namespace.XsdTypes
-import amf.core.vocabulary.{Namespace, ValueType}
-import amf.plugins.document.graph.AMFGraphPlugin
-import amf.plugins.document.vocabularies.AMLPlugin
-import amf.plugins.document.vocabularies.model.document.Dialect
-import amf.plugins.document.vocabularies.model.domain.NodeMapping
-import amf.plugins.document.webapi.Raml10Plugin
-import amf.plugins.domain.shapes.DataShapesDomainPlugin
-import amf.plugins.domain.webapi.APIDomainPlugin
+import amf.aml.client.scala.AMLConfiguration
+import amf.aml.client.scala.model.document.Dialect
+import amf.aml.client.scala.model.domain.NodeMapping
+import amf.aml.internal.annotations.serializable.AMLSerializableAnnotations
+import amf.aml.internal.entities.AMLEntities
+import amf.aml.internal.parse.plugin.{AMLDialectInstanceParsingPlugin, AMLDialectParsingPlugin, AMLVocabularyParsingPlugin}
+import amf.aml.internal.render.plugin.{AMLDialectRenderingPlugin, AMLVocabularyRenderingPlugin}
+import amf.aml.internal.validate.AMLValidationPlugin
+import amf.apicontract.client.scala.APIConfiguration
+import amf.core.client.scala.AMFGraphConfiguration
+import amf.core.client.scala.model.document.BaseUnit
+import amf.core.client.scala.rdf.{RdfModel, RdfUnitConverter}
+import amf.core.internal.metamodel.document.BaseUnitModel
+import amf.core.internal.unsafe.PlatformSecrets
 import org.apache.jena.rdf.model.{Model, Statement}
+import amf.core.client.scala.vocabulary.Namespace
+import amf.core.client.scala.vocabulary.Namespace.XsdTypes
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable
@@ -31,7 +32,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   /**
    * Transforms a WebAPI model parsed by AMF from a RAML/OAS document into a canonical WebAPI model compatible with the canonical WebAPI AML dialect
    */
-  def transform(unit: BaseUnit): Future[BaseUnit] = Future.successful { cleanAMFModel(unit) }
+  def transform(unit: BaseUnit, config: AMFGraphConfiguration): Future[BaseUnit] = Future.successful { cleanAMFModel(unit, config) }
 
   /**
    * Cleans the input WebAPI model adding the required information to the
@@ -41,25 +42,23 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
    * @param unit a AMF WebAPI model parsed from RAML / OAS
    * @return Equivalent Canonical WebAPI AML dialect instance
    */
-  protected def cleanAMFModel(unit: BaseUnit): BaseUnit = {
-    val typeMapping = buildCanonicalClassMapping
-    val model       = unit.toNativeRdfModel()
+  protected def cleanAMFModel(unit: BaseUnit, config: AMFGraphConfiguration): BaseUnit = {
+    val webApiDialect: Dialect = findWebAPIDialect(config)
+    val typeMapping = buildCanonicalClassMapping(webApiDialect)
+    val model       = RdfUnitConverter.toNativeRdfModel(unit)
 
     val nativeModel = model.native().asInstanceOf[Model]
 
-    val baseUnitId = preProcessUnits(nativeModel)
+    val baseUnitId = preProcessUnits(nativeModel, webApiDialect)
 
-    findWebAPIDialect match {
-      case Some(dialect) => updateToDialectInstance(nativeModel, baseUnitId, dialect)
-      case None => // ignore
-    }
+    updateToDialectInstance(nativeModel, baseUnitId, webApiDialect)
 
     // transform dynamic data nodes to list the properties
     transformDataNodes(typeMapping, nativeModel)
 
     transformDomainElements(typeMapping, nativeModel)
 
-    parseRdfToInstance(model, baseUnitId)
+    parseRdfToInstance(model, baseUnitId, webApiDialect)
   }
 
   /**
@@ -67,21 +66,24 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
     * class in the WebAPI vocabulary
     * @return
     */
-  protected def buildCanonicalClassMapping: Map[TypeUri, DialectNode] = {
-    findWebAPIDialect match {
-      case Some(webApiDialect) =>
-        val nodeMappings = webApiDialect.declares.collect { case mapping: NodeMapping => mapping }
-        nodeMappings.foldLeft(Map[String, String]()) {
-          case (acc, mapping) =>
-            acc + (mapping.nodetypeMapping.value() -> mapping.id)
-        }
-      case None => throw CanonicalDialectNotFoundException("Cannot find WebAPI 1.0 Dialect in Dialect registry")
+  protected def buildCanonicalClassMapping(webApiDialect: Dialect): Map[TypeUri, DialectNode] = {
+    val nodeMappings = webApiDialect.declares.collect { case mapping: NodeMapping => mapping }
+    nodeMappings.foldLeft(Map[String, String]()) {
+      case (acc, mapping) =>
+        acc + (mapping.nodetypeMapping.value() -> mapping.id)
     }
   }
 
 
-  protected def findWebAPIDialect: Option[Dialect] =
-    AMLPlugin().registry.allDialects().find(_.nameAndVersion() == CANONICAL_WEBAPI_NAME)
+  protected def findWebAPIDialect(config: AMFGraphConfiguration): Dialect = {
+    val dialect = config.registry.plugins.parsePlugins.collect {
+      case plugin: AMLDialectInstanceParsingPlugin => plugin.dialect
+    }.find(_.nameAndVersion() == CANONICAL_WEBAPI_NAME)
+    dialect match {
+      case Some(r) => r
+      case None => throw CanonicalDialectNotFoundException("Cannot find WebAPI 1.0 Dialect in Dialect registry")
+    }
+  }
 
   private def updateToDialectInstance(nativeModel: Model, baseUnitId: String, dialect: Dialect) = {
     nativeModel.add(
@@ -94,10 +96,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   /**
    * Transforms the doc:Units in the graph into the domain elements for assets in the canonical web api spec dialect
    */
-  def preProcessUnits(nativeModel: Model): String = {
-    // we need the dialect ID in this particular instance of AMF
-    val dialect = findWebAPIDialect.get
-
+  def preProcessUnits(nativeModel: Model, webApiDialect: Dialect): String = {
     // we save the top level document we will not transform into a domain level asset
     val topLevelUnitUri = queryTopLevelDocument(nativeModel)
 
@@ -114,7 +113,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
       val unitResource = nativeModel.createResource(unit)
 
       // Let's manipulate the @type of the unit to match the dialect expectations
-      mapBaseUnits(unit, dialect, nativeModel)
+      mapBaseUnits(unit, webApiDialect, nativeModel)
     }
 
     if (recursives.nonEmpty)
@@ -222,12 +221,9 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   private def isRecursiveBaseUnit(uri: String) = uri.endsWith("recursive")
 
 
-  private def parseRdfToInstance(model: RdfModel, baseUnitId: String): BaseUnit = {
-    val plugins = PluginContext(
-      blacklist = Seq(CorePlugin, APIDomainPlugin, DataShapesDomainPlugin, AMFGraphPlugin, Raml10Plugin))
-
-    RdfModelParser(errorHandler = UnhandledParserErrorHandler, plugins = plugins)
-      .parse(model, baseUnitId)
+  private def parseRdfToInstance(model: RdfModel, baseUnitId: String, webApiDialect: Dialect): BaseUnit = {
+    val withEntities = AMLConfiguration.empty().withEntities(AMLEntities.entities).withDialect(webApiDialect)
+    RdfUnitConverter.fromNativeRdfModel(baseUnitId, model, withEntities)
   }
 }
 
