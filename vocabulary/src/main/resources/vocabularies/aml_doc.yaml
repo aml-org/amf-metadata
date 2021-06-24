@@ -189,7 +189,7 @@ propertyTerms:
   variable:
     displayName: variable
     description: Variables to be replaced in the graph template introduced by an AbstractDeclaration
-    range: VariableValue
+    range: string
   version:
     displayName: version
     description: Version of the current model

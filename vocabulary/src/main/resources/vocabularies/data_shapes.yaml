@@ -121,7 +121,7 @@ propertyTerms:
     range: apiContract.IriTemplateMapping
   discriminatorValue:
     displayName: discriminatorValue
-    description: Value given to a discriminator that identifies a target Shape
+    description: Values for the discriminator property
     range: string
   discriminatorValueMapping:
     displayName: discriminatorValueMapping
@@ -153,7 +153,7 @@ propertyTerms:
     range: shacl.Shape
   items:
     displayName: items
-    description: Shapes inside the data arrangement
+    description: Shapes contained in the Tuple Shape
     range: shacl.Shape
   maxProperties:
     displayName: maxProperties
