@@ -1,285 +1,189 @@
-[
-  {
-    "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml",
-    "@type": [
-      "http://a.ml/vocabularies/meta#DialectInstance",
-      "http://a.ml/vocabularies/document#Document",
-      "http://a.ml/vocabularies/document#Fragment",
-      "http://a.ml/vocabularies/document#Module",
-      "http://a.ml/vocabularies/document#Unit"
-    ],
-    "http://a.ml/vocabularies/meta#definedBy": [
-      {
-        "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+{
+  "@graph": [
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/rootAsset",
+      "@type": [
+        "http://a.ml/vocabularies/security#SecuritySchemeFragment",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/SecuritySchemeFragment",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#fragment"
+      },
+      "http://a.ml/vocabularies/document#version": "3.1.0",
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#fragment",
+      "@type": [
+        "http://a.ml/vocabularies/security#SecurityScheme",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/SecurityScheme",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token"
+        }
+      ],
+      "http://a.ml/vocabularies/core#description": "Apply the OAuth 2.0 security policy to resource methods for authenticating API requests",
+      "http://a.ml/vocabularies/apiContract#response": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/403"
+        },
+        {
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/401"
+        }
+      ],
+      "http://a.ml/vocabularies/security#type": "OAuth 2.0",
+      "http://a.ml/vocabularies/security#settings": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2"
+      },
+      "http://a.ml/vocabularies/apiContract#header": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#paramName": "access_token",
+      "http://a.ml/vocabularies/core#name": "access_token",
+      "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token. Do not use together with the \"Authorization\" header.\n",
+      "http://a.ml/vocabularies/apiContract#binding": "query",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token/scalar/schema"
       }
-    ],
-    "http://a.ml/vocabularies/document#encodes": [
-      {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/rootAsset",
-        "@type": [
-          "http://a.ml/vocabularies/security#SecuritySchemeFragment",
-          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/SecuritySchemeFragment",
-          "http://a.ml/vocabularies/meta#DialectDomainElement",
-          "http://a.ml/vocabularies/document#DomainElement"
-        ],
-        "http://a.ml/vocabularies/document#encodes": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#fragment",
-            "@type": [
-              "http://a.ml/vocabularies/security#SecurityScheme",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/SecurityScheme",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/apiContract#parameter": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#Parameter",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/apiContract#required": [
-                  {
-                    "@value": true
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#paramName": [
-                  {
-                    "@value": "access_token"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#name": [
-                  {
-                    "@value": "access_token"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#description": [
-                  {
-                    "@value": "Used to send a valid OAuth 2 access token. Do not use together with the \"Authorization\" header.\n"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#binding": [
-                  {
-                    "@value": "query"
-                  }
-                ],
-                "http://a.ml/vocabularies/shapes#schema": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token/scalar/schema",
-                    "@type": [
-                      "http://a.ml/vocabularies/shapes#ScalarShape",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://www.w3.org/ns/shacl#datatype": [
-                      {
-                        "@id": "http://www.w3.org/2001/XMLSchema#string"
-                      }
-                    ],
-                    "http://www.w3.org/ns/shacl#name": [
-                      {
-                        "@value": "schema"
-                      }
-                    ],
-                    "http://a.ml/vocabularies/core#description": [
-                      {
-                        "@value": "Used to send a valid OAuth 2 access token. Do not use together with the \"Authorization\" header.\n"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "http://a.ml/vocabularies/core#description": [
-              {
-                "@value": "Apply the OAuth 2.0 security policy to resource methods for authenticating API requests"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#response": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/403",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#Response",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/apiContract#statusCode": [
-                  {
-                    "@value": "403"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#name": [
-                  {
-                    "@value": "403"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#description": [
-                  {
-                    "@value": "Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.\n"
-                  }
-                ]
-              },
-              {
-                "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/401",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#Response",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/apiContract#statusCode": [
-                  {
-                    "@value": "401"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#name": [
-                  {
-                    "@value": "401"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#description": [
-                  {
-                    "@value": "Bad or expired token. This can happen if the API consumer uses a revoked or expired access token. To fix, you should re-authenticate the user.\n"
-                  }
-                ]
-              }
-            ],
-            "http://a.ml/vocabularies/security#type": [
-              {
-                "@value": "OAuth 2.0"
-              }
-            ],
-            "http://a.ml/vocabularies/security#settings": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2",
-                "@type": [
-                  "http://a.ml/vocabularies/security#OAuth2Settings",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Settings",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/security#authorizationGrant": [
-                  {
-                    "@value": "authorization_code"
-                  }
-                ],
-                "http://a.ml/vocabularies/security#flows": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2/default-flow",
-                    "@type": [
-                      "http://a.ml/vocabularies/security#OAuth2Flow",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Flow",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/security#authorizationUri": [
-                      {
-                        "@value": "https://placeholder.com/oauth2/authorize"
-                      }
-                    ],
-                    "http://a.ml/vocabularies/security#accessTokenUri": [
-                      {
-                        "@value": "https://placeholder.com/oauth2/access_token"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#header": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#Parameter",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/apiContract#required": [
-                  {
-                    "@value": true
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#paramName": [
-                  {
-                    "@value": "Authorization"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#name": [
-                  {
-                    "@value": "Authorization"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#description": [
-                  {
-                    "@value": "Used to send a valid OAuth 2 access token. Do not use with the \"access_token\" query. string parameter.\n"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#binding": [
-                  {
-                    "@value": "header"
-                  }
-                ],
-                "http://a.ml/vocabularies/shapes#schema": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization/scalar/schema",
-                    "@type": [
-                      "http://a.ml/vocabularies/shapes#ScalarShape",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://www.w3.org/ns/shacl#datatype": [
-                      {
-                        "@id": "http://www.w3.org/2001/XMLSchema#string"
-                      }
-                    ],
-                    "http://www.w3.org/ns/shacl#name": [
-                      {
-                        "@value": "schema"
-                      }
-                    ],
-                    "http://a.ml/vocabularies/core#description": [
-                      {
-                        "@value": "Used to send a valid OAuth 2 access token. Do not use with the \"access_token\" query. string parameter.\n"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#version": [
-          {
-            "@value": "3.1.0"
-          }
-        ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml"
-          }
-        ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/403",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Response",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#statusCode": "403",
+      "http://a.ml/vocabularies/core#name": "403",
+      "http://a.ml/vocabularies/core#description": "Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.\n"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/401",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Response",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#statusCode": "401",
+      "http://a.ml/vocabularies/core#name": "401",
+      "http://a.ml/vocabularies/core#description": "Bad or expired token. This can happen if the API consumer uses a revoked or expired access token. To fix, you should re-authenticate the user.\n"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2",
+      "@type": [
+        "http://a.ml/vocabularies/security#OAuth2Settings",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Settings",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/security#authorizationGrant": [
+        "authorization_code"
+      ],
+      "http://a.ml/vocabularies/security#flows": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2/default-flow"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#paramName": "Authorization",
+      "http://a.ml/vocabularies/core#name": "Authorization",
+      "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token. Do not use with the \"access_token\" query. string parameter.\n",
+      "http://a.ml/vocabularies/apiContract#binding": "header",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization/scalar/schema"
       }
-    ],
-    "http://a.ml/vocabularies/document#version": [
-      {
-        "@value": "3.1.0"
-      }
-    ],
-    "http://a.ml/vocabularies/document#root": [
-      {
-        "@value": false
-      }
-    ]
-  }
-]
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token. Do not use together with the \"Authorization\" header.\n"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2/default-flow",
+      "@type": [
+        "http://a.ml/vocabularies/security#OAuth2Flow",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Flow",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/security#authorizationUri": "https://placeholder.com/oauth2/authorize",
+      "http://a.ml/vocabularies/security#accessTokenUri": "https://placeholder.com/oauth2/access_token"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token. Do not use with the \"access_token\" query. string parameter.\n"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml",
+      "@type": [
+        "http://a.ml/vocabularies/meta#DialectInstance",
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/rootAsset"
+      },
+      "http://a.ml/vocabularies/document#version": "3.1.0",
+      "http://a.ml/vocabularies/document#root": false
+    }
+  ]
+}
