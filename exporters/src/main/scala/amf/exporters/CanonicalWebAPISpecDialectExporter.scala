@@ -122,9 +122,9 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
           (Namespace.Shapes + "AnyShape").iri(),
         )
       } else {
-        // we drop the first one (this schema) and then get the first not blacklisted.
+        // we drop the first one (this schema) and then get the first not blocklisted.
         // we relay in the list of super types being defined by more important to less specific type
-        types.drop(1).find(!blacklistedSupertypes.contains(_)).map(Seq(_)).getOrElse(Nil)
+        types.drop(1).find(!blocklistedSupertypes.contains(_)).map(Seq(_)).getOrElse(Nil)
       }
 
     val nodeMapping = ExtendedDialectNodeMapping(id = id,
@@ -190,7 +190,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     collected.distinct
   }
 
-  val blacklistedProperties: Set[String] = Set(
+  val blocklistedProperties: Set[String] = Set(
     (Namespace.Document + "link-target").iri(),
     (Namespace.Document + "link-label").iri(),
     (Namespace.Document + "recursive").iri(),
@@ -198,7 +198,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     DomainElementModel.CustomDomainProperties.value.iri()
   )
 
-  val blacklistedSupertypes: Set[String] = Set(
+  val blocklistedSupertypes: Set[String] = Set(
     (Namespace.Document + "DomainElement").iri(),
     (Namespace.Document + "RootDomainElement").iri(),
     (Namespace.Shacl + "Shape").iri(),
@@ -207,10 +207,10 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     (Namespace.Rdf + "Seq").iri()
   )
 
-  val blacklistedRanges: Set[String] = Set()
+  val blocklistedRanges: Set[String] = Set()
 
   // Base classes that should not appear in the dialect
-  val blacklistedMappings: Set[String] = Set(
+  val blocklistedMappings: Set[String] = Set(
     "LinkableElement",
     "DomainElement",
     "SourceMap"
@@ -555,7 +555,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     orderedNodeMappings.foreach { nodeMappingId =>
       nodeMappings.get(nodeMappingId) match {
         case Some(dialectNodeMapping: ExtendedDialectNodeMapping) =>
-          if (!blacklistedMappings.contains(dialectNodeMapping.name)) {
+          if (!blocklistedMappings.contains(dialectNodeMapping.name)) {
             stringBuilder.append(s"  ${dialectNodeMapping.name}:\n")
             var (compacted, prefix, base) = compact(dialectNodeMapping.classTerm)
             aggregateExternals(externals, prefix, base)
@@ -564,8 +564,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
             // Lets find the effective property mappings for this node mapping
             var nodeMappingWithProperties = dialectNodeMapping.propertyMappings.filter { propertyMapping =>
               // dynamic and linking information only relevant for design will not be dumped in the dialect
-              !blacklistedProperties.contains(propertyMapping.propertyTerm) &&
-              !blacklistedRanges.contains(propertyMapping.range)
+              !blocklistedProperties.contains(propertyMapping.propertyTerm) &&
+              !blocklistedRanges.contains(propertyMapping.range)
             }
 
             // extends relationship for macros
