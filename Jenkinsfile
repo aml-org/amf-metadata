@@ -62,6 +62,7 @@ pipeline {
         anyOf {
           branch 'master'
           branch 'develop'
+          branch 'release/*'
         }
         expression { hasChangesIn("vocabulary", "vocabulary") || isDevelop() }
       }
@@ -88,6 +89,7 @@ pipeline {
         anyOf {
           branch 'master'
           branch 'develop'
+          branch 'release/*'
         }
         expression { hasChangesIn("transform", "transform") || isDevelop() }
       }
