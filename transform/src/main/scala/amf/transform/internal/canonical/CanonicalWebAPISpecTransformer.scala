@@ -1,26 +1,21 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
 import amf.aml.client.scala.AMLConfiguration
 import amf.aml.client.scala.model.document.Dialect
 import amf.aml.client.scala.model.domain.NodeMapping
-import amf.aml.internal.annotations.serializable.AMLSerializableAnnotations
 import amf.aml.internal.entities.AMLEntities
-import amf.aml.internal.parse.plugin.{AMLDialectInstanceParsingPlugin, AMLDialectParsingPlugin, AMLVocabularyParsingPlugin}
-import amf.aml.internal.render.plugin.{AMLDialectRenderingPlugin, AMLVocabularyRenderingPlugin}
-import amf.aml.internal.validate.AMLValidationPlugin
-import amf.apicontract.client.scala.APIConfiguration
+import amf.aml.internal.parse.plugin.AMLDialectInstanceParsingPlugin
 import amf.core.client.scala.AMFGraphConfiguration
 import amf.core.client.scala.model.document.BaseUnit
 import amf.core.client.scala.rdf.{RdfModel, RdfUnitConverter}
+import amf.core.client.scala.vocabulary.Namespace
+import amf.core.client.scala.vocabulary.Namespace.XsdTypes
 import amf.core.internal.metamodel.document.BaseUnitModel
 import amf.core.internal.unsafe.PlatformSecrets
 import org.apache.jena.rdf.model.{Model, Statement}
-import amf.core.client.scala.vocabulary.Namespace
-import amf.core.client.scala.vocabulary.Namespace.XsdTypes
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable
-import scala.concurrent.Future
 
 private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with DataNodeTransform with DomainElementTransform with BaseUnitTransform {
   type DomainElementUri = String
@@ -32,7 +27,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   /**
    * Transforms a WebAPI model parsed by AMF from a RAML/OAS document into a canonical WebAPI model compatible with the canonical WebAPI AML dialect
    */
-  def transform(unit: BaseUnit, config: AMFGraphConfiguration): Future[BaseUnit] = Future.successful { cleanAMFModel(unit, config) }
+  def transform(unit: BaseUnit, config: AMFGraphConfiguration): BaseUnit = cleanAMFModel(unit, config)
 
   /**
    * Cleans the input WebAPI model adding the required information to the

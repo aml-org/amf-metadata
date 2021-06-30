@@ -1,4 +1,4 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
 import amf.core.internal.remote.{Hint, Oas30JsonHint}
 

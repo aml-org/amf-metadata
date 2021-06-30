@@ -10,8 +10,8 @@ import org.reflections.Reflections
 import org.reflections.scanners.SubTypesScanner
 import org.yaml.model.YPart
 import amf.core.internal.utils._
-import amf.transform.canonical.CanonicalWebAPISpecExtraModel._
-import amf.transform.canonical.PropertyNode
+import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel._
+import amf.transform.internal.canonical.PropertyNode
 
 import scala.collection.mutable
 

@@ -1,4 +1,4 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
 import amf.apicontract.client.scala.APIConfiguration
 import amf.core.client.common.validation.ProfileName

@@ -6,7 +6,8 @@ import amf.core.client.platform.config.RenderOptions
 import amf.core.client.platform.execution.{DefaultExecutionEnvironment, ExecutionEnvironment}
 import amf.core.internal.convert.NativeOpsFromJvm
 import amf.io.FileAssertionTest
-import amf.transform.canonical.CanonicalTransform
+import amf.transform.client.platform.CanonicalWebAPISpecTransformer
+import amf.transform.internal.canonical.CanonicalTransform
 import org.scalatest.funsuite.AsyncFunSuite
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -24,7 +25,7 @@ class ClientCanonicalTransformTest extends AsyncFunSuite with NativeOpsFromJvm w
       config   <- RAMLConfiguration.RAML10().withRenderOptions(options).withDialect(CanonicalTransform.CANONICAL_WEBAPI_DIALECT).asFuture
       client   <- Future.successful(config.createClient())
       unit     <- client.parse(file).asFuture.map(_.baseUnit)
-      transformed <- new CanonicalWebAPISpecTransformer().transform(unit, config).asFuture
+      transformed <- Future.successful(new CanonicalWebAPISpecTransformer().transform(unit, config))
       render <- Future.successful(client.render(transformed, ProvidedMediaType.AMF))
       actual <- writeTemporaryFile(golden)(render)
       r      <- assertDifferences(actual, golden)

@@ -1,4 +1,4 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
 import amf.core.client.scala.model.domain.AmfObject
 import amf.core.client.scala.vocabulary.{Namespace, ValueType}

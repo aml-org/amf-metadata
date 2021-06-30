@@ -6,8 +6,8 @@ import java.io.{File, FileWriter, Writer}
 import amf.core.internal.metamodel.Type.{Bool, Date, DateTime, Double, EncodedIri, Float, Int, Iri, RegExp, Str, Time}
 import amf.core.internal.metamodel.domain._
 import amf.core.internal.metamodel.{Field, Obj, Type}
-import amf.transform.canonical.CanonicalWebAPISpecExtraModel
-import amf.transform.canonical.CanonicalWebAPISpecExtraModel._
+import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel
+import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel._
 import org.reflections.Reflections
 import org.reflections.scanners.SubTypesScanner
 import org.yaml.model.YDocument

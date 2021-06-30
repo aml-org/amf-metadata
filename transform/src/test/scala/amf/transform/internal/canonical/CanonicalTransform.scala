@@ -1,10 +1,9 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
-import amf.apicontract.client.scala.{AMFConfiguration, APIConfiguration}
-import amf.core.client.scala.errorhandling.UnhandledErrorHandler
+import amf.apicontract.client.scala.AMFConfiguration
 import amf.core.client.scala.model.document.BaseUnit
-import amf.core.internal.remote.Hint
 import amf.core.internal.unsafe.PlatformSecrets
+import amf.transform.client.scala.{ CanonicalWebAPISpecTransformer => ClientScalaTransformer }
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
@@ -18,7 +17,7 @@ trait CanonicalTransform extends PlatformSecrets {
   def canonicalTransform(webApiPath: String, conf: AMFConfiguration): Future[BaseUnit] = {
     for {
       unit        <- conf.createClient().parse(webApiPath).map(_.bu)
-      transformed <- CanonicalWebAPISpecTransformer.transform(unit, conf)
+      transformed <- Future.successful(new ClientScalaTransformer().transform(unit, conf))
     } yield {
       transformed
     }

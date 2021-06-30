@@ -1,4 +1,4 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
 import amf.core.client.scala.vocabulary.Namespace
 import amf.core.internal.metamodel.Field
