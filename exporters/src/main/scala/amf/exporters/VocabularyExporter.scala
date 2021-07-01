@@ -122,7 +122,7 @@ object VocabularyExporter {
     (Namespace.ApiContract + "DomainExtension").iri()
   )
 
-  val blocklist: Map[ModelVocabulary, Seq[ModelVocabulary]] = Map()
+  val blacklist: Map[ModelVocabulary, Seq[ModelVocabulary]] = Map()
 
   val reflectionsExtensions = new Reflections(
     "amf.core.metamodel.domain.extensions",
@@ -163,17 +163,17 @@ object VocabularyExporter {
   }
 
   val emitProperties = false
-  def notBlocklisted(klasses: Seq[String],
+  def notBlacklisted(klasses: Seq[String],
                      vocabulary: ModelVocabulary): Seq[String] = {
-    val vocabBlocklist: Seq[ModelVocabulary] =
-      blocklist.getOrElse(vocabulary, Seq())
+    val vocabBlacklist: Seq[ModelVocabulary] =
+      blacklist.getOrElse(vocabulary, Seq())
     val res = klasses.filter { klassName =>
       val notConflictive = !conflictive.contains(klassName)
-      val notInBlocklist = !vocabBlocklist.exists { v: ModelVocabulary =>
+      val notInBlackList = !vocabBlacklist.exists { v: ModelVocabulary =>
         //println(s"Checking ${klassName} vs ${v.base} => ${klassName.startsWith(v.base)}")
         klassName.startsWith(v.base)
       }
-      notConflictive && notInBlocklist
+      notConflictive && notInBlackList
     }
 
     res
@@ -182,7 +182,7 @@ object VocabularyExporter {
   val ShaclShape: String = (Namespace.Shacl + "Shape").iri()
   val ShapesShape: String = (Namespace.Shapes + "Shape").iri()
   val AnyShape: String = (Namespace.Shapes + "AnyShape").iri()
-  def blocklistedSuperClass(klass: String, superClass: String): Boolean = {
+  def blacklistedSuperClass(klass: String, superClass: String): Boolean = {
     (klass, superClass) match {
       case (ShapesShape, ShaclShape) => false
       case (AnyShape, ShapesShape)   => false
@@ -264,9 +264,9 @@ object VocabularyExporter {
                                             externalDescription(classTerm.id))
                                   }
                                   val superClasses =
-                                    notBlocklisted(classTerm.superClasses,
+                                    notBlacklisted(classTerm.superClasses,
                                                    vocabulary).filter(sk =>
-                                      !blocklistedSuperClass(classTerm.id, sk))
+                                      !blacklistedSuperClass(classTerm.id, sk))
                                   if (superClasses.nonEmpty) {
                                     if (superClasses.length == 1) {
                                       b.entry("extends",
@@ -324,7 +324,7 @@ object VocabularyExporter {
                                       externalDescription(propertyTerm.id))
                                   }
                                   val superProperties =
-                                    notBlocklisted(propertyTerm.superClasses,
+                                    notBlacklisted(propertyTerm.superClasses,
                                                    vocabulary)
                                   if (superProperties.nonEmpty) {
                                     if (propertyTerm.superClasses.length == 1) {
@@ -349,7 +349,7 @@ object VocabularyExporter {
                                             propertyTerm.scalarRange.get)
                                   }
                                   if (propertyTerm.objectRange.nonEmpty) {
-                                    if (notBlocklisted(
+                                    if (notBlacklisted(
                                           Seq(propertyTerm.objectRange.get),
                                           vocabulary).nonEmpty) {
                                       b.entry(
