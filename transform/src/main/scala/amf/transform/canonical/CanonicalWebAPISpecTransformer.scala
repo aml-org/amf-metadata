@@ -224,7 +224,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
 
   private def parseRdfToInstance(model: RdfModel, baseUnitId: String): BaseUnit = {
     val plugins = PluginContext(
-      blacklist = Seq(CorePlugin, APIDomainPlugin, DataShapesDomainPlugin, AMFGraphPlugin, Raml10Plugin))
+      blockedPlugins = Seq(CorePlugin, APIDomainPlugin, DataShapesDomainPlugin, AMFGraphPlugin, Raml10Plugin))
 
     RdfModelParser(errorHandler = UnhandledParserErrorHandler, plugins = plugins)
       .parse(model, baseUnitId)
