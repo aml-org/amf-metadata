@@ -19,7 +19,7 @@ trait VocabularyTest extends NativeOpsFromJvm with PlatformSecrets {
   def testVocabulary(file: String, numClasses: Int, numProperties: Int): Future[Assertion] = {
     val config = AMLConfiguration.predefined().withErrorHandlerProvider(() => UnhandledErrorHandler)
     for {
-      unit <- config.createClient().parse(s"file://${file}").map(_.bu)
+      unit <- config.baseUnitClient().parse(s"file://${file}").map(_.baseUnit)
     } yield {
       val declarations = unit.asInstanceOf[Vocabulary].declares
 

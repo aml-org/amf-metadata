@@ -88,17 +88,17 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
       config <- CanonicalDialectRegistration.registerDialect(APIConfiguration.API())
       transformed <- canonicalTransform(amfWebApi, config)
       yamlDiffOk <- diff(goldenYaml) { () =>
-        val client = config.withRenderOptions(RenderOptions().withNodeIds).createClient()
+        val client = config.withRenderOptions(RenderOptions().withNodeIds).baseUnitClient()
         client.render(transformed, Vendor.AML.mediaType + "+yaml")
       }
       jsonDiffOk <- diff(goldenJson) { () =>
-        val client = config.withRenderOptions(RenderOptions().withPrettyPrint).createClient()
+        val client = config.withRenderOptions(RenderOptions().withPrettyPrint).baseUnitClient()
         client.render(transformed, Vendor.AMF.mediaType)
       }
       report <- {
-        config.createClient().validate(
+        config.baseUnitClient().validate(
           transformed,
-          ProfileName(CanonicalWebAPISpecTransformer.CANONICAL_WEBAPI_NAME)
+          ProfileName(CanonicalWebAPISpecTransformer.CANONICAL_WEBAPI_DIALECT_NAME)
         )
       }
       reportOk <- assert(report.conforms)

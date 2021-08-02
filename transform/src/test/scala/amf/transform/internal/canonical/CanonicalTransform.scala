@@ -16,7 +16,7 @@ trait CanonicalTransform extends PlatformSecrets {
 
   def canonicalTransform(webApiPath: String, conf: AMFConfiguration): Future[BaseUnit] = {
     for {
-      unit        <- conf.createClient().parse(webApiPath).map(_.bu)
+      unit        <- conf.baseUnitClient().parse(webApiPath).map(_.baseUnit)
       transformed <- Future.successful(new ClientScalaTransformer().transform(unit, conf))
     } yield {
       transformed

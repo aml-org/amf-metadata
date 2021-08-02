@@ -7,6 +7,7 @@ import amf.aml.internal.entities.AMLEntities
 import amf.aml.internal.parse.plugin.AMLDialectInstanceParsingPlugin
 import amf.core.client.scala.AMFGraphConfiguration
 import amf.core.client.scala.model.document.BaseUnit
+import amf.core.client.scala.rdf.RdfUnitConverter.toNativeRdfModel
 import amf.core.client.scala.rdf.{RdfModel, RdfUnitConverter}
 import amf.core.client.scala.vocabulary.Namespace
 import amf.core.client.scala.vocabulary.Namespace.XsdTypes
@@ -22,12 +23,13 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   type TypeUri          = String
   type DialectNode      = String
 
-  val CANONICAL_WEBAPI_NAME = "WebAPI Spec 1.0"
+  val CANONICAL_WEBAPI_DIALECT_NAME = "WebAPI Spec"
+  val CANONICAL_WEBAPI_DIALECT_VERSION = "1.0"
 
   /**
    * Transforms a WebAPI model parsed by AMF from a RAML/OAS document into a canonical WebAPI model compatible with the canonical WebAPI AML dialect
    */
-  def transform(unit: BaseUnit, config: AMFGraphConfiguration): BaseUnit = cleanAMFModel(unit, config)
+  def transform(unit: BaseUnit, config: AMLConfiguration): BaseUnit = cleanAMFModel(unit, config)
 
   /**
    * Cleans the input WebAPI model adding the required information to the
@@ -37,16 +39,16 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
    * @param unit a AMF WebAPI model parsed from RAML / OAS
    * @return Equivalent Canonical WebAPI AML dialect instance
    */
-  protected def cleanAMFModel(unit: BaseUnit, config: AMFGraphConfiguration): BaseUnit = {
+  protected def cleanAMFModel(unit: BaseUnit, config: AMLConfiguration): BaseUnit = {
     val webApiDialect: Dialect = findWebAPIDialect(config)
     val typeMapping = buildCanonicalClassMapping(webApiDialect)
-    val model       = RdfUnitConverter.toNativeRdfModel(unit)
+    val model       = toNativeRdfModel(unit)
 
     val nativeModel = model.native().asInstanceOf[Model]
 
     val baseUnitId = preProcessUnits(nativeModel, webApiDialect)
 
-    updateToDialectInstance(nativeModel, baseUnitId, webApiDialect)
+    linkModelToDialect(nativeModel, baseUnitId, webApiDialect)
 
     // transform dynamic data nodes to list the properties
     transformDataNodes(typeMapping, nativeModel)
@@ -70,17 +72,15 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   }
 
 
-  protected def findWebAPIDialect(config: AMFGraphConfiguration): Dialect = {
-    val dialect = config.registry.plugins.parsePlugins.collect {
-      case plugin: AMLDialectInstanceParsingPlugin => plugin.dialect
-    }.find(_.nameAndVersion() == CANONICAL_WEBAPI_NAME)
+  protected def findWebAPIDialect(config: AMLConfiguration): Dialect = {
+    val dialect = config.configurationState().getDialect(CANONICAL_WEBAPI_DIALECT_NAME, CANONICAL_WEBAPI_DIALECT_VERSION)
     dialect match {
       case Some(r) => r
       case None => throw CanonicalDialectNotFoundException("Cannot find WebAPI 1.0 Dialect in Dialect registry")
     }
   }
 
-  private def updateToDialectInstance(nativeModel: Model, baseUnitId: String, dialect: Dialect) = {
+  private def linkModelToDialect(nativeModel: Model, baseUnitId: String, dialect: Dialect) = {
     nativeModel.add(
       nativeModel.createResource(baseUnitId),
       nativeModel.createProperty((Namespace.Meta + "definedBy").iri()),

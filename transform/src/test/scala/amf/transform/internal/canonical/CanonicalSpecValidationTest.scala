@@ -40,9 +40,9 @@ trait CanonicalSpecValidationTest extends AsyncFunSuite with CanonicalTransform 
       config <- CanonicalDialectRegistration.registerDialect(APIConfiguration.API())
       transformed <- canonicalTransform(apiPath, config)
       report <- {
-        config.createClient().validate(
+        config.baseUnitClient().validate(
           transformed,
-          ProfileName(CanonicalWebAPISpecTransformer.CANONICAL_WEBAPI_NAME)
+          ProfileName(CanonicalWebAPISpecTransformer.CANONICAL_WEBAPI_DIALECT_NAME)
         )
       }
     } yield {

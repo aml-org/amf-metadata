@@ -20,10 +20,10 @@ class ClientCanonicalTransformTest extends AsyncFunSuite with NativeOpsFromJvm w
   test("Test client interfaces of the canonical transoformation") {
     val file = "file://transform/src/test/resources/client/api.raml"
     val golden = "file://transform/src/test/resources/client/webapi.canonical.jsonld"
-    val options = new RenderOptions().withCompactUris.withSourceMaps.withPrettyPrint
+    val options = new RenderOptions().withCompactUris().withSourceMaps().withPrettyPrint()
     for {
       config   <- RAMLConfiguration.RAML10().withRenderOptions(options).withDialect(CanonicalTransform.CANONICAL_WEBAPI_DIALECT).asFuture
-      client   <- Future.successful(config.createClient())
+      client   <- Future.successful(config.baseUnitClient())
       unit     <- client.parse(file).asFuture.map(_.baseUnit)
       transformed <- Future.successful(new CanonicalWebAPISpecTransformer().transform(unit, config))
       render <- Future.successful(client.render(transformed, ProvidedMediaType.AMF))
