@@ -90,6 +90,7 @@ pipeline {
           branch 'master'
           branch 'develop'
           branch 'remod-breaking'
+          branch 'beta-releases'
         }
         expression { hasChangesIn("transform", "transform") || isDevelop() }
       }
@@ -115,6 +116,7 @@ pipeline {
       when {
         anyOf {
           branch 'master'
+          branch 'beta-releases'
         }
       }
       steps {
@@ -163,6 +165,7 @@ pipeline {
         anyOf {
           branch 'master'
           branch 'develop'
+          branch 'beta-releases'
         }
       }
       steps {
