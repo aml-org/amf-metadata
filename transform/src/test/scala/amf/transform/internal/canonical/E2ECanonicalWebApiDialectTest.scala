@@ -1,10 +1,11 @@
 package amf.transform.internal.canonical
 
+import amf.aml.client.scala.AMLConfiguration
 import amf.apicontract.client.scala.APIConfiguration
-import amf.core.client.common.validation.ProfileName
 import amf.core.client.scala.config.RenderOptions
-import amf.core.internal.remote.{Async20YamlHint, Hint, Oas20JsonHint, Raml10YamlHint, Vendor}
+import amf.core.internal.remote.{Async20YamlHint, Hint, Mimes, Raml10YamlHint}
 import amf.io.FunSuiteCycleTests
+import amf.transform.internal.canonical.CanonicalDialectRegistration.registerDialect
 import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers
 
@@ -63,7 +64,7 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
   test("Test that canonical transform raises exception on Recursive Unit") {
     val transformRecursive = {
       for {
-        conf <- CanonicalDialectRegistration.registerDialect(APIConfiguration.API())
+        conf <- registerDialect(APIConfiguration.API())
         _ <- canonicalTransform(s"${basePath}/recursive-unit/root.json", conf)
       } yield assert(false)
     }
@@ -84,22 +85,21 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
     val goldenYaml = s"$basePath$target.yaml"
     val goldenJson = s"$basePath$target.json"
 
+    val loadedConfig = registerDialect(AMLConfiguration.predefined())
+
     for {
-      config <- CanonicalDialectRegistration.registerDialect(APIConfiguration.API())
+      config <- loadedConfig
       transformed <- canonicalTransform(amfWebApi, config)
       yamlDiffOk <- diff(goldenYaml) { () =>
         val client = config.withRenderOptions(RenderOptions().withNodeIds).baseUnitClient()
-        client.render(transformed, Vendor.AML.mediaType + "+yaml")
+        client.render(transformed)
       }
       jsonDiffOk <- diff(goldenJson) { () =>
         val client = config.withRenderOptions(RenderOptions().withPrettyPrint).baseUnitClient()
-        client.render(transformed, Vendor.AMF.mediaType)
+        client.render(transformed, Mimes.`application/ld+json`)
       }
       report <- {
-        config.baseUnitClient().validate(
-          transformed,
-          ProfileName(CanonicalWebAPISpecTransformer.CANONICAL_WEBAPI_DIALECT_NAME)
-        )
+        config.baseUnitClient().validate(transformed)
       }
       reportOk <- assert(report.conforms)
     } yield {

@@ -1,12 +1,12 @@
 package amf.transform.internal.canonical
 
-import amf.core.internal.remote.{Hint, Raml10YamlHint}
+import amf.core.internal.remote.{Hint, Raml10YamlHint, Spec}
 
 class Raml10CanonicalValidationTest extends CanonicalSpecValidationTest {
 
   override val basePath: String = "file://transform/src/test/resources/specs/raml10/"
 
-  override val hint: Hint = Raml10YamlHint
+  override val spec: Spec = Spec.RAML10
   override val apiPaths = Set(
     "full-example.raml",
     "base-type-array.raml",

@@ -1,10 +1,10 @@
 package amf.client
 
-import amf.apicontract.client.common.ProvidedMediaType
 import amf.apicontract.client.platform.RAMLConfiguration
 import amf.core.client.platform.config.RenderOptions
 import amf.core.client.platform.execution.{DefaultExecutionEnvironment, ExecutionEnvironment}
 import amf.core.internal.convert.NativeOpsFromJvm
+import amf.core.internal.remote.Mimes
 import amf.io.FileAssertionTest
 import amf.transform.client.platform.CanonicalWebAPISpecTransformer
 import amf.transform.internal.canonical.CanonicalTransform
@@ -26,7 +26,7 @@ class ClientCanonicalTransformTest extends AsyncFunSuite with NativeOpsFromJvm w
       client   <- Future.successful(config.baseUnitClient())
       unit     <- client.parse(file).asFuture.map(_.baseUnit)
       transformed <- Future.successful(new CanonicalWebAPISpecTransformer().transform(unit, config))
-      render <- Future.successful(client.render(transformed, ProvidedMediaType.AMF))
+      render <- Future.successful(client.render(transformed, Mimes.`application/ld+json`))
       actual <- writeTemporaryFile(golden)(render)
       r      <- assertDifferences(actual, golden)
     } yield {
