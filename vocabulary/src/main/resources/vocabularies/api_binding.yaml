@@ -1,4 +1,5 @@
 #%Vocabulary 1.0
+vocabulary: apiBinding
 base: http://a.ml/vocabularies/apiBinding#
 usage: API binding vocabulary
 uses:

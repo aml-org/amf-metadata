@@ -1,4 +1,5 @@
 #%Vocabulary 1.0
+vocabulary: shapes
 base: http://a.ml/vocabularies/shapes#
 usage: Vocabulary defining data shapes, used as an extension to SHACL
 uses:

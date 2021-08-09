@@ -191,6 +191,7 @@ object VocabularyExporter {
       b.comment("%Vocabulary 1.0")
       b.obj {
         b =>
+          b.entry("vocabulary", vocabulary.alias)
           b.entry("base", vocabulary.base)
           b.entry("usage", vocabulary.usage)
 
