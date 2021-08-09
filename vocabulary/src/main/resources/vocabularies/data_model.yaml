@@ -1,4 +1,5 @@
 #%Vocabulary 1.0
+vocabulary: data
 base: http://a.ml/vocabularies/data#
 usage: |-
   Vocabulary defining a default set of classes to map data structures composed of recursive records of fields,

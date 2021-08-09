@@ -1,4 +1,5 @@
 #%Vocabulary 1.0
+vocabulary: owl
 base: http://www.w3.org/2002/07/owl#
 usage: OWL2 vocabulary
 external:
