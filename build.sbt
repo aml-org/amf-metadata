@@ -53,6 +53,7 @@ lazy val transform = project
     libraryDependencies += "org.apache.jena" % "jena-shacl" % "3.17.0"
   )
   .sourceDependency(amfApiContractRef, amfApiContractLibJVM)
+  .sourceDependency(amfRdfRef, amfRdfLibJVM)
   .disablePlugins(SonarPlugin)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Exporters ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -4,15 +4,13 @@ import amf.aml.client.scala.AMLConfiguration
 import amf.aml.client.scala.model.document.Dialect
 import amf.aml.client.scala.model.domain.NodeMapping
 import amf.aml.internal.entities.AMLEntities
-import amf.aml.internal.parse.plugin.AMLDialectInstanceParsingPlugin
-import amf.core.client.scala.AMFGraphConfiguration
 import amf.core.client.scala.model.document.BaseUnit
-import amf.core.client.scala.rdf.RdfUnitConverter.toNativeRdfModel
-import amf.core.client.scala.rdf.{RdfModel, RdfUnitConverter}
 import amf.core.client.scala.vocabulary.Namespace
 import amf.core.client.scala.vocabulary.Namespace.XsdTypes
 import amf.core.internal.metamodel.document.BaseUnitModel
 import amf.core.internal.unsafe.PlatformSecrets
+import amf.rdf.client.scala.RdfUnitConverter.toNativeRdfModel
+import amf.rdf.client.scala.{RdfModel, RdfUnitConverter}
 import org.apache.jena.rdf.model.{Model, Statement}
 
 import scala.collection.JavaConverters._
