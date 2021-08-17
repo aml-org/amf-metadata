@@ -1,6 +1,6 @@
 package amf.transform.canonical
 
-import amf.core.parser.errorhandler.UnhandledParserErrorHandler
+import amf.client.parse.DefaultParserErrorHandler
 import amf.core.remote.VocabularyYamlHint
 import amf.core.unsafe.PlatformSecrets
 import amf.facades.AMFCompiler
@@ -23,7 +23,7 @@ case class CanonicalDialectRegistration() extends DialectRegistration with Platf
   def registerDialect(): Future[Unit] =
     for {
       _ <- Future.successful(amf.Core.registerPlugin(AMLPlugin))
-      d <- AMFCompiler(CanonicalTransform.CANONICAL_WEBAPI_DIALECT, platform, VocabularyYamlHint, eh = UnhandledParserErrorHandler).build()
+      d <- AMFCompiler(CanonicalTransform.CANONICAL_WEBAPI_DIALECT, platform, VocabularyYamlHint, eh = DefaultParserErrorHandler.withRun()).build()
     } yield {
       AMLPlugin().registry.resolveRegisteredDialect(d.asInstanceOf[Dialect].header)
     }
