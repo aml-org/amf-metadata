@@ -4,6 +4,7 @@ import amf.client.parse.DefaultParserErrorHandler
 import amf.core.parser.errorhandler.UnhandledParserErrorHandler
 import amf.core.remote.VocabularyYamlHint
 import amf.core.unsafe.PlatformSecrets
+import amf.core.validation.SeverityLevels
 import amf.facades.{AMFCompiler, Validation}
 import org.scalatest.funsuite.AsyncFunSuite
 import org.scalatest.matchers.should.Matchers
@@ -19,7 +20,7 @@ class DialectProductionTest extends AsyncFunSuite with PlatformSecrets with Matc
       _ <- AMFCompiler(s"file://$canonicalWebApiDialect", platform, VocabularyYamlHint, eh = errorHandler)
         .build()
     } yield {
-      errorHandler.getErrors shouldBe empty
+      errorHandler.getErrors.filter(_.severityLevel == SeverityLevels.VIOLATION) shouldBe empty
     }
   }
 }
