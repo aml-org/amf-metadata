@@ -7,7 +7,10 @@ import amf.aml.internal.entities.AMLEntities
 import amf.core.client.scala.model.document.BaseUnit
 import amf.core.client.scala.vocabulary.Namespace
 import amf.core.client.scala.vocabulary.Namespace.XsdTypes
+import amf.core.internal.entities.CoreEntities
+import amf.core.internal.metamodel.ModelDefaultBuilder
 import amf.core.internal.metamodel.document.BaseUnitModel
+import amf.core.internal.plugins.document.graph.entities.AMFGraphEntities
 import amf.core.internal.unsafe.PlatformSecrets
 import amf.rdf.client.scala.RdfUnitConverter.toNativeRdfModel
 import amf.rdf.client.scala.{RdfModel, RdfUnitConverter}
@@ -53,7 +56,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
 
     transformDomainElements(typeMapping, nativeModel)
 
-    parseRdfToInstance(model, baseUnitId, webApiDialect)
+    parseRdfToInstance(model, baseUnitId, config, webApiDialect)
   }
 
   /**
@@ -214,9 +217,17 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   private def isRecursiveBaseUnit(uri: String) = uri.endsWith("recursive")
 
 
-  private def parseRdfToInstance(model: RdfModel, baseUnitId: String, webApiDialect: Dialect): BaseUnit = {
-    val withEntities = AMLConfiguration.empty().withEntities(AMLEntities.entities).withDialect(webApiDialect)
-    RdfUnitConverter.fromNativeRdfModel(baseUnitId, model, withEntities)
+  private def parseRdfToInstance(model: RdfModel, baseUnitId: String, config: AMLConfiguration, dialect: Dialect): BaseUnit = {
+    val nextConfig: AMLConfiguration = createConfigOnlyWithDialectEntities(config, dialect)
+    RdfUnitConverter.fromNativeRdfModel(baseUnitId, model, nextConfig)
+  }
+
+  private def createConfigOnlyWithDialectEntities(config: AMLConfiguration, dialect: Dialect) = {
+    val modelIds = dialect.declares.collect { case n: NodeMapping => n.id }
+    val entities = config.registry.entitiesRegistry.domainEntities
+    val dialectEntities = modelIds.foldLeft(Map[String, ModelDefaultBuilder]()) { (acc, curr) => acc + (curr -> entities(curr)) }
+    val nextConfig = AMLConfiguration.empty().withEntities(dialectEntities ++ AMLEntities.entities)
+    nextConfig
   }
 }
 
