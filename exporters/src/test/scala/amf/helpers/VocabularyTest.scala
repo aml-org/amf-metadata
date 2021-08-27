@@ -2,7 +2,7 @@ package amf.helpers
 
 import amf.client.AMF
 import amf.client.convert.NativeOpsFromJvm
-import amf.core.parser.errorhandler.UnhandledParserErrorHandler
+import amf.client.parse.DefaultParserErrorHandler
 import amf.core.remote.VocabularyYamlHint
 import amf.core.unsafe.PlatformSecrets
 import amf.facades.AMFCompiler
@@ -20,7 +20,7 @@ trait VocabularyTest extends NativeOpsFromJvm with PlatformSecrets {
   def testVocabulary(file: String, numClasses: Int, numProperties: Int): Future[Assertion] = {
     for {
       _ <- AMF.init().asFuture
-      unit <- AMFCompiler(s"file://${file}", platform, VocabularyYamlHint, eh = UnhandledParserErrorHandler).build()
+      unit <- AMFCompiler(s"file://${file}", platform, VocabularyYamlHint, eh = DefaultParserErrorHandler.withRun()).build()
     } yield {
       val declarations = unit.asInstanceOf[Vocabulary].declares
 
