@@ -1,4 +1,5 @@
 #%Vocabulary 1.0
+vocabulary: doc
 base: http://a.ml/vocabularies/document#
 usage: Document Model vocabulary for AMF. The Document Model defines the basic modular units where domain descriptions can be encoded.
 uses:
@@ -141,6 +142,10 @@ propertyTerms:
   location:
     displayName: location
     description: Location of an inlined fragment
+    range: string
+  package:
+    displayName: package
+    description: Logical identifier providing a common namespace for the information in this base unit
     range: string
   raw:
     displayName: raw

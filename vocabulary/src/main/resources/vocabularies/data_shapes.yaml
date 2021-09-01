@@ -1,4 +1,5 @@
 #%Vocabulary 1.0
+vocabulary: shapes
 base: http://a.ml/vocabularies/shapes#
 usage: Vocabulary defining data shapes, used as an extension to SHACL
 uses:
@@ -202,6 +203,14 @@ propertyTerms:
   schemaTarget:
     displayName: schemaTarget
     description: Target applied shape in the dependency
+    range: shacl.Shape
+  serializationOrder:
+    displayName: serializationOrder
+    description: position in the set of properties for a shape used to serialize this property on the wire
+    range: integer
+  serializationSchema:
+    displayName: serializationSchema
+    description: Serialization schema for a shape
     range: shacl.Shape
   unevaluatedItems:
     displayName: unevaluatedItems

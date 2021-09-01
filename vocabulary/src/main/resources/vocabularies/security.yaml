@@ -1,4 +1,5 @@
 #%Vocabulary 1.0
+vocabulary: security
 base: http://a.ml/vocabularies/security#
 usage: Vocabulary for HTTP security information
 uses:

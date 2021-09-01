@@ -1,4 +1,5 @@
 #%Vocabulary 1.0
+vocabulary: shacl
 base: http://www.w3.org/ns/shacl#
 usage: SHACL vocabulary
 external:
@@ -19,6 +20,10 @@ classTerms:
     displayName: Shape
     description: shacl:Shape is the SHACL superclass of those two shape types in the SHACL vocabulary. Its subclasses shacl:NodeShape and shacl:PropertyShape can be used as SHACL type of node and property shapes, respectively.
 propertyTerms:
+  additionalPropertiesKeySchema:
+    displayName: additionalPropertiesKeySchema
+    description: Additional properties key schema
+    range: Shape
   additionalPropertiesSchema:
     displayName: additionalPropertiesSchema
     description: Additional properties schema

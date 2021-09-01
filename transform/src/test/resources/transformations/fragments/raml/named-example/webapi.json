@@ -24,7 +24,7 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/document#raw": "#%RAML 1.0 NamedExample\nvalue:\n  ID: 1\n  code: GQ574\n  price: 399\n  departureDate: 2016/12/20\n  origin: ORD\n  destination: SFO\n  emptySeats: 200\n  plane:\n    type: Boeing 747\n    totalSeats: 400",
-      "http://a.ml/vocabularies/core#mediaType": "application/raml+yaml"
+      "http://a.ml/vocabularies/core#mediaType": "application/yaml"
     },
     {
       "@id": "file://transform/src/test/resources/transformations/fragments/raml/named-example/api.raml",

@@ -13,7 +13,7 @@ class DialectProductionTest extends AsyncFunSuite with PlatformSecrets with Matc
   test("Canonical Web Api Dialect should be valid according to AMF") {
     val config = AMLConfiguration.predefined()
     for {
-      result <- config.createClient().parse(s"file://$canonicalWebApiDialect")
+      result <- config.baseUnitClient().parse(s"file://$canonicalWebApiDialect")
     } yield {
       result.results shouldBe empty
     }

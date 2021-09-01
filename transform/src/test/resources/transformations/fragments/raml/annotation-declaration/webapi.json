@@ -23,15 +23,15 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
-      "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema"
-      },
       "http://a.ml/vocabularies/core#name": "annotation",
       "http://www.w3.org/2000/01/rdf-schema#domain": [
         {
           "@id": "http://a.ml/vocabularies/apiContract#Operation"
         }
-      ]
+      ],
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema"
+      }
     },
     {
       "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema",

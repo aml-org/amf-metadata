@@ -1,4 +1,5 @@
 #%Vocabulary 1.0
+vocabulary: meta
 base: http://a.ml/vocabularies/meta#
 usage: Vocabulary containing meta-definitions
 uses:

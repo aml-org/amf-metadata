@@ -17,6 +17,8 @@ lazy val workspaceDirectory: File =
     case _       => Path.userHome / "mulesoft"
   }
 
+lazy val amfRdfLibJVM = "com.github.amlorg" %% "amf-rdf" % dependencies.amfRdfVersion
+lazy val amfRdfRef    = ProjectRef(workspaceDirectory / "amf-aml", "rdfJVM")
 lazy val amfApiContractLibJVM = "com.github.amlorg" %% "amf-api-contract" % dependencies.amfVersion
 lazy val amfApiContractRef    = ProjectRef(workspaceDirectory / "amf", "apiContractJVM")
 
@@ -47,9 +49,11 @@ lazy val transform = project
     commonSettings,
     name := "amf-transform",
     version := artifactVersions.transformVersion,
-    libraryDependencies ++= commonDependencies
+    libraryDependencies ++= commonDependencies,
+    libraryDependencies += "org.apache.jena" % "jena-shacl" % "3.17.0"
   )
   .sourceDependency(amfApiContractRef, amfApiContractLibJVM)
+  .sourceDependency(amfRdfRef, amfRdfLibJVM)
   .disablePlugins(SonarPlugin)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Exporters ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,6 +82,7 @@ val commonSettings = Common.settings ++ Common.publish ++ Seq(
 lazy val dependencies = new {
   val scalaTestVersion = "3.1.2"
   val amfVersion       = versions("transform/dependencies.properties")("amf.apicontract")
+  val amfRdfVersion       = versions("transform/dependencies.properties")("amf.rdf")
 
   val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion % Test
 }

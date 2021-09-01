@@ -1,4 +1,5 @@
 #%Vocabulary 1.0
+vocabulary: core
 base: http://a.ml/vocabularies/core#
 usage: Core vocabulary with common classes and properties
 classTerms:

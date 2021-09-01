@@ -63,6 +63,7 @@ pipeline {
           branch 'master'
           branch 'develop'
           branch 'release/*'
+          branch 'remod-breaking'
         }
         expression { hasChangesIn("vocabulary", "vocabulary") || isDevelop() }
       }
@@ -90,6 +91,7 @@ pipeline {
           branch 'master'
           branch 'develop'
           branch 'release/*'
+          branch 'remod-breaking'
         }
         expression { hasChangesIn("transform", "transform") || isDevelop() }
       }
