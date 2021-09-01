@@ -23,7 +23,7 @@ encodes:
       $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel
       supportedOperation:
         -
-          $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/publish
+          $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/something
           extends:
             -
               type: SimpleTrait

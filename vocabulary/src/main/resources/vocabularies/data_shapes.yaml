@@ -204,6 +204,14 @@ propertyTerms:
     displayName: schemaTarget
     description: Target applied shape in the dependency
     range: shacl.Shape
+  serializationOrder:
+    displayName: serializationOrder
+    description: position in the set of properties for a shape used to serialize this property on the wire
+    range: integer
+  serializationSchema:
+    displayName: serializationSchema
+    description: Serialization schema for a shape
+    range: shacl.Shape
   unevaluatedItems:
     displayName: unevaluatedItems
     description: Accepts that items may not be evaluated in schema validation

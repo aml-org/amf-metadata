@@ -59,13 +59,13 @@
       ],
       "http://a.ml/vocabularies/apiContract#supportedOperation": [
         {
-          "@id": "file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/publish"
+          "@id": "file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/something"
         }
       ],
       "http://a.ml/vocabularies/apiContract#path": "aChannel"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/publish",
+      "@id": "file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/something",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Operation",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",

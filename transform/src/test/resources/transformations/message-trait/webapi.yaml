@@ -22,7 +22,7 @@ encodes:
       $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel
       supportedOperation:
         -
-          $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/publish
+          $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/something
           expects:
             -
               $id: file://transform/src/test/resources/transformations/message-trait/api.yaml#/async-api/end-points/aChannel/publish/request

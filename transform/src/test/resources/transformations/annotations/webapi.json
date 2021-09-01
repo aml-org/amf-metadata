@@ -59,10 +59,10 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
+      "http://a.ml/vocabularies/core#name": "simple",
       "http://a.ml/vocabularies/shapes#schema": {
         "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/simple/scalar/schema"
-      },
-      "http://a.ml/vocabularies/core#name": "simple"
+      }
     },
     {
       "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/clearanceLevel",
@@ -72,10 +72,10 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
+      "http://a.ml/vocabularies/core#name": "clearanceLevel",
       "http://a.ml/vocabularies/shapes#schema": {
         "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/clearanceLevel/schema"
-      },
-      "http://a.ml/vocabularies/core#name": "clearanceLevel"
+      }
     },
     {
       "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/arrAnot",
@@ -85,10 +85,10 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
+      "http://a.ml/vocabularies/core#name": "arrAnot",
       "http://a.ml/vocabularies/shapes#schema": {
         "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/arrAnot/array/schema"
-      },
-      "http://a.ml/vocabularies/core#name": "arrAnot"
+      }
     },
     {
       "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/annot",
@@ -98,10 +98,10 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
+      "http://a.ml/vocabularies/core#name": "annot",
       "http://a.ml/vocabularies/shapes#schema": {
         "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/annot/schema"
-      },
-      "http://a.ml/vocabularies/core#name": "annot"
+      }
     },
     {
       "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api",
@@ -487,12 +487,12 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
+      "http://a.ml/vocabularies/core#name": "clearanceLevel",
       "http://a.ml/vocabularies/document#design-link-target": [
         {
           "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/clearanceLevel"
         }
-      ],
-      "http://a.ml/vocabularies/core#name": "clearanceLevel"
+      ]
     },
     {
       "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/end-points/%2Ftest/arrAnot/array_1",
@@ -519,12 +519,12 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
+      "http://a.ml/vocabularies/core#name": "arrAnot",
       "http://a.ml/vocabularies/document#design-link-target": [
         {
           "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/arrAnot"
         }
-      ],
-      "http://a.ml/vocabularies/core#name": "arrAnot"
+      ]
     },
     {
       "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/end-points/%2Ftest/get/200",
@@ -796,12 +796,12 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
+      "http://a.ml/vocabularies/core#name": "simple",
       "http://a.ml/vocabularies/document#design-link-target": [
         {
           "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/simple"
         }
-      ],
-      "http://a.ml/vocabularies/core#name": "simple"
+      ]
     },
     {
       "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/end-points/%2Ftest/get/200/annot/object_1",
@@ -825,12 +825,12 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
+      "http://a.ml/vocabularies/core#name": "annot",
       "http://a.ml/vocabularies/document#design-link-target": [
         {
           "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declarations/annotations/annot"
         }
-      ],
-      "http://a.ml/vocabularies/core#name": "annot"
+      ]
     },
     {
       "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema/property/c",
