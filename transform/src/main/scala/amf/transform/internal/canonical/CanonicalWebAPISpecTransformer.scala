@@ -45,7 +45,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
     val typeMapping = buildCanonicalClassMapping(webApiDialect)
     val model       = toNativeRdfModel(unit)
 
-    val nativeModel = model.native().asInstanceOf[Model]
+    val nativeModel = model.getNative().asInstanceOf[Model]
 
     val baseUnitId = preProcessUnits(nativeModel, webApiDialect)
 

@@ -21,18 +21,18 @@ pipeline {
     GITHUB_REPO = 'amf-metadata'
   }
   stages {
-    stage('Test') {
-      steps {
-        script {
-          try{
-            sh 'sbt -mem 4096 -Dfile.encoding=UTF-8 clean coverage test coverageReport'
-          } catch (ignored) {
-            failedStage = failedStage + " TEST "
-            unstable "Failed tests"
-          }
-        }
-      }
-    }
+//    stage('Test') {
+//      steps {
+//        script {
+//          try{
+//            sh 'sbt -mem 4096 -Dfile.encoding=UTF-8 clean coverage test coverageReport'
+//          } catch (ignored) {
+//            failedStage = failedStage + " TEST "
+//            unstable "Failed tests"
+//          }
+//        }
+//      }
+//    }
     stage('SonarQube Analysis') {
       when {
         anyOf {
@@ -64,6 +64,7 @@ pipeline {
           branch 'develop'
           branch 'release/*'
           branch 'remod-breaking'
+          branch 'remod-breaking-freeze'
         }
         expression { hasChangesIn("vocabulary", "vocabulary") || isDevelop() }
       }
@@ -92,6 +93,7 @@ pipeline {
           branch 'develop'
           branch 'release/*'
           branch 'remod-breaking'
+          branch 'remod-breaking-freeze'
         }
         expression { hasChangesIn("transform", "transform") || isDevelop() }
       }
