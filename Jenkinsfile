@@ -95,6 +95,7 @@ pipeline {
           branch 'release/*'
           branch 'remod-breaking'
           branch 'remod-breaking-freeze'
+          branch 'APIMF-3039-publish'
         }
         expression { hasChangesIn("transform", "transform") || isDevelop() }
       }
