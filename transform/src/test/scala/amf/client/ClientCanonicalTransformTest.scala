@@ -2,6 +2,7 @@ package amf.client
 
 import amf.apicontract.client.platform.RAMLConfiguration
 import amf.core.client.platform.config.RenderOptions
+import amf.core.client.platform.errorhandling.ErrorHandlerProvider
 import amf.core.client.platform.execution.{DefaultExecutionEnvironment, ExecutionEnvironment}
 import amf.core.internal.convert.NativeOpsFromJvm
 import amf.core.internal.remote.Mimes
@@ -22,7 +23,7 @@ class ClientCanonicalTransformTest extends AsyncFunSuite with NativeOpsFromJvm w
     val golden = "file://transform/src/test/resources/client/webapi.canonical.jsonld"
     val options = new RenderOptions().withCompactUris().withSourceMaps().withPrettyPrint()
     for {
-      config   <- RAMLConfiguration.RAML10().withRenderOptions(options).withDialect(CanonicalTransform.CANONICAL_WEBAPI_DIALECT).asFuture
+      config   <- RAMLConfiguration.RAML10().withErrorHandlerProvider(ErrorHandlerProvider.unhandled()).withRenderOptions(options).withDialect(CanonicalTransform.CANONICAL_WEBAPI_DIALECT).asFuture
       client   <- Future.successful(config.baseUnitClient())
       unit     <- client.parse(file).asFuture.map(_.baseUnit)
       transformed <- Future.successful(new CanonicalWebAPISpecTransformer().transform(unit, config))

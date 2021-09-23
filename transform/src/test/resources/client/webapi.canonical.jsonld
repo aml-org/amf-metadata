@@ -293,7 +293,7 @@
         "@id": "#/rootAsset"
       },
       "raml-doc:version": "3.1.0",
-      "raml-doc:root": false
+      "raml-doc:root": true
     }
   ],
   "@context": {
