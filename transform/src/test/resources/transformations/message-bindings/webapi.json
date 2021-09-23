@@ -180,7 +180,7 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/rootAsset"
       },
-      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#processingData": {
         "@id": "null/BaseUnitProcessingData"
       }

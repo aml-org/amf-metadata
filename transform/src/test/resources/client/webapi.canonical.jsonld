@@ -298,7 +298,7 @@
       "raml-doc:encodes": {
         "@id": "#/rootAsset"
       },
-      "raml-doc:root": false,
+      "raml-doc:root": true,
       "raml-doc:processingData": {
         "@id": "null/BaseUnitProcessingData"
       }

@@ -144,7 +144,7 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/raml-library/api.raml#/rootAsset"
       },
-      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#processingData": {
         "@id": "null/BaseUnitProcessingData"
       }

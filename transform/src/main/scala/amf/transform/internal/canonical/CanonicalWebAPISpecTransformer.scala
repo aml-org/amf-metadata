@@ -7,10 +7,8 @@ import amf.aml.internal.entities.AMLEntities
 import amf.core.client.scala.model.document.BaseUnit
 import amf.core.client.scala.vocabulary.Namespace
 import amf.core.client.scala.vocabulary.Namespace.XsdTypes
-import amf.core.internal.entities.CoreEntities
 import amf.core.internal.metamodel.ModelDefaultBuilder
-import amf.core.internal.metamodel.document.BaseUnitModel
-import amf.core.internal.plugins.document.graph.entities.AMFGraphEntities
+import amf.core.internal.metamodel.document.{BaseUnitModel, DocumentModel}
 import amf.core.internal.unsafe.PlatformSecrets
 import amf.rdf.client.scala.RdfUnitConverter.toNativeRdfModel
 import amf.rdf.client.scala.{RdfModel, RdfUnitConverter}
@@ -128,8 +126,14 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
     // connect the new root with the old root encoded as a domain element
     nativeModel.add(
       nextTopLevelUnit,
-      nativeModel.createProperty((Namespace.Document + "encodes").iri()),
+      nativeModel.createProperty(DocumentModel.Encodes.value.iri()),
       nativeModel.createResource(encodedElement)
+    )
+
+    nativeModel.add(
+      nextTopLevelUnit,
+      nativeModel.createProperty(BaseUnitModel.Root.value.iri()),
+      nativeModel.createTypedLiteral("true", XsdTypes.xsdBoolean.iri())
     )
   }
 
