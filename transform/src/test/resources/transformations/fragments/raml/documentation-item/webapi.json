@@ -1,6 +1,14 @@
 {
   "@graph": [
     {
+      "@id": "null/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData",
+        "http://a.ml/vocabularies/document#BaseUnitProcessingData"
+      ],
+      "http://a.ml/vocabularies/document#transformed": false
+    },
+    {
       "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml#/rootAsset",
       "@type": [
         "http://a.ml/vocabularies/apiContract#UserDocumentationFragment",
@@ -9,14 +17,13 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/document#encodes": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml/creative-work/Home"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml#/creative-work/Home"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml/creative-work/Home",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml#/creative-work/Home",
       "@type": [
         "http://a.ml/vocabularies/core#CreativeWork",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/CreativeWork",
@@ -43,8 +50,10 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml#/rootAsset"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
-      "http://a.ml/vocabularies/document#root": false
+      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "null/BaseUnitProcessingData"
+      }
     }
   ]
 }

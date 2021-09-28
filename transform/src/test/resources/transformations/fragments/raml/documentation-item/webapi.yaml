@@ -1,6 +1,5 @@
 #%WebAPI Spec 1.0
 unitType: DocumentationItemFragment
 $id: file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml#/rootAsset
-version: 3.1.0
 root: true
 location: file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml

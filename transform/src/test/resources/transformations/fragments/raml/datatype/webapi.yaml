@@ -1,27 +1,26 @@
 #%WebAPI Spec 1.0
 unitType: DataTypeFragment
 $id: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/rootAsset
-version: 3.1.0
 root: true
 location: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml
 encodes:
   elementType: Node
-  $id: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type
+  $id: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type
   name: type
   property:
     -
-      $id: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane
+      $id: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane
       range:
         shapeType: Node
-        $id: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane
+        $id: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane
         name: plane
         description: the type of plane
         property:
           -
-            $id: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane/property/type
+            $id: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane/property/property/type
             range:
               shapeType: Scalar
-              $id: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane/property/type/scalar/type
+              $id: file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane/property/property/type/scalar/type
               name: type
               description: Aircraft specifications and type
               datatype: http://www.w3.org/2001/XMLSchema#string

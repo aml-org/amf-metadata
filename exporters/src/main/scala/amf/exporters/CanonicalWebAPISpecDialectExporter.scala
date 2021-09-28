@@ -4,6 +4,7 @@ import amf.core.client.scala.vocabulary.Namespace
 
 import java.io.{File, FileWriter, StringWriter, Writer}
 import amf.core.internal.metamodel.Type.Scalar
+import amf.core.internal.metamodel.document.BaseUnitModel
 import amf.core.internal.metamodel.{Field, Obj, Type}
 import amf.core.internal.metamodel.domain.{DataNodeModel, DomainElementModel, LinkableElementModel, ModelDoc, ModelVocabularies, ObjectNodeModel}
 import org.reflections.Reflections
@@ -195,7 +196,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     (Namespace.Document + "link-label").iri(),
     (Namespace.Document + "recursive").iri(),
     (Namespace.Document + "extends").iri(),
-    DomainElementModel.CustomDomainProperties.value.iri()
+    DomainElementModel.CustomDomainProperties.value.iri(),
+    BaseUnitModel.ProcessingData.value.iri()
   )
 
   val blocklistedSupertypes: Set[String] = Set(
@@ -213,7 +215,9 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
   val blocklistedMappings: Set[String] = Set(
     "LinkableElement",
     "DomainElement",
-    "SourceMap"
+    "SourceMap",
+    "APIContractProcessingData",
+    "BaseUnitProcessingData"
   )
 
   val shapeUnionDeclaration = "DataShapesUnion"
