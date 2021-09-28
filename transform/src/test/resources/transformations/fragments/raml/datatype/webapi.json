@@ -1,6 +1,13 @@
 {
   "@graph": [
     {
+      "@id": "null/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/document#transformed": false
+    },
+    {
       "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/rootAsset",
       "@type": [
         "http://a.ml/vocabularies/shapes#DataTypeFragment",
@@ -9,14 +16,13 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/document#encodes": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type",
       "@type": [
         "http://www.w3.org/ns/shacl#NodeShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
@@ -25,14 +31,14 @@
       ],
       "http://www.w3.org/ns/shacl#property": [
         {
-          "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane"
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane"
         }
       ],
       "http://www.w3.org/ns/shacl#closed": false,
       "http://www.w3.org/ns/shacl#name": "type"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane",
       "@type": [
         "http://www.w3.org/ns/shacl#PropertyShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
@@ -40,7 +46,7 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/shapes#range": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane"
       },
       "http://www.w3.org/ns/shacl#minCount": 1,
       "http://www.w3.org/ns/shacl#path": [
@@ -51,7 +57,7 @@
       "http://www.w3.org/ns/shacl#name": "plane"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane",
       "@type": [
         "http://www.w3.org/ns/shacl#NodeShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
@@ -60,7 +66,7 @@
       ],
       "http://www.w3.org/ns/shacl#property": [
         {
-          "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane/property/type"
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane/property/property/type"
         }
       ],
       "http://www.w3.org/ns/shacl#closed": false,
@@ -68,7 +74,7 @@
       "http://a.ml/vocabularies/core#description": "the type of plane"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane/property/type",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane/property/property/type",
       "@type": [
         "http://www.w3.org/ns/shacl#PropertyShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
@@ -76,7 +82,7 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/shapes#range": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane/property/type/scalar/type"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane/property/property/type/scalar/type"
       },
       "http://www.w3.org/ns/shacl#minCount": 1,
       "http://www.w3.org/ns/shacl#path": [
@@ -87,7 +93,7 @@
       "http://www.w3.org/ns/shacl#name": "type"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane/property/type/scalar/type",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane/property/property/type/scalar/type",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -119,8 +125,10 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/rootAsset"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
-      "http://a.ml/vocabularies/document#root": false
+      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "null/BaseUnitProcessingData"
+      }
     }
   ]
 }

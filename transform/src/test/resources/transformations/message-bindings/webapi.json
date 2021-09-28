@@ -1,6 +1,13 @@
 {
   "@graph": [
     {
+      "@id": "null/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/document#transformed": false
+    },
+    {
       "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/rootAsset",
       "@type": [
         "http://a.ml/vocabularies/document#Document",
@@ -11,7 +18,6 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/message-bindings/api.yaml"
     },
@@ -27,12 +33,12 @@
       "http://a.ml/vocabularies/core#version": "1.0.0",
       "http://a.ml/vocabularies/apiContract#endpoint": [
         {
-          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel"
+          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel"
         }
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel",
       "@type": [
         "http://a.ml/vocabularies/apiContract#EndPoint",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
@@ -41,13 +47,13 @@
       ],
       "http://a.ml/vocabularies/apiContract#supportedOperation": [
         {
-          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish"
+          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish"
         }
       ],
       "http://a.ml/vocabularies/apiContract#path": "some-channel"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Operation",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
@@ -56,13 +62,13 @@
       ],
       "http://a.ml/vocabularies/apiContract#expects": [
         {
-          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request"
+          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request"
         }
       ],
       "http://a.ml/vocabularies/apiContract#method": "publish"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Request",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Request",
@@ -70,11 +76,11 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/apiBinding#binding": {
-        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings"
+        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings",
       "@type": [
         "http://a.ml/vocabularies/apiBinding#MessageBindings",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/MessageBindings",
@@ -83,15 +89,15 @@
       ],
       "http://a.ml/vocabularies/apiBinding#bindings": [
         {
-          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/kafka-message"
+          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message"
         },
         {
-          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/amqp091-message"
+          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/amqp091-message"
         }
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/kafka-message",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message",
       "@type": [
         "http://a.ml/vocabularies/apiBinding#KafkaMessageBinding",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/KafkaMessageBinding",
@@ -99,13 +105,13 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/apiBinding#messageKey": {
-        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema"
+        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema"
       },
       "http://a.ml/vocabularies/apiBinding#bindingVersion": "latest",
       "http://a.ml/vocabularies/apiBinding#type": "kafka"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/amqp091-message",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/amqp091-message",
       "@type": [
         "http://a.ml/vocabularies/apiBinding#Amqp091MessageBinding",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Amqp091MessageBinding",
@@ -118,7 +124,7 @@
       "http://a.ml/vocabularies/apiBinding#type": "amqp"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -132,18 +138,18 @@
       ],
       "http://www.w3.org/ns/shacl#name": "schema",
       "http://www.w3.org/ns/shacl#in": {
-        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema/list"
+        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema/list"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema/list",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema/list",
       "@type": "http://www.w3.org/2000/01/rdf-schema#Seq",
       "http://www.w3.org/2000/01/rdf-schema#_1": {
-        "@id": "null/enum/scalar_1"
+        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema/in/scalar_1"
       }
     },
     {
-      "@id": "null/enum/scalar_1",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema/in/scalar_1",
       "@type": [
         "http://a.ml/vocabularies/data#Scalar",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -174,8 +180,10 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/rootAsset"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
-      "http://a.ml/vocabularies/document#root": false
+      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "null/BaseUnitProcessingData"
+      }
     }
   ]
 }

@@ -1,6 +1,13 @@
 {
   "@graph": [
     {
+      "@id": "null/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/document#transformed": false
+    },
+    {
       "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/rootAsset",
       "@type": [
         "http://a.ml/vocabularies/apiContract#AnnotationTypeDeclarationFragment",
@@ -11,7 +18,6 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml"
     },
@@ -30,11 +36,11 @@
         }
       ],
       "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema",
       "@type": [
         "http://www.w3.org/ns/shacl#NodeShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
@@ -43,10 +49,10 @@
       ],
       "http://www.w3.org/ns/shacl#property": [
         {
-          "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path"
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path"
         },
         {
-          "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/config"
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/config"
         }
       ],
       "http://www.w3.org/ns/shacl#closed": false,
@@ -54,7 +60,7 @@
       "http://www.w3.org/ns/shacl#name": "schema"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path",
       "@type": [
         "http://www.w3.org/ns/shacl#PropertyShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
@@ -62,7 +68,7 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/shapes#range": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path/scalar/path"
       },
       "http://www.w3.org/ns/shacl#minCount": 1,
       "http://www.w3.org/ns/shacl#path": [
@@ -73,7 +79,7 @@
       "http://www.w3.org/ns/shacl#name": "path"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/config",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/config",
       "@type": [
         "http://www.w3.org/ns/shacl#PropertyShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
@@ -81,7 +87,7 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/shapes#range": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/config/config%3F"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/config/shape/config%3F"
       },
       "http://www.w3.org/ns/shacl#minCount": 0,
       "http://www.w3.org/ns/shacl#path": [
@@ -92,7 +98,7 @@
       "http://www.w3.org/ns/shacl#name": "config"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path/scalar/path",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -106,17 +112,17 @@
       ],
       "http://a.ml/vocabularies/apiContract#examples": [
         {
-          "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example2"
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path/scalar/path/examples/example/example2"
         },
         {
-          "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example1"
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path/scalar/path/examples/example/example1"
         }
       ],
       "http://www.w3.org/ns/shacl#name": "path",
       "http://a.ml/vocabularies/core#description": "A string that is passed to the pathResolver function in order to return\na route handler function.\n"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/config/config%3F",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/config/shape/config%3F",
       "@type": [
         "http://www.w3.org/ns/shacl#NodeShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
@@ -128,7 +134,7 @@
       "http://a.ml/vocabularies/core#description": "Config object will be passed as the first parameter to the controller on every call"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example2",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path/scalar/path/examples/example/example2",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Example",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Example",
@@ -140,11 +146,11 @@
       "http://a.ml/vocabularies/core#description": "Dot separated path to method\n",
       "http://a.ml/vocabularies/document#strict": true,
       "http://a.ml/vocabularies/document#structuredValue": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example2/scalar_1"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path/scalar/path/examples/example/example2/scalar_1"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example1",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path/scalar/path/examples/example/example1",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Example",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Example",
@@ -156,11 +162,11 @@
       "http://a.ml/vocabularies/core#description": "A relative file that export a default function\n",
       "http://a.ml/vocabularies/document#strict": true,
       "http://a.ml/vocabularies/document#structuredValue": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example1/scalar_1"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path/scalar/path/examples/example/example1/scalar_1"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example2/scalar_1",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path/scalar/path/examples/example/example2/scalar_1",
       "@type": [
         "http://a.ml/vocabularies/data#Scalar",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -175,7 +181,7 @@
       "http://a.ml/vocabularies/data#value": "server.controllers.user.findUser"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/schema/property/path/scalar/path/example/example1/scalar_1",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/annotation/shape/schema/property/property/path/scalar/path/examples/example/example1/scalar_1",
       "@type": [
         "http://a.ml/vocabularies/data#Scalar",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -206,8 +212,10 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/fragments/raml/annotation-declaration/api.raml#/rootAsset"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
-      "http://a.ml/vocabularies/document#root": false
+      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "null/BaseUnitProcessingData"
+      }
     }
   ]
 }

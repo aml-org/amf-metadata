@@ -1,9 +1,12 @@
 package amf.exporters
 
+import amf.apicontract.client.platform.model.document.APIContractProcessingData
+import amf.apicontract.internal.metamodel.document.APIContractProcessingDataModel
 import amf.core.client.scala.vocabulary.Namespace
 
 import java.io.{File, FileWriter, Writer}
 import amf.core.internal.metamodel.Type.{Bool, Date, DateTime, Double, EncodedIri, Float, Int, Iri, RegExp, Str, Time}
+import amf.core.internal.metamodel.document.{BaseUnitModel, BaseUnitProcessingDataModel}
 import amf.core.internal.metamodel.domain._
 import amf.core.internal.metamodel.{Field, Obj, Type}
 import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel
@@ -107,6 +110,19 @@ object VocabularyExporter {
     (Namespace.Document + "DomainElement").iri(),
     (Namespace.Document + "Linkable").iri(),
     (Namespace.ApiContract + "DomainExtension").iri()
+  )
+
+  val blockedClasses: Seq[String] = Seq(
+    (Namespace.Document + "APIContractProcessingData").iri(),
+    (Namespace.Document + "DialectInstanceProcessingData").iri(),
+    (Namespace.Document + "BaseUnitProcessingData").iri(),
+  )
+
+  val blockedProperties: Seq[String] = Seq(
+    BaseUnitModel.ProcessingData.value.iri(),
+    BaseUnitProcessingDataModel.Transformed.value.iri(),
+    APIContractProcessingDataModel.SourceSpec.value.iri(),
+    APIContractProcessingDataModel.APIContractModelVersion.value.iri()
   )
 
   val blocklist: Map[ModelVocabulary, Seq[ModelVocabulary]] = Map()
@@ -422,7 +438,8 @@ object VocabularyExporter {
     }
 
     // final set of properties
-    (explicitProperties ++ implicitProperties).sortBy(_.id)
+    val properties = (explicitProperties ++ implicitProperties).sortBy(_.id)
+    properties.filter(prop => !blockedProperties.contains(prop.id))
   }
 
   /**
@@ -455,7 +472,8 @@ object VocabularyExporter {
       }
 
     // final set of classes
-    (explicitClasses ++ implicitClasses).sortBy(_.id)
+    val classes = (explicitClasses ++ implicitClasses).sortBy(_.id)
+    classes.filter(vocab => !blockedClasses.contains(vocab.id))
   }
 
   def usesReferences(
