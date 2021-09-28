@@ -3,8 +3,7 @@
     {
       "@id": "null/BaseUnitProcessingData",
       "@type": [
-        "raml-doc:DialectInstanceProcessingData",
-        "raml-doc:BaseUnitProcessingData"
+        "raml-doc:DialectInstanceProcessingData"
       ],
       "raml-doc:transformed": false
     },

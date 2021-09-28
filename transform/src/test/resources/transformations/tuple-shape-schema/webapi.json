@@ -3,8 +3,7 @@
     {
       "@id": "null/BaseUnitProcessingData",
       "@type": [
-        "http://a.ml/vocabularies/document#DialectInstanceProcessingData",
-        "http://a.ml/vocabularies/document#BaseUnitProcessingData"
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
       ],
       "http://a.ml/vocabularies/document#transformed": false
     },
