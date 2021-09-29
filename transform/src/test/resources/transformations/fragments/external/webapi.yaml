@@ -3,3 +3,11 @@ unitType: ExternalFragment
 $id: file://transform/src/test/resources/transformations/fragments/external/fragment.yaml#/rootAsset
 root: true
 location: file://transform/src/test/resources/transformations/fragments/external/fragment.yaml
+encodes:
+  elementType: External
+  $id: file://transform/src/test/resources/transformations/fragments/external/fragment.yaml#/external
+  raw: |
+    name: Apa la papa
+    age: 99
+    favorite_toy: Buzz Lightyear
+  mediaType: application/yaml

@@ -1,13 +1,6 @@
 {
   "@graph": [
     {
-      "@id": "null/BaseUnitProcessingData",
-      "@type": [
-        "raml-doc:DialectInstanceProcessingData"
-      ],
-      "raml-doc:transformed": false
-    },
-    {
       "@id": "#/rootAsset",
       "@type": [
         "raml-doc:Document",
@@ -25,6 +18,18 @@
       },
       "raml-doc:root": true,
       "raml-doc:location": "file://transform/src/test/resources/client/api.raml"
+    },
+    {
+      "@id": "/BaseUnitProcessingData",
+      "@type": [
+        "raml-doc:DialectInstanceProcessingData"
+      ],
+      "meta:definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "raml-doc:sourceSpec": "WebAPI Spec 1.0"
     },
     {
       "@id": "#/declares/shape/A",
@@ -300,7 +305,7 @@
       },
       "raml-doc:root": true,
       "raml-doc:processingData": {
-        "@id": "null/BaseUnitProcessingData"
+        "@id": "/BaseUnitProcessingData"
       }
     }
   ],

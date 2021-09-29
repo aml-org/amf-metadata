@@ -1,13 +1,6 @@
 {
   "@graph": [
     {
-      "@id": "null/BaseUnitProcessingData",
-      "@type": [
-        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
-      ],
-      "http://a.ml/vocabularies/document#transformed": false
-    },
-    {
       "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/rootAsset",
       "@type": [
         "http://a.ml/vocabularies/document#Document",
@@ -25,6 +18,18 @@
         }
       ],
       "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
     },
     {
       "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api",
@@ -270,7 +275,7 @@
       },
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#processingData": {
-        "@id": "null/BaseUnitProcessingData"
+        "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml/BaseUnitProcessingData"
       }
     }
   ]

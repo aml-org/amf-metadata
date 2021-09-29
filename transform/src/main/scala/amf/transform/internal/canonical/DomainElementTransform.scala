@@ -33,7 +33,8 @@ trait DomainElementTransform extends AnnotationTransform with TransformHelpers {
   }
 
   private def transformType(nativeModel: Model, domainElement: DomainElementUri, mapping: Map[TypeUri, DialectNode]): Unit = {
-    val typesIterator = queryObjectsWith(nativeModel, domainElement, Namespace.Rdf + "type")
+    val types = queryObjectsWith(nativeModel, domainElement, Namespace.Rdf + "type").asScala.toList
+    val typesIterator = types.iterator
 
     // We need to deal with node shape inheritance
     // These flags allow us to track if we found any shape or shape in case
@@ -54,12 +55,16 @@ trait DomainElementTransform extends AnnotationTransform with TransformHelpers {
       !dialectNode.endsWith("#/declarations/API")
     }
 
+    def isNotSetting(dialectNode: DialectNode) = {
+      !dialectNode.endsWith("#/declarations/Settings")
+    }
+
     while (typesIterator.hasNext) {
       val nextType = typesIterator.next().asResource().getURI
       mapping.get(nextType) match {
         case Some(dialectNode) =>
           // dealing with inheritance here
-          if (isNotShape(dialectNode) && isNotApi(dialectNode)) {
+          if (isNotShape(dialectNode) && isNotApi(dialectNode) && isNotSetting(dialectNode)) {
             found = true
             mappedDialectNode = dialectNode
           } else if (dialectNode.endsWith("#/declarations/Shape")) {

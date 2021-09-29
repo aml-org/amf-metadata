@@ -261,6 +261,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
       |      APIKey: APIKeySettings
       |      Http: HttpSettings
       |      OpenID: OpenIDSettings
+      |      HttpAPIKey: HttpAPIKeySettings
     """.stripMargin
 
   val settingsUnionRange: String =
@@ -269,6 +270,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
       |      - APIKeySettings
       |      - HttpSettings
       |      - OpenIDSettings
+      |      - HttpAPIKeySettings
     """.stripMargin
 
   val abstractDeclarationUnion: String =
@@ -392,6 +394,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
       |      CustomDomainProperty: CustomDomainProperty
       |      Operation: Operation
       |      Message: Message
+      |      External: ExternalDomainElement
+      |      CreativeWork: CreativeWork
       |
       |    union:
       |      - UnionShape
@@ -421,6 +425,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
       |      - CustomDomainProperty
       |      - Operation
       |      - Message
+      |      - ExternalDomainElement
+      |      - CreativeWork
       |""".stripMargin
 
   val parsedUnitUnionDeclaration = "ParsedUnitUnion"

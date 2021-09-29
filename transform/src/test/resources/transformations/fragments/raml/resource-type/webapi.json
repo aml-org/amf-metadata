@@ -1,13 +1,6 @@
 {
   "@graph": [
     {
-      "@id": "null/BaseUnitProcessingData",
-      "@type": [
-        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
-      ],
-      "http://a.ml/vocabularies/document#transformed": false
-    },
-    {
       "@id": "file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/rootAsset",
       "@type": [
         "http://a.ml/vocabularies/apiContract#ResourceTypeFragment",
@@ -21,6 +14,18 @@
       "http://a.ml/vocabularies/document#usage": "Use this to describe resource that list items",
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
     },
     {
       "@id": "file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract",
@@ -269,7 +274,7 @@
       },
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#processingData": {
-        "@id": "null/BaseUnitProcessingData"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml/BaseUnitProcessingData"
       }
     }
   ]

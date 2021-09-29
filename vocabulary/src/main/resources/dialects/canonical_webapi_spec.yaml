@@ -32,7 +32,7 @@ nodeMappings:
       Scalar: ScalarShape
       Any: AnyShape
       Recursive: RecursiveShape
-    
+
     union:
       - UnionShape
       - TupleShape
@@ -45,7 +45,7 @@ nodeMappings:
       - ScalarShape
       - AnyShape
       - RecursiveShape
-    
+
   SecuritySettingsUnion:
     typeDiscriminatorName: settingsType
     typeDiscriminator:
@@ -54,14 +54,16 @@ nodeMappings:
       APIKey: APIKeySettings
       Http: HttpSettings
       OpenID: OpenIDSettings
-    
+      HttpAPIKey: HttpAPIKeySettings
+
     union:
       - OAuth2Settings
       - OAuth1Settings
       - APIKeySettings
       - HttpSettings
       - OpenIDSettings
-    
+      - HttpAPIKeySettings
+
 
   DataNodeUnion:
     typeDiscriminatorName: elementType
@@ -108,6 +110,8 @@ nodeMappings:
       CustomDomainProperty: CustomDomainProperty
       Operation: Operation
       Message: Message
+      External: ExternalDomainElement
+      CreativeWork: CreativeWork
 
     union:
       - UnionShape
@@ -137,6 +141,8 @@ nodeMappings:
       - CustomDomainProperty
       - Operation
       - Message
+      - ExternalDomainElement
+      - CreativeWork
 
 
   AbstractDeclarationUnion:
@@ -806,7 +812,7 @@ nodeMappings:
           - ParametrizedResourceType
           - ParametrizedTrait
         allowMultiple: true
-    
+
       path:
         propertyTerm: apiContract.path
         range: string
@@ -1110,7 +1116,7 @@ nodeMappings:
         propertyTerm: doc.extends
         range: Message
         allowMultiple: true
-    
+
       name:
         propertyTerm: core.name
         range: string
@@ -1437,7 +1443,7 @@ nodeMappings:
           - Operation
           - ParametrizedTrait
         allowMultiple: true
-    
+
       method:
         propertyTerm: apiContract.method
         range: string
