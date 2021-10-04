@@ -10,18 +10,29 @@
       ],
       "http://a.ml/vocabularies/document#declares": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0"
         }
       ],
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/security/api.raml"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0",
       "@type": [
         "http://a.ml/vocabularies/security#SecurityScheme",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/SecurityScheme",
@@ -32,16 +43,16 @@
       "http://a.ml/vocabularies/core#description": "Dropbox supports OAuth 2.0 for authenticating all API requests.\n",
       "http://a.ml/vocabularies/apiContract#response": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/401"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/response/resp/401"
         }
       ],
       "http://a.ml/vocabularies/security#type": "OAuth 2.0",
       "http://a.ml/vocabularies/security#settings": {
-        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2"
+        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/settings/oauth2"
       },
       "http://a.ml/vocabularies/apiContract#header": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/parameter/header/Authorization"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/header/parameter/header/Authorization"
         }
       ]
     },
@@ -56,18 +67,18 @@
       "http://a.ml/vocabularies/core#name": "GitHub API",
       "http://a.ml/vocabularies/apiContract#server": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/https%3A%2F%2Fapi.github.com"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/server/https%3A%2F%2Fapi.github.com"
         }
       ],
       "http://a.ml/vocabularies/core#version": "v3",
       "http://a.ml/vocabularies/apiContract#endpoint": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists"
         }
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/401",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/response/resp/401",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Response",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
@@ -79,7 +90,7 @@
       "http://a.ml/vocabularies/core#description": "Bad or expired token. This can happen if the user or Dropbox\nrevoked or expired an access token. To fix, re-authenticate\nthe user.\n"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/settings/oauth2",
       "@type": [
         "http://a.ml/vocabularies/security#OAuth2Settings",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Settings",
@@ -93,12 +104,12 @@
       ],
       "http://a.ml/vocabularies/security#flows": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2/default-flow"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/settings/oauth2/flows/default-flow"
         }
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/parameter/header/Authorization",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/header/parameter/header/Authorization",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
@@ -111,11 +122,11 @@
       "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token.\n",
       "http://a.ml/vocabularies/apiContract#binding": "header",
       "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/parameter/header/Authorization/scalar/schema"
+        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/header/parameter/header/Authorization/scalar/schema"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/https%3A%2F%2Fapi.github.com",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/server/https%3A%2F%2Fapi.github.com",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Server",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
@@ -125,7 +136,7 @@
       "http://a.ml/vocabularies/core#urlTemplate": "https://api.github.com"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists",
       "@type": [
         "http://a.ml/vocabularies/apiContract#EndPoint",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
@@ -134,18 +145,18 @@
       ],
       "http://a.ml/vocabularies/apiContract#parameter": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/parameter/path/userid"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/parameter/parameter/path/userid"
         }
       ],
       "http://a.ml/vocabularies/apiContract#supportedOperation": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/get"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/supportedOperation/get"
         }
       ],
       "http://a.ml/vocabularies/apiContract#path": "/users/{userid}/gists"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2/default-flow",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/settings/oauth2/flows/default-flow",
       "@type": [
         "http://a.ml/vocabularies/security#OAuth2Flow",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Flow",
@@ -155,13 +166,13 @@
       "http://a.ml/vocabularies/security#authorizationUri": "https://www.dropbox.com/1/oauth2/authorize",
       "http://a.ml/vocabularies/security#scope": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2/default-flow/ADMINISTRATOR"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/settings/oauth2/flows/default-flow/scope/ADMINISTRATOR"
         }
       ],
       "http://a.ml/vocabularies/security#accessTokenUri": "https://api.dropbox.com/1/oauth2/token"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/parameter/header/Authorization/scalar/schema",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/header/parameter/header/Authorization/scalar/schema",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -177,7 +188,7 @@
       "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token.\n"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/parameter/path/userid",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/parameter/parameter/path/userid",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
@@ -189,11 +200,11 @@
       "http://a.ml/vocabularies/core#name": "userid",
       "http://a.ml/vocabularies/apiContract#binding": "path",
       "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/parameter/path/userid/scalar/userid"
+        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/parameter/parameter/path/userid/scalar/userid"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/get",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/supportedOperation/get",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Operation",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
@@ -202,16 +213,16 @@
       ],
       "http://a.ml/vocabularies/security#security": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/get/default-requirement_2"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/supportedOperation/get/security/default-requirement_2"
         },
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/get/default-requirement_1"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/supportedOperation/get/security/default-requirement_1"
         }
       ],
       "http://a.ml/vocabularies/apiContract#method": "get"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0/settings/oauth2/default-flow/ADMINISTRATOR",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/settings/oauth2/flows/default-flow/scope/ADMINISTRATOR",
       "@type": [
         "http://a.ml/vocabularies/security#Scope",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Scope",
@@ -221,7 +232,7 @@
       "http://a.ml/vocabularies/core#name": "ADMINISTRATOR"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/parameter/path/userid/scalar/userid",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/parameter/parameter/path/userid/scalar/userid",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -236,7 +247,7 @@
       "http://www.w3.org/ns/shacl#name": "userid"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/get/default-requirement_2",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/supportedOperation/get/security/default-requirement_2",
       "@type": [
         "http://a.ml/vocabularies/security#SecurityRequirement",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/SecurityRequirement",
@@ -245,12 +256,12 @@
       ],
       "http://a.ml/vocabularies/security#schemes": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/get/default-requirement_2/oauth_2_0"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/supportedOperation/get/security/default-requirement_2/schemes/oauth_2_0"
         }
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/get/default-requirement_1",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/supportedOperation/get/security/default-requirement_1",
       "@type": [
         "http://a.ml/vocabularies/security#SecurityRequirement",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/SecurityRequirement",
@@ -259,12 +270,12 @@
       ],
       "http://a.ml/vocabularies/security#schemes": [
         {
-          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/get/default-requirement_1/null"
+          "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/supportedOperation/get/security/default-requirement_1/schemes/null"
         }
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/get/default-requirement_2/oauth_2_0",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/supportedOperation/get/security/default-requirement_2/schemes/oauth_2_0",
       "@type": [
         "http://a.ml/vocabularies/security#ParametrizedSecurityScheme",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ParametrizedSecurityScheme",
@@ -272,12 +283,12 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/security#scheme": {
-        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declarations/securitySchemes/oauth_2_0"
+        "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0"
       },
       "http://a.ml/vocabularies/core#name": "oauth_2_0"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/end-points/%2Fusers%2F%7Buserid%7D%2Fgists/get/default-requirement_1/null",
+      "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/supportedOperation/get/security/default-requirement_1/schemes/null",
       "@type": [
         "http://a.ml/vocabularies/security#ParametrizedSecurityScheme",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ParametrizedSecurityScheme",
@@ -303,8 +314,10 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/security/api.raml#/rootAsset"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
-      "http://a.ml/vocabularies/document#root": false
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://transform/src/test/resources/transformations/security/api.raml/BaseUnitProcessingData"
+      }
     }
   ]
 }

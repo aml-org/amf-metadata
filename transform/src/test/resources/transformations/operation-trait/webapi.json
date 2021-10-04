@@ -10,18 +10,29 @@
       ],
       "http://a.ml/vocabularies/document#declares": [
         {
-          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait"
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declares/firstTrait/traitThing"
         }
       ],
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/operation-trait/api.yaml"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait",
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declares/firstTrait/traitThing",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Operation",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
@@ -46,12 +57,12 @@
       "http://a.ml/vocabularies/core#version": "1.0.0",
       "http://a.ml/vocabularies/apiContract#endpoint": [
         {
-          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel"
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel"
         }
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel",
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel",
       "@type": [
         "http://a.ml/vocabularies/apiContract#EndPoint",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
@@ -60,13 +71,13 @@
       ],
       "http://a.ml/vocabularies/apiContract#supportedOperation": [
         {
-          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/something"
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something"
         }
       ],
       "http://a.ml/vocabularies/apiContract#path": "someChannel"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/something",
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Operation",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
@@ -75,19 +86,19 @@
       ],
       "http://a.ml/vocabularies/document#extends": [
         {
-          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/publish/default-operation"
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something/extends/default-operation"
         }
       ],
       "http://a.ml/vocabularies/document#extends": [
         {
-          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/publish/default-operation"
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something/extends/default-operation"
         }
       ],
       "http://a.ml/vocabularies/apiContract#operationId": "something",
       "http://a.ml/vocabularies/apiContract#method": "publish"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/publish/default-operation",
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something/extends/default-operation",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Operation",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
@@ -97,7 +108,7 @@
       "http://a.ml/vocabularies/document#link-label": "firstTrait",
       "http://a.ml/vocabularies/document#design-link-target": [
         {
-          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait"
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declares/firstTrait/traitThing"
         }
       ]
     },
@@ -118,8 +129,10 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/rootAsset"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
-      "http://a.ml/vocabularies/document#root": false
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml/BaseUnitProcessingData"
+      }
     }
   ]
 }

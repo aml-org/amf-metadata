@@ -9,14 +9,25 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/document#encodes": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml/creative-work/Home"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml#/creative-work/Home"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml/creative-work/Home",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml#/creative-work/Home",
       "@type": [
         "http://a.ml/vocabularies/core#CreativeWork",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/CreativeWork",
@@ -43,8 +54,10 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml#/rootAsset"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
-      "http://a.ml/vocabularies/document#root": false
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml/BaseUnitProcessingData"
+      }
     }
   ]
 }

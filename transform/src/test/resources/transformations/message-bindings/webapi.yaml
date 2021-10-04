@@ -1,7 +1,6 @@
 #%WebAPI Spec 1.0
 unitType: Document
 $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/rootAsset
-version: 3.1.0
 root: true
 location: file://transform/src/test/resources/transformations/message-bindings/api.yaml
 encodes:
@@ -11,35 +10,35 @@ encodes:
   version: 1.0.0
   endpoint:
     -
-      $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel
+      $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel
       supportedOperation:
         -
-          $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish
+          $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish
           expects:
             -
-              $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request
+              $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request
               binding:
-                $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings
+                $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings
                 bindings:
                   -
                     bindingType: Kafka
-                    $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/kafka-message
+                    $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message
                     key:
                       shapeType: Scalar
-                      $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/kafka-message/key/scalar/schema
+                      $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema
                       name: schema
                       datatype: http://www.w3.org/2001/XMLSchema#string
                       in:
                         -
                           elementType: Scalar
-                          $id: null/enum/scalar_1
+                          $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema/in/scalar_1
                           value: somekey
                           dataType: http://www.w3.org/2001/XMLSchema#string
                     bindingVersion: latest
                     type: kafka
                   -
                     bindingType: Amqp091
-                    $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/end-points/some-channel/publish/request/message-bindings/amqp091-message
+                    $id: file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/amqp091-message
                     contentEncoding: some/mime
                     bindingVersion: 31.07.92
                     type: amqp

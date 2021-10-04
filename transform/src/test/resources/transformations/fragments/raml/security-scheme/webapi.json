@@ -9,14 +9,25 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/document#encodes": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#fragment"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#fragment",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment",
       "@type": [
         "http://a.ml/vocabularies/security#SecurityScheme",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/SecurityScheme",
@@ -25,30 +36,30 @@
       ],
       "http://a.ml/vocabularies/apiContract#parameter": [
         {
-          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token"
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/parameter/parameter/query/access_token"
         }
       ],
       "http://a.ml/vocabularies/core#description": "Apply the OAuth 2.0 security policy to resource methods for authenticating API requests",
       "http://a.ml/vocabularies/apiContract#response": [
         {
-          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/403"
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/response/resp/403"
         },
         {
-          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/401"
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/response/resp/401"
         }
       ],
       "http://a.ml/vocabularies/security#type": "OAuth 2.0",
       "http://a.ml/vocabularies/security#settings": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/settings/oauth2"
       },
       "http://a.ml/vocabularies/apiContract#header": [
         {
-          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization"
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/header/parameter/header/Authorization"
         }
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/parameter/parameter/query/access_token",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
@@ -61,11 +72,11 @@
       "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token. Do not use together with the \"Authorization\" header.\n",
       "http://a.ml/vocabularies/apiContract#binding": "query",
       "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token/scalar/schema"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/parameter/parameter/query/access_token/scalar/schema"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/403",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/response/resp/403",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Response",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
@@ -77,7 +88,7 @@
       "http://a.ml/vocabularies/core#description": "Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.\n"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/401",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/response/resp/401",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Response",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
@@ -89,7 +100,7 @@
       "http://a.ml/vocabularies/core#description": "Bad or expired token. This can happen if the API consumer uses a revoked or expired access token. To fix, you should re-authenticate the user.\n"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/settings/oauth2",
       "@type": [
         "http://a.ml/vocabularies/security#OAuth2Settings",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Settings",
@@ -101,12 +112,12 @@
       ],
       "http://a.ml/vocabularies/security#flows": [
         {
-          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2/default-flow"
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/settings/oauth2/flows/default-flow"
         }
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/header/parameter/header/Authorization",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
@@ -119,11 +130,11 @@
       "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token. Do not use with the \"access_token\" query. string parameter.\n",
       "http://a.ml/vocabularies/apiContract#binding": "header",
       "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization/scalar/schema"
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/header/parameter/header/Authorization/scalar/schema"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/query/access_token/scalar/schema",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/parameter/parameter/query/access_token/scalar/schema",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -139,7 +150,7 @@
       "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token. Do not use together with the \"Authorization\" header.\n"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/settings/oauth2/default-flow",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/settings/oauth2/flows/default-flow",
       "@type": [
         "http://a.ml/vocabularies/security#OAuth2Flow",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/OAuth2Flow",
@@ -150,7 +161,7 @@
       "http://a.ml/vocabularies/security#accessTokenUri": "https://placeholder.com/oauth2/access_token"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/fragment/parameter/header/Authorization/scalar/schema",
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/header/parameter/header/Authorization/scalar/schema",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -182,8 +193,10 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/rootAsset"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
-      "http://a.ml/vocabularies/document#root": false
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml/BaseUnitProcessingData"
+      }
     }
   ]
 }

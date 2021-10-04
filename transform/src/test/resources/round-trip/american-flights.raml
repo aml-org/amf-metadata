@@ -1,0 +1,30 @@
+#%RAML 1.0
+title: Americans Flights API
+
+types:
+  AmericanFlight:
+    type: object
+    properties:
+      ID?: integer
+      code: string
+      price: number
+      departureDate: string
+      origin: string
+      destination: string
+      emptySeats: integer
+      plane:
+        type: object
+        required: false
+        properties:
+          type: string
+          totalSeats: integer
+
+/{ID}:
+   get:
+     responses:
+       200:
+         body:
+           application/json:
+             type: AmericanFlight
+             examples:
+               output: !include example1.raml

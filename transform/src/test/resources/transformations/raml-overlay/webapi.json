@@ -10,24 +10,35 @@
       ],
       "http://a.ml/vocabularies/document#extends": [
         {
-          "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml"
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0"
         }
       ],
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
       "http://a.ml/vocabularies/document#usage": "Spanish localization",
       "http://a.ml/vocabularies/document#root": true,
       "http://a.ml/vocabularies/document#references": [
         {
-          "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml"
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0"
         }
       ],
       "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/raml-overlay/api.raml"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml",
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0",
       "@type": [
         "http://a.ml/vocabularies/document#Document",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
@@ -35,11 +46,10 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/document#encodes": {
-        "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api"
+        "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
       "http://a.ml/vocabularies/document#root": false,
-      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/raml-overlay/base.raml"
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0"
     },
     {
       "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api",
@@ -51,12 +61,12 @@
       ],
       "http://a.ml/vocabularies/apiContract#endpoint": [
         {
-          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api/end-points/%2Fbooks"
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api/endpoint/%2Fbooks"
         }
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api",
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api",
       "@type": [
         "http://a.ml/vocabularies/apiContract#WebAPI",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
@@ -66,7 +76,7 @@
       "http://a.ml/vocabularies/core#name": "test",
       "http://a.ml/vocabularies/apiContract#server": [
         {
-          "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/falsedomain.com%2Fapis"
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/server/falsedomain.com%2Fapis"
         }
       ],
       "http://a.ml/vocabularies/apiContract#accepts": [
@@ -75,10 +85,10 @@
       "http://a.ml/vocabularies/core#version": "1.0",
       "http://a.ml/vocabularies/apiContract#endpoint": [
         {
-          "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D"
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D"
         },
         {
-          "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks"
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks"
         }
       ],
       "http://a.ml/vocabularies/apiContract#contentType": [
@@ -86,7 +96,7 @@
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api/end-points/%2Fbooks",
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api/endpoint/%2Fbooks",
       "@type": [
         "http://a.ml/vocabularies/apiContract#EndPoint",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
@@ -97,7 +107,7 @@
       "http://a.ml/vocabularies/apiContract#path": "/books"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/falsedomain.com%2Fapis",
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/server/falsedomain.com%2Fapis",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Server",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
@@ -107,7 +117,7 @@
       "http://a.ml/vocabularies/core#urlTemplate": "falsedomain.com/apis"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D",
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D",
       "@type": [
         "http://a.ml/vocabularies/apiContract#EndPoint",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
@@ -116,13 +126,13 @@
       ],
       "http://a.ml/vocabularies/apiContract#parameter": [
         {
-          "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id"
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D/parameter/parameter/path/customer_id"
         }
       ],
       "http://a.ml/vocabularies/apiContract#path": "/books/{customer_id}"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks",
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks",
       "@type": [
         "http://a.ml/vocabularies/apiContract#EndPoint",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
@@ -132,7 +142,7 @@
       "http://a.ml/vocabularies/apiContract#path": "/books"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id",
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D/parameter/parameter/path/customer_id",
       "@type": [
         "http://a.ml/vocabularies/apiContract#Parameter",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
@@ -144,11 +154,11 @@
       "http://a.ml/vocabularies/core#name": "customer_id",
       "http://a.ml/vocabularies/apiContract#binding": "path",
       "http://a.ml/vocabularies/shapes#schema": {
-        "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id/scalar/schema"
+        "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D/parameter/parameter/path/customer_id/scalar/schema"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id/scalar/schema",
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D/parameter/parameter/path/customer_id/scalar/schema",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -179,8 +189,10 @@
       "http://a.ml/vocabularies/document#encodes": {
         "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/rootAsset"
       },
-      "http://a.ml/vocabularies/document#version": "3.1.0",
-      "http://a.ml/vocabularies/document#root": false
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml/BaseUnitProcessingData"
+      }
     }
   ]
 }

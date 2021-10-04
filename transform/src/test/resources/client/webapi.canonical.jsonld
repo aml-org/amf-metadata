@@ -10,18 +10,29 @@
       ],
       "raml-doc:declares": [
         {
-          "@id": "#/declarations/types/A"
+          "@id": "#/declares/shape/A"
         }
       ],
       "raml-doc:encodes": {
         "@id": "#/web-api"
       },
-      "raml-doc:version": "3.1.0",
       "raml-doc:root": true,
       "raml-doc:location": "file://transform/src/test/resources/client/api.raml"
     },
     {
-      "@id": "#/declarations/types/A",
+      "@id": "/BaseUnitProcessingData",
+      "@type": [
+        "raml-doc:DialectInstanceProcessingData"
+      ],
+      "meta:definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "raml-doc:sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "#/declares/shape/A",
       "@type": [
         "sh:NodeShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
@@ -30,10 +41,10 @@
       ],
       "sh:property": [
         {
-          "@id": "#/declarations/types/A/property/b"
+          "@id": "#/declares/shape/A/property/property/b"
         },
         {
-          "@id": "#/declarations/types/A/property/a"
+          "@id": "#/declares/shape/A/property/property/a"
         }
       ],
       "sh:closed": false,
@@ -50,7 +61,7 @@
       "core:name": "test",
       "apiContract:server": [
         {
-          "@id": "#/web-api/falsedomain.com%2Fapis"
+          "@id": "#/web-api/server/falsedomain.com%2Fapis"
         }
       ],
       "apiContract:accepts": [
@@ -59,7 +70,7 @@
       "core:version": "1.0",
       "apiContract:endpoint": [
         {
-          "@id": "#/web-api/end-points/%2Ftest"
+          "@id": "#/web-api/endpoint/%2Ftest"
         }
       ],
       "apiContract:contentType": [
@@ -67,7 +78,7 @@
       ]
     },
     {
-      "@id": "#/declarations/types/A/property/b",
+      "@id": "#/declares/shape/A/property/property/b",
       "@type": [
         "sh:PropertyShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
@@ -75,7 +86,7 @@
         "raml-doc:DomainElement"
       ],
       "shapes:range": {
-        "@id": "#/declarations/types/A/property/b/scalar/b"
+        "@id": "#/declares/shape/A/property/property/b/scalar/b"
       },
       "sh:minCount": 1,
       "sh:path": [
@@ -86,7 +97,7 @@
       "sh:name": "b"
     },
     {
-      "@id": "#/declarations/types/A/property/a",
+      "@id": "#/declares/shape/A/property/property/a",
       "@type": [
         "sh:PropertyShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
@@ -94,7 +105,7 @@
         "raml-doc:DomainElement"
       ],
       "shapes:range": {
-        "@id": "#/declarations/types/A/property/a/scalar/a"
+        "@id": "#/declares/shape/A/property/property/a/scalar/a"
       },
       "sh:minCount": 1,
       "sh:path": [
@@ -105,7 +116,7 @@
       "sh:name": "a"
     },
     {
-      "@id": "#/web-api/falsedomain.com%2Fapis",
+      "@id": "#/web-api/server/falsedomain.com%2Fapis",
       "@type": [
         "apiContract:Server",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
@@ -115,7 +126,7 @@
       "core:urlTemplate": "falsedomain.com/apis"
     },
     {
-      "@id": "#/web-api/end-points/%2Ftest",
+      "@id": "#/web-api/endpoint/%2Ftest",
       "@type": [
         "apiContract:EndPoint",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
@@ -124,13 +135,13 @@
       ],
       "apiContract:supportedOperation": [
         {
-          "@id": "#/web-api/end-points/%2Ftest/get"
+          "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get"
         }
       ],
       "apiContract:path": "/test"
     },
     {
-      "@id": "#/declarations/types/A/property/b/scalar/b",
+      "@id": "#/declares/shape/A/property/property/b/scalar/b",
       "@type": [
         "shapes:ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -145,7 +156,7 @@
       "sh:name": "b"
     },
     {
-      "@id": "#/declarations/types/A/property/a/scalar/a",
+      "@id": "#/declares/shape/A/property/property/a/scalar/a",
       "@type": [
         "shapes:ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -160,7 +171,7 @@
       "sh:name": "a"
     },
     {
-      "@id": "#/web-api/end-points/%2Ftest/get",
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get",
       "@type": [
         "apiContract:Operation",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
@@ -170,13 +181,13 @@
       "core:description": "an operation",
       "apiContract:returns": [
         {
-          "@id": "#/web-api/end-points/%2Ftest/get/200"
+          "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200"
         }
       ],
       "apiContract:method": "get"
     },
     {
-      "@id": "#/web-api/end-points/%2Ftest/get/200",
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200",
       "@type": [
         "apiContract:Response",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
@@ -187,12 +198,12 @@
       "core:name": "200",
       "apiContract:payload": [
         {
-          "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson"
+          "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson"
         }
       ]
     },
     {
-      "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson",
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson",
       "@type": [
         "apiContract:Payload",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
@@ -200,12 +211,12 @@
         "raml-doc:DomainElement"
       ],
       "shapes:schema": {
-        "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema"
+        "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema"
       },
       "core:mediaType": "application/json"
     },
     {
-      "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema",
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema",
       "@type": [
         "sh:NodeShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
@@ -214,19 +225,19 @@
       ],
       "sh:property": [
         {
-          "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema/property/c"
+          "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/property/property/c"
         }
       ],
       "sh:closed": false,
       "shapes:inherits": [
         {
-          "@id": "#/declarations/types/A/link-389825518"
+          "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/inherits/shape/A"
         }
       ],
       "sh:name": "schema"
     },
     {
-      "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema/property/c",
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/property/property/c",
       "@type": [
         "sh:PropertyShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
@@ -234,7 +245,7 @@
         "raml-doc:DomainElement"
       ],
       "shapes:range": {
-        "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema/property/c/scalar/c"
+        "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/property/property/c/scalar/c"
       },
       "sh:minCount": 1,
       "sh:path": [
@@ -245,7 +256,7 @@
       "sh:name": "c"
     },
     {
-      "@id": "#/declarations/types/A/link-389825518",
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/inherits/shape/A",
       "@type": [
         "sh:NodeShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
@@ -255,13 +266,13 @@
       "raml-doc:link-label": "A",
       "raml-doc:design-link-target": [
         {
-          "@id": "#/declarations/types/A"
+          "@id": "#/declares/shape/A"
         }
       ],
       "sh:name": "A"
     },
     {
-      "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema/property/c/scalar/c",
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/property/property/c/scalar/c",
       "@type": [
         "shapes:ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -292,8 +303,10 @@
       "raml-doc:encodes": {
         "@id": "#/rootAsset"
       },
-      "raml-doc:version": "3.1.0",
-      "raml-doc:root": false
+      "raml-doc:root": true,
+      "raml-doc:processingData": {
+        "@id": "/BaseUnitProcessingData"
+      }
     }
   ],
   "@context": {

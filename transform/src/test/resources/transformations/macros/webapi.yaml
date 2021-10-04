@@ -4,53 +4,53 @@ $id: file://transform/src/test/resources/transformations/macros/api.raml#/rootAs
 declares:
   -
     elementType: Trait
-    $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable
+    $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable
     name: traceable
     dataNode:
       elementType: Object
-      $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable/object_1
+      $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable/object_1
       properties:
         -
-          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable/object_1_prop_headers
+          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable/object_1_prop_headers
           name: headers
           range:
             elementType: Object
-            $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable/object_1/object_2
+            $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable/object_1/headers
             properties:
               -
-                $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable/object_1/object_2_prop_X-Tracker
+                $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable/object_1/headers_prop_X-Tracker
                 name: X-Tracker
                 range:
                   elementType: Object
-                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable/object_1/object_2/object_3
+                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable/object_1/headers/X-Tracker
                   properties:
                     -
-                      $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable/object_1/object_2/object_3_prop_pattern
+                      $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable/object_1/headers/X-Tracker_prop_pattern
                       name: pattern
                       range:
                         elementType: Scalar
-                        $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable/object_1/object_2/object_3/scalar_5
+                        $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable/object_1/headers/X-Tracker/pattern
                         value: ^\w{16}$
                         dataType: http://www.w3.org/2001/XMLSchema#string
                     -
-                      $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable/object_1/object_2/object_3_prop_example
+                      $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable/object_1/headers/X-Tracker_prop_example
                       name: example
                       range:
                         elementType: Scalar
-                        $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable/object_1/object_2/object_3/scalar_6
+                        $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable/object_1/headers/X-Tracker/example
                         value: abcdefghijklmnop
                         dataType: http://www.w3.org/2001/XMLSchema#string
                     -
-                      $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable/object_1/object_2/object_3_prop_description
+                      $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable/object_1/headers/X-Tracker_prop_description
                       name: description
                       range:
                         elementType: Scalar
-                        $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable/object_1/object_2/object_3/scalar_4
+                        $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable/object_1/headers/X-Tracker/description
                         value: A code to track API calls end to end
                         dataType: http://www.w3.org/2001/XMLSchema#string
   -
     elementType: ResourceType
-    $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection
+    $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection
     name: collection
     variable:
       - resourcePathName
@@ -58,47 +58,46 @@ declares:
     description: This resourceType should be used for any collection of items
     dataNode:
       elementType: Object
-      $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1
+      $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1
       properties:
         -
-          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1_prop_post
+          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1_prop_post
           name: post
           range:
             elementType: Object
-            $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_5
+            $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/post
             properties:
               -
-                $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_5_prop_description
+                $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/post_prop_description
                 name: description
                 range:
                   elementType: Scalar
-                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_5/scalar_6
+                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/post/description
                   value: Create a new <<resourcePathName | !singularize>>
                   dataType: http://www.w3.org/2001/XMLSchema#string
         -
-          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1_prop_get
+          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1_prop_get
           name: get
           range:
             elementType: Object
-            $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_3
+            $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/get
             properties:
               -
-                $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_3_prop_description
+                $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/get_prop_description
                 name: description
                 range:
                   elementType: Scalar
-                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_3/scalar_4
+                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/get/description
                   value: Get all <<param>>, optionally filtered
                   dataType: http://www.w3.org/2001/XMLSchema#string
         -
-          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1_prop_description
+          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1_prop_description
           name: description
           range:
             elementType: Scalar
-            $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/scalar_2
+            $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/description
             value: The collection of <<resourcePathName>>
             dataType: http://www.w3.org/2001/XMLSchema#string
-version: 3.1.0
 root: true
 location: file://transform/src/test/resources/transformations/macros/api.raml
 encodes:
@@ -107,24 +106,24 @@ encodes:
   name: Example with headers
   endpoint:
     -
-      $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/end-points/%2Fusers
+      $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/endpoint/%2Fusers
       extends:
         -
           type: AppliedResourceType
-          $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/end-points/%2Fusers/collection
+          $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/endpoint/%2Fusers/extends/collection
           name: collection
           variable:
             -
-              $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/end-points/%2Fusers/collection/param
+              $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/endpoint/%2Fusers/extends/collection/variable/param
               name: param
               value:
                 elementType: Scalar
-                $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/end-points/%2Fusers/collection_0/scalar_1
+                $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/endpoint/%2Fusers/extends/collection/variable/param/scalar_1
                 value: usuarios
                 dataType: http://www.w3.org/2001/XMLSchema#string
           target:
             elementType: ResourceType
-            $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection
+            $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection
             name: collection
             variable:
               - resourcePathName
@@ -132,57 +131,57 @@ encodes:
             description: This resourceType should be used for any collection of items
             dataNode:
               elementType: Object
-              $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1
+              $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1
               properties:
                 -
-                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1_prop_post
+                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1_prop_post
                   name: post
                   range:
                     elementType: Object
-                    $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_5
+                    $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/post
                     properties:
                       -
-                        $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_5_prop_description
+                        $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/post_prop_description
                         name: description
                         range:
                           elementType: Scalar
-                          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_5/scalar_6
+                          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/post/description
                           value: Create a new <<resourcePathName | !singularize>>
                           dataType: http://www.w3.org/2001/XMLSchema#string
                 -
-                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1_prop_get
+                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1_prop_get
                   name: get
                   range:
                     elementType: Object
-                    $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_3
+                    $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/get
                     properties:
                       -
-                        $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_3_prop_description
+                        $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/get_prop_description
                         name: description
                         range:
                           elementType: Scalar
-                          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/object_3/scalar_4
+                          $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/get/description
                           value: Get all <<param>>, optionally filtered
                           dataType: http://www.w3.org/2001/XMLSchema#string
                 -
-                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1_prop_description
+                  $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1_prop_description
                   name: description
                   range:
                     elementType: Scalar
-                    $id: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/resourceTypes/resourceType/collection/object_1/scalar_2
+                    $id: file://transform/src/test/resources/transformations/macros/api.raml#/declares/resourceType/collection/object_1/description
                     value: The collection of <<resourcePathName>>
                     dataType: http://www.w3.org/2001/XMLSchema#string
       supportedOperation:
         -
-          $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/end-points/%2Fusers/get
+          $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/endpoint/%2Fusers/supportedOperation/get
           extends:
             -
               type: AppliedTrait
-              $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/end-points/%2Fusers/get/traceable
+              $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/endpoint/%2Fusers/supportedOperation/get/extends/traceable
               name: traceable
               target:
                 elementType: Trait
-                $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/end-points/%2Fusers/get/traceable/trait/default-abstract
-                designLink: file://transform/src/test/resources/transformations/macros/api.raml#/declarations/traits/trait/traceable
+                $id: file://transform/src/test/resources/transformations/macros/api.raml#/web-api/endpoint/%2Fusers/supportedOperation/get/extends/traceable/trait/default-abstract
+                designLink: file://transform/src/test/resources/transformations/macros/api.raml#/declares/trait/traceable
           method: get
       path: /users

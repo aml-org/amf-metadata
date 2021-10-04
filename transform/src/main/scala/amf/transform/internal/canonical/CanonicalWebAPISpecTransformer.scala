@@ -1,16 +1,15 @@
 package amf.transform.internal.canonical
 
 import amf.aml.client.scala.AMLConfiguration
-import amf.aml.client.scala.model.document.Dialect
+import amf.aml.client.scala.model.document.{Dialect, DialectInstanceProcessingData}
 import amf.aml.client.scala.model.domain.NodeMapping
 import amf.aml.internal.entities.AMLEntities
 import amf.core.client.scala.model.document.BaseUnit
 import amf.core.client.scala.vocabulary.Namespace
 import amf.core.client.scala.vocabulary.Namespace.XsdTypes
-import amf.core.internal.entities.CoreEntities
 import amf.core.internal.metamodel.ModelDefaultBuilder
-import amf.core.internal.metamodel.document.BaseUnitModel
-import amf.core.internal.plugins.document.graph.entities.AMFGraphEntities
+import amf.core.internal.metamodel.document.{BaseUnitModel, DocumentModel}
+import amf.core.internal.remote.AmlDialectSpec
 import amf.core.internal.unsafe.PlatformSecrets
 import amf.rdf.client.scala.RdfUnitConverter.toNativeRdfModel
 import amf.rdf.client.scala.{RdfModel, RdfUnitConverter}
@@ -26,6 +25,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
 
   val CANONICAL_WEBAPI_DIALECT_NAME = "WebAPI Spec"
   val CANONICAL_WEBAPI_DIALECT_VERSION = "1.0"
+  val CANONICAL_DIALECT_HEADER = s"$CANONICAL_WEBAPI_DIALECT_NAME $CANONICAL_WEBAPI_DIALECT_VERSION"
 
   /**
    * Transforms a WebAPI model parsed by AMF from a RAML/OAS document into a canonical WebAPI model compatible with the canonical WebAPI AML dialect
@@ -45,7 +45,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
     val typeMapping = buildCanonicalClassMapping(webApiDialect)
     val model       = toNativeRdfModel(unit)
 
-    val nativeModel = model.native().asInstanceOf[Model]
+    val nativeModel = model.getNative().asInstanceOf[Model]
 
     val baseUnitId = preProcessUnits(nativeModel, webApiDialect)
 
@@ -128,8 +128,14 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
     // connect the new root with the old root encoded as a domain element
     nativeModel.add(
       nextTopLevelUnit,
-      nativeModel.createProperty((Namespace.Document + "encodes").iri()),
+      nativeModel.createProperty(DocumentModel.Encodes.value.iri()),
       nativeModel.createResource(encodedElement)
+    )
+
+    nativeModel.add(
+      nextTopLevelUnit,
+      nativeModel.createProperty(BaseUnitModel.Root.value.iri()),
+      nativeModel.createTypedLiteral("true", XsdTypes.xsdBoolean.iri())
     )
   }
 
@@ -219,7 +225,9 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
 
   private def parseRdfToInstance(model: RdfModel, baseUnitId: String, config: AMLConfiguration, dialect: Dialect): BaseUnit = {
     val nextConfig: AMLConfiguration = createConfigOnlyWithDialectEntities(config, dialect)
-    RdfUnitConverter.fromNativeRdfModel(baseUnitId, model, nextConfig)
+    val instance = RdfUnitConverter.fromNativeRdfModel(baseUnitId, model, nextConfig)
+    val processingData = DialectInstanceProcessingData().withDefinedBy(dialect.id).withSourceSpec(AmlDialectSpec(CANONICAL_DIALECT_HEADER))
+    instance.withProcessingData(processingData)
   }
 
   private def createConfigOnlyWithDialectEntities(config: AMLConfiguration, dialect: Dialect) = {

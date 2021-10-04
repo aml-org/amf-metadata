@@ -1,6 +1,22 @@
 #%WebAPI Spec 1.0
 unitType: ExternalFragment
 $id: file://transform/src/test/resources/transformations/fragments/raml/named-example/api.raml#/rootAsset
-version: 3.1.0
 root: true
 location: file://transform/src/test/resources/transformations/fragments/raml/named-example/api.raml
+encodes:
+  elementType: External
+  $id: file://transform/src/test/resources/transformations/fragments/raml/named-example/api.raml#/external
+  raw: |-
+    #%RAML 1.0 NamedExample
+    value:
+      ID: 1
+      code: GQ574
+      price: 399
+      departureDate: 2016/12/20
+      origin: ORD
+      destination: SFO
+      emptySeats: 200
+      plane:
+        type: Boeing 747
+        totalSeats: 400
+  mediaType: application/yaml

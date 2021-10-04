@@ -2,14 +2,16 @@ package amf.transform.internal.canonical
 
 import amf.aml.client.scala.AMLConfiguration
 import amf.apicontract.client.scala.APIConfiguration
+import amf.core.client.common.validation.ProfileName
 import amf.core.client.scala.config.RenderOptions
-import amf.core.internal.remote.{Async20YamlHint, Hint, Mimes, Raml10YamlHint}
+import amf.core.internal.remote.{AmlDialectSpec, Async20YamlHint, Hint, Mimes, Raml10YamlHint}
 import amf.io.FunSuiteCycleTests
 import amf.transform.internal.canonical.CanonicalDialectRegistration.registerDialect
 import org.scalatest.Assertion
 import org.scalatest.matchers.should.Matchers
 
 import scala.concurrent.{ExecutionContext, Future}
+import scala.language.postfixOps
 
 class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTransform with Matchers {
 
@@ -76,6 +78,18 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
       // does not register dialect
       canonicalTransform(s"${basePath}simple/api.raml", APIConfiguration.API())
     )
+  }
+
+  test("Test canonical transform dialect has the webapi dialect source spec") {
+    for {
+      config <- registerDialect(APIConfiguration.API())
+      transformed <- canonicalTransform(s"${basePath}/simple/api.raml", config)
+    } yield {
+      transformed.sourceSpec shouldBe Some(AmlDialectSpec("WebAPI Spec 1.0"))
+      val profileFromSpec = transformed.sourceSpec.map(spec => ProfileName(spec.id)).get
+      // TODO: This should be tested in a more black box way. Improve
+      config.registry.constraintsRules.contains(profileFromSpec) shouldBe true
+    }
   }
 
   def checkCanonicalDialectTransformation(source: String, target: String, hint: Hint = Raml10YamlHint): Future[Assertion] = checkCanonicalDialectTransformation(source, target, Some(hint))
