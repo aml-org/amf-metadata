@@ -64,7 +64,7 @@ pipeline {
           branch 'develop'
           branch 'remod-breaking'
         }
-        expression { hasChangesIn("vocabulary", "vocabulary") || isDevelop() }
+//        expression { hasChangesIn("vocabulary", "vocabulary") || isDevelop() }
       }
       steps {
         script {
@@ -91,7 +91,7 @@ pipeline {
           branch 'develop'
           branch 'remod-breaking'
         }
-        expression { hasChangesIn("transform", "transform") || isDevelop() }
+//        expression { hasChangesIn("transform", "transform") || isDevelop() }
       }
       steps {
         script {
@@ -189,25 +189,25 @@ String buildSlackMessage(headerFlavour, branchName, failedStage, buildUrl) {
   ":alert: $headerFlavour! :alert: AMF-METADATA Build failed!. \n\tBranch: $branchName\n\tStage:$failedStage\n(See $buildUrl)\n"
 }
 
-Boolean hasChangesIn(String artifact, String directory) {
-  sh '''
-       echo "Fetching tags"
-       git fetch --tags
-     '''
-  String TAG_REF = "refs/tags/$artifact"
-  def LAST_TAG_COMMIT = sh(returnStdout: true, script: "git for-each-ref $TAG_REF --format='%(objectname)' --sort=-taggerdate --count=1").trim()
-  def MASTER_HEAD = sh(returnStdout: true, script: "git rev-parse HEAD").trim()
-  echo "Commit sha from $TAG_REF is $LAST_TAG_COMMIT"
-  echo "Master HEAD commit SHA: $MASTER_HEAD"
-  return sh(
-          returnStatus: true,
-          script: "git diff --name-only ${LAST_TAG_COMMIT}...${MASTER_HEAD} | grep ${directory}/"
-  ) == 0
-}
-
-Boolean isDevelop() {
-  env.BRANCH_NAME == "develop"
-}
+//Boolean hasChangesIn(String artifact, String directory) {
+//  sh '''
+//       echo "Fetching tags"
+//       git fetch --tags
+//     '''
+//  String TAG_REF = "refs/tags/$artifact"
+//  def LAST_TAG_COMMIT = sh(returnStdout: true, script: "git for-each-ref $TAG_REF --format='%(objectname)' --sort=-taggerdate --count=1").trim()
+//  def MASTER_HEAD = sh(returnStdout: true, script: "git rev-parse HEAD").trim()
+//  echo "Commit sha from $TAG_REF is $LAST_TAG_COMMIT"
+//  echo "Master HEAD commit SHA: $MASTER_HEAD"
+//  return sh(
+//          returnStatus: true,
+//          script: "git diff --name-only ${LAST_TAG_COMMIT}...${MASTER_HEAD} | grep ${directory}/"
+//  ) == 0
+//}
+//
+//Boolean isDevelop() {
+//  env.BRANCH_NAME == "develop"
+//}
 
 String getNextTag(String artifact) {
   String semver = sh(returnStdout: true, script: "sbt $artifact/version | tail -n 1 | grep -o '[0-9].[0-9].[0-9].*'").trim()
