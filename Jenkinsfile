@@ -9,7 +9,10 @@ def HAS_PUBLISHED_TRANSFORM = false
 
 pipeline {
   agent {
-    dockerfile true
+    dockerfile {
+      filename 'Dockerfile'
+      registryCredentialsId 'dockerhub-pro-credentials'
+    }
   }
   options {
     ansiColor('xterm')
