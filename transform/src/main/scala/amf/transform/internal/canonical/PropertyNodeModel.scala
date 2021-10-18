@@ -1,9 +1,9 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
-import amf.core.metamodel.Field
-import amf.core.metamodel.domain.{DataNodeModel, DomainElementModel, ModelDoc, ModelVocabularies}
-import amf.core.model.domain.AmfObject
-import amf.core.vocabulary.{Namespace, ValueType}
+import amf.core.client.scala.model.domain.AmfObject
+import amf.core.client.scala.vocabulary.{Namespace, ValueType}
+import amf.core.internal.metamodel.Field
+import amf.core.internal.metamodel.domain.{DataNodeModel, DomainElementModel, ModelDoc, ModelVocabularies}
 
 private[transform] object PropertyNodeModel extends DomainElementModel {
 

@@ -1,7 +1,6 @@
 #%WebAPI Spec 1.0
 unitType: Document
 $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/rootAsset
-version: 3.1.0
 root: true
 references: []
 location: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml
@@ -11,44 +10,44 @@ encodes:
   name: API
   endpoint:
     -
-      $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist
+      $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist
       supportedOperation:
         -
-          $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get
+          $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get
           description: Returns list of claims for selcted provider
           returns:
             -
-              $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200
+              $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200
               name: "200"
               payload:
                 -
-                  $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson
+                  $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200/payload/application%2Fjson
                   schema:
                     shapeType: Node
-                    $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/application%2Fjson
+                    $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/application%2Fjson
                     inherits:
                       -
                         shapeType: Node
-                        $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/schema/schema
+                        $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/application%2Fjson/inherits/shape/schema
                         name: schema
                         property:
                           -
-                            $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/schema/schema/property/parentProp
+                            $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/application%2Fjson/inherits/shape/schema/property/property/parentProp
                             range:
                               shapeType: Tuple
-                              $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/schema/schema/property/parentProp/array/parentProp/itemsTuple1/array/parentProp
+                              $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/application%2Fjson/inherits/shape/schema/property/property/parentProp/array/parentProp
                               name: parentProp
                               items:
                                 -
                                   shapeType: Node
-                                  $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/schema/property/parentProp/array/parentProp/member0
+                                  $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/application%2Fjson/inherits/shape/schema/property/property/parentProp/array/parentProp/items/shape/member0
                                   name: member0
                                   property:
                                     -
-                                      $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/schema/property/parentProp/array/parentProp/member0/property/childProp
+                                      $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/application%2Fjson/inherits/shape/schema/property/property/parentProp/array/parentProp/items/shape/member0/property/property/childProp
                                       range:
                                         shapeType: Scalar
-                                        $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/end-points/%2Flist/get/200/application%2Fjson/schema/property/parentProp/array/parentProp/member0/property/childProp/scalar/childProp
+                                        $id: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/application%2Fjson/inherits/shape/schema/property/property/parentProp/array/parentProp/items/shape/member0/property/property/childProp/scalar/childProp
                                         name: childProp
                                         datatype: http://www.w3.org/2001/XMLSchema#string
                                       name: childProp
@@ -58,7 +57,7 @@ encodes:
                             name: parentProp
                             minCount: 0
                             path: http://a.ml/vocabularies/data#parentProp
-                        referenceId: file://transform/src/test/resources/transformations/tuple-shape-schema/schema.json#/external
+                        referenceId: file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/references/0/external
                         closed: false
                     name: application/json
                   mediaType: application/json

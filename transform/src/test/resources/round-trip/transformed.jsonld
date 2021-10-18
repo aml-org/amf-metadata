@@ -1,0 +1,1428 @@
+{
+  "@graph": [
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/rootAsset",
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#declares": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight"
+        }
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api"
+      },
+      "http://a.ml/vocabularies/document#version": "3.1.0",
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#references": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flights-example/1.0.1/AmericanFlightsExample.raml"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/examples/AmericanFlightNoIDExample.raml"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/examples/AmericanFlightExample.raml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#link-label": "/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml",
+      "http://a.ml/vocabularies/document#design-link-target": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "AmericanFlight"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "Americans Flights API",
+      "http://a.ml/vocabularies/apiContract#endpoint": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flights-example/1.0.1/AmericanFlightsExample.raml",
+      "@type": [
+        "http://a.ml/vocabularies/document#ExternalFragment",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalFragment",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flights-example/1.0.1/AmericanFlightsExample.raml#/external"
+      },
+      "http://a.ml/vocabularies/document#version": "3.1.0",
+      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flights-example/1.0.1/AmericanFlightsExample.raml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#DataTypeFragment",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/DataTypeFragment",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type"
+      },
+      "http://a.ml/vocabularies/document#version": "3.1.0",
+      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/examples/AmericanFlightNoIDExample.raml",
+      "@type": [
+        "http://a.ml/vocabularies/document#ExternalFragment",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalFragment",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/examples/AmericanFlightNoIDExample.raml#/external"
+      },
+      "http://a.ml/vocabularies/document#version": "3.1.0",
+      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/examples/AmericanFlightNoIDExample.raml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/examples/AmericanFlightExample.raml",
+      "@type": [
+        "http://a.ml/vocabularies/document#ExternalFragment",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalFragment",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/examples/AmericanFlightExample.raml#/external"
+      },
+      "http://a.ml/vocabularies/document#version": "3.1.0",
+      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/examples/AmericanFlightExample.raml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/parameter/path/ID"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/flights/{ID}"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/flights"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flights-example/1.0.1/AmericanFlightsExample.raml#/external",
+      "@type": [
+        "http://a.ml/vocabularies/document#ExternalDomainElement",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalDomainElement",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#raw": "#%RAML 1.0 NamedExample\nvalue:\n\n  - \n    ID: 1 \n    code: ER38sd\n    price: 400\n    departureDate: 2017/07/26\n    origin: CLE\n    destination: SFO\n    emptySeats: 0\n    plane: \n      type: Boeing 737\n      totalSeats: 150\n  - \n    ID: 2 \n    code: ER45if\n    price: 540.99\n    departureDate: 2017/07/27\n    origin: SFO\n    destination: ORD\n    emptySeats: 54\n    plane: \n      type: Boeing 777\n      totalSeats: 300\n",
+      "http://a.ml/vocabularies/core#mediaType": "application/yaml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/price"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/origin"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/emptySeats"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/destination"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/departureDate"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/code"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/ID"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://www.w3.org/ns/shacl#name": "type"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/examples/AmericanFlightNoIDExample.raml#/external",
+      "@type": [
+        "http://a.ml/vocabularies/document#ExternalDomainElement",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalDomainElement",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#raw": "#%RAML 1.0 NamedExample\nvalue:\n    code: ER38sd\n    price: 400\n    departureDate: 2017/07/26\n    origin: CLE\n    destination: SFO\n    emptySeats: 0\n    plane: \n      type: Boeing 737\n      totalSeats: 150",
+      "http://a.ml/vocabularies/core#mediaType": "application/yaml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/examples/AmericanFlightExample.raml#/external",
+      "@type": [
+        "http://a.ml/vocabularies/document#ExternalDomainElement",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalDomainElement",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#raw": "#%RAML 1.0 NamedExample\nvalue:\n    ID: 1 \n    code: ER38sd\n    price: 400\n    departureDate: 2017/07/26\n    origin: CLE\n    destination: SFO\n    emptySeats: 0\n    plane: \n      type: Boeing 737\n      totalSeats: 150",
+      "http://a.ml/vocabularies/core#mediaType": "application/yaml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/parameter/path/ID",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#paramName": "ID",
+      "http://a.ml/vocabularies/core#name": "ID",
+      "http://a.ml/vocabularies/apiContract#binding": "path",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/parameter/path/ID/scalar/ID"
+      }
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#returns": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get/200"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "get"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#expects": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/request"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#returns": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/200"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "put"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#expects": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/request"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#returns": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/201"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "post"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#expects": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#returns": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "get"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#returns": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete/200"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#method": "delete"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/price",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/price/scalar/price"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#price"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "price"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane/plane"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 0,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#plane"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "plane"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/origin",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/origin/scalar/origin"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#origin"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "origin"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/emptySeats",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/emptySeats/scalar/emptySeats"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#emptySeats"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "emptySeats"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/destination",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/destination/scalar/destination"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#destination"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "destination"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/departureDate",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/departureDate/scalar/departureDate"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#departureDate"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "departureDate"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/code",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/code/scalar/code"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#code"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "code"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/ID",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/ID/scalar/ID%3F"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 0,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#ID"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "ID"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/parameter/path/ID/scalar/ID",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "ID"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get/200",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Response",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#statusCode": "200",
+      "http://a.ml/vocabularies/core#name": "200",
+      "http://a.ml/vocabularies/apiContract#payload": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get/200/application%2Fjson"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/request",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Request",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Request",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#payload": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/request/application%2Fjson"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/200",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Response",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#statusCode": "200",
+      "http://a.ml/vocabularies/core#name": "200",
+      "http://a.ml/vocabularies/apiContract#payload": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/200/application%2Fjson"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/request",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Request",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Request",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#payload": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/request/application%2Fjson"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/201",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Response",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#statusCode": "201",
+      "http://a.ml/vocabularies/core#name": "201",
+      "http://a.ml/vocabularies/apiContract#payload": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/201/application%2Fjson"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Request",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Request",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Response",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#statusCode": "200",
+      "http://a.ml/vocabularies/core#name": "200",
+      "http://a.ml/vocabularies/apiContract#payload": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete/200",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Response",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#statusCode": "200",
+      "http://a.ml/vocabularies/core#name": "200",
+      "http://a.ml/vocabularies/apiContract#payload": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete/200/application%2Fjson"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/price/scalar/price",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://a.ml/vocabularies/shapes#number"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "price"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane/plane",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane/plane/property/type"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane/plane/property/totalSeats"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://www.w3.org/ns/shacl#name": "plane"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/origin/scalar/origin",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "origin"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/emptySeats/scalar/emptySeats",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#integer"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "emptySeats"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/destination/scalar/destination",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "destination"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/departureDate/scalar/departureDate",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "departureDate"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/code/scalar/code",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "code"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/ID/scalar/ID%3F",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#integer"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "ID?"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get/200/application%2Fjson",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Payload",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get/200/application%2Fjson/schema"
+      },
+      "http://a.ml/vocabularies/core#mediaType": "application/json"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/request/application%2Fjson",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Payload",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/request/application%2Fjson/schema"
+      },
+      "http://a.ml/vocabularies/core#mediaType": "application/json"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/200/application%2Fjson",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Payload",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/200/application%2Fjson/any/schema"
+      },
+      "http://a.ml/vocabularies/core#mediaType": "application/json"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/request/application%2Fjson",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Payload",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/request/application%2Fjson/schema"
+      },
+      "http://a.ml/vocabularies/core#mediaType": "application/json"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/201/application%2Fjson",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Payload",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/201/application%2Fjson/any/schema"
+      },
+      "http://a.ml/vocabularies/core#mediaType": "application/json"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#required": false,
+      "http://a.ml/vocabularies/apiContract#paramName": "destination",
+      "http://a.ml/vocabularies/core#name": "destination",
+      "http://a.ml/vocabularies/apiContract#binding": "query",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination/scalar/schema"
+      }
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Payload",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema"
+      },
+      "http://a.ml/vocabularies/core#mediaType": "application/json"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete/200/application%2Fjson",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Payload",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete/200/application%2Fjson/any/schema"
+      },
+      "http://a.ml/vocabularies/core#mediaType": "application/json"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane/plane/property/type",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane/plane/property/type/scalar/type"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#type"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "type"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane/plane/property/totalSeats",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane/plane/property/totalSeats/scalar/totalSeats"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#totalSeats"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "totalSeats"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get/200/application%2Fjson/schema",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://a.ml/vocabularies/apiContract#examples": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get/200/application%2Fjson/schema/example/output"
+        }
+      ],
+      "http://a.ml/vocabularies/shapes#inherits": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight/link--1108604846"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/request/application%2Fjson/schema",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://a.ml/vocabularies/apiContract#examples": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/request/application%2Fjson/schema/example/input"
+        }
+      ],
+      "http://a.ml/vocabularies/shapes#inherits": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight/link--2146517808"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/200/application%2Fjson/any/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/AnyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#examples": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/200/application%2Fjson/any/schema/example/default-example"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/request/application%2Fjson/schema",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://a.ml/vocabularies/apiContract#examples": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/request/application%2Fjson/schema/example/input"
+        }
+      ],
+      "http://a.ml/vocabularies/shapes#inherits": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight/link--320519184"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/201/application%2Fjson/any/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/AnyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#examples": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/201/application%2Fjson/any/schema/example/default-example"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema",
+      "http://www.w3.org/ns/shacl#in": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination/scalar/schema/list"
+      }
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ArrayShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ArrayShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#items": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema/items/default-node"
+      },
+      "http://a.ml/vocabularies/apiContract#examples": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema/example/output"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete/200/application%2Fjson/any/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#AnyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/AnyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#examples": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete/200/application%2Fjson/any/schema/example/default-example"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane/plane/property/type/scalar/type",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "type"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/exchange_modules/68ef9520-24e9-4cf2-b2f5-620025690913/training-american-flight-data-type/1.0.1/AmericanFlightDataType.raml#/type/property/plane/plane/property/totalSeats/scalar/totalSeats",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#integer"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "totalSeats"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get/200/application%2Fjson/schema/example/output",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Example",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Example",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#raw": "ID: 1\ncode: ER38sd\nprice: 400\ndepartureDate: 2017/07/26\norigin: CLE\ndestination: SFO\nemptySeats: 0\nplane:\n  type: Boeing 737\n  totalSeats: 150",
+      "http://a.ml/vocabularies/core#name": "output",
+      "http://a.ml/vocabularies/document#strict": true,
+      "http://a.ml/vocabularies/document#structuredValue": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get/200/application%2Fjson/schema/example/output/object_1"
+      }
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight/link--1108604846",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#link-label": "AmericanFlight",
+      "http://a.ml/vocabularies/document#design-link-target": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "AmericanFlight"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/request/application%2Fjson/schema/example/input",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Example",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Example",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#raw": "code: ER38sd\nprice: 400\ndepartureDate: 2017/07/26\norigin: CLE\ndestination: SFO\nemptySeats: 0\nplane:\n  type: Boeing 737\n  totalSeats: 150",
+      "http://a.ml/vocabularies/core#name": "input",
+      "http://a.ml/vocabularies/document#strict": true,
+      "http://a.ml/vocabularies/document#structuredValue": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/request/application%2Fjson/schema/example/input/object_1"
+      }
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight/link--2146517808",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#link-label": "AmericanFlight",
+      "http://a.ml/vocabularies/document#design-link-target": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "AmericanFlight"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/200/application%2Fjson/any/schema/example/default-example",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Example",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Example",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#raw": "message: Flight updated manually (but not really!!!!!)",
+      "http://a.ml/vocabularies/document#strict": true,
+      "http://a.ml/vocabularies/document#structuredValue": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/200/application%2Fjson/any/schema/example/default-example/object_1"
+      }
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/request/application%2Fjson/schema/example/input",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Example",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Example",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#raw": "code: ER38sd\nprice: 400\ndepartureDate: 2017/07/26\norigin: CLE\ndestination: SFO\nemptySeats: 0\nplane:\n  type: Boeing 737\n  totalSeats: 150",
+      "http://a.ml/vocabularies/core#name": "input",
+      "http://a.ml/vocabularies/document#strict": true,
+      "http://a.ml/vocabularies/document#structuredValue": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/request/application%2Fjson/schema/example/input/object_1"
+      }
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight/link--320519184",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#link-label": "AmericanFlight",
+      "http://a.ml/vocabularies/document#design-link-target": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "AmericanFlight"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/201/application%2Fjson/any/schema/example/default-example",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Example",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Example",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#raw": "message: Flight added (but not in real)",
+      "http://a.ml/vocabularies/document#strict": true,
+      "http://a.ml/vocabularies/document#structuredValue": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/201/application%2Fjson/any/schema/example/default-example/object_1"
+      }
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination/scalar/schema/list",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Seq",
+      "http://www.w3.org/2000/01/rdf-schema#_1": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination/scalar/schema/enum/scalar_3"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#_2": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination/scalar/schema/enum/scalar_2"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#_3": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination/scalar/schema/enum/scalar_1"
+      }
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema/items/default-node",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#link-label": "AmericanFlight",
+      "http://a.ml/vocabularies/document#design-link-target": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/declarations/types/AmericanFlight"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema/example/output",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Example",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Example",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#raw": "-\n  ID: 1\n  code: ER38sd\n  price: 400\n  departureDate: 2017/07/26\n  origin: CLE\n  destination: SFO\n  emptySeats: 0\n  plane:\n    type: Boeing 737\n    totalSeats: 150\n-\n  ID: 2\n  code: ER45if\n  price: 540.99\n  departureDate: 2017/07/27\n  origin: SFO\n  destination: ORD\n  emptySeats: 54\n  plane:\n    type: Boeing 777\n    totalSeats: 300",
+      "http://a.ml/vocabularies/core#name": "output",
+      "http://a.ml/vocabularies/document#strict": true,
+      "http://a.ml/vocabularies/document#structuredValue": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema/example/output/array_1"
+      }
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete/200/application%2Fjson/any/schema/example/default-example",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Example",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Example",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#raw": "message: Flight deleted (but not real!!)",
+      "http://a.ml/vocabularies/document#strict": true,
+      "http://a.ml/vocabularies/document#structuredValue": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete/200/application%2Fjson/any/schema/example/default-example/object_1"
+      }
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights%2F%7BID%7D/get/200/application%2Fjson/schema/example/output/object_1",
+      "@type": [
+        "http://a.ml/vocabularies/data#Object",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "object_1"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/request/application%2Fjson/schema/example/input/object_1",
+      "@type": [
+        "http://a.ml/vocabularies/data#Object",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "object_1"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/put/200/application%2Fjson/any/schema/example/default-example/object_1",
+      "@type": [
+        "http://a.ml/vocabularies/data#Object",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "object_1"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/request/application%2Fjson/schema/example/input/object_1",
+      "@type": [
+        "http://a.ml/vocabularies/data#Object",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "object_1"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/post/201/application%2Fjson/any/schema/example/default-example/object_1",
+      "@type": [
+        "http://a.ml/vocabularies/data#Object",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "object_1"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination/scalar/schema/enum/scalar_3",
+      "@type": [
+        "http://a.ml/vocabularies/data#Scalar",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://a.ml/vocabularies/data#value": "CLE",
+      "http://a.ml/vocabularies/core#name": "scalar_3"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination/scalar/schema/enum/scalar_2",
+      "@type": [
+        "http://a.ml/vocabularies/data#Scalar",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://a.ml/vocabularies/data#value": "LAX",
+      "http://a.ml/vocabularies/core#name": "scalar_2"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/request/parameter/query/destination/scalar/schema/enum/scalar_1",
+      "@type": [
+        "http://a.ml/vocabularies/data#Scalar",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://a.ml/vocabularies/data#value": "SFO",
+      "http://a.ml/vocabularies/core#name": "scalar_1"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema/example/output/array_1",
+      "@type": [
+        "http://a.ml/vocabularies/data#Array",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ArrayNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/2000/01/rdf-schema#member": [
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema/example/output/array_1/object_2"
+        },
+        {
+          "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema/example/output/array_1/object_13"
+        }
+      ],
+      "http://a.ml/vocabularies/core#name": "array_1"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/delete/200/application%2Fjson/any/schema/example/default-example/object_1",
+      "@type": [
+        "http://a.ml/vocabularies/data#Object",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "object_1"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema/example/output/array_1/object_2",
+      "@type": [
+        "http://a.ml/vocabularies/data#Object",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "object_2"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/web-api/end-points/%2Fflights/get/200/application%2Fjson/array/schema/example/output/array_1/object_13",
+      "@type": [
+        "http://a.ml/vocabularies/data#Object",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "object_13"
+    },
+    {
+      "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml",
+      "@type": [
+        "http://a.ml/vocabularies/meta#DialectInstance",
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/americans-flights-api-1.0.2-raml/americans-flights-api.raml#/rootAsset"
+      },
+      "http://a.ml/vocabularies/document#version": "3.1.0",
+      "http://a.ml/vocabularies/document#root": true
+    }
+  ]
+}

@@ -1,10 +1,10 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
-import amf.core.metamodel.Field
-import amf.core.metamodel.Type._
-import amf.core.metamodel.domain.extensions.DomainExtensionModel
-import amf.core.metamodel.domain.{ModelDoc, ModelVocabularies}
-import amf.core.vocabulary.Namespace
+import amf.core.client.scala.vocabulary.Namespace
+import amf.core.internal.metamodel.Field
+import amf.core.internal.metamodel.Type._
+import amf.core.internal.metamodel.domain.extensions.DomainExtensionModel
+import amf.core.internal.metamodel.domain.{ModelDoc, ModelVocabularies}
 
 private[amf] object CanonicalWebAPISpecExtraModel {
   val DesignLinkTargetField = Field(

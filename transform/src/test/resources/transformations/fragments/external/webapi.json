@@ -1,74 +1,63 @@
-[
-  {
-    "@id": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml",
-    "@type": [
-      "http://a.ml/vocabularies/meta#DialectInstance",
-      "http://a.ml/vocabularies/document#Document",
-      "http://a.ml/vocabularies/document#Fragment",
-      "http://a.ml/vocabularies/document#Module",
-      "http://a.ml/vocabularies/document#Unit"
-    ],
-    "http://a.ml/vocabularies/meta#definedBy": [
-      {
-        "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+{
+  "@graph": [
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml#/rootAsset",
+      "@type": [
+        "http://a.ml/vocabularies/document#ExternalFragment",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalFragment",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml#/external"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml#/external",
+      "@type": [
+        "http://a.ml/vocabularies/document#ExternalDomainElement",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalDomainElement",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#raw": "name: Apa la papa\nage: 99\nfavorite_toy: Buzz Lightyear\n",
+      "http://a.ml/vocabularies/core#mediaType": "application/yaml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml",
+      "@type": [
+        "http://a.ml/vocabularies/meta#DialectInstance",
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml#/rootAsset"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml/BaseUnitProcessingData"
       }
-    ],
-    "http://a.ml/vocabularies/document#encodes": [
-      {
-        "@id": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml#/rootAsset",
-        "@type": [
-          "http://a.ml/vocabularies/document#ExternalFragment",
-          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalFragment",
-          "http://a.ml/vocabularies/meta#DialectDomainElement",
-          "http://a.ml/vocabularies/document#DomainElement"
-        ],
-        "http://a.ml/vocabularies/document#encodes": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml#/external",
-            "@type": [
-              "http://a.ml/vocabularies/document#ExternalDomainElement",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ExternalDomainElement",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/document#raw": [
-              {
-                "@value": "name: Apa la papa\nage: 99\nfavorite_toy: Buzz Lightyear\n"
-              }
-            ],
-            "http://a.ml/vocabularies/core#mediaType": [
-              {
-                "@value": "application/yaml"
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#version": [
-          {
-            "@value": "3.1.0"
-          }
-        ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/fragments/external/fragment.yaml"
-          }
-        ]
-      }
-    ],
-    "http://a.ml/vocabularies/document#version": [
-      {
-        "@value": "3.1.0"
-      }
-    ],
-    "http://a.ml/vocabularies/document#root": [
-      {
-        "@value": false
-      }
-    ]
-  }
-]
+    }
+  ]
+}

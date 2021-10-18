@@ -1,26 +1,16 @@
 package amf.exporters
 
-import java.io.{File, FileWriter, Writer}
+import amf.apicontract.client.platform.model.document.APIContractProcessingData
+import amf.apicontract.internal.metamodel.document.APIContractProcessingDataModel
+import amf.core.client.scala.vocabulary.Namespace
 
-import org.reflections.Reflections
-import amf.core.metamodel.Type.{
-  Bool,
-  Date,
-  DateTime,
-  Double,
-  EncodedIri,
-  Float,
-  Int,
-  Iri,
-  RegExp,
-  Str,
-  Time
-}
-import amf.core.metamodel.domain._
-import amf.core.metamodel.{Field, Obj, Type}
-import amf.core.vocabulary.Namespace
-import amf.transform.canonical.CanonicalWebAPISpecExtraModel
-import amf.transform.canonical.CanonicalWebAPISpecExtraModel._
+import java.io.{File, FileWriter, Writer}
+import amf.core.internal.metamodel.Type.{Bool, Date, DateTime, Double, EncodedIri, Float, Int, Iri, RegExp, Str, Time}
+import amf.core.internal.metamodel.document.{BaseUnitModel, BaseUnitProcessingDataModel}
+import amf.core.internal.metamodel.domain._
+import amf.core.internal.metamodel.{Field, Obj, Type}
+import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel
+import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel._
 import org.reflections.Reflections
 import org.reflections.scanners.SubTypesScanner
 import org.yaml.model.YDocument
@@ -122,30 +112,43 @@ object VocabularyExporter {
     (Namespace.ApiContract + "DomainExtension").iri()
   )
 
+  val blockedClasses: Seq[String] = Seq(
+    (Namespace.Document + "APIContractProcessingData").iri(),
+    (Namespace.Document + "DialectInstanceProcessingData").iri(),
+    (Namespace.Document + "BaseUnitProcessingData").iri(),
+  )
+
+  val blockedProperties: Seq[String] = Seq(
+    BaseUnitModel.ProcessingData.value.iri(),
+    BaseUnitProcessingDataModel.Transformed.value.iri(),
+    APIContractProcessingDataModel.SourceSpec.value.iri(),
+    APIContractProcessingDataModel.APIContractModelVersion.value.iri()
+  )
+
   val blocklist: Map[ModelVocabulary, Seq[ModelVocabulary]] = Map()
 
   val reflectionsExtensions = new Reflections(
-    "amf.core.metamodel.domain.extensions",
+    "amf.core.internal.metamodel.domain.extensions",
     new SubTypesScanner(false))
   val reflectionsCoreDoc =
-    new Reflections("amf.core.metamodel.document", new SubTypesScanner(false))
+    new Reflections("amf.core.internal.metamodel.document", new SubTypesScanner(false))
   val reflectionsCoreDomain =
-    new Reflections("amf.core.metamodel.domain", new SubTypesScanner(false))
-  val reflectionsWebApi = new Reflections("amf.plugins.domain.webapi.metamodel",
+    new Reflections("amf.core.internal.metamodel.domain", new SubTypesScanner(false))
+  val reflectionsWebApi = new Reflections("amf.apicontract.internal.metamodel.domain",
                                           new SubTypesScanner(false))
   val reflectionsWebApiDoc = new Reflections(
-    "amf.plugins.document.webapi.metamodel",
+    "amf.apicontract.internal.metamodel.document",
     new SubTypesScanner(false))
   val reflectionsTemplates =
-    new Reflections("amf.plugins.domain.webapi.metamodel.templates",
+    new Reflections("amf.core.internal.metamodel.domain.templates",
                     new SubTypesScanner(false))
-  val reflectionsShapes = new Reflections("amf.plugins.domain.shapes.metamodel",
+  val reflectionsShapes = new Reflections("amf.shapes.internal.domain.metamodel",
                                           new SubTypesScanner(false))
   val reflectionsVocabularies =
-    new Reflections("amf.plugins.document.vocabularies.metamodel.domain",
+    new Reflections("amf.aml.internal.metamodel.domain",
                     new SubTypesScanner(false))
   val reflectionsVocabDoc =
-    new Reflections("amf.plugins.document.vocabularies.metamodel.document",
+    new Reflections("amf.aml.internal.metamodel.document",
                     new SubTypesScanner(false))
   val reflectionsExtModel =
     new Reflections("amf.transform", new SubTypesScanner(false))
@@ -435,7 +438,8 @@ object VocabularyExporter {
     }
 
     // final set of properties
-    (explicitProperties ++ implicitProperties).sortBy(_.id)
+    val properties = (explicitProperties ++ implicitProperties).sortBy(_.id)
+    properties.filter(prop => !blockedProperties.contains(prop.id))
   }
 
   /**
@@ -468,7 +472,8 @@ object VocabularyExporter {
       }
 
     // final set of classes
-    (explicitClasses ++ implicitClasses).sortBy(_.id)
+    val classes = (explicitClasses ++ implicitClasses).sortBy(_.id)
+    classes.filter(vocab => !blockedClasses.contains(vocab.id))
   }
 
   def usesReferences(
@@ -600,7 +605,7 @@ object VocabularyExporter {
           .filter(!conflictive.contains(_))
       // We need to solve a problem with the main class for the ShapeModel
       var classTerm =
-        if (klassName == "amf.core.metamodel.domain.ShapeModel$") {
+        if (klassName == "amf.core.internal.metamodel.domain.ShapeModel$") {
           val shapesShape = (Namespace.Shapes + "Shape").iri()
           val tmp = finalSuperclasses.filter(_ != shapesShape)
           finalSuperclasses = id :: tmp

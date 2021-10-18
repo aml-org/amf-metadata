@@ -1,0 +1,15 @@
+#%RAML 1.0
+title: Americans Flights API
+
+types:
+  AmericanFlight: !include /types/AmericanFlightDataType.raml
+
+/{ID}:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: AmericanFlight
+            examples:
+              output: !include /examples/AmericanFlightExample.raml

@@ -1,10 +1,13 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
-import amf.core.remote.{Hint, OasJsonHint, OasYamlHint}
+import amf.core.internal.remote.{Hint, Oas20JsonHint, Spec}
+
 
 class Oas20CanonicalValidationTest extends CanonicalSpecValidationTest {
 
   override val basePath: String = "file://transform/src/test/resources/specs/oas20/"
+
+  override val spec: Spec = Spec.OAS20
 
   override val ignoredApis = Set(
     "ref-to-main-file.json"
@@ -50,7 +53,6 @@ class Oas20CanonicalValidationTest extends CanonicalSpecValidationTest {
     "with-nested-external-ref-array.json",
     "with-nested-external-ref-object.json"
   )
-  override val hint: Hint = OasJsonHint
 
   runValidations()
 }

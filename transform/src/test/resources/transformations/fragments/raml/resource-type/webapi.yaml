@@ -1,10 +1,9 @@
 #%WebAPI Spec 1.0
 unitType: ResourceTypeFragment
-$id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml##/rootAsset
-version: 3.1.0
+$id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/rootAsset
 usage: Use this to describe resource that list items
 root: true
-location: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#
+location: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml
 encodes:
   elementType: ResourceType
   $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract
@@ -17,29 +16,29 @@ encodes:
         name: post
         range:
           elementType: Object
-          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5
+          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/post
           properties:
             -
-              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5_prop_responses
+              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/post_prop_responses
               name: responses
               range:
                 elementType: Object
-                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5/object_7
+                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/post/responses
                 properties:
                   -
-                    $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5/object_7_prop_201
+                    $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/post/responses_prop_201
                     name: "201"
                     range:
                       elementType: Scalar
-                      $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5/object_7/scalar_8
+                      $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/post/responses/201
                       value: ""
                       dataType: http://www.w3.org/2001/XMLSchema#nil
             -
-              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5_prop_description
+              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/post_prop_description
               name: description
               range:
                 elementType: Scalar
-                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_5/scalar_6
+                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/post/description
                 value: Add an item
                 dataType: http://www.w3.org/2001/XMLSchema#string
       -
@@ -47,14 +46,14 @@ encodes:
         name: get
         range:
           elementType: Object
-          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_3
+          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/get
           properties:
             -
-              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_3_prop_description
+              $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/get_prop_description
               name: description
               range:
                 elementType: Scalar
-                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/object_3/scalar_4
+                $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/get/description
                 value: Retrieve all items
                 dataType: http://www.w3.org/2001/XMLSchema#string
       -
@@ -62,6 +61,6 @@ encodes:
         name: description
         range:
           elementType: Scalar
-          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/scalar_2
+          $id: file://transform/src/test/resources/transformations/fragments/raml/resource-type/api.raml#/resourceType/default-abstract/object_1/description
           value: A collection resource
           dataType: http://www.w3.org/2001/XMLSchema#string

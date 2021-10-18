@@ -1,45 +1,43 @@
 #%WebAPI Spec 1.0
 unitType: Overlay
 $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/rootAsset
-version: 3.1.0
 usage: Spanish localization
 root: true
 references:
   -
     unitType: Document
-    $id: file://transform/src/test/resources/transformations/raml-overlay/base.raml
-    version: 3.1.0
+    $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0
     root: false
-    location: file://transform/src/test/resources/transformations/raml-overlay/base.raml
+    location: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0
     encodes:
       elementType: WebAPI
-      $id: file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api
+      $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api
       name: test
       server:
         -
-          $id: file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/falsedomain.com%2Fapis
+          $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/server/falsedomain.com%2Fapis
           urlTemplate: falsedomain.com/apis
       accepts:
         - application/json
       version: "1.0"
       endpoint:
         -
-          $id: file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D
+          $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D
           parameter:
             -
-              $id: file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id
+              $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D/parameter/parameter/path/customer_id
               required: true
               paramName: customer_id
               name: customer_id
               binding: path
               schema:
                 shapeType: Scalar
-                $id: file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id/scalar/schema
+                $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D/parameter/parameter/path/customer_id/scalar/schema
                 name: schema
                 datatype: http://www.w3.org/2001/XMLSchema#string
           path: /books/{customer_id}
         -
-          $id: file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks
+          $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks
           path: /books
       contentType:
         - application/json
@@ -49,6 +47,6 @@ encodes:
   $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api
   endpoint:
     -
-      $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api/end-points/%2Fbooks
+      $id: file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api/endpoint/%2Fbooks
       description: La colección de libros de la biblioteca
       path: /books

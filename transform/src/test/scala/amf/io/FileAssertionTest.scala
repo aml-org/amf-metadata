@@ -1,6 +1,6 @@
 package amf.io
 
-import amf.core.unsafe.PlatformSecrets
+import amf.core.internal.unsafe.PlatformSecrets
 import org.mulesoft.common.io.{AsyncFile, FileSystem}
 import org.scalatest.Assertion
 import Assertions._

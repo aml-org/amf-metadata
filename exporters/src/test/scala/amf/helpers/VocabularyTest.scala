@@ -1,14 +1,13 @@
 package amf.helpers
 
-import amf.client.AMF
-import amf.client.convert.NativeOpsFromJvm
-import amf.client.parse.DefaultParserErrorHandler
-import amf.core.remote.VocabularyYamlHint
-import amf.core.unsafe.PlatformSecrets
-import amf.facades.AMFCompiler
+import amf.aml.client.scala.AMLConfiguration
+import amf.aml.client.scala.model.document.Vocabulary
+import amf.aml.client.scala.model.domain.{ClassTerm, PropertyTerm}
+import amf.apicontract.client.scala.APIConfiguration
+import amf.core.client.scala.errorhandling.UnhandledErrorHandler
+import amf.core.internal.convert.NativeOpsFromJvm
+import amf.core.internal.unsafe.PlatformSecrets
 import amf.helpers.Assertions._
-import amf.plugins.document.vocabularies.model.document.Vocabulary
-import amf.plugins.document.vocabularies.model.domain.{ClassTerm, PropertyTerm}
 import org.scalatest.Assertion
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -18,9 +17,9 @@ trait VocabularyTest extends NativeOpsFromJvm with PlatformSecrets {
   implicit val executionContext: ExecutionContext = scala.concurrent.ExecutionContext.Implicits.global
 
   def testVocabulary(file: String, numClasses: Int, numProperties: Int): Future[Assertion] = {
+    val config = AMLConfiguration.predefined().withErrorHandlerProvider(() => UnhandledErrorHandler)
     for {
-      _ <- AMF.init().asFuture
-      unit <- AMFCompiler(s"file://${file}", platform, VocabularyYamlHint, eh = DefaultParserErrorHandler.withRun()).build()
+      unit <- config.baseUnitClient().parse(s"file://${file}").map(_.baseUnit)
     } yield {
       val declarations = unit.asInstanceOf[Vocabulary].declares
 

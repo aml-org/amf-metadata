@@ -1,251 +1,215 @@
-[
-  {
-    "@id": "file://transform/src/test/resources/transformations/declares/api.raml",
-    "@type": [
-      "http://a.ml/vocabularies/meta#DialectInstance",
-      "http://a.ml/vocabularies/document#Document",
-      "http://a.ml/vocabularies/document#Fragment",
-      "http://a.ml/vocabularies/document#Module",
-      "http://a.ml/vocabularies/document#Unit"
-    ],
-    "http://a.ml/vocabularies/meta#definedBy": [
-      {
-        "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+{
+  "@graph": [
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/rootAsset",
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#declares": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee"
+        }
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/web-api"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/declares/api.raml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType"
+        },
+        {
+          "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeId"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://www.w3.org/ns/shacl#name": "Employee"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/web-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "Declares API"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType/scalar/employeeType"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#employeeType"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "employeeType"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeId",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeId/scalar/employeeId"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#employeeId"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "employeeId"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType/scalar/employeeType",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "employeeType",
+      "http://www.w3.org/ns/shacl#in": {
+        "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType/scalar/employeeType/list"
       }
-    ],
-    "http://a.ml/vocabularies/document#encodes": [
-      {
-        "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/rootAsset",
-        "@type": [
-          "http://a.ml/vocabularies/document#Document",
-          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
-          "http://a.ml/vocabularies/meta#DialectDomainElement",
-          "http://a.ml/vocabularies/document#DomainElement"
-        ],
-        "http://a.ml/vocabularies/document#declares": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee",
-            "@type": [
-              "http://www.w3.org/ns/shacl#NodeShape",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://www.w3.org/ns/shacl#property": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeType",
-                "@type": [
-                  "http://www.w3.org/ns/shacl#PropertyShape",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/shapes#range": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeType/scalar/employeeType",
-                    "@type": [
-                      "http://a.ml/vocabularies/shapes#ScalarShape",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://www.w3.org/ns/shacl#datatype": [
-                      {
-                        "@id": "http://www.w3.org/2001/XMLSchema#string"
-                      }
-                    ],
-                    "http://www.w3.org/ns/shacl#name": [
-                      {
-                        "@value": "employeeType"
-                      }
-                    ],
-                    "http://www.w3.org/ns/shacl#in": [
-                      {
-                        "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeType/scalar/employeeType/list",
-                        "@type": "http://www.w3.org/2000/01/rdf-schema#Seq",
-                        "http://www.w3.org/2000/01/rdf-schema#_1": [
-                          {
-                            "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeType/scalar/employeeType/enum/scalar_3",
-                            "@type": [
-                              "http://a.ml/vocabularies/data#Scalar",
-                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
-                              "http://a.ml/vocabularies/meta#DialectDomainElement",
-                              "http://a.ml/vocabularies/document#DomainElement"
-                            ],
-                            "http://www.w3.org/ns/shacl#datatype": [
-                              {
-                                "@id": "http://www.w3.org/2001/XMLSchema#string"
-                              }
-                            ],
-                            "http://a.ml/vocabularies/data#value": [
-                              {
-                                "@value": "intern"
-                              }
-                            ]
-                          }
-                        ],
-                        "http://www.w3.org/2000/01/rdf-schema#_2": [
-                          {
-                            "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeType/scalar/employeeType/enum/scalar_2",
-                            "@type": [
-                              "http://a.ml/vocabularies/data#Scalar",
-                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
-                              "http://a.ml/vocabularies/meta#DialectDomainElement",
-                              "http://a.ml/vocabularies/document#DomainElement"
-                            ],
-                            "http://www.w3.org/ns/shacl#datatype": [
-                              {
-                                "@id": "http://www.w3.org/2001/XMLSchema#string"
-                              }
-                            ],
-                            "http://a.ml/vocabularies/data#value": [
-                              {
-                                "@value": "contractor"
-                              }
-                            ]
-                          }
-                        ],
-                        "http://www.w3.org/2000/01/rdf-schema#_3": [
-                          {
-                            "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeType/scalar/employeeType/enum/scalar_1",
-                            "@type": [
-                              "http://a.ml/vocabularies/data#Scalar",
-                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
-                              "http://a.ml/vocabularies/meta#DialectDomainElement",
-                              "http://a.ml/vocabularies/document#DomainElement"
-                            ],
-                            "http://www.w3.org/ns/shacl#datatype": [
-                              {
-                                "@id": "http://www.w3.org/2001/XMLSchema#string"
-                              }
-                            ],
-                            "http://a.ml/vocabularies/data#value": [
-                              {
-                                "@value": "ft"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#path": [
-                  {
-                    "@id": "http://a.ml/vocabularies/data#employeeType"
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#name": [
-                  {
-                    "@value": "employeeType"
-                  }
-                ]
-              },
-              {
-                "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeId",
-                "@type": [
-                  "http://www.w3.org/ns/shacl#PropertyShape",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/shapes#range": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declarations/types/Employee/property/employeeId/scalar/employeeId",
-                    "@type": [
-                      "http://a.ml/vocabularies/shapes#ScalarShape",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://www.w3.org/ns/shacl#datatype": [
-                      {
-                        "@id": "http://www.w3.org/2001/XMLSchema#string"
-                      }
-                    ],
-                    "http://www.w3.org/ns/shacl#name": [
-                      {
-                        "@value": "employeeId"
-                      }
-                    ]
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#path": [
-                  {
-                    "@id": "http://a.ml/vocabularies/data#employeeId"
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#name": [
-                  {
-                    "@value": "employeeId"
-                  }
-                ]
-              }
-            ],
-            "http://www.w3.org/ns/shacl#closed": [
-              {
-                "@value": false
-              }
-            ],
-            "http://www.w3.org/ns/shacl#name": [
-              {
-                "@value": "Employee"
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#encodes": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/web-api",
-            "@type": [
-              "http://a.ml/vocabularies/apiContract#WebAPI",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "Declares API"
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#version": [
-          {
-            "@value": "3.1.0"
-          }
-        ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/declares/api.raml"
-          }
-        ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeId/scalar/employeeId",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "employeeId"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType/scalar/employeeType/list",
+      "@type": "http://www.w3.org/2000/01/rdf-schema#Seq",
+      "http://www.w3.org/2000/01/rdf-schema#_1": {
+        "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType/scalar/employeeType/in/scalar_3"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#_2": {
+        "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType/scalar/employeeType/in/scalar_2"
+      },
+      "http://www.w3.org/2000/01/rdf-schema#_3": {
+        "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType/scalar/employeeType/in/scalar_1"
       }
-    ],
-    "http://a.ml/vocabularies/document#version": [
-      {
-        "@value": "3.1.0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType/scalar/employeeType/in/scalar_3",
+      "@type": [
+        "http://a.ml/vocabularies/data#Scalar",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://a.ml/vocabularies/data#value": "intern"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType/scalar/employeeType/in/scalar_2",
+      "@type": [
+        "http://a.ml/vocabularies/data#Scalar",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://a.ml/vocabularies/data#value": "contractor"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/declares/shape/Employee/property/property/employeeType/scalar/employeeType/in/scalar_1",
+      "@type": [
+        "http://a.ml/vocabularies/data#Scalar",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://a.ml/vocabularies/data#value": "ft"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/declares/api.raml",
+      "@type": [
+        "http://a.ml/vocabularies/meta#DialectInstance",
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/declares/api.raml#/rootAsset"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://transform/src/test/resources/transformations/declares/api.raml/BaseUnitProcessingData"
       }
-    ],
-    "http://a.ml/vocabularies/document#root": [
-      {
-        "@value": false
-      }
-    ]
-  }
-]
+    }
+  ]
+}

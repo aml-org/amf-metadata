@@ -1,9 +1,9 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
-import amf.core.metamodel.domain.LinkableElementModel
-import amf.core.vocabulary.{Namespace, ValueType}
-import amf.transform.canonical.CanonicalWebAPISpecExtraModel.DesignLinkTargetField
-import amf.transform.canonical.CanonicalWebAPISpecTransformer.{DialectNode, DomainElementUri, TypeUri}
+import amf.core.client.scala.vocabulary.Namespace
+import amf.core.internal.metamodel.domain.LinkableElementModel
+import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel.DesignLinkTargetField
+import amf.transform.internal.canonical.CanonicalWebAPISpecTransformer.{DialectNode, DomainElementUri, TypeUri}
 import org.apache.jena.rdf.model.Model
 
 import scala.collection.JavaConverters._
@@ -33,7 +33,8 @@ trait DomainElementTransform extends AnnotationTransform with TransformHelpers {
   }
 
   private def transformType(nativeModel: Model, domainElement: DomainElementUri, mapping: Map[TypeUri, DialectNode]): Unit = {
-    val typesIterator = queryObjectsWith(nativeModel, domainElement, Namespace.Rdf + "type")
+    val types = queryObjectsWith(nativeModel, domainElement, Namespace.Rdf + "type").asScala.toList
+    val typesIterator = types.iterator
 
     // We need to deal with node shape inheritance
     // These flags allow us to track if we found any shape or shape in case
@@ -54,12 +55,16 @@ trait DomainElementTransform extends AnnotationTransform with TransformHelpers {
       !dialectNode.endsWith("#/declarations/API")
     }
 
+    def isNotSetting(dialectNode: DialectNode) = {
+      !dialectNode.endsWith("#/declarations/Settings")
+    }
+
     while (typesIterator.hasNext) {
       val nextType = typesIterator.next().asResource().getURI
       mapping.get(nextType) match {
         case Some(dialectNode) =>
           // dealing with inheritance here
-          if (isNotShape(dialectNode) && isNotApi(dialectNode)) {
+          if (isNotShape(dialectNode) && isNotApi(dialectNode) && isNotSetting(dialectNode)) {
             found = true
             mappedDialectNode = dialectNode
           } else if (dialectNode.endsWith("#/declarations/Shape")) {

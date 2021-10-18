@@ -1,10 +1,9 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
-import amf.core.metamodel.Obj
-import amf.core.metamodel.domain.{DataNodeModel, ObjectNodeModel}
-import amf.core.vocabulary.{Namespace, ValueType}
-import amf.transform.canonical.CanonicalWebAPISpecExtraModel.DataPropertiesField
-import amf.transform.canonical.CanonicalWebAPISpecTransformer.{DialectNode, TypeUri, defaultIri, querySubjectsWith}
+import amf.core.client.scala.vocabulary.Namespace
+import amf.core.internal.metamodel.domain.{DataNodeModel, ObjectNodeModel}
+import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel.DataPropertiesField
+import amf.transform.internal.canonical.CanonicalWebAPISpecTransformer.{DialectNode, TypeUri, defaultIri, querySubjectsWith}
 import org.apache.jena.rdf.model.{Model, RDFNode, Resource}
 
 import scala.collection.JavaConverters._

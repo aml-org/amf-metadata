@@ -1,400 +1,198 @@
-[
-  {
-    "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml",
-    "@type": [
-      "http://a.ml/vocabularies/meta#DialectInstance",
-      "http://a.ml/vocabularies/document#Document",
-      "http://a.ml/vocabularies/document#Fragment",
-      "http://a.ml/vocabularies/document#Module",
-      "http://a.ml/vocabularies/document#Unit"
-    ],
-    "http://a.ml/vocabularies/meta#definedBy": [
-      {
-        "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+{
+  "@graph": [
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/rootAsset",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Overlay",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Overlay",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#extends": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0"
+        }
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api"
+      },
+      "http://a.ml/vocabularies/document#usage": "Spanish localization",
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#references": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0"
+        }
+      ],
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/raml-overlay/api.raml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0",
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api"
+      },
+      "http://a.ml/vocabularies/document#root": false,
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#endpoint": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api/endpoint/%2Fbooks"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#WebAPI",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "test",
+      "http://a.ml/vocabularies/apiContract#server": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/server/falsedomain.com%2Fapis"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#accepts": [
+        "application/json"
+      ],
+      "http://a.ml/vocabularies/core#version": "1.0",
+      "http://a.ml/vocabularies/apiContract#endpoint": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D"
+        },
+        {
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#contentType": [
+        "application/json"
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api/endpoint/%2Fbooks",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#description": "La colecci\u00F3n de libros de la biblioteca",
+      "http://a.ml/vocabularies/apiContract#path": "/books"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/server/falsedomain.com%2Fapis",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Server",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#urlTemplate": "falsedomain.com/apis"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#parameter": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D/parameter/parameter/path/customer_id"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/books/{customer_id}"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "/books"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D/parameter/parameter/path/customer_id",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Parameter",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#required": true,
+      "http://a.ml/vocabularies/apiContract#paramName": "customer_id",
+      "http://a.ml/vocabularies/core#name": "customer_id",
+      "http://a.ml/vocabularies/apiContract#binding": "path",
+      "http://a.ml/vocabularies/shapes#schema": {
+        "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D/parameter/parameter/path/customer_id/scalar/schema"
       }
-    ],
-    "http://a.ml/vocabularies/document#encodes": [
-      {
-        "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/rootAsset",
-        "@type": [
-          "http://a.ml/vocabularies/apiContract#Overlay",
-          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Overlay",
-          "http://a.ml/vocabularies/meta#DialectDomainElement",
-          "http://a.ml/vocabularies/document#DomainElement"
-        ],
-        "http://a.ml/vocabularies/document#extends": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml",
-            "@type": [
-              "http://a.ml/vocabularies/document#Document",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/document#encodes": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#WebAPI",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/core#name": [
-                  {
-                    "@value": "test"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#server": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/falsedomain.com%2Fapis",
-                    "@type": [
-                      "http://a.ml/vocabularies/apiContract#Server",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/core#urlTemplate": [
-                      {
-                        "@value": "falsedomain.com/apis"
-                      }
-                    ]
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#accepts": [
-                  {
-                    "@value": "application/json"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#version": [
-                  {
-                    "@value": "1.0"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#endpoint": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D",
-                    "@type": [
-                      "http://a.ml/vocabularies/apiContract#EndPoint",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/apiContract#parameter": [
-                      {
-                        "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id",
-                        "@type": [
-                          "http://a.ml/vocabularies/apiContract#Parameter",
-                          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
-                          "http://a.ml/vocabularies/meta#DialectDomainElement",
-                          "http://a.ml/vocabularies/document#DomainElement"
-                        ],
-                        "http://a.ml/vocabularies/apiContract#required": [
-                          {
-                            "@value": true
-                          }
-                        ],
-                        "http://a.ml/vocabularies/apiContract#paramName": [
-                          {
-                            "@value": "customer_id"
-                          }
-                        ],
-                        "http://a.ml/vocabularies/core#name": [
-                          {
-                            "@value": "customer_id"
-                          }
-                        ],
-                        "http://a.ml/vocabularies/apiContract#binding": [
-                          {
-                            "@value": "path"
-                          }
-                        ],
-                        "http://a.ml/vocabularies/shapes#schema": [
-                          {
-                            "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id/scalar/schema",
-                            "@type": [
-                              "http://a.ml/vocabularies/shapes#ScalarShape",
-                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
-                              "http://a.ml/vocabularies/meta#DialectDomainElement",
-                              "http://a.ml/vocabularies/document#DomainElement"
-                            ],
-                            "http://www.w3.org/ns/shacl#datatype": [
-                              {
-                                "@id": "http://www.w3.org/2001/XMLSchema#string"
-                              }
-                            ],
-                            "http://www.w3.org/ns/shacl#name": [
-                              {
-                                "@value": "schema"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ],
-                    "http://a.ml/vocabularies/apiContract#path": [
-                      {
-                        "@value": "/books/{customer_id}"
-                      }
-                    ]
-                  },
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks",
-                    "@type": [
-                      "http://a.ml/vocabularies/apiContract#EndPoint",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/apiContract#path": [
-                      {
-                        "@value": "/books"
-                      }
-                    ]
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#contentType": [
-                  {
-                    "@value": "application/json"
-                  }
-                ]
-              }
-            ],
-            "http://a.ml/vocabularies/document#version": [
-              {
-                "@value": "3.1.0"
-              }
-            ],
-            "http://a.ml/vocabularies/document#root": [
-              {
-                "@value": false
-              }
-            ],
-            "http://a.ml/vocabularies/document#location": [
-              {
-                "@value": "file://transform/src/test/resources/transformations/raml-overlay/base.raml"
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#encodes": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api",
-            "@type": [
-              "http://a.ml/vocabularies/apiContract#WebAPI",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/apiContract#endpoint": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/web-api/end-points/%2Fbooks",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#EndPoint",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/core#description": [
-                  {
-                    "@value": "La colecci\u00F3n de libros de la biblioteca"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#path": [
-                  {
-                    "@value": "/books"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#version": [
-          {
-            "@value": "3.1.0"
-          }
-        ],
-        "http://a.ml/vocabularies/document#usage": [
-          {
-            "@value": "Spanish localization"
-          }
-        ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#references": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml",
-            "@type": [
-              "http://a.ml/vocabularies/document#Document",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/document#encodes": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#WebAPI",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/core#name": [
-                  {
-                    "@value": "test"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#server": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/falsedomain.com%2Fapis",
-                    "@type": [
-                      "http://a.ml/vocabularies/apiContract#Server",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/core#urlTemplate": [
-                      {
-                        "@value": "falsedomain.com/apis"
-                      }
-                    ]
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#accepts": [
-                  {
-                    "@value": "application/json"
-                  }
-                ],
-                "http://a.ml/vocabularies/core#version": [
-                  {
-                    "@value": "1.0"
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#endpoint": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D",
-                    "@type": [
-                      "http://a.ml/vocabularies/apiContract#EndPoint",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/apiContract#parameter": [
-                      {
-                        "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id",
-                        "@type": [
-                          "http://a.ml/vocabularies/apiContract#Parameter",
-                          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Parameter",
-                          "http://a.ml/vocabularies/meta#DialectDomainElement",
-                          "http://a.ml/vocabularies/document#DomainElement"
-                        ],
-                        "http://a.ml/vocabularies/apiContract#required": [
-                          {
-                            "@value": true
-                          }
-                        ],
-                        "http://a.ml/vocabularies/apiContract#paramName": [
-                          {
-                            "@value": "customer_id"
-                          }
-                        ],
-                        "http://a.ml/vocabularies/core#name": [
-                          {
-                            "@value": "customer_id"
-                          }
-                        ],
-                        "http://a.ml/vocabularies/apiContract#binding": [
-                          {
-                            "@value": "path"
-                          }
-                        ],
-                        "http://a.ml/vocabularies/shapes#schema": [
-                          {
-                            "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks%2F%7Bcustomer_id%7D/parameter/path/customer_id/scalar/schema",
-                            "@type": [
-                              "http://a.ml/vocabularies/shapes#ScalarShape",
-                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
-                              "http://a.ml/vocabularies/meta#DialectDomainElement",
-                              "http://a.ml/vocabularies/document#DomainElement"
-                            ],
-                            "http://www.w3.org/ns/shacl#datatype": [
-                              {
-                                "@id": "http://www.w3.org/2001/XMLSchema#string"
-                              }
-                            ],
-                            "http://www.w3.org/ns/shacl#name": [
-                              {
-                                "@value": "schema"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ],
-                    "http://a.ml/vocabularies/apiContract#path": [
-                      {
-                        "@value": "/books/{customer_id}"
-                      }
-                    ]
-                  },
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/raml-overlay/base.raml#/web-api/end-points/%2Fbooks",
-                    "@type": [
-                      "http://a.ml/vocabularies/apiContract#EndPoint",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/apiContract#path": [
-                      {
-                        "@value": "/books"
-                      }
-                    ]
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#contentType": [
-                  {
-                    "@value": "application/json"
-                  }
-                ]
-              }
-            ],
-            "http://a.ml/vocabularies/document#version": [
-              {
-                "@value": "3.1.0"
-              }
-            ],
-            "http://a.ml/vocabularies/document#root": [
-              {
-                "@value": false
-              }
-            ],
-            "http://a.ml/vocabularies/document#location": [
-              {
-                "@value": "file://transform/src/test/resources/transformations/raml-overlay/base.raml"
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/raml-overlay/api.raml"
-          }
-        ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D/parameter/parameter/path/customer_id/scalar/schema",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "schema"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml",
+      "@type": [
+        "http://a.ml/vocabularies/meta#DialectInstance",
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/rootAsset"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml/BaseUnitProcessingData"
       }
-    ],
-    "http://a.ml/vocabularies/document#version": [
-      {
-        "@value": "3.1.0"
-      }
-    ],
-    "http://a.ml/vocabularies/document#root": [
-      {
-        "@value": false
-      }
-    ]
-  }
-]
+    }
+  ]
+}

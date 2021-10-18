@@ -122,7 +122,7 @@ propertyTerms:
     range: apiContract.IriTemplateMapping
   discriminatorValue:
     displayName: discriminatorValue
-    description: Value given to a discriminator that identifies a target Shape
+    description: Values for the discriminator property
     range: string
   discriminatorValueMapping:
     displayName: discriminatorValueMapping
@@ -154,7 +154,7 @@ propertyTerms:
     range: shacl.Shape
   items:
     displayName: items
-    description: Shapes inside the data arrangement
+    description: Shapes contained in the Tuple Shape
     range: shacl.Shape
   maxProperties:
     displayName: maxProperties
@@ -203,6 +203,14 @@ propertyTerms:
   schemaTarget:
     displayName: schemaTarget
     description: Target applied shape in the dependency
+    range: shacl.Shape
+  serializationOrder:
+    displayName: serializationOrder
+    description: position in the set of properties for a shape used to serialize this property on the wire
+    range: integer
+  serializationSchema:
+    displayName: serializationSchema
+    description: Serialization schema for a shape
     range: shacl.Shape
   unevaluatedItems:
     displayName: unevaluatedItems

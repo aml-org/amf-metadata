@@ -38,7 +38,7 @@ propertyTerms:
     range: string
   documentation:
     displayName: documentation
-    description: Documentation about the tag
+    description: Documentation for a particular part of the model
     range: CreativeWork
   email:
     displayName: email
@@ -65,8 +65,8 @@ propertyTerms:
     description: HTTP Media type associated to the encoded fragment information
     range: string
   name:
-    displayName: name
-    description: Name for an entity
+    displayName: displayName
+    description: Human readable name for the term
     range: string
   provider:
     displayName: provider
@@ -74,7 +74,7 @@ propertyTerms:
     range: Organization
   summary:
     displayName: summary
-    description: Human readable short description of the endpoint
+    description: Human readable short description of the request/response
     range: string
   termsOfService:
     displayName: termsOfService

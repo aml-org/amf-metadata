@@ -32,7 +32,7 @@ nodeMappings:
       Scalar: ScalarShape
       Any: AnyShape
       Recursive: RecursiveShape
-    
+
     union:
       - UnionShape
       - TupleShape
@@ -45,7 +45,7 @@ nodeMappings:
       - ScalarShape
       - AnyShape
       - RecursiveShape
-    
+
   SecuritySettingsUnion:
     typeDiscriminatorName: settingsType
     typeDiscriminator:
@@ -54,14 +54,16 @@ nodeMappings:
       APIKey: APIKeySettings
       Http: HttpSettings
       OpenID: OpenIDSettings
-    
+      HttpAPIKey: HttpAPIKeySettings
+
     union:
       - OAuth2Settings
       - OAuth1Settings
       - APIKeySettings
       - HttpSettings
       - OpenIDSettings
-    
+      - HttpAPIKeySettings
+
 
   DataNodeUnion:
     typeDiscriminatorName: elementType
@@ -108,6 +110,8 @@ nodeMappings:
       CustomDomainProperty: CustomDomainProperty
       Operation: Operation
       Message: Message
+      External: ExternalDomainElement
+      CreativeWork: CreativeWork
 
     union:
       - UnionShape
@@ -137,6 +141,8 @@ nodeMappings:
       - CustomDomainProperty
       - Operation
       - Message
+      - ExternalDomainElement
+      - CreativeWork
 
 
   AbstractDeclarationUnion:
@@ -552,6 +558,9 @@ nodeMappings:
       root:
         propertyTerm: doc.root
         range: boolean
+      package:
+        propertyTerm: doc.package
+        range: string
 
 
   Callback:
@@ -658,6 +667,9 @@ nodeMappings:
       name:
         propertyTerm: core.name
         range: string
+      serializationOrder:
+        propertyTerm: raml-shapes.serializationOrder
+        range: integer
       designLink:
         propertyTerm: doc.design-link-target
         range: link
@@ -800,7 +812,7 @@ nodeMappings:
           - ParametrizedResourceType
           - ParametrizedTrait
         allowMultiple: true
-    
+
       path:
         propertyTerm: apiContract.path
         range: string
@@ -1104,7 +1116,7 @@ nodeMappings:
         propertyTerm: doc.extends
         range: Message
         allowMultiple: true
-    
+
       name:
         propertyTerm: core.name
         range: string
@@ -1294,6 +1306,9 @@ nodeMappings:
       closed:
         propertyTerm: shacl.closed
         range: boolean
+      additionalPropertiesKeySchema:
+        propertyTerm: shacl.additionalPropertiesKeySchema
+        range: DataShapesUnion
       additionalPropertiesSchema:
         propertyTerm: shacl.additionalPropertiesSchema
         range: DataShapesUnion
@@ -1428,7 +1443,7 @@ nodeMappings:
           - Operation
           - ParametrizedTrait
         allowMultiple: true
-    
+
       method:
         propertyTerm: apiContract.method
         range: string
@@ -1740,6 +1755,9 @@ nodeMappings:
       patternName:
         propertyTerm: raml-shapes.patternName
         range: string
+      serializationOrder:
+        propertyTerm: raml-shapes.serializationOrder
+        range: integer
 
 
   RecursiveShape:
@@ -2093,6 +2111,9 @@ nodeMappings:
       writeOnly:
         propertyTerm: raml-shapes.writeOnly
         range: boolean
+      serializationSchema:
+        propertyTerm: raml-shapes.serializationSchema
+        range: DataShapesUnion
       deprecated:
         propertyTerm: raml-shapes.deprecated
         range: boolean
