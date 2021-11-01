@@ -88,7 +88,7 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
       transformed.sourceSpec shouldBe Some(AmlDialectSpec("WebAPI Spec 1.0"))
       val profileFromSpec = transformed.sourceSpec.map(spec => ProfileName(spec.id)).get
       // TODO: This should be tested in a more black box way. Improve
-      config.registry.constraintsRules.contains(profileFromSpec) shouldBe true
+      config.registry.getConstraintsRules.contains(profileFromSpec) shouldBe true
     }
   }
 
