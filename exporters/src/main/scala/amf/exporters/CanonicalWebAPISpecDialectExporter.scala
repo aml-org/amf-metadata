@@ -197,7 +197,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     (Namespace.Document + "recursive").iri(),
     (Namespace.Document + "extends").iri(),
     DomainElementModel.CustomDomainProperties.value.iri(),
-    BaseUnitModel.ProcessingData.value.iri()
+    BaseUnitModel.ProcessingData.value.iri(),
+    BaseUnitModel.SourceInformation.value.iri()
   )
 
   val blocklistedSupertypes: Set[String] = Set(
@@ -217,7 +218,9 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     "DomainElement",
     "SourceMap",
     "APIContractProcessingData",
-    "BaseUnitProcessingData"
+    "BaseUnitProcessingData",
+    "BaseUnitSourceInformation",
+    "LocationInformation"
   )
 
   val shapeUnionDeclaration = "DataShapesUnion"

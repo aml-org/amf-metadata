@@ -6,7 +6,7 @@ import amf.core.client.scala.vocabulary.Namespace
 
 import java.io.{File, FileWriter, Writer}
 import amf.core.internal.metamodel.Type.{Bool, Date, DateTime, Double, EncodedIri, Float, Int, Iri, RegExp, Str, Time}
-import amf.core.internal.metamodel.document.{BaseUnitModel, BaseUnitProcessingDataModel}
+import amf.core.internal.metamodel.document.{BaseUnitModel, BaseUnitProcessingDataModel, BaseUnitSourceInformationModel, LocationInformationModel}
 import amf.core.internal.metamodel.domain._
 import amf.core.internal.metamodel.{Field, Obj, Type}
 import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel
@@ -116,13 +116,19 @@ object VocabularyExporter {
     (Namespace.Document + "APIContractProcessingData").iri(),
     (Namespace.Document + "DialectInstanceProcessingData").iri(),
     (Namespace.Document + "BaseUnitProcessingData").iri(),
+    (Namespace.Document + "BaseUnitSourceInformation").iri(),
+    (Namespace.Document + "LocationInformation").iri(),
   )
 
   val blockedProperties: Seq[String] = Seq(
     BaseUnitModel.ProcessingData.value.iri(),
     BaseUnitProcessingDataModel.Transformed.value.iri(),
     APIContractProcessingDataModel.SourceSpec.value.iri(),
-    APIContractProcessingDataModel.APIContractModelVersion.value.iri()
+    APIContractProcessingDataModel.APIContractModelVersion.value.iri(),
+    BaseUnitModel.SourceInformation.value.iri(),
+    BaseUnitSourceInformationModel.AdditionalLocations.value.iri(),
+    BaseUnitSourceInformationModel.RootLocation.value.iri(),
+    LocationInformationModel.Elements.value.iri()
   )
 
   val blocklist: Map[ModelVocabulary, Seq[ModelVocabulary]] = Map()
