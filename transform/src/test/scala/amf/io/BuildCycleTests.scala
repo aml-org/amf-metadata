@@ -1,14 +1,12 @@
 package amf.io
 
-import amf.client.parse.DefaultParserErrorHandler
-import amf.core.client.ParsingOptions
-import amf.core.emitter.RenderOptions
-import amf.core.model.document.BaseUnit
-import amf.core.parser.errorhandler.{ParserErrorHandler, UnhandledParserErrorHandler}
-import amf.core.remote.Syntax.Syntax
-import amf.core.remote.{Hint, Vendor}
-import amf.facades.{AMFCompiler, Validation}
-import amf.helpers.AMFRenderer
+import amf.apicontract.client.scala.{AMFConfiguration, APIConfiguration, AsyncAPIConfiguration, WebAPIConfiguration}
+import amf.core.client.scala.AMFGraphConfiguration
+import amf.core.client.scala.config.RenderOptions
+import amf.core.client.scala.errorhandling.{AMFErrorHandler, IgnoringErrorHandler}
+import amf.core.client.scala.model.document.BaseUnit
+import amf.core.internal.remote.Syntax.Syntax
+import amf.core.internal.remote.{Hint, Spec}
 import org.scalatest.Assertion
 import org.scalatest.funsuite.AsyncFunSuite
 
@@ -30,95 +28,77 @@ trait BuildCycleTestCommon extends FileAssertionTest {
   case class CycleConfig(source: String,
                          golden: String,
                          hint: Hint,
-                         target: Vendor,
+                         target: Spec,
                          directory: String,
-                         syntax: Option[Syntax],
+                         syntax: String,
                          pipeline: Option[String],
-                         transformWith: Option[Vendor] = None) {
+                         transformWith: Option[Spec] = None) {
     val sourcePath: String = directory + source
     val goldenPath: String = directory + golden
   }
 
   /** Method to parse unit. Override if necessary. */
-  def build(config: CycleConfig,
-            eh: Option[ParserErrorHandler],
-            useAmfJsonldSerialisation: Boolean): Future[BaseUnit] = {
-    Validation(platform).flatMap { _ =>
-      var options =
-        if (!useAmfJsonldSerialisation) ParsingOptions().withoutAmfJsonLdSerialization
-        else ParsingOptions().withAmfJsonLdSerialization
-
-      options = options.withBaseUnitUrl("file://" + config.goldenPath)
-
-      AMFCompiler(s"file://${config.sourcePath}",
-                  platform,
-                  config.hint,
-                  eh = eh.getOrElse(UnhandledParserErrorHandler),
-                  parsingOptions = options).build()
-    }
+  def build(config: CycleConfig, amfConfig: AMFGraphConfiguration): Future[BaseUnit] = {
+    amfConfig
+      .withParsingOptions(amfConfig.options.parsingOptions.withBaseUnitUrl("file://" + config.goldenPath))
+      .baseUnitClient()
+      .parse(s"file://${config.sourcePath}")
+      .map(_.baseUnit)
   }
 
   /** Method to render parsed unit. Override if necessary. */
-  def render(unit: BaseUnit, config: CycleConfig, useAmfJsonldSerialization: Boolean): Future[String] = {
-    val target  = config.target
-    var options = RenderOptions().withSourceMaps.withPrettyPrint
-    options =
-      if (!useAmfJsonldSerialization) options.withoutAmfJsonLdSerialization else options.withAmfJsonLdSerialization
-    new AMFRenderer(unit, target, options, config.syntax).renderToString
+  def render(unit: BaseUnit, config: CycleConfig, amfConfig: AMFConfiguration): String = {
+    amfConfig.baseUnitClient().render(unit, config.syntax)
+  }
+  def renderOptions(): RenderOptions = RenderOptions()
+
+  protected def buildConfig(options: Option[RenderOptions], eh: Option[AMFErrorHandler]): AMFConfiguration = {
+    val amfConfig: AMFConfiguration = APIConfiguration.API()
+    val renderedConfig: AMFConfiguration = options.fold(amfConfig.withRenderOptions(renderOptions()))(r => {
+      amfConfig.withRenderOptions(r)
+    })
+    eh.fold(renderedConfig.withErrorHandlerProvider(() => IgnoringErrorHandler))(e =>
+      renderedConfig.withErrorHandlerProvider(() => e))
   }
 
-  /** Method to render parsed unit. Override if necessary. */
-  def render(unit: BaseUnit, config: CycleConfig, options: RenderOptions): Future[String] = {
-    val target = config.target
-    new AMFRenderer(unit, target, options, config.syntax).renderToString
-  }
 }
 
 trait BuildCycleTests extends BuildCycleTestCommon {
 
   /** Compile source with specified hint. Dump to target and assert against same source file. */
-  def cycle(source: String, hint: Hint, syntax: Option[Syntax]): Future[Assertion] =
+  def cycle(source: String, hint: Hint, syntax: String): Future[Assertion] =
     cycle(source, hint, basePath, syntax)
 
   /** Compile source with specified hint. Dump to target and assert against same source file. */
-  def cycle(source: String, hint: Hint): Future[Assertion] = cycle(source, hint, basePath, None)
-
-  /** Compile source with specified hint. Dump to target and assert against same source file. */
-  def cycle(source: String, hint: Hint, directory: String, syntax: Option[Syntax]): Future[Assertion] =
-    cycle(source, source, hint, hint.vendor, directory, syntax = syntax, eh = None)
-
-  /** Compile source with specified hint. Dump to target and assert against same source file. */
-  def cycle(source: String, hint: Hint, directory: String): Future[Assertion] =
-    cycle(source, source, hint, hint.vendor, directory, eh = None)
+  def cycle(source: String, hint: Hint, directory: String, syntax: String): Future[Assertion] =
+    cycle(source, source, hint, hint.spec, directory, syntax = syntax, eh = None)
 
   /** Compile source with specified hint. Render to temporary file and assert against golden. */
   final def cycle(source: String,
                   golden: String,
                   hint: Hint,
-                  target: Vendor,
+                  target: Spec,
                   directory: String = basePath,
                   renderOptions: Option[RenderOptions] = None,
-                  useAmfJsonldSerialization: Boolean = true,
-                  syntax: Option[Syntax] = None,
+                  syntax: String,
                   pipeline: Option[String] = None,
-                  transformWith: Option[Vendor] = None,
-                  eh: Option[ParserErrorHandler] = None): Future[Assertion] = {
+                  transformWith: Option[Spec] = None,
+                  eh: Option[AMFErrorHandler] = None): Future[Assertion] = {
 
-    val config                 = CycleConfig(source, golden, hint, target, directory, syntax, pipeline, transformWith)
-    val amfJsonLdSerialization = renderOptions.map(_.isAmfJsonLdSerilization).getOrElse(useAmfJsonldSerialization)
+    val config    = CycleConfig(source, golden, hint, target, directory, syntax, pipeline, transformWith)
+    val amfConfig = buildConfig(renderOptions, eh)
 
-    build(config, eh.orElse(Some(DefaultParserErrorHandler.withRun())), amfJsonLdSerialization)
-      .map(transform(_, config))
-      .flatMap {
-        renderOptions match {
-          case Some(options) => render(_, config, options)
-          case None          => render(_, config, useAmfJsonldSerialization)
-        }
-      }
-      .flatMap(writeTemporaryFile(golden))
-      .flatMap(assertDifferences(_, config.goldenPath))
+    for {
+      parsed       <- build(config, amfConfig)
+      resolved     <- Future.successful(transform(parsed, config, amfConfig))
+      actualString <- Future.successful(render(resolved, config, amfConfig))
+      actualFile   <- writeTemporaryFile(golden)(actualString)
+      assertion    <- assertDifferences(actualFile, config.goldenPath)
+    } yield {
+      assertion
+    }
   }
 
   /** Method for transforming parsed unit. Override if necessary. */
-  def transform(unit: BaseUnit, config: CycleConfig): BaseUnit = unit
+  def transform(unit: BaseUnit, config: CycleConfig, amfConfig: AMFConfiguration): BaseUnit = unit
 }

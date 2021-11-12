@@ -1,189 +1,138 @@
-[
-  {
-    "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml",
-    "@type": [
-      "http://a.ml/vocabularies/meta#DialectInstance",
-      "http://a.ml/vocabularies/document#Document",
-      "http://a.ml/vocabularies/document#Fragment",
-      "http://a.ml/vocabularies/document#Module",
-      "http://a.ml/vocabularies/document#Unit"
-    ],
-    "http://a.ml/vocabularies/meta#definedBy": [
-      {
-        "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+{
+  "@graph": [
+    {
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/rootAsset",
+      "@type": [
+        "http://a.ml/vocabularies/document#Document",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#declares": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declares/firstTrait/traitThing"
+        }
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/operation-trait/api.yaml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declares/firstTrait/traitThing",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "firstTrait",
+      "http://a.ml/vocabularies/apiContract#guiSummary": "aSummary",
+      "http://a.ml/vocabularies/apiContract#operationId": "traitThing",
+      "http://a.ml/vocabularies/apiContract#isAbstract": true,
+      "http://a.ml/vocabularies/apiContract#method": "firstTrait"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#AsyncAPI",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/AsyncAPI",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/core#name": "anOperation",
+      "http://a.ml/vocabularies/core#version": "1.0.0",
+      "http://a.ml/vocabularies/apiContract#endpoint": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#EndPoint",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/apiContract#supportedOperation": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#path": "someChannel"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#extends": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something/extends/default-operation"
+        }
+      ],
+      "http://a.ml/vocabularies/document#extends": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something/extends/default-operation"
+        }
+      ],
+      "http://a.ml/vocabularies/apiContract#operationId": "something",
+      "http://a.ml/vocabularies/apiContract#method": "publish"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something/extends/default-operation",
+      "@type": [
+        "http://a.ml/vocabularies/apiContract#Operation",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#link-label": "firstTrait",
+      "http://a.ml/vocabularies/document#design-link-target": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declares/firstTrait/traitThing"
+        }
+      ]
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml",
+      "@type": [
+        "http://a.ml/vocabularies/meta#DialectInstance",
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/rootAsset"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml/BaseUnitProcessingData"
       }
-    ],
-    "http://a.ml/vocabularies/document#encodes": [
-      {
-        "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/rootAsset",
-        "@type": [
-          "http://a.ml/vocabularies/document#Document",
-          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
-          "http://a.ml/vocabularies/meta#DialectDomainElement",
-          "http://a.ml/vocabularies/document#DomainElement"
-        ],
-        "http://a.ml/vocabularies/document#declares": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait",
-            "@type": [
-              "http://a.ml/vocabularies/apiContract#Operation",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "firstTrait"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#guiSummary": [
-              {
-                "@value": "aSummary"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#operationId": [
-              {
-                "@value": "traitThing"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#isAbstract": [
-              {
-                "@value": true
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#method": [
-              {
-                "@value": "firstTrait"
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#encodes": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api",
-            "@type": [
-              "http://a.ml/vocabularies/apiContract#AsyncAPI",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/AsyncAPI",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://a.ml/vocabularies/core#name": [
-              {
-                "@value": "anOperation"
-              }
-            ],
-            "http://a.ml/vocabularies/core#version": [
-              {
-                "@value": "1.0.0"
-              }
-            ],
-            "http://a.ml/vocabularies/apiContract#endpoint": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel",
-                "@type": [
-                  "http://a.ml/vocabularies/apiContract#EndPoint",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/apiContract#supportedOperation": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/publish",
-                    "@type": [
-                      "http://a.ml/vocabularies/apiContract#Operation",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://a.ml/vocabularies/document#extends": [
-                      {
-                        "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/publish/default-operation",
-                        "@type": [
-                          "http://a.ml/vocabularies/apiContract#Operation",
-                          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
-                          "http://a.ml/vocabularies/meta#DialectDomainElement",
-                          "http://a.ml/vocabularies/document#DomainElement"
-                        ],
-                        "http://a.ml/vocabularies/document#link-label": [
-                          {
-                            "@value": "firstTrait"
-                          }
-                        ],
-                        "http://a.ml/vocabularies/document#design-link-target": [
-                          {
-                            "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait"
-                          }
-                        ]
-                      }
-                    ],
-                    "http://a.ml/vocabularies/document#extends": [
-                      {
-                        "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/publish/default-operation",
-                        "@type": [
-                          "http://a.ml/vocabularies/apiContract#Operation",
-                          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
-                          "http://a.ml/vocabularies/meta#DialectDomainElement",
-                          "http://a.ml/vocabularies/document#DomainElement"
-                        ],
-                        "http://a.ml/vocabularies/document#link-label": [
-                          {
-                            "@value": "firstTrait"
-                          }
-                        ],
-                        "http://a.ml/vocabularies/document#design-link-target": [
-                          {
-                            "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait"
-                          }
-                        ]
-                      }
-                    ],
-                    "http://a.ml/vocabularies/apiContract#operationId": [
-                      {
-                        "@value": "something"
-                      }
-                    ],
-                    "http://a.ml/vocabularies/apiContract#method": [
-                      {
-                        "@value": "publish"
-                      }
-                    ]
-                  }
-                ],
-                "http://a.ml/vocabularies/apiContract#path": [
-                  {
-                    "@value": "someChannel"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#version": [
-          {
-            "@value": "3.1.0"
-          }
-        ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/operation-trait/api.yaml"
-          }
-        ]
-      }
-    ],
-    "http://a.ml/vocabularies/document#version": [
-      {
-        "@value": "3.1.0"
-      }
-    ],
-    "http://a.ml/vocabularies/document#root": [
-      {
-        "@value": false
-      }
-    ]
-  }
-]
+    }
+  ]
+}

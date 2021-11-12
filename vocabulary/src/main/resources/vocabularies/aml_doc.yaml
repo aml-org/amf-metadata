@@ -141,7 +141,11 @@ propertyTerms:
     range: uri
   location:
     displayName: location
-    description: Location of an inlined fragment
+    description: Location of the metadata document that generated this base unit
+    range: string
+  package:
+    displayName: package
+    description: Logical identifier providing a common namespace for the information in this base unit
     range: string
   raw:
     displayName: raw
@@ -190,7 +194,7 @@ propertyTerms:
   variable:
     displayName: variable
     description: Variables to be replaced in the graph template introduced by an AbstractDeclaration
-    range: VariableValue
+    range: string
   version:
     displayName: version
     description: Version of the current model

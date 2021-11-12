@@ -4,31 +4,30 @@ $id: file://transform/src/test/resources/transformations/simple/api.raml#/rootAs
 declares:
   -
     elementType: Node
-    $id: file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A
+    $id: file://transform/src/test/resources/transformations/simple/api.raml#/declares/shape/A
     name: A
     property:
       -
-        $id: file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A/property/b
+        $id: file://transform/src/test/resources/transformations/simple/api.raml#/declares/shape/A/property/property/b
         range:
           shapeType: Scalar
-          $id: file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A/property/b/scalar/b
+          $id: file://transform/src/test/resources/transformations/simple/api.raml#/declares/shape/A/property/property/b/scalar/b
           name: b
           datatype: http://www.w3.org/2001/XMLSchema#integer
         name: b
         minCount: 1
         path: http://a.ml/vocabularies/data#b
       -
-        $id: file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A/property/a
+        $id: file://transform/src/test/resources/transformations/simple/api.raml#/declares/shape/A/property/property/a
         range:
           shapeType: Scalar
-          $id: file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A/property/a/scalar/a
+          $id: file://transform/src/test/resources/transformations/simple/api.raml#/declares/shape/A/property/property/a/scalar/a
           name: a
           datatype: http://www.w3.org/2001/XMLSchema#string
         name: a
         minCount: 1
         path: http://a.ml/vocabularies/data#a
     closed: false
-version: 3.1.0
 root: true
 location: file://transform/src/test/resources/transformations/simple/api.raml
 encodes:
@@ -37,41 +36,41 @@ encodes:
   name: test
   server:
     -
-      $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/falsedomain.com%2Fapis
+      $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/server/falsedomain.com%2Fapis
       urlTemplate: falsedomain.com/apis
   accepts:
     - application/json
   version: "1.0"
   endpoint:
     -
-      $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/end-points/%2Ftest
+      $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/endpoint/%2Ftest
       supportedOperation:
         -
-          $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/end-points/%2Ftest/get
+          $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get
           description: an operation
           returns:
             -
-              $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/end-points/%2Ftest/get/200
+              $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200
               name: "200"
               payload:
                 -
-                  $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/end-points/%2Ftest/get/200/application%2Fjson
+                  $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson
                   schema:
                     shapeType: Node
-                    $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema
+                    $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema
                     inherits:
                       -
                         shapeType: Node
-                        $id: file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A/link-389825518
-                        designLink: file://transform/src/test/resources/transformations/simple/api.raml#/declarations/types/A
+                        $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/inherits/shape/A
+                        designLink: file://transform/src/test/resources/transformations/simple/api.raml#/declares/shape/A
                         name: A
                     name: schema
                     property:
                       -
-                        $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema/property/c
+                        $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/property/property/c
                         range:
                           shapeType: Scalar
-                          $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema/property/c/scalar/c
+                          $id: file://transform/src/test/resources/transformations/simple/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/property/property/c/scalar/c
                           name: c
                           datatype: http://www.w3.org/2001/XMLSchema#string
                         name: c

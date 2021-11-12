@@ -1,6 +1,16 @@
 #%WebAPI Spec 1.0
 unitType: DocumentationItemFragment
 $id: file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml#/rootAsset
-version: 3.1.0
 root: true
 location: file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml
+encodes:
+  elementType: CreativeWork
+  $id: file://transform/src/test/resources/transformations/fragments/raml/documentation-item/api.raml#/creative-work/Home
+  title: Home
+  description: |-
+    Welcome to the _Zencoder API_ Documentation. The _Zencoder API_
+    allows you to connect your application to our encoding service
+    and encode videos without going through the web  interface. You
+    may also benefit from one of our
+    [integration libraries](https://app.zencoder.com/docs/faq/basics/libraries)
+    for different languages.

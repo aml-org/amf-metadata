@@ -1,13 +1,12 @@
-package amf.transform.canonical
+package amf.transform.internal.canonical
 
-import amf.core.metamodel.document.{BaseUnitModel, DocumentModel, ExternalFragmentModel, ModuleModel}
-import amf.core.vocabulary.Namespace
-import amf.plugins.document.vocabularies.metamodel.domain.NodeMappingModel
-import amf.plugins.document.vocabularies.model.document.Dialect
-import amf.plugins.document.vocabularies.model.domain.NodeMapping
-import amf.plugins.document.webapi.metamodel.FragmentsTypesModels.DocumentationItemFragmentModel
-import amf.plugins.document.webapi.metamodel.{ExtensionModel, OverlayModel}
-import amf.plugins.document.webapi.model.DocumentationItemFragment
+import amf.aml.client.scala.model.document.Dialect
+import amf.aml.client.scala.model.domain.NodeMapping
+import amf.aml.internal.metamodel.domain.NodeMappingModel
+import amf.apicontract.internal.metamodel.document.{ExtensionModel, OverlayModel}
+import amf.core.client.scala.vocabulary.Namespace
+import amf.core.client.scala.vocabulary.Namespace.XsdTypes
+import amf.core.internal.metamodel.document.{BaseUnitModel, DocumentModel, ExternalFragmentModel, ModuleModel}
 import org.apache.jena.rdf.model.Model
 
 import scala.collection.mutable
@@ -106,6 +105,12 @@ trait BaseUnitTransform extends TransformHelpers {
       unitResource,
       nativeModel.createProperty(BaseUnitModel.Location.value.iri()),
       nativeModel.createLiteral(unit)
+    )
+
+    nativeModel.add(
+      unitResource,
+      nativeModel.createProperty(BaseUnitModel.Root.value.iri()),
+      nativeModel.createTypedLiteral("false", XsdTypes.xsdBoolean.iri())
     )
 
     // add the extendedFrom property to track baseunit node extension

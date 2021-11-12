@@ -4,36 +4,35 @@ $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/
 declares:
   -
     elementType: Node
-    $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/User
-    designLink: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/Identifier
+    $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declares/shape/User
+    designLink: file://transform/src/test/resources/transformations/raml-library/api.raml#/declares/shape/Identifier
     name: User
   -
     elementType: Node
-    $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/RestrictedObject
+    $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declares/shape/RestrictedObject
     name: RestrictedObject
     closed: true
   -
     elementType: Node
-    $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/Identifier
+    $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declares/shape/Identifier
     inherits:
       -
         shapeType: Node
-        $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/RestrictedObject/link--318044002
-        designLink: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/RestrictedObject
+        $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declares/shape/Identifier/inherits/shape/RestrictedObject
+        designLink: file://transform/src/test/resources/transformations/raml-library/api.raml#/declares/shape/RestrictedObject
         name: RestrictedObject
     name: Identifier
     property:
       -
-        $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/Identifier/property/identifier
+        $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declares/shape/Identifier/property/property/identifier
         range:
           shapeType: Scalar
-          $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declarations/types/Identifier/property/identifier/scalar/identifier
+          $id: file://transform/src/test/resources/transformations/raml-library/api.raml#/declares/shape/Identifier/property/property/identifier/scalar/identifier
           name: identifier
           datatype: http://www.w3.org/2001/XMLSchema#string
         name: identifier
         minCount: 1
         path: http://a.ml/vocabularies/data#identifier
     closed: true
-version: 3.1.0
 root: true
 location: file://transform/src/test/resources/transformations/raml-library/api.raml

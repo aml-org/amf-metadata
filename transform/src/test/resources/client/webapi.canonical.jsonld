@@ -1,390 +1,321 @@
-[
-  {
-    "@id": "",
-    "@type": [
-      "meta:DialectInstance",
-      "doc:Document",
-      "doc:Fragment",
-      "doc:Module",
-      "doc:Unit"
-    ],
-    "meta:definedBy": [
-      {
-        "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+{
+  "@graph": [
+    {
+      "@id": "#/rootAsset",
+      "@type": [
+        "raml-doc:Document",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "raml-doc:declares": [
+        {
+          "@id": "#/declares/shape/A"
+        }
+      ],
+      "raml-doc:encodes": {
+        "@id": "#/web-api"
+      },
+      "raml-doc:root": true,
+      "raml-doc:location": "file://transform/src/test/resources/client/api.raml"
+    },
+    {
+      "@id": "/BaseUnitProcessingData",
+      "@type": [
+        "raml-doc:DialectInstanceProcessingData"
+      ],
+      "meta:definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "raml-doc:sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "#/declares/shape/A",
+      "@type": [
+        "sh:NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "sh:property": [
+        {
+          "@id": "#/declares/shape/A/property/property/b"
+        },
+        {
+          "@id": "#/declares/shape/A/property/property/a"
+        }
+      ],
+      "sh:closed": false,
+      "sh:name": "A"
+    },
+    {
+      "@id": "#/web-api",
+      "@type": [
+        "apiContract:WebAPI",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "core:name": "test",
+      "apiContract:server": [
+        {
+          "@id": "#/web-api/server/falsedomain.com%2Fapis"
+        }
+      ],
+      "apiContract:accepts": [
+        "application/json"
+      ],
+      "core:version": "1.0",
+      "apiContract:endpoint": [
+        {
+          "@id": "#/web-api/endpoint/%2Ftest"
+        }
+      ],
+      "apiContract:contentType": [
+        "application/json"
+      ]
+    },
+    {
+      "@id": "#/declares/shape/A/property/property/b",
+      "@type": [
+        "sh:PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "shapes:range": {
+        "@id": "#/declares/shape/A/property/property/b/scalar/b"
+      },
+      "sh:minCount": 1,
+      "sh:path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#b"
+        }
+      ],
+      "sh:name": "b"
+    },
+    {
+      "@id": "#/declares/shape/A/property/property/a",
+      "@type": [
+        "sh:PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "shapes:range": {
+        "@id": "#/declares/shape/A/property/property/a/scalar/a"
+      },
+      "sh:minCount": 1,
+      "sh:path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#a"
+        }
+      ],
+      "sh:name": "a"
+    },
+    {
+      "@id": "#/web-api/server/falsedomain.com%2Fapis",
+      "@type": [
+        "apiContract:Server",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "core:urlTemplate": "falsedomain.com/apis"
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Ftest",
+      "@type": [
+        "apiContract:EndPoint",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "apiContract:supportedOperation": [
+        {
+          "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get"
+        }
+      ],
+      "apiContract:path": "/test"
+    },
+    {
+      "@id": "#/declares/shape/A/property/property/b/scalar/b",
+      "@type": [
+        "shapes:ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "sh:datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#integer"
+        }
+      ],
+      "sh:name": "b"
+    },
+    {
+      "@id": "#/declares/shape/A/property/property/a/scalar/a",
+      "@type": [
+        "shapes:ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "sh:datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "sh:name": "a"
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get",
+      "@type": [
+        "apiContract:Operation",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "core:description": "an operation",
+      "apiContract:returns": [
+        {
+          "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200"
+        }
+      ],
+      "apiContract:method": "get"
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200",
+      "@type": [
+        "apiContract:Response",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "apiContract:statusCode": "200",
+      "core:name": "200",
+      "apiContract:payload": [
+        {
+          "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson"
+        }
+      ]
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson",
+      "@type": [
+        "apiContract:Payload",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "shapes:schema": {
+        "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema"
+      },
+      "core:mediaType": "application/json"
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema",
+      "@type": [
+        "sh:NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "sh:property": [
+        {
+          "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/property/property/c"
+        }
+      ],
+      "sh:closed": false,
+      "shapes:inherits": [
+        {
+          "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/inherits/shape/A"
+        }
+      ],
+      "sh:name": "schema"
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/property/property/c",
+      "@type": [
+        "sh:PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "shapes:range": {
+        "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/property/property/c/scalar/c"
+      },
+      "sh:minCount": 1,
+      "sh:path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#c"
+        }
+      ],
+      "sh:name": "c"
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/inherits/shape/A",
+      "@type": [
+        "sh:NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "raml-doc:link-label": "A",
+      "raml-doc:design-link-target": [
+        {
+          "@id": "#/declares/shape/A"
+        }
+      ],
+      "sh:name": "A"
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson/shape/schema/property/property/c/scalar/c",
+      "@type": [
+        "shapes:ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "sh:datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "sh:name": "c"
+    },
+    {
+      "@id": "",
+      "@type": [
+        "meta:DialectInstance",
+        "raml-doc:Document",
+        "raml-doc:Fragment",
+        "raml-doc:Module",
+        "raml-doc:Unit"
+      ],
+      "meta:definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "raml-doc:encodes": {
+        "@id": "#/rootAsset"
+      },
+      "raml-doc:root": true,
+      "raml-doc:processingData": {
+        "@id": "/BaseUnitProcessingData"
       }
-    ],
-    "doc:encodes": [
-      {
-        "@id": "#/rootAsset",
-        "@type": [
-          "doc:Document",
-          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
-          "meta:DialectDomainElement",
-          "doc:DomainElement"
-        ],
-        "doc:declares": [
-          {
-            "@id": "#/declarations/types/A",
-            "@type": [
-              "shacl:NodeShape",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
-              "meta:DialectDomainElement",
-              "doc:DomainElement"
-            ],
-            "shacl:property": [
-              {
-                "@id": "#/declarations/types/A/property/b",
-                "@type": [
-                  "shacl:PropertyShape",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
-                  "meta:DialectDomainElement",
-                  "doc:DomainElement"
-                ],
-                "raml-shapes:range": [
-                  {
-                    "@id": "#/declarations/types/A/property/b/scalar/b",
-                    "@type": [
-                      "raml-shapes:ScalarShape",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
-                      "meta:DialectDomainElement",
-                      "doc:DomainElement"
-                    ],
-                    "shacl:datatype": [
-                      {
-                        "@id": "http://www.w3.org/2001/XMLSchema#integer"
-                      }
-                    ],
-                    "shacl:name": [
-                      {
-                        "@value": "b"
-                      }
-                    ]
-                  }
-                ],
-                "shacl:minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
-                "shacl:path": [
-                  {
-                    "@id": "http://a.ml/vocabularies/data#b"
-                  }
-                ],
-                "shacl:name": [
-                  {
-                    "@value": "b"
-                  }
-                ]
-              },
-              {
-                "@id": "#/declarations/types/A/property/a",
-                "@type": [
-                  "shacl:PropertyShape",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
-                  "meta:DialectDomainElement",
-                  "doc:DomainElement"
-                ],
-                "raml-shapes:range": [
-                  {
-                    "@id": "#/declarations/types/A/property/a/scalar/a",
-                    "@type": [
-                      "raml-shapes:ScalarShape",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
-                      "meta:DialectDomainElement",
-                      "doc:DomainElement"
-                    ],
-                    "shacl:datatype": [
-                      {
-                        "@id": "http://www.w3.org/2001/XMLSchema#string"
-                      }
-                    ],
-                    "shacl:name": [
-                      {
-                        "@value": "a"
-                      }
-                    ]
-                  }
-                ],
-                "shacl:minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
-                "shacl:path": [
-                  {
-                    "@id": "http://a.ml/vocabularies/data#a"
-                  }
-                ],
-                "shacl:name": [
-                  {
-                    "@value": "a"
-                  }
-                ]
-              }
-            ],
-            "shacl:closed": [
-              {
-                "@value": false
-              }
-            ],
-            "shacl:name": [
-              {
-                "@value": "A"
-              }
-            ]
-          }
-        ],
-        "doc:encodes": [
-          {
-            "@id": "#/web-api",
-            "@type": [
-              "apiContract:WebAPI",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
-              "meta:DialectDomainElement",
-              "doc:DomainElement"
-            ],
-            "core:name": [
-              {
-                "@value": "test"
-              }
-            ],
-            "apiContract:server": [
-              {
-                "@id": "#/web-api/falsedomain.com%2Fapis",
-                "@type": [
-                  "apiContract:Server",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Server",
-                  "meta:DialectDomainElement",
-                  "doc:DomainElement"
-                ],
-                "core:urlTemplate": [
-                  {
-                    "@value": "falsedomain.com/apis"
-                  }
-                ]
-              }
-            ],
-            "apiContract:accepts": [
-              {
-                "@value": "application/json"
-              }
-            ],
-            "core:version": [
-              {
-                "@value": "1.0"
-              }
-            ],
-            "apiContract:endpoint": [
-              {
-                "@id": "#/web-api/end-points/%2Ftest",
-                "@type": [
-                  "apiContract:EndPoint",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
-                  "meta:DialectDomainElement",
-                  "doc:DomainElement"
-                ],
-                "apiContract:supportedOperation": [
-                  {
-                    "@id": "#/web-api/end-points/%2Ftest/get",
-                    "@type": [
-                      "apiContract:Operation",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
-                      "meta:DialectDomainElement",
-                      "doc:DomainElement"
-                    ],
-                    "core:description": [
-                      {
-                        "@value": "an operation"
-                      }
-                    ],
-                    "apiContract:returns": [
-                      {
-                        "@id": "#/web-api/end-points/%2Ftest/get/200",
-                        "@type": [
-                          "apiContract:Response",
-                          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
-                          "meta:DialectDomainElement",
-                          "doc:DomainElement"
-                        ],
-                        "apiContract:statusCode": [
-                          {
-                            "@value": "200"
-                          }
-                        ],
-                        "core:name": [
-                          {
-                            "@value": "200"
-                          }
-                        ],
-                        "apiContract:payload": [
-                          {
-                            "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson",
-                            "@type": [
-                              "apiContract:Payload",
-                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Payload",
-                              "meta:DialectDomainElement",
-                              "doc:DomainElement"
-                            ],
-                            "raml-shapes:schema": [
-                              {
-                                "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema",
-                                "@type": [
-                                  "shacl:NodeShape",
-                                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
-                                  "meta:DialectDomainElement",
-                                  "doc:DomainElement"
-                                ],
-                                "shacl:property": [
-                                  {
-                                    "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema/property/c",
-                                    "@type": [
-                                      "shacl:PropertyShape",
-                                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
-                                      "meta:DialectDomainElement",
-                                      "doc:DomainElement"
-                                    ],
-                                    "raml-shapes:range": [
-                                      {
-                                        "@id": "#/web-api/end-points/%2Ftest/get/200/application%2Fjson/schema/property/c/scalar/c",
-                                        "@type": [
-                                          "raml-shapes:ScalarShape",
-                                          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
-                                          "meta:DialectDomainElement",
-                                          "doc:DomainElement"
-                                        ],
-                                        "shacl:datatype": [
-                                          {
-                                            "@id": "http://www.w3.org/2001/XMLSchema#string"
-                                          }
-                                        ],
-                                        "shacl:name": [
-                                          {
-                                            "@value": "c"
-                                          }
-                                        ]
-                                      }
-                                    ],
-                                    "shacl:minCount": [
-                                      {
-                                        "@value": 1
-                                      }
-                                    ],
-                                    "shacl:path": [
-                                      {
-                                        "@id": "http://a.ml/vocabularies/data#c"
-                                      }
-                                    ],
-                                    "shacl:name": [
-                                      {
-                                        "@value": "c"
-                                      }
-                                    ]
-                                  }
-                                ],
-                                "shacl:closed": [
-                                  {
-                                    "@value": false
-                                  }
-                                ],
-                                "raml-shapes:inherits": [
-                                  {
-                                    "@id": "#/declarations/types/A/link-389825518",
-                                    "@type": [
-                                      "shacl:NodeShape",
-                                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
-                                      "meta:DialectDomainElement",
-                                      "doc:DomainElement"
-                                    ],
-                                    "doc:link-label": [
-                                      {
-                                        "@value": "A"
-                                      }
-                                    ],
-                                    "doc:design-link-target": [
-                                      {
-                                        "@id": "#/declarations/types/A"
-                                      }
-                                    ],
-                                    "shacl:name": [
-                                      {
-                                        "@value": "A"
-                                      }
-                                    ]
-                                  }
-                                ],
-                                "shacl:name": [
-                                  {
-                                    "@value": "schema"
-                                  }
-                                ]
-                              }
-                            ],
-                            "core:mediaType": [
-                              {
-                                "@value": "application/json"
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ],
-                    "apiContract:method": [
-                      {
-                        "@value": "get"
-                      }
-                    ]
-                  }
-                ],
-                "apiContract:path": [
-                  {
-                    "@value": "/test"
-                  }
-                ]
-              }
-            ],
-            "apiContract:contentType": [
-              {
-                "@value": "application/json"
-              }
-            ]
-          }
-        ],
-        "doc:version": [
-          {
-            "@value": "3.1.0"
-          }
-        ],
-        "doc:root": [
-          {
-            "@value": true
-          }
-        ],
-        "doc:location": [
-          {
-            "@value": "file://transform/src/test/resources/client/api.raml"
-          }
-        ]
-      }
-    ],
-    "doc:version": [
-      {
-        "@value": "3.1.0"
-      }
-    ],
-    "doc:root": [
-      {
-        "@value": false
-      }
-    ],
-    "@context": {
-      "@base": "file://transform/src/test/resources/client/api.raml",
-      "raml-shapes": "http://a.ml/vocabularies/shapes#",
-      "shacl": "http://www.w3.org/ns/shacl#",
-      "doc": "http://a.ml/vocabularies/document#",
-      "apiContract": "http://a.ml/vocabularies/apiContract#",
-      "core": "http://a.ml/vocabularies/core#",
-      "meta": "http://a.ml/vocabularies/meta#"
     }
+  ],
+  "@context": {
+    "@base": "file://transform/src/test/resources/client/api.raml",
+    "apiContract": "http://a.ml/vocabularies/apiContract#",
+    "core": "http://a.ml/vocabularies/core#",
+    "meta": "http://a.ml/vocabularies/meta#",
+    "shapes": "http://a.ml/vocabularies/shapes#",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "raml-doc": "http://a.ml/vocabularies/document#"
   }
-]
+}

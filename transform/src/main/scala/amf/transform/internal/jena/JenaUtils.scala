@@ -1,4 +1,4 @@
-package amf.transform.jena
+package amf.transform.internal.jena
 
 import org.apache.jena.rdf.model.{ResIterator, Resource}
 

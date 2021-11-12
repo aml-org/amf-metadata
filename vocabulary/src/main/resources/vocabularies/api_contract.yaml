@@ -161,7 +161,6 @@ propertyTerms:
     range: Callback
   contentType:
     displayName: contentType
-    description: Media types returned by a API response
     range: string
   cookieParameter:
     displayName: cookieParameter
@@ -172,7 +171,7 @@ propertyTerms:
     range: Encoding
   endpoint:
     displayName: endpoint
-    description: End points defined in the API
+    description: Endpoint targeted by the callback
     range: EndPoint
   examples:
     displayName: examples
@@ -237,7 +236,7 @@ propertyTerms:
     range: string
   parameter:
     displayName: parameter
-    description: Additional data required or returned by an operation
+    description: Parameters associated to the communication model
     range: Parameter
   path:
     displayName: path
@@ -245,7 +244,7 @@ propertyTerms:
     range: string
   payload:
     displayName: payload
-    description: Main payload data required or returned by an operation
+    description: Payload for a Request/Response
     range: Payload
   propertyName:
     displayName: propertyName
@@ -286,8 +285,8 @@ propertyTerms:
     description: URI scheme for the API protocol
     range: string
   server:
-    displayName: servers
-    description: Specific information about the server where the endpoint is accessible
+    displayName: server
+    description: Server information
     range: Server
   statusCode:
     displayName: statusCode
@@ -295,7 +294,7 @@ propertyTerms:
     range: string
   style:
     displayName: style
-    description: Describes how a specific property value will be serialized depending on its type.
+    description: Encoding style for the parameter information
     range: string
   supportedOperation:
     displayName: supportedOperation

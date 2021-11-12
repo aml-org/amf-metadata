@@ -1,178 +1,139 @@
-[
-  {
-    "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml",
-    "@type": [
-      "http://a.ml/vocabularies/meta#DialectInstance",
-      "http://a.ml/vocabularies/document#Document",
-      "http://a.ml/vocabularies/document#Fragment",
-      "http://a.ml/vocabularies/document#Module",
-      "http://a.ml/vocabularies/document#Unit"
-    ],
-    "http://a.ml/vocabularies/meta#definedBy": [
-      {
-        "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+{
+  "@graph": [
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/rootAsset",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#DataTypeFragment",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/DataTypeFragment",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#location": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml/BaseUnitProcessingData",
+      "@type": [
+        "http://a.ml/vocabularies/document#DialectInstanceProcessingData"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://www.w3.org/ns/shacl#name": "type"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#plane"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "plane"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane",
+      "@type": [
+        "http://www.w3.org/ns/shacl#NodeShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane/property/property/type"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#closed": false,
+      "http://www.w3.org/ns/shacl#name": "plane",
+      "http://a.ml/vocabularies/core#description": "the type of plane"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane/property/property/type",
+      "@type": [
+        "http://www.w3.org/ns/shacl#PropertyShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://a.ml/vocabularies/shapes#range": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane/property/property/type/scalar/type"
+      },
+      "http://www.w3.org/ns/shacl#minCount": 1,
+      "http://www.w3.org/ns/shacl#path": [
+        {
+          "@id": "http://a.ml/vocabularies/data#type"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "type"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/shape/type/property/property/plane/shape/plane/property/property/type/scalar/type",
+      "@type": [
+        "http://a.ml/vocabularies/shapes#ScalarShape",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
+        "http://a.ml/vocabularies/meta#DialectDomainElement",
+        "http://a.ml/vocabularies/document#DomainElement"
+      ],
+      "http://www.w3.org/ns/shacl#datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#name": "type",
+      "http://a.ml/vocabularies/core#description": "Aircraft specifications and type"
+    },
+    {
+      "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml",
+      "@type": [
+        "http://a.ml/vocabularies/meta#DialectInstance",
+        "http://a.ml/vocabularies/document#Document",
+        "http://a.ml/vocabularies/document#Fragment",
+        "http://a.ml/vocabularies/document#Module",
+        "http://a.ml/vocabularies/document#Unit"
+      ],
+      "http://a.ml/vocabularies/meta#definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "http://a.ml/vocabularies/document#encodes": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/rootAsset"
+      },
+      "http://a.ml/vocabularies/document#root": true,
+      "http://a.ml/vocabularies/document#processingData": {
+        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml/BaseUnitProcessingData"
       }
-    ],
-    "http://a.ml/vocabularies/document#encodes": [
-      {
-        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/rootAsset",
-        "@type": [
-          "http://a.ml/vocabularies/shapes#DataTypeFragment",
-          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/DataTypeFragment",
-          "http://a.ml/vocabularies/meta#DialectDomainElement",
-          "http://a.ml/vocabularies/document#DomainElement"
-        ],
-        "http://a.ml/vocabularies/document#encodes": [
-          {
-            "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type",
-            "@type": [
-              "http://www.w3.org/ns/shacl#NodeShape",
-              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
-              "http://a.ml/vocabularies/meta#DialectDomainElement",
-              "http://a.ml/vocabularies/document#DomainElement"
-            ],
-            "http://www.w3.org/ns/shacl#property": [
-              {
-                "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane",
-                "@type": [
-                  "http://www.w3.org/ns/shacl#PropertyShape",
-                  "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
-                  "http://a.ml/vocabularies/meta#DialectDomainElement",
-                  "http://a.ml/vocabularies/document#DomainElement"
-                ],
-                "http://a.ml/vocabularies/shapes#range": [
-                  {
-                    "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane",
-                    "@type": [
-                      "http://www.w3.org/ns/shacl#NodeShape",
-                      "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/NodeShape",
-                      "http://a.ml/vocabularies/meta#DialectDomainElement",
-                      "http://a.ml/vocabularies/document#DomainElement"
-                    ],
-                    "http://www.w3.org/ns/shacl#property": [
-                      {
-                        "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane/property/type",
-                        "@type": [
-                          "http://www.w3.org/ns/shacl#PropertyShape",
-                          "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyShape",
-                          "http://a.ml/vocabularies/meta#DialectDomainElement",
-                          "http://a.ml/vocabularies/document#DomainElement"
-                        ],
-                        "http://a.ml/vocabularies/shapes#range": [
-                          {
-                            "@id": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml#/type/property/plane/plane/property/type/scalar/type",
-                            "@type": [
-                              "http://a.ml/vocabularies/shapes#ScalarShape",
-                              "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
-                              "http://a.ml/vocabularies/meta#DialectDomainElement",
-                              "http://a.ml/vocabularies/document#DomainElement"
-                            ],
-                            "http://www.w3.org/ns/shacl#datatype": [
-                              {
-                                "@id": "http://www.w3.org/2001/XMLSchema#string"
-                              }
-                            ],
-                            "http://www.w3.org/ns/shacl#name": [
-                              {
-                                "@value": "type"
-                              }
-                            ],
-                            "http://a.ml/vocabularies/core#description": [
-                              {
-                                "@value": "Aircraft specifications and type"
-                              }
-                            ]
-                          }
-                        ],
-                        "http://www.w3.org/ns/shacl#minCount": [
-                          {
-                            "@value": 1
-                          }
-                        ],
-                        "http://www.w3.org/ns/shacl#path": [
-                          {
-                            "@id": "http://a.ml/vocabularies/data#type"
-                          }
-                        ],
-                        "http://www.w3.org/ns/shacl#name": [
-                          {
-                            "@value": "type"
-                          }
-                        ]
-                      }
-                    ],
-                    "http://www.w3.org/ns/shacl#closed": [
-                      {
-                        "@value": false
-                      }
-                    ],
-                    "http://www.w3.org/ns/shacl#name": [
-                      {
-                        "@value": "plane"
-                      }
-                    ],
-                    "http://a.ml/vocabularies/core#description": [
-                      {
-                        "@value": "the type of plane"
-                      }
-                    ]
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#minCount": [
-                  {
-                    "@value": 1
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#path": [
-                  {
-                    "@id": "http://a.ml/vocabularies/data#plane"
-                  }
-                ],
-                "http://www.w3.org/ns/shacl#name": [
-                  {
-                    "@value": "plane"
-                  }
-                ]
-              }
-            ],
-            "http://www.w3.org/ns/shacl#closed": [
-              {
-                "@value": false
-              }
-            ],
-            "http://www.w3.org/ns/shacl#name": [
-              {
-                "@value": "type"
-              }
-            ]
-          }
-        ],
-        "http://a.ml/vocabularies/document#version": [
-          {
-            "@value": "3.1.0"
-          }
-        ],
-        "http://a.ml/vocabularies/document#root": [
-          {
-            "@value": true
-          }
-        ],
-        "http://a.ml/vocabularies/document#location": [
-          {
-            "@value": "file://transform/src/test/resources/transformations/fragments/raml/datatype/api.raml"
-          }
-        ]
-      }
-    ],
-    "http://a.ml/vocabularies/document#version": [
-      {
-        "@value": "3.1.0"
-      }
-    ],
-    "http://a.ml/vocabularies/document#root": [
-      {
-        "@value": false
-      }
-    ]
-  }
-]
+    }
+  ]
+}

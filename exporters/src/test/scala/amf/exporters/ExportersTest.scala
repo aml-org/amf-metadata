@@ -1,6 +1,6 @@
 package amf.exporters
 
-import amf.core.metamodel.domain.ModelVocabulary
+import amf.core.internal.metamodel.domain.ModelVocabulary
 import amf.helpers.FileAssertionTest
 import org.scalatest.funsuite.AsyncFunSuite
 import org.scalatest.{Assertion, Succeeded}

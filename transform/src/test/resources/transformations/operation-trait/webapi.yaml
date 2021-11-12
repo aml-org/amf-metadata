@@ -4,13 +4,12 @@ $id: file://transform/src/test/resources/transformations/operation-trait/api.yam
 declares:
   -
     elementType: Operation
-    $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait
+    $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declares/firstTrait/traitThing
     name: firstTrait
     guiSummary: aSummary
     operationId: traitThing
     isAbstract: true
     method: firstTrait
-version: 3.1.0
 root: true
 location: file://transform/src/test/resources/transformations/operation-trait/api.yaml
 encodes:
@@ -20,15 +19,15 @@ encodes:
   version: 1.0.0
   endpoint:
     -
-      $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel
+      $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel
       supportedOperation:
         -
-          $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/publish
+          $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something
           extends:
             -
               type: SimpleTrait
-              $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/end-points/someChannel/publish/default-operation
-              designLink: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declarations/operationTraits/firstTrait
+              $id: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api/endpoint/someChannel/supportedOperation/publish/something/extends/default-operation
+              designLink: file://transform/src/test/resources/transformations/operation-trait/api.yaml#/declares/firstTrait/traitThing
           operationId: something
           method: publish
       path: someChannel

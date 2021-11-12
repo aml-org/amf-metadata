@@ -84,16 +84,16 @@ propertyTerms:
     range: string
   binding:
     displayName: binding
-    description: Bindings for this server
-    range: ServerBindings
+    description: Bindings for this request/response
+    range: MessageBindings
   bindingVersion:
     displayName: bindingVersion
     description: The version of this binding
     range: string
   bindings:
     displayName: bindings
-    description: List of operation bindings
-    range: OperationBinding
+    description: List of message bindings
+    range: MessageBinding
   cc:
     displayName: cc
     description: The routing keys the message should be routed to at the time of publishing
@@ -180,7 +180,7 @@ propertyTerms:
     range: integer
   qos:
     displayName: qos
-    description: Defines how hard the broker/client will try to ensure that a message is received
+    description: Defines how hard the broker/client will try to ensure that the Last Will and Testament message is received
     range: integer
   query:
     displayName: query
@@ -196,7 +196,7 @@ propertyTerms:
     range: string
   retain:
     displayName: retain
-    description: Whether the broker should retain the message or not
+    description: Whether the broker should retain the Last Will and Testament message or not
     range: boolean
   timestamp:
     displayName: timestamp
