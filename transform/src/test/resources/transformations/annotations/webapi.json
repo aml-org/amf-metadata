@@ -383,7 +383,7 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/document#extension": {
-        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension/array_1"
+        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/arrAnot/array_1"
       },
       "http://a.ml/vocabularies/document#definedBy": {
         "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest_annotations_1_link"
@@ -398,7 +398,7 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/document#extension": {
-        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension_1/object_1"
+        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/clearanceLevel/object_1"
       },
       "http://a.ml/vocabularies/document#definedBy": {
         "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest_annotations_0_link"
@@ -474,7 +474,7 @@
       "http://www.w3.org/ns/shacl#name": "lala"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension/array_1",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/arrAnot/array_1",
       "@type": [
         "http://a.ml/vocabularies/data#Array",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ArrayNode",
@@ -483,10 +483,10 @@
       ],
       "http://www.w3.org/2000/01/rdf-schema#member": [
         {
-          "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension/array_1/member/scalar_3"
+          "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/arrAnot/array_1/member/scalar_3"
         },
         {
-          "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension/array_1/member/scalar_2"
+          "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/arrAnot/array_1/member/scalar_2"
         }
       ]
     },
@@ -506,7 +506,7 @@
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension_1/object_1",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/clearanceLevel/object_1",
       "@type": [
         "http://a.ml/vocabularies/data#Object",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
@@ -515,10 +515,10 @@
       ],
       "http://a.ml/vocabularies/data#properties": [
         {
-          "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension_1/object_1_prop_signature"
+          "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/clearanceLevel/object_1_prop_signature"
         },
         {
-          "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension_1/object_1_prop_level"
+          "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/clearanceLevel/object_1_prop_level"
         }
       ]
     },
@@ -590,7 +590,7 @@
       "http://www.w3.org/ns/shacl#name": "lala"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension/array_1/member/scalar_3",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/arrAnot/array_1/member/scalar_3",
       "@type": [
         "http://a.ml/vocabularies/data#Scalar",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -605,7 +605,7 @@
       "http://a.ml/vocabularies/data#value": "b"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension/array_1/member/scalar_2",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/arrAnot/array_1/member/scalar_2",
       "@type": [
         "http://a.ml/vocabularies/data#Scalar",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -620,7 +620,7 @@
       "http://a.ml/vocabularies/data#value": "a"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension_1/object_1_prop_signature",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/clearanceLevel/object_1_prop_signature",
       "@type": [
         "http://a.ml/vocabularies/data#Property",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -628,12 +628,12 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/data#range": {
-        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension_1/object_1/signature"
+        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/clearanceLevel/object_1/signature"
       },
       "http://a.ml/vocabularies/core#name": "signature"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension_1/object_1_prop_level",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/clearanceLevel/object_1_prop_level",
       "@type": [
         "http://a.ml/vocabularies/data#Property",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -641,7 +641,7 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/data#range": {
-        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension_1/object_1/level"
+        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/clearanceLevel/object_1/level"
       },
       "http://a.ml/vocabularies/core#name": "level"
     },
@@ -667,7 +667,7 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/document#extension": {
-        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/extension/scalar_1"
+        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/simple/scalar_1"
       },
       "http://a.ml/vocabularies/document#definedBy": {
         "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200_annotations_1_link"
@@ -682,7 +682,7 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/document#extension": {
-        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/extension_2/object_1"
+        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/annot/object_1"
       },
       "http://a.ml/vocabularies/document#definedBy": {
         "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200_annotations_0_link"
@@ -734,7 +734,7 @@
       "http://a.ml/vocabularies/data#value": "low"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension_1/object_1/signature",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/clearanceLevel/object_1/signature",
       "@type": [
         "http://a.ml/vocabularies/data#Scalar",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -749,7 +749,7 @@
       "http://a.ml/vocabularies/data#value": "230-ghtwvfrs1itr"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/extension_1/object_1/level",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/customDomainProperties/clearanceLevel/object_1/level",
       "@type": [
         "http://a.ml/vocabularies/data#Scalar",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -785,7 +785,7 @@
       "http://www.w3.org/ns/shacl#name": "schema"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/extension/scalar_1",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/simple/scalar_1",
       "@type": [
         "http://a.ml/vocabularies/data#Scalar",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
@@ -815,7 +815,7 @@
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/extension_2/object_1",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/annot/object_1",
       "@type": [
         "http://a.ml/vocabularies/data#Object",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
@@ -824,7 +824,7 @@
       ],
       "http://a.ml/vocabularies/data#properties": [
         {
-          "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/extension_2/object_1_prop_lala"
+          "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/annot/object_1_prop_lala"
         }
       ]
     },
@@ -879,7 +879,7 @@
       "http://www.w3.org/ns/shacl#name": "A"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/extension_2/object_1_prop_lala",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/annot/object_1_prop_lala",
       "@type": [
         "http://a.ml/vocabularies/data#Property",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
@@ -887,7 +887,7 @@
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/data#range": {
-        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/extension_2/object_1/lala"
+        "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/annot/object_1/lala"
       },
       "http://a.ml/vocabularies/core#name": "lala"
     },
@@ -907,7 +907,7 @@
       "http://www.w3.org/ns/shacl#name": "c"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/extension_2/object_1/lala",
+      "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/customDomainProperties/annot/object_1/lala",
       "@type": [
         "http://a.ml/vocabularies/data#Scalar",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
