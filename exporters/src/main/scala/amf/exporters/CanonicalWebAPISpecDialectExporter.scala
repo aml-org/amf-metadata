@@ -198,7 +198,6 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     (Namespace.Document + "extends").iri(),
     DomainElementModel.CustomDomainProperties.value.iri(),
     BaseUnitModel.ProcessingData.value.iri(),
-    BaseUnitModel.SourceInformation.value.iri()
   )
 
   val blocklistedSupertypes: Set[String] = Set(

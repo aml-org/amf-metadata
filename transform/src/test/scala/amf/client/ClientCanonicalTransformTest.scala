@@ -34,4 +34,27 @@ class ClientCanonicalTransformTest extends AsyncFunSuite with NativeOpsFromJvm w
       r
     }
   }
+
+  test("Performance") {
+    val file = "file://transform/src/test/resources/client/api.raml"
+    val golden = "file://transform/src/test/resources/client/webapi.canonical.jsonld"
+    val options = new RenderOptions().withCompactUris().withSourceMaps().withPrettyPrint()
+    for {
+      config   <- RAMLConfiguration.RAML10().withErrorHandlerProvider(ErrorHandlerProvider.unhandled()).withRenderOptions(options).withDialect(CanonicalTransform.CANONICAL_WEBAPI_DIALECT).asFuture
+      client   <- Future.successful(config.baseUnitClient())
+      unit     <- client.parse(file).asFuture.map(_.baseUnit)
+      transformed <- Future.successful {
+        val s = System.currentTimeMillis()
+        val t = new CanonicalWebAPISpecTransformer().transform(unit, config)
+        val e = System.currentTimeMillis()
+        println(s"Time = ${e - s}")
+        t
+      }
+      render <- Future.successful(client.render(transformed, Mimes.`application/ld+json`))
+      actual <- writeTemporaryFile(golden)(render)
+      r      <- assertDifferences(actual, golden)
+    } yield {
+      r
+    }
+  }
 }
