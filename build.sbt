@@ -17,9 +17,9 @@ lazy val workspaceDirectory: File =
     case _       => Path.userHome / "mulesoft"
   }
 
-lazy val amfRdfLibJVM = "com.github.amlorg" %% "amf-rdf" % dependencies.amfRdfVersion
+lazy val amfRdfLibJVM = "com.github.amlorg" %% "amf-rdf" % dependencies.amfRdfVersion % "runtime"
 lazy val amfRdfRef    = ProjectRef(workspaceDirectory / "amf-aml", "rdfJVM")
-lazy val amfApiContractLibJVM = "com.github.amlorg" %% "amf-api-contract" % dependencies.amfVersion
+lazy val amfApiContractLibJVM = "com.github.amlorg" %% "amf-api-contract" % dependencies.amfVersion % "runtime"
 lazy val amfApiContractRef    = ProjectRef(workspaceDirectory / "amf", "apiContractJVM")
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Root ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
