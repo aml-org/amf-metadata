@@ -73,7 +73,7 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
     recoverToSucceededIf[RecursiveUnitsPresentException](transformRecursive)
   }
 
-  test("Test canonical tranformation throws exception if dialect is not found") {
+  test("Test canonical transformation throws exception if dialect is not found") {
     recoverToSucceededIf[CanonicalDialectNotFoundException](
       // does not register dialect
       canonicalTransform(s"${basePath}simple/api.raml", APIConfiguration.API())
@@ -88,7 +88,7 @@ class E2ECanonicalWebApiDialectTest extends FunSuiteCycleTests with CanonicalTra
       transformed.sourceSpec shouldBe Some(AmlDialectSpec("WebAPI Spec 1.0"))
       val profileFromSpec = transformed.sourceSpec.map(spec => ProfileName(spec.id)).get
       // TODO: This should be tested in a more black box way. Improve
-      config.registry.constraintsRules.contains(profileFromSpec) shouldBe true
+      config.registry.getConstraintsRules.contains(profileFromSpec) shouldBe true
     }
   }
 

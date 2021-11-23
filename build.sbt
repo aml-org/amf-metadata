@@ -50,7 +50,8 @@ lazy val transform = project
     name := "amf-transform",
     version := artifactVersions.transformVersion,
     libraryDependencies ++= commonDependencies,
-    libraryDependencies += "org.apache.jena" % "jena-shacl" % "3.17.0"
+    libraryDependencies += "org.apache.jena" % "jena-shacl" % "3.17.0",
+    excludeDependencies += "org.apache.tomcat.embed"    % "tomcat-embed-core"
   )
   .sourceDependency(amfApiContractRef, amfApiContractLibJVM)
   .sourceDependency(amfRdfRef, amfRdfLibJVM)
@@ -76,7 +77,7 @@ val commonSettings = Common.settings ++ Common.publish ++ Seq(
   resolvers ++= List(ivyLocal, Common.releases, Common.snapshots, Resolver.mavenLocal),
   resolvers += "jitpack" at "https://jitpack.io",
   credentials ++= Common.credentials(),
-  logBuffered in Test := false
+  Test / logBuffered := false
 )
 
 lazy val dependencies = new {

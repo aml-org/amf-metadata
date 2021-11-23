@@ -232,7 +232,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
 
   private def createConfigOnlyWithDialectEntities(config: AMLConfiguration, dialect: Dialect) = {
     val modelIds = dialect.declares.collect { case n: NodeMapping => n.id }
-    val entities = config.registry.entitiesRegistry.domainEntities
+    val entities = config.registry.getEntitiesRegistry.domainEntities
     val dialectEntities = modelIds.foldLeft(Map[String, ModelDefaultBuilder]()) { (acc, curr) => acc + (curr -> entities(curr)) }
     val nextConfig = AMLConfiguration.empty().withEntities(dialectEntities ++ AMLEntities.entities)
     nextConfig

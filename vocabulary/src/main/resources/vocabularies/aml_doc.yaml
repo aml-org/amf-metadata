@@ -141,7 +141,7 @@ propertyTerms:
     range: uri
   location:
     displayName: location
-    description: Location of an inlined fragment
+    description: Location of the metadata document that generated this base unit
     range: string
   package:
     displayName: package
