@@ -211,7 +211,7 @@ String buildSlackMessage(headerFlavour, branchName, failedStage, buildUrl) {
 //}
 
 String getNextTag(String artifact) {
-  String semver = sh(returnStdout: true, script: "sbt $artifact/version | tail -n 1 | grep -o '[0-9].[0-9].[0-9].*'").trim()
+  String semver = sh(returnStdout: true, script: "sbt -no-colors 'inspect actual ${artifact}/version' | grep Setting | cut -d '=' -f2").trim()
   return "$artifact/$semver"
 }
 
