@@ -11,6 +11,7 @@ import org.reflections.Reflections
 import org.reflections.scanners.SubTypesScanner
 import org.yaml.model.YPart
 import amf.core.internal.utils._
+import amf.shapes.internal.domain.metamodel.NodeShapeModel
 import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel._
 import amf.transform.internal.canonical.PropertyNode
 
@@ -198,7 +199,11 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     (Namespace.Document + "extends").iri(),
     DomainElementModel.CustomDomainProperties.value.iri(),
     BaseUnitModel.ProcessingData.value.iri(),
-    BaseUnitModel.SourceInformation.value.iri()
+    BaseUnitModel.SourceInformation.value.iri(),
+
+    // graphQL model that is still not definitive
+    NodeShapeModel.Operations.value.iri(),
+    NodeShapeModel.IsAbstract.value.iri()
   )
 
   val blocklistedSupertypes: Set[String] = Set(
@@ -214,13 +219,21 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
 
   // Base classes that should not appear in the dialect
   val blocklistedMappings: Set[String] = Set(
-    "LinkableElement",
-    "DomainElement",
-    "SourceMap",
-    "APIContractProcessingData",
-    "BaseUnitProcessingData",
-    "BaseUnitSourceInformation",
-    "LocationInformation"
+    (Namespace.Document + "Linkable").iri(),
+    (Namespace.Document + "DomainElement").iri(),
+    (Namespace.SourceMaps + "SourceMap").iri(),
+    (Namespace.Document + "APIContractProcessingData").iri(),
+    (Namespace.Document + "BaseUnitProcessingData").iri(),
+    (Namespace.Document + "BaseUnitSourceInformation").iri(),
+    (Namespace.Document + "LocationInformation").iri(),
+
+    // graphQL model that is still not definitive
+    (Namespace.Shapes + "Operation").iri(),
+    (Namespace.Shapes + "Parameter").iri(),
+    (Namespace.Shapes + "Payload").iri(),
+    (Namespace.Shapes + "Request").iri(),
+    (Namespace.Shapes + "Response").iri(),
+
   )
 
   val shapeUnionDeclaration = "DataShapesUnion"
@@ -568,7 +581,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     orderedNodeMappings.foreach { nodeMappingId =>
       nodeMappings.get(nodeMappingId) match {
         case Some(dialectNodeMapping: ExtendedDialectNodeMapping) =>
-          if (!blocklistedMappings.contains(dialectNodeMapping.name)) {
+          if (!blocklistedMappings.contains(dialectNodeMapping.classTerm)) {
             stringBuilder.append(s"  ${dialectNodeMapping.name}:\n")
             var (compacted, prefix, base) = compact(dialectNodeMapping.classTerm)
             aggregateExternals(externals, prefix, base)
