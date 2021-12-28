@@ -1,4 +1,6 @@
 #!groovy
+@Library('amf-jenkins-library') _
+
 def slackChannel = '#amf-jenkins'
 def failedStage = ""
 def color = '#FF8C00'
@@ -124,11 +126,11 @@ pipeline {
             try{
               if (HAS_PUBLISHED_TRANSFORM) {
                 String tag = getNextTag("transform")
-                tagCommit(tag)
+                tagCommitToGithub(tag)
               }
               if (HAS_PUBLISHED_VOCABULARY) {
                 String tag = getNextTag("vocabulary")
-                tagCommit(tag)
+                tagCommitToGithub(tag)
               }
             } catch(ignored) {
               failedStage = failedStage + " TAGGING "
@@ -211,15 +213,7 @@ String buildSlackMessage(headerFlavour, branchName, failedStage, buildUrl) {
 //}
 
 String getNextTag(String artifact) {
-  String semver = sh(returnStdout: true, script: "sbt -no-colors 'inspect actual ${artifact}/version' | grep Setting | cut -d '=' -f2").trim()
+  String semver = sbtArtifactVersion(artifact)
   return "$artifact/$semver"
 }
 
-String tagCommit(String tag) {
-  sh """#!/bin/bash
-        echo "about to tag the commit with the new version = $tag"
-        git tag $tag
-        url="https://\$GITHUB_USER:\$GITHUB_PASS@github.com/\$GITHUB_ORG/\$GITHUB_REPO"
-        git push \$url --tags && echo "tagging successful"
-     """
-}
