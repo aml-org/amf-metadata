@@ -49,9 +49,7 @@ lazy val transform = project
     commonSettings,
     name := "amf-transform",
     version := artifactVersions.transformVersion,
-    libraryDependencies ++= commonDependencies,
-    libraryDependencies += "org.apache.jena" % "jena-shacl" % "3.17.0",
-    excludeDependencies += "org.apache.tomcat.embed"    % "tomcat-embed-core"
+    libraryDependencies ++= commonDependencies
   )
   .sourceDependency(amfApiContractRef, amfApiContractLibJVM)
   .sourceDependency(amfRdfRef, amfRdfLibJVM)
