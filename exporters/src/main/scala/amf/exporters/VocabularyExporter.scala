@@ -9,6 +9,8 @@ import amf.core.internal.metamodel.Type.{Bool, Date, DateTime, Double, EncodedIr
 import amf.core.internal.metamodel.document.{BaseUnitModel, BaseUnitProcessingDataModel, BaseUnitSourceInformationModel, LocationInformationModel}
 import amf.core.internal.metamodel.domain._
 import amf.core.internal.metamodel.{Field, Obj, Type}
+import amf.shapes.internal.domain.metamodel.NodeShapeModel
+import amf.shapes.internal.domain.metamodel.operations.ShapeOperationModel
 import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel
 import amf.transform.internal.canonical.CanonicalWebAPISpecExtraModel._
 import org.reflections.Reflections
@@ -118,6 +120,13 @@ object VocabularyExporter {
     (Namespace.Document + "BaseUnitProcessingData").iri(),
     (Namespace.Document + "BaseUnitSourceInformation").iri(),
     (Namespace.Document + "LocationInformation").iri(),
+
+    // graphQL model that is still not definitive
+    (Namespace.Shapes + "Operation").iri(),
+    (Namespace.Shapes + "Parameter").iri(),
+    (Namespace.Shapes + "Payload").iri(),
+    (Namespace.Shapes + "Request").iri(),
+    (Namespace.Shapes + "Response").iri(),
   )
 
   val blockedProperties: Seq[String] = Seq(
@@ -128,7 +137,13 @@ object VocabularyExporter {
     BaseUnitModel.SourceInformation.value.iri(),
     BaseUnitSourceInformationModel.AdditionalLocations.value.iri(),
     BaseUnitSourceInformationModel.RootLocation.value.iri(),
-    LocationInformationModel.Elements.value.iri()
+    LocationInformationModel.Elements.value.iri(),
+
+    // graphQL model that is still not definitive
+    NodeShapeModel.Operations.value.iri(),
+    NodeShapeModel.IsAbstract.value.iri(),
+    ShapeOperationModel.Request.value.iri(),
+    ShapeOperationModel.Response.value.iri(),
   )
 
   val blocklist: Map[ModelVocabulary, Seq[ModelVocabulary]] = Map()
