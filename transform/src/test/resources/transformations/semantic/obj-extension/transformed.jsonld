@@ -1,0 +1,240 @@
+{
+  "@graph": [
+    {
+      "@id": "#/rootAsset",
+      "@type": [
+        "raml-doc:Document",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Document",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "raml-doc:encodes": {
+        "@id": "#/web-api"
+      },
+      "raml-doc:root": true,
+      "raml-doc:location": "file://transform/src/test/resources/transformations/semantic/obj-extension/api.yaml"
+    },
+    {
+      "@id": "/BaseUnitProcessingData",
+      "@type": [
+        "raml-doc:DialectInstanceProcessingData"
+      ],
+      "meta:definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "raml-doc:sourceSpec": "WebAPI Spec 1.0"
+    },
+    {
+      "@id": "#/web-api",
+      "@type": [
+        "apiContract:WebAPI",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/WebAPI",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "core:name": "Semantic Extension example API",
+      "core:version": "1.0.0",
+      "apiContract:endpoint": [
+        {
+          "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated"
+        }
+      ]
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated",
+      "@type": [
+        "apiContract:EndPoint",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/EndPoint",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "core:description": "Deprecated endpoint",
+      "apiContract:supportedOperation": [
+        {
+          "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get"
+        }
+      ],
+      "apiContract:path": "/v1/paginated",
+      "apiContract:deprecated": {
+        "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/customDomainProperties/deprecated/element"
+      }
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get",
+      "@type": [
+        "apiContract:Operation",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Operation",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "apiContract:returns": [
+        {
+          "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200"
+        }
+      ],
+      "apiContract:method": "get"
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/customDomainProperties/deprecated/element",
+      "@type": [
+        "file://transform/src/test/resources/transformations/semantic/obj-extension/dialect.yaml#/declarations/Deprecation",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "data:replaceFor": "v2/paginated",
+      "data:message": "Deprecated because the response type has changed."
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200",
+      "@type": [
+        "apiContract:Response",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/Response",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "apiContract:statusCode": "200",
+      "core:name": "200",
+      "core:description": "An annotated response object with the pagination annotation.",
+      "raml-doc:designAnnotation": [
+        {
+          "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200_annotations_0"
+        }
+      ]
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200_annotations_0",
+      "@type": [
+        "apiContract:DomainExtension",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/DomainExtension",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "raml-doc:extension": {
+        "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200/customDomainProperties/deprecated/object_1"
+      },
+      "raml-doc:definedBy": {
+        "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200_annotations_0_link"
+      }
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200/customDomainProperties/deprecated/object_1",
+      "@type": [
+        "data:Object",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ObjectNode",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "data:properties": [
+        {
+          "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200/customDomainProperties/deprecated/object_1_prop_replaceFor"
+        },
+        {
+          "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200/customDomainProperties/deprecated/object_1_prop_message"
+        }
+      ]
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200_annotations_0_link",
+      "@type": [
+        "raml-doc:DomainProperty",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/CustomDomainProperty",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "raml-doc:design-link-target": [
+        {
+          "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200/customDomainProperties/deprecated/deprecated"
+        }
+      ]
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200/customDomainProperties/deprecated/object_1_prop_replaceFor",
+      "@type": [
+        "data:Property",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "data:range": {
+        "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200/customDomainProperties/deprecated/object_1/replaceFor"
+      },
+      "core:name": "replaceFor"
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200/customDomainProperties/deprecated/object_1_prop_message",
+      "@type": [
+        "data:Property",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/PropertyNode",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "data:range": {
+        "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200/customDomainProperties/deprecated/object_1/message"
+      },
+      "core:name": "message"
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200/customDomainProperties/deprecated/object_1/replaceFor",
+      "@type": [
+        "data:Scalar",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "sh:datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "data:value": "v3/paginated"
+    },
+    {
+      "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200/customDomainProperties/deprecated/object_1/message",
+      "@type": [
+        "data:Scalar",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",
+        "meta:DialectDomainElement",
+        "raml-doc:DomainElement"
+      ],
+      "sh:datatype": [
+        {
+          "@id": "http://www.w3.org/2001/XMLSchema#string"
+        }
+      ],
+      "data:value": "Deprecated because the response type has changed."
+    },
+    {
+      "@id": "",
+      "@type": [
+        "meta:DialectInstance",
+        "raml-doc:Document",
+        "raml-doc:Fragment",
+        "raml-doc:Module",
+        "raml-doc:Unit"
+      ],
+      "meta:definedBy": [
+        {
+          "@id": "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
+        }
+      ],
+      "raml-doc:encodes": {
+        "@id": "#/rootAsset"
+      },
+      "raml-doc:root": true,
+      "raml-doc:processingData": {
+        "@id": "/BaseUnitProcessingData"
+      }
+    }
+  ],
+  "@context": {
+    "@base": "file://transform/src/test/resources/transformations/semantic/obj-extension/api.yaml",
+    "data": "http://a.ml/vocabularies/data#",
+    "apiContract": "http://a.ml/vocabularies/apiContract#",
+    "core": "http://a.ml/vocabularies/core#",
+    "meta": "http://a.ml/vocabularies/meta#",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "raml-doc": "http://a.ml/vocabularies/document#"
+  }
+}
