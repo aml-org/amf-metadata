@@ -4,6 +4,8 @@ import amf.aml.client.scala.AMLConfiguration
 import amf.aml.client.scala.model.document.{Dialect, DialectInstanceProcessingData}
 import amf.aml.client.scala.model.domain.NodeMapping
 import amf.aml.internal.entities.AMLEntities
+import amf.aml.internal.transform.steps.SemanticExtensionFlatteningStage
+import amf.core.client.scala.errorhandling.IgnoringErrorHandler
 import amf.core.client.scala.model.document.BaseUnit
 import amf.core.client.scala.vocabulary.Namespace
 import amf.core.client.scala.vocabulary.Namespace.XsdTypes
@@ -11,12 +13,12 @@ import amf.core.internal.metamodel.ModelDefaultBuilder
 import amf.core.internal.metamodel.document.{BaseUnitModel, DocumentModel}
 import amf.core.internal.remote.AmlDialectSpec
 import amf.core.internal.unsafe.PlatformSecrets
-import amf.rdf.client.scala.RdfUnitConverter.toNativeRdfModel
+import amf.rdf.client.scala.RdfUnitConverter.{fromNativeRdfModel, toNativeRdfModel}
 import amf.rdf.client.scala.{RdfModel, RdfUnitConverter}
 import org.apache.jena.rdf.model.{Model, Statement}
 
 import scala.collection.JavaConverters._
-import scala.collection.mutable
+import scala.collection.{immutable, mutable}
 
 private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with DataNodeTransform with DomainElementTransform with BaseUnitTransform {
   type DomainElementUri = String
@@ -30,7 +32,14 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   /**
    * Transforms a WebAPI model parsed by AMF from a RAML/OAS document into a canonical WebAPI model compatible with the canonical WebAPI AML dialect
    */
-  def transform(unit: BaseUnit, config: AMLConfiguration): BaseUnit = cleanAMFModel(unit, config)
+  def transform(unit: BaseUnit, config: AMLConfiguration): BaseUnit = {
+    flattenSemanticExtensions(unit, config)
+    cleanAMFModel(unit, config)
+  }
+
+  private def flattenSemanticExtensions(unit: BaseUnit, config: AMLConfiguration): BaseUnit = {
+    new SemanticExtensionFlatteningStage().transform(unit, IgnoringErrorHandler, config)
+  }
 
   /**
    * Cleans the input WebAPI model adding the required information to the
@@ -43,7 +52,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
   protected def cleanAMFModel(unit: BaseUnit, config: AMLConfiguration): BaseUnit = {
     val webApiDialect: Dialect = findWebAPIDialect(config)
     val typeMapping = buildCanonicalClassMapping(webApiDialect)
-    val model       = toNativeRdfModel(unit)
+    val model       = toNativeRdfModel(unit, config, config.options.renderOptions)
 
     val nativeModel = model.getNative().asInstanceOf[Model]
 
@@ -224,18 +233,32 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
 
 
   private def parseRdfToInstance(model: RdfModel, baseUnitId: String, config: AMLConfiguration, dialect: Dialect): BaseUnit = {
-    val nextConfig: AMLConfiguration = createConfigOnlyWithDialectEntities(config, dialect)
-    val instance = RdfUnitConverter.fromNativeRdfModel(baseUnitId, model, nextConfig)
+    val nextConfig = createConfigWithDialectEntites(config)
+    val instance = fromNativeRdfModel(baseUnitId, model, nextConfig)
+    withCanonicalDialectProcessingData(dialect, instance)
+  }
+
+  private def withCanonicalDialectProcessingData(dialect: Dialect, instance: BaseUnit) = {
     val processingData = DialectInstanceProcessingData().withDefinedBy(dialect.id).withSourceSpec(AmlDialectSpec(CANONICAL_DIALECT_HEADER))
     instance.withProcessingData(processingData)
   }
 
-  private def createConfigOnlyWithDialectEntities(config: AMLConfiguration, dialect: Dialect) = {
-    val modelIds = dialect.declares.collect { case n: NodeMapping => n.id }
+  private def createConfigWithDialectEntites(config: AMLConfiguration) = {
+    val dialects = config.configurationState().getDialects()
+    val baseConfig: AMLConfiguration = cleanConfigWithDialectEntities(config, dialects)
+    loadConfigWithExtensions(dialects, baseConfig)
+  }
+
+  private def cleanConfigWithDialectEntities(config: AMLConfiguration, dialects: immutable.Seq[Dialect]) = {
+    val modelIds = dialects.flatMap(_.declares.collect { case n: NodeMapping => n.id })
     val entities = config.registry.getEntitiesRegistry.domainEntities
     val dialectEntities = modelIds.foldLeft(Map[String, ModelDefaultBuilder]()) { (acc, curr) => acc + (curr -> entities(curr)) }
-    val nextConfig = AMLConfiguration.empty().withEntities(dialectEntities ++ AMLEntities.entities)
-    nextConfig
+    val baseConfig = AMLConfiguration.empty().withEntities(dialectEntities ++ AMLEntities.entities)
+    baseConfig
+  }
+
+  private def loadConfigWithExtensions(dialects: Seq[Dialect], baseConfig: AMLConfiguration) = {
+    dialects.filter(_.hasExtensions()).foldLeft(baseConfig) { (config, dialect) => config.withExtensions(dialect) }
   }
 }
 

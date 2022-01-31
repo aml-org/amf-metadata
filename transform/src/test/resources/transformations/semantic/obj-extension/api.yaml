@@ -1,0 +1,19 @@
+openapi: 3.0.3
+info:
+  title: "Semantic Extension example API"
+  version: 1.0.0
+paths:
+  /v1/paginated:
+    description: "Deprecated endpoint"
+    # Using my "deprecated" semantic extension to add semantic information to the EndPoint
+    x-deprecated:
+      replaceFor: "v2/paginated"
+      message: "Deprecated because the response type has changed."
+    get:
+      responses:
+        "200":
+          description: "An annotated response object with the pagination annotation."
+          # As the AnnotationMapping doesn't apply to the "apiContract.Response" domain then this node will be parsed as a CustomDomainProperty
+          x-deprecated:
+            replaceFor: "v3/paginated"
+            message: "Deprecated because the response type has changed."

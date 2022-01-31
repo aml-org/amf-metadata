@@ -1,0 +1,29 @@
+#%Dialect 1.0
+dialect: Repository object extensions
+version: 1.0
+
+external:
+  apiContract: "http://a.ml/vocabularies/apiContract#"
+
+documents:
+  root:
+    declares: {}
+
+annotationMappings:
+  DeprecationMapping:
+    domain: apiContract.EndPoint
+    propertyTerm: apiContract.deprecated
+    range: Deprecation
+
+nodeMappings:
+  Deprecation:
+    mapping:
+      replaceFor:
+        range: string
+        mandatory: true
+      message:
+        range: string
+        mandatory: true
+
+extensions:
+  deprecated: DeprecationMapping
