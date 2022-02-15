@@ -3,10 +3,25 @@ vocabulary: meta
 base: http://a.ml/vocabularies/meta#
 usage: Vocabulary containing meta-definitions
 uses:
-  doc: aml_doc.yaml
   shacl: external/shacl.yaml
+  doc: aml_doc.yaml
   owl: external/owl.yaml
 classTerms:
+  ConditionalNodeMapping:
+    displayName: ConditionalNodeMapping
+    extends: shacl.Shape
+  ContextBaseIri:
+    displayName: baseIRIModel
+    description: Encodes information about the base document IRI for the model element @ids
+  ContextCuriePrefix:
+    displayName: curiePrefixModel
+    description: Stores information about a CURIE prefix defined in the context
+  ContextDefaultVocabulary:
+    displayName: defaultVocabularyModel
+    description: Encodes information about the base vocabulary to map by default properties and types in the model
+  ContextMapping:
+    displayName: contextMappingModel
+    description: Stores information about mapping rules for a property in the model
   Dialect:
     displayName: Dialect
     description: Definition of an AML dialect, mapping AST nodes from dialect documents into an output semantic graph
@@ -77,6 +92,9 @@ classTerms:
   PublicNodeMapping:
     displayName: PublicNodeMapping
     description: Mapping for a graph node mapping to a particular function in a dialect
+  SemanticContext:
+    displayName: semanticContextModel
+    description: Set of semantic contextual information that can be attached to a schema
   UnionNodeMapping:
     displayName: UnionNodeMapping
     extends: shacl.Shape
@@ -96,8 +114,20 @@ propertyTerms:
     range: boolean
   base:
     displayName: base
-    description: Base URI for the external model
+    description: Base IRI used to generate all the @ids in the model
+    range: ContextBaseIri
+  coercion:
+    displayName: coercion
+    description: Type to coerce the mapped model
     range: string
+  contextAlias:
+    displayName: contextAlias
+    description: lexical value of the alias in the context
+    range: string
+  curies:
+    displayName: curies
+    description: Set of CURIE prefixes defined in a context
+    range: ContextCuriePrefix
   declarationsPath:
     displayName: declarationsPath
     description: Information about the AST location of the declarations to be parsed as declared domain elements
@@ -143,6 +173,10 @@ propertyTerms:
     displayName: fragments
     description: Mapping of fragment base unit for a particular dialect
     range: DocumentMapping
+  iri:
+    displayName: iri
+    description: Base IRI for all the elements in the model
+    range: uri
   keyProperty:
     displayName: keyProperty
     description: Information about whether the dialect is defined by the header or a key property
@@ -171,10 +205,18 @@ propertyTerms:
     displayName: mappedNode
     description: Node in the dialect definition associated to this mapping
     range: uri
+  mappings:
+    displayName: mappings
+    description: Set of property mappings and coercions defined in a context
+    range: ContextMapping
   mergePolicy:
     displayName: mergePolicy
     description: Indication of how to merge this graph node when applying a patch document
     range: string
+  nulled:
+    displayName: nulled
+    description: Marks the baseIRI as null, preventing generation of absolute IRIs in the model
+    range: boolean
   properties:
     displayName: properties
     description: Properties that have the ClassTerm in the domain
@@ -210,3 +252,7 @@ propertyTerms:
     displayName: unique
     description: Marks the values for the property mapping as a primary key for this type of node
     range: boolean
+  vocab:
+    displayName: vocab
+    description: Default IRI prefix used to map by default all properties and terms in the model
+    range: ContextDefaultVocabulary

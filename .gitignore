@@ -95,3 +95,4 @@ project/plugins/project/
 .lib/
 # Ignore Gradle build output directory
 build
+.bsp
