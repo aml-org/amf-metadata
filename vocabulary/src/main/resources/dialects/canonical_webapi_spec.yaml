@@ -32,7 +32,7 @@ nodeMappings:
       Scalar: ScalarShape
       Any: AnyShape
       Recursive: RecursiveShape
-
+    
     union:
       - UnionShape
       - TupleShape
@@ -45,7 +45,7 @@ nodeMappings:
       - ScalarShape
       - AnyShape
       - RecursiveShape
-
+    
   SecuritySettingsUnion:
     typeDiscriminatorName: settingsType
     typeDiscriminator:
@@ -55,7 +55,7 @@ nodeMappings:
       Http: HttpSettings
       OpenID: OpenIDSettings
       HttpAPIKey: HttpAPIKeySettings
-
+    
     union:
       - OAuth2Settings
       - OAuth1Settings
@@ -63,7 +63,7 @@ nodeMappings:
       - HttpSettings
       - OpenIDSettings
       - HttpAPIKeySettings
-
+    
 
   DataNodeUnion:
     typeDiscriminatorName: elementType
@@ -812,7 +812,7 @@ nodeMappings:
           - ParametrizedResourceType
           - ParametrizedTrait
         allowMultiple: true
-
+    
       path:
         propertyTerm: apiContract.path
         range: string
@@ -1116,7 +1116,7 @@ nodeMappings:
         propertyTerm: doc.extends
         range: Message
         allowMultiple: true
-
+    
       name:
         propertyTerm: core.name
         range: string
@@ -1443,7 +1443,7 @@ nodeMappings:
           - Operation
           - ParametrizedTrait
         allowMultiple: true
-
+    
       method:
         propertyTerm: apiContract.method
         range: string
@@ -2289,6 +2289,72 @@ nodeMappings:
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
+        allowMultiple: true
+
+
+  baseIRIModel:
+    classTerm: meta.ContextBaseIri
+    mapping:
+      iri:
+        propertyTerm: meta.iri
+        range: link
+      nulled:
+        propertyTerm: meta.nulled
+        range: boolean
+
+
+  contextMappingModel:
+    classTerm: meta.ContextMapping
+    mapping:
+      contextAlias:
+        propertyTerm: meta.contextAlias
+        range: string
+      iri:
+        propertyTerm: meta.iri
+        range: link
+      coercion:
+        propertyTerm: meta.coercion
+        range: string
+      nulled:
+        propertyTerm: meta.nulled
+        range: boolean
+
+
+  curiePrefixModel:
+    classTerm: meta.ContextCuriePrefix
+    mapping:
+      contextAlias:
+        propertyTerm: meta.contextAlias
+        range: string
+      iri:
+        propertyTerm: meta.iri
+        range: link
+
+
+  defaultVocabularyModel:
+    classTerm: meta.ContextDefaultVocabulary
+    mapping:
+      iri:
+        propertyTerm: meta.iri
+        range: link
+
+
+  semanticContextModel:
+    classTerm: meta.SemanticContext
+    mapping:
+      base:
+        propertyTerm: meta.base
+        range: baseIRIModel
+      vocab:
+        propertyTerm: meta.vocab
+        range: defaultVocabularyModel
+      curies:
+        propertyTerm: meta.curies
+        range: curiePrefixModel
+        allowMultiple: true
+      mappings:
+        propertyTerm: meta.mappings
+        range: contextMappingModel
         allowMultiple: true
 
 
