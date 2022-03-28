@@ -7,9 +7,15 @@ uses:
   doc: aml_doc.yaml
   owl: external/owl.yaml
 classTerms:
+  AnyMapping:
+    displayName: AnyMapping
+    description: Base class for all mappings stored in the AML graph model
+    extends: shacl.Shape
   ConditionalNodeMapping:
     displayName: ConditionalNodeMapping
-    extends: shacl.Shape
+    extends:
+      - shacl.Shape
+      - AnyMapping
   ContextBaseIri:
     displayName: baseIRIModel
     description: Encodes information about the base document IRI for the model element @ids
@@ -83,7 +89,9 @@ classTerms:
     displayName: NodeAnnotationMapping
   NodeMapping:
     displayName: NodeMapping
-    extends: shacl.Shape
+    extends:
+      - shacl.Shape
+      - AnyMapping
   NodePropertyMapping:
     displayName: NodePropertyMapping
     description: Semantic mapping from an input AST in a dialect document to the output graph of information for a class of output node
@@ -97,7 +105,9 @@ classTerms:
     description: Set of semantic contextual information that can be attached to a schema
   UnionNodeMapping:
     displayName: UnionNodeMapping
-    extends: shacl.Shape
+    extends:
+      - shacl.Shape
+      - AnyMapping
   Vocabulary:
     displayName: Vocabulary
     description: Basic primitives for the declaration of vocabularies.
