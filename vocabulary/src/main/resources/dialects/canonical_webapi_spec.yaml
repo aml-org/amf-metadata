@@ -1347,6 +1347,9 @@ nodeMappings:
       unevaluatedPropertiesSchema:
         propertyTerm: raml-shapes.unevaluatedPropertiesSchema
         range: DataShapesUnion
+      inputOnly:
+        propertyTerm: raml-shapes.inputOnly
+        range: boolean
 
 
   OAuth1Settings:
@@ -1431,7 +1434,31 @@ nodeMappings:
 
 
   Operation:
+    classTerm: core.Operation
+    mapping:
+      name:
+        propertyTerm: core.name
+        range: string
+      description:
+        propertyTerm: core.description
+        range: string
+      expects:
+        propertyTerm: core.expects
+        range: Request
+        allowMultiple: true
+      returns:
+        propertyTerm: core.returns
+        range: Response
+        allowMultiple: true
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  Operation:
     classTerm: apiContract.Operation
+    extends: Operation
     mapping:
       extends:
         propertyTerm: doc.extends
@@ -1446,12 +1473,6 @@ nodeMappings:
     
       method:
         propertyTerm: apiContract.method
-        range: string
-      name:
-        propertyTerm: core.name
-        range: string
-      description:
-        propertyTerm: core.description
         range: string
       deprecated:
         propertyTerm: core.deprecated
@@ -1510,10 +1531,6 @@ nodeMappings:
       designLink:
         propertyTerm: doc.design-link-target
         range: link
-      designAnnotations:
-        propertyTerm: doc.designAnnotation
-        range: DomainExtension
-        allowMultiple: true
 
 
   OperationBinding:
@@ -1572,15 +1589,10 @@ nodeMappings:
 
   Parameter:
     classTerm: apiContract.Parameter
+    extends: Parameter
     mapping:
-      name:
-        propertyTerm: core.name
-        range: string
       paramName:
         propertyTerm: apiContract.paramName
-        range: string
-      description:
-        propertyTerm: core.description
         range: string
       required:
         propertyTerm: apiContract.required
@@ -1603,9 +1615,6 @@ nodeMappings:
       binding:
         propertyTerm: apiContract.binding
         range: string
-      schema:
-        propertyTerm: raml-shapes.schema
-        range: DataShapesUnion
       payload:
         propertyTerm: apiContract.payload
         range: Payload
@@ -1614,6 +1623,29 @@ nodeMappings:
         propertyTerm: apiContract.examples
         range: Example
         allowMultiple: true
+
+
+  Parameter:
+    classTerm: core.Parameter
+    mapping:
+      name:
+        propertyTerm: core.name
+        range: string
+      paramName:
+        propertyTerm: core.paramName
+        range: string
+      binding:
+        propertyTerm: core.binding
+        range: string
+      description:
+        propertyTerm: core.description
+        range: string
+      required:
+        propertyTerm: core.required
+        range: boolean
+      schema:
+        propertyTerm: raml-shapes.schema
+        range: DataShapesUnion
       designLink:
         propertyTerm: doc.design-link-target
         range: link
@@ -1671,27 +1703,20 @@ nodeMappings:
 
 
   Payload:
-    classTerm: apiContract.Payload
+    classTerm: core.Payload
     mapping:
       name:
         propertyTerm: core.name
         range: string
-      mediaType:
-        propertyTerm: core.mediaType
-        range: string
-      schemaMediaType:
-        propertyTerm: apiContract.schemaMediaType
-        range: string
       schema:
         propertyTerm: raml-shapes.schema
         range: DataShapesUnion
+      mediaType:
+        propertyTerm: core.mediaType
+        range: string
       examples:
         propertyTerm: apiContract.examples
         range: Example
-        allowMultiple: true
-      encoding:
-        propertyTerm: apiContract.encoding
-        range: Encoding
         allowMultiple: true
       designLink:
         propertyTerm: doc.design-link-target
@@ -1699,6 +1724,19 @@ nodeMappings:
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
+        allowMultiple: true
+
+
+  Payload:
+    classTerm: apiContract.Payload
+    extends: Payload
+    mapping:
+      schemaMediaType:
+        propertyTerm: apiContract.schemaMediaType
+        range: string
+      encoding:
+        propertyTerm: apiContract.encoding
+        range: Encoding
         allowMultiple: true
 
 
@@ -1771,7 +1809,7 @@ nodeMappings:
 
   Request:
     classTerm: apiContract.Request
-    extends: Message
+    extends: Request
     mapping:
       required:
         propertyTerm: apiContract.required
@@ -1791,6 +1829,72 @@ nodeMappings:
         propertyTerm: apiContract.cookieParameter
         range: Parameter
         allowMultiple: true
+      name:
+        propertyTerm: core.name
+        range: string
+      description:
+        propertyTerm: core.description
+        range: string
+      payload:
+        propertyTerm: apiContract.payload
+        range: Payload
+        allowMultiple: true
+      correlationId:
+        propertyTerm: core.correlationId
+        range: CorrelationId
+      displayName:
+        propertyTerm: core.displayName
+        range: string
+      title:
+        propertyTerm: core.title
+        range: string
+      summary:
+        propertyTerm: core.summary
+        range: string
+      header:
+        propertyTerm: apiContract.header
+        range: Parameter
+        allowMultiple: true
+      binding:
+        propertyTerm: apiBinding.binding
+        range: MessageBindings
+      tag:
+        propertyTerm: apiContract.tag
+        range: Tag
+        allowMultiple: true
+      examples:
+        propertyTerm: apiContract.examples
+        range: Example
+        allowMultiple: true
+      documentation:
+        propertyTerm: core.documentation
+        range: CreativeWork
+      isAbstract:
+        propertyTerm: apiContract.isAbstract
+        range: boolean
+      headerExamples:
+        propertyTerm: apiContract.headerExamples
+        range: Example
+        allowMultiple: true
+      headerSchema:
+        propertyTerm: apiContract.headerSchema
+        range: NodeShape
+      designLink:
+        propertyTerm: doc.design-link-target
+        range: link
+
+
+  Request:
+    classTerm: core.Request
+    mapping:
+      parameter:
+        propertyTerm: core.parameter
+        range: Parameter
+        allowMultiple: true
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
 
 
   ResourceType:
@@ -1805,7 +1909,7 @@ nodeMappings:
 
   Response:
     classTerm: apiContract.Response
-    extends: Message
+    extends: Response
     mapping:
       statusCode:
         propertyTerm: apiContract.statusCode
@@ -1813,6 +1917,71 @@ nodeMappings:
       links:
         propertyTerm: apiContract.link
         range: TemplatedLink
+        allowMultiple: true
+      description:
+        propertyTerm: core.description
+        range: string
+      payload:
+        propertyTerm: apiContract.payload
+        range: Payload
+        allowMultiple: true
+      correlationId:
+        propertyTerm: core.correlationId
+        range: CorrelationId
+      displayName:
+        propertyTerm: core.displayName
+        range: string
+      title:
+        propertyTerm: core.title
+        range: string
+      summary:
+        propertyTerm: core.summary
+        range: string
+      header:
+        propertyTerm: apiContract.header
+        range: Parameter
+        allowMultiple: true
+      binding:
+        propertyTerm: apiBinding.binding
+        range: MessageBindings
+      tag:
+        propertyTerm: apiContract.tag
+        range: Tag
+        allowMultiple: true
+      examples:
+        propertyTerm: apiContract.examples
+        range: Example
+        allowMultiple: true
+      documentation:
+        propertyTerm: core.documentation
+        range: CreativeWork
+      isAbstract:
+        propertyTerm: apiContract.isAbstract
+        range: boolean
+      headerExamples:
+        propertyTerm: apiContract.headerExamples
+        range: Example
+        allowMultiple: true
+      headerSchema:
+        propertyTerm: apiContract.headerSchema
+        range: NodeShape
+      designLink:
+        propertyTerm: doc.design-link-target
+        range: link
+
+
+  Response:
+    classTerm: core.Response
+    mapping:
+      name:
+        propertyTerm: core.name
+        range: string
+      payload:
+        propertyTerm: core.payload
+        range: Payload
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
         allowMultiple: true
 
 

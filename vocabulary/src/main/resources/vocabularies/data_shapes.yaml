@@ -84,6 +84,10 @@ propertyTerms:
     displayName: anyOf
     description: Data shapes in the union
     range: shacl.Shape
+  binding:
+    displayName: binding
+    description: Part of the Request model where the parameter can be encoded (header, path, query param, etc.)
+    range: string
   closedItems:
     displayName: closedItems
     description: Constraint limiting additional shapes in the collection
@@ -152,6 +156,10 @@ propertyTerms:
     displayName: inherits
     description: Relationship of inheritance between data shapes
     range: shacl.Shape
+  inputOnly:
+    displayName: inputOnly
+    description: Indicates if the shape is used as schema for input data only
+    range: boolean
   items:
     displayName: items
     description: Shapes contained in the Tuple Shape
@@ -172,10 +180,26 @@ propertyTerms:
     displayName: multiple of
     description: Multiple of constraint
     range: double
+  name:
+    displayName: name
+    range: string
+  paramName:
+    displayName: paramName
+    description: Name of a parameter
+    extends: name
+    range: string
+  parameter:
+    displayName: parameter
+    description: Parameters associated to the communication model
+    range: Parameter
   patternName:
     displayName: patternName
     description: Patterned property constraint
     range: string
+  payload:
+    displayName: payload
+    description: Payload for a Request/Response
+    range: Payload
   propertySource:
     displayName: propertySource
     description: Source property name in the dependency
@@ -191,6 +215,10 @@ propertyTerms:
   readOnly:
     displayName: readOnly
     description: Read only property constraint
+    range: boolean
+  required:
+    displayName: required
+    description: Marks the parameter as required
     range: boolean
   schema:
     displayName: schema

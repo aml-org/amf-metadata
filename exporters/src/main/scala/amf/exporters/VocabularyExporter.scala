@@ -143,7 +143,7 @@ object VocabularyExporter {
     NodeShapeModel.Operations.value.iri(),
     NodeShapeModel.IsAbstract.value.iri(),
     ShapeOperationModel.Request.value.iri(),
-    ShapeOperationModel.Response.value.iri(),
+    ShapeOperationModel.Responses.value.iri(),
   )
 
   val blocklist: Map[ModelVocabulary, Seq[ModelVocabulary]] = Map()
