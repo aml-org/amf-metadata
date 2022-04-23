@@ -18,7 +18,7 @@ class ClientCanonicalTransformTest extends AsyncFunSuite with NativeOpsFromJvm w
   private val environment: ExecutionEnvironment = DefaultExecutionEnvironment()
   implicit val context: ExecutionContext = environment._internal.context
 
-  test("Test client interfaces of the canonical transoformation") {
+  test("Test client interfaces of the canonical transformation") {
     val file = "file://transform/src/test/resources/client/api.raml"
     val golden = "file://transform/src/test/resources/client/webapi.canonical.jsonld"
     val options = new RenderOptions().withCompactUris().withSourceMaps().withPrettyPrint()

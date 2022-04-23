@@ -9,20 +9,20 @@ uses:
   rdf: external/rdf.yaml
 classTerms:
   Array:
-    displayName: Array Node
+    displayName: ArrayNode
     description: Node that represents a dynamic array data structure
     extends:
       - rdf.Seq
       - Node
   Link:
-    displayName: Link Node
+    displayName: LinkNode
     description: Node that represents a dynamic link in a data structure
     extends: Node
   Node:
-    displayName: Data Node
+    displayName: DataNode
     description: Base class for all data nodes parsed from the data structure
   Object:
-    displayName: Object Node
+    displayName: ObjectNode
     description: Node that represents a dynamic object with records data structure
     extends: Node
   Property:
@@ -30,7 +30,7 @@ classTerms:
     description: Node that represents a dynamic property in a dynamic node
     extends: Node
   Scalar:
-    displayName: Scalar Node
+    displayName: ScalarNode
     description: Node that represents a dynamic scalar value data structure
     extends: Node
 propertyTerms:

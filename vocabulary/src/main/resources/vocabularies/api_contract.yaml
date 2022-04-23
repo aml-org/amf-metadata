@@ -60,6 +60,7 @@ classTerms:
   Operation:
     displayName: Operation
     description: Action that can be executed using a particular HTTP invocation
+    extends: core.Operation
   Overlay:
     displayName: Overlay
     description: Model defining a RAML overlay
@@ -72,6 +73,7 @@ classTerms:
   Parameter:
     displayName: Parameter
     description: Piece of data required or returned by an Operation
+    extends: core.Parameter
   ParametrizedResourceType:
     displayName: ParametrizedResourceType
     description: RAML resource type that can accept parameters
@@ -83,6 +85,7 @@ classTerms:
   Payload:
     displayName: Payload
     description: Encoded payload using certain media-type
+    extends: core.Payload
   PayloadFragment:
     displayName: PayloadFragment
     description: Fragment encoding HTTP payload information
@@ -92,7 +95,9 @@ classTerms:
   Request:
     displayName: Request
     description: Request information for an operation
-    extends: Message
+    extends:
+      - core.Request
+      - Message
   ResourceType:
     displayName: ResourceType
     description: Type of document base unit encoding a RAML resource type
@@ -106,7 +111,9 @@ classTerms:
   Response:
     displayName: Response
     description: Response information for an operation
-    extends: Message
+    extends:
+      - core.Response
+      - Message
   Server:
     displayName: Server
     description: Information about the network accessible locations where the API is available

@@ -30,7 +30,7 @@ class VocabularyPropertiesTest extends AsyncFunSuite with VocabularyTest {
   }
 
   test("Vocabularies parsing core") {
-    testVocabulary(core, 4, 20)
+    testVocabulary(core, 9, 27)
   }
 
   test("Vocabularies parsing data_model") {
@@ -38,7 +38,7 @@ class VocabularyPropertiesTest extends AsyncFunSuite with VocabularyTest {
   }
 
   test("Vocabularies parsing data_shapes") {
-    testVocabulary(data_shapes, 16, 46)
+    testVocabulary(data_shapes, 21, 57)
   }
 
   test("Vocabularies parsing security_model") {

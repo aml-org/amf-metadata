@@ -6,7 +6,14 @@ import java.io.{File, FileWriter, StringWriter, Writer}
 import amf.core.internal.metamodel.Type.Scalar
 import amf.core.internal.metamodel.document.BaseUnitModel
 import amf.core.internal.metamodel.{Field, Obj, Type}
-import amf.core.internal.metamodel.domain.{DataNodeModel, DomainElementModel, LinkableElementModel, ModelDoc, ModelVocabularies, ObjectNodeModel}
+import amf.core.internal.metamodel.domain.{
+  DataNodeModel,
+  DomainElementModel,
+  LinkableElementModel,
+  ModelDoc,
+  ModelVocabularies,
+  ObjectNodeModel
+}
 import org.reflections.Reflections
 import org.reflections.scanners.SubTypesScanner
 import org.yaml.model.YPart
@@ -200,10 +207,6 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     DomainElementModel.CustomDomainProperties.value.iri(),
     BaseUnitModel.ProcessingData.value.iri(),
     BaseUnitModel.SourceInformation.value.iri(),
-
-    // graphQL model that is still not definitive
-    NodeShapeModel.Operations.value.iri(),
-    NodeShapeModel.IsAbstract.value.iri()
   )
 
   val blocklistedSupertypes: Set[String] = Set(
@@ -226,14 +229,6 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     (Namespace.Document + "BaseUnitProcessingData").iri(),
     (Namespace.Document + "BaseUnitSourceInformation").iri(),
     (Namespace.Document + "LocationInformation").iri(),
-
-    // graphQL model that is still not definitive
-    (Namespace.Shapes + "Operation").iri(),
-    (Namespace.Shapes + "Parameter").iri(),
-    (Namespace.Shapes + "Payload").iri(),
-    (Namespace.Shapes + "Request").iri(),
-    (Namespace.Shapes + "Response").iri(),
-
   )
 
   val shapeUnionDeclaration = "DataShapesUnion"
@@ -359,6 +354,9 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
       |        allowMultiple: true
     """.stripMargin
 
+  val requestExtends: String = messageExtends
+  val responseExtends: String = messageExtends
+
   val dataNodeUnionDeclaration = "DataNodeUnion"
   val dataNodeUnion: String =
     s"""
@@ -477,7 +475,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
 
   val channelBindingUnionDeclaration: String = "ChannelBindingUnion"
   val channelBindingUnion: String =
-  s"""  $channelBindingUnionDeclaration:
+    s"""  $channelBindingUnionDeclaration:
     |    typeDiscriminatorName: bindingType
     |    typeDiscriminator:
     |      WebSockets: WebSocketsChannelBinding
@@ -619,6 +617,10 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
                 stringBuilder.append(operationExtends + "\n")
               } else if (dialectNodeMapping.classTerm == (Namespace.ApiContract + "Message").iri()) {
                 stringBuilder.append(messageExtends + "\n")
+              } else if (dialectNodeMapping.classTerm == (Namespace.ApiContract + "Request").iri()) {
+                stringBuilder.append(requestExtends + "\n")
+              } else if (dialectNodeMapping.classTerm == (Namespace.ApiContract + "Response").iri()) {
+                stringBuilder.append(responseExtends + "\n")
               } else if (dialectNodeMapping.classTerm == (Namespace.Document + "Unit").iri()) {
                 stringBuilder.append(baseUnitLocation)
               }
@@ -681,7 +683,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
                 stringBuilder.append(s"        range: link\n")
               }
 
-              val annotationMapping = dialectNodeMapping.propertyMappings.find(_.propertyTerm == DomainElementModel.CustomDomainProperties.value.iri())
+              val annotationMapping = dialectNodeMapping.propertyMappings.find(
+                _.propertyTerm == DomainElementModel.CustomDomainProperties.value.iri())
               if (annotationMapping.isDefined) {
                 stringBuilder.append(s"      designAnnotations:\n")
                 val (compacted, _, _) = compact(DesignAnnotationField.value.iri())
@@ -761,15 +764,14 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
   }
 }
 
-
 object CanonicalWebAPISpecDialectExporter {
 
   val DIALECT_FILE = "vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml"
 
   def main(args: Array[String]): Unit = {
     val exporter = new CanonicalWebAPISpecDialectExporter()
-    val f      = new File(DIALECT_FILE)
-    val writer = new FileWriter(f)
+    val f        = new File(DIALECT_FILE)
+    val writer   = new FileWriter(f)
     exporter.dumpDialect(writer)
   }
 }

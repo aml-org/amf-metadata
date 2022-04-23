@@ -12,10 +12,29 @@ classTerms:
   License:
     displayName: License
     description: Licensing information for a resource
+  Operation:
+    displayName: AbstractOperation
+    description: Action that can be executed over the data of a particular shape
   Organization:
     displayName: Organization
     description: Organization providing an good or service
+  Parameter:
+    displayName: AbstractParameter
+    description: Piece of data required or returned by an Operation
+  Payload:
+    displayName: AbstractPayload
+    description: Encoded payload using certain media-type
+  Request:
+    displayName: AbstractRequest
+    description: Request information for an operation
+  Response:
+    displayName: AbstractResponse
+    description: Response information for an operation
 propertyTerms:
+  binding:
+    displayName: binding
+    description: Part of the Request model where the parameter can be encoded (header, path, query param, etc.)
+    range: string
   comment:
     displayName: comment
     description: A comment on an item. The comment's content is expressed via the text
@@ -44,6 +63,10 @@ propertyTerms:
     displayName: email
     description: Contact email for the organization
     range: string
+  expects:
+    displayName: expects
+    description: Request information required by the operation
+    range: Request
   extensionName:
     displayName: name
     description: Name of an extension entity
@@ -68,10 +91,31 @@ propertyTerms:
     displayName: displayName
     description: Human readable name for the term
     range: string
+  paramName:
+    displayName: paramName
+    description: Name of a parameter
+    extends: name
+    range: string
+  parameter:
+    displayName: parameter
+    description: Parameters associated to the communication model
+    range: Parameter
+  payload:
+    displayName: payload
+    description: Payload for a Request/Response
+    range: Payload
   provider:
     displayName: provider
     description: Organization providing some kind of asset or service
     range: Organization
+  required:
+    displayName: required
+    description: Marks the parameter as required
+    range: boolean
+  returns:
+    displayName: returns
+    description: Response data returned by the operation
+    range: Response
   summary:
     displayName: summary
     description: Human readable short description of the request/response
