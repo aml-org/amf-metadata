@@ -94,13 +94,13 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
-      "http://a.ml/vocabularies/core#description": "Returns list of claims for selcted provider",
       "http://a.ml/vocabularies/apiContract#returns": [
         {
           "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200"
         }
       ],
-      "http://a.ml/vocabularies/apiContract#method": "get"
+      "http://a.ml/vocabularies/apiContract#method": "get",
+      "http://a.ml/vocabularies/core#description": "Returns list of claims for selcted provider"
     },
     {
       "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200",
@@ -110,13 +110,13 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
-      "http://a.ml/vocabularies/apiContract#statusCode": "200",
-      "http://a.ml/vocabularies/core#name": "200",
       "http://a.ml/vocabularies/apiContract#payload": [
         {
           "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200/payload/application%2Fjson"
         }
-      ]
+      ],
+      "http://a.ml/vocabularies/apiContract#statusCode": "200",
+      "http://a.ml/vocabularies/core#name": "200"
     },
     {
       "@id": "file://transform/src/test/resources/transformations/tuple-shape-schema/api.raml#/web-api/endpoint/%2Flist/supportedOperation/get/returns/resp/200/payload/application%2Fjson",
