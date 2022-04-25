@@ -39,11 +39,11 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
-      "http://a.ml/vocabularies/core#name": "firstTrait",
       "http://a.ml/vocabularies/apiContract#guiSummary": "aSummary",
       "http://a.ml/vocabularies/apiContract#operationId": "traitThing",
       "http://a.ml/vocabularies/apiContract#isAbstract": true,
-      "http://a.ml/vocabularies/apiContract#method": "firstTrait"
+      "http://a.ml/vocabularies/apiContract#method": "firstTrait",
+      "http://a.ml/vocabularies/core#name": "firstTrait"
     },
     {
       "@id": "file://transform/src/test/resources/transformations/operation-trait/api.yaml#/async-api",

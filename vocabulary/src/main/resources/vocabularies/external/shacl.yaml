@@ -60,6 +60,10 @@ propertyTerms:
     displayName: in
     description: Enumeration of possible values for a data shape property
     range: data.Node
+  mandatory:
+    displayName: mandatory
+    description: Mandatory constraint over the property. Different from minCount because it only checks the presence of property
+    range: boolean
   maxCount:
     displayName: maxCount
     description: Maximum count property constraint

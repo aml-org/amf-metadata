@@ -59,12 +59,24 @@ trait DomainElementTransform extends AnnotationTransform with TransformHelpers {
       !dialectNode.endsWith("#/declarations/Settings")
     }
 
+    def isNotAbstractNode(dialectNode: DialectNode) = {
+      val abstractNodesSuffixes = Seq(
+        "#/declarations/AbstractResponse",
+        "#/declarations/AbstractRequest",
+        "#/declarations/AbstractParameter",
+        "#/declarations/AbstractPayload",
+        "#/declarations/AbstractOperation"
+      )
+
+      !abstractNodesSuffixes.exists(suffix => dialectNode.endsWith(suffix))
+    }
+
     while (typesIterator.hasNext) {
       val nextType = typesIterator.next().asResource().getURI
       mapping.get(nextType) match {
         case Some(dialectNode) =>
           // dealing with inheritance here
-          if (isNotShape(dialectNode) && isNotApi(dialectNode) && isNotSetting(dialectNode)) {
+          if (isNotShape(dialectNode) && isNotApi(dialectNode) && isNotSetting(dialectNode) && isNotAbstractNode(dialectNode)) {
             found = true
             mappedDialectNode = dialectNode
           } else if (dialectNode.endsWith("#/declarations/Shape")) {

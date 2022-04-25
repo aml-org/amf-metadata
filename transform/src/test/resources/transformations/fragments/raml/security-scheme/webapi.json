@@ -68,9 +68,9 @@
       ],
       "http://a.ml/vocabularies/apiContract#required": true,
       "http://a.ml/vocabularies/apiContract#paramName": "access_token",
+      "http://a.ml/vocabularies/apiContract#binding": "query",
       "http://a.ml/vocabularies/core#name": "access_token",
       "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token. Do not use together with the \"Authorization\" header.\n",
-      "http://a.ml/vocabularies/apiContract#binding": "query",
       "http://a.ml/vocabularies/shapes#schema": {
         "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/parameter/parameter/query/access_token/scalar/schema"
       }
@@ -83,9 +83,9 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
+      "http://a.ml/vocabularies/core#description": "Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.\n",
       "http://a.ml/vocabularies/apiContract#statusCode": "403",
-      "http://a.ml/vocabularies/core#name": "403",
-      "http://a.ml/vocabularies/core#description": "Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.\n"
+      "http://a.ml/vocabularies/core#name": "403"
     },
     {
       "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/response/resp/401",
@@ -95,9 +95,9 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
+      "http://a.ml/vocabularies/core#description": "Bad or expired token. This can happen if the API consumer uses a revoked or expired access token. To fix, you should re-authenticate the user.\n",
       "http://a.ml/vocabularies/apiContract#statusCode": "401",
-      "http://a.ml/vocabularies/core#name": "401",
-      "http://a.ml/vocabularies/core#description": "Bad or expired token. This can happen if the API consumer uses a revoked or expired access token. To fix, you should re-authenticate the user.\n"
+      "http://a.ml/vocabularies/core#name": "401"
     },
     {
       "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/settings/oauth2",
@@ -126,9 +126,9 @@
       ],
       "http://a.ml/vocabularies/apiContract#required": true,
       "http://a.ml/vocabularies/apiContract#paramName": "Authorization",
+      "http://a.ml/vocabularies/apiContract#binding": "header",
       "http://a.ml/vocabularies/core#name": "Authorization",
       "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token. Do not use with the \"access_token\" query. string parameter.\n",
-      "http://a.ml/vocabularies/apiContract#binding": "header",
       "http://a.ml/vocabularies/shapes#schema": {
         "@id": "file://transform/src/test/resources/transformations/fragments/raml/security-scheme/api.raml#/scheme/fragment/header/parameter/header/Authorization/scalar/schema"
       }

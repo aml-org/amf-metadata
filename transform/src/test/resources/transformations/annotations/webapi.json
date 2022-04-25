@@ -412,13 +412,13 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
-      "http://a.ml/vocabularies/core#description": "an operation",
       "http://a.ml/vocabularies/apiContract#returns": [
         {
           "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200"
         }
       ],
-      "http://a.ml/vocabularies/apiContract#method": "get"
+      "http://a.ml/vocabularies/apiContract#method": "get",
+      "http://a.ml/vocabularies/core#description": "an operation"
     },
     {
       "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/declares/clearanceLevel/shape/schema/property/property/signature/scalar/signature",
@@ -545,13 +545,13 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
-      "http://a.ml/vocabularies/apiContract#statusCode": "200",
-      "http://a.ml/vocabularies/core#name": "200",
       "http://a.ml/vocabularies/apiContract#payload": [
         {
           "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson"
         }
       ],
+      "http://a.ml/vocabularies/apiContract#statusCode": "200",
+      "http://a.ml/vocabularies/core#name": "200",
       "http://a.ml/vocabularies/document#designAnnotation": [
         {
           "@id": "file://transform/src/test/resources/transformations/annotations/api.raml#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200_annotations_1"

@@ -96,3 +96,5 @@ project/plugins/project/
 # Ignore Gradle build output directory
 build
 .bsp
+.metals
+.vscode

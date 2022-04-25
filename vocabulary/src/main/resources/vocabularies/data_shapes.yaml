@@ -5,6 +5,7 @@ usage: Vocabulary defining data shapes, used as an extension to SHACL
 uses:
   shacl: external/shacl.yaml
   doc: aml_doc.yaml
+  core: core.yaml
   apiContract: api_contract.yaml
 classTerms:
   AnyShape:
@@ -38,12 +39,32 @@ classTerms:
     displayName: NilShape
     description: Data shape representing the null/nil value in the input schema
     extends: AnyShape
+  Operation:
+    displayName: ShapeOperation
+    description: Action that can be executed over the data of a particular shape
+    extends: core.Operation
+  Parameter:
+    displayName: ShapeParameter
+    description: Piece of data required or returned by an Operation
+    extends: core.Parameter
+  Payload:
+    displayName: ShapePayload
+    description: Encoded payload using certain media-type
+    extends: core.Payload
   PropertyDependencies:
     displayName: PropertyDependencies
     description: Dependency between sets of property shapes
   RecursiveShape:
     displayName: RecursiveShape
     description: Recursion on a Shape structure, used when expanding a shape and finding the canonical representation of that shape.
+  Request:
+    displayName: ShapeRequest
+    description: Request information for an operation
+    extends: core.Request
+  Response:
+    displayName: ShapeResponse
+    description: Response information for an operation
+    extends: core.Response
   ScalarShape:
     displayName: ScalarShape
     description: Data shape describing a scalar value in the input data model, reified as an scalar node in the mapped graph
@@ -84,6 +105,10 @@ propertyTerms:
     displayName: anyOf
     description: Data shapes in the union
     range: shacl.Shape
+  binding:
+    displayName: binding
+    description: Part of the Request model where the parameter can be encoded (header, path, query param, etc.)
+    range: string
   closedItems:
     displayName: closedItems
     description: Constraint limiting additional shapes in the collection
@@ -136,6 +161,10 @@ propertyTerms:
     displayName: encoding
     description: Describes the contents' value encoding
     range: string
+  expects:
+    displayName: expects
+    description: Request information required by the operation
+    range: Request
   fileType:
     displayName: fileType
     description: Type of file described by this shape
@@ -152,6 +181,14 @@ propertyTerms:
     displayName: inherits
     description: Relationship of inheritance between data shapes
     range: shacl.Shape
+  inputOnly:
+    displayName: inputOnly
+    description: Indicates if the shape is used as schema for input data only
+    range: boolean
+  isAbstract:
+    displayName: isAbstract
+    description: Marks this shape as an abstract node shape declared for pure re-use
+    range: boolean
   items:
     displayName: items
     description: Shapes contained in the Tuple Shape
@@ -172,10 +209,26 @@ propertyTerms:
     displayName: multiple of
     description: Multiple of constraint
     range: double
+  name:
+    displayName: name
+    range: string
+  paramName:
+    displayName: paramName
+    description: Name of a parameter
+    extends: name
+    range: string
+  parameter:
+    displayName: parameter
+    description: Parameters associated to the communication model
+    range: Parameter
   patternName:
     displayName: patternName
     description: Patterned property constraint
     range: string
+  payload:
+    displayName: payload
+    description: Payload for a Request/Response
+    range: Payload
   propertySource:
     displayName: propertySource
     description: Source property name in the dependency
@@ -192,6 +245,14 @@ propertyTerms:
     displayName: readOnly
     description: Read only property constraint
     range: boolean
+  required:
+    displayName: required
+    description: Marks the parameter as required
+    range: boolean
+  returns:
+    displayName: returns
+    description: Response data returned by the operation
+    range: Response
   schema:
     displayName: schema
     description: Schema for an entity
@@ -212,6 +273,10 @@ propertyTerms:
     displayName: serializationSchema
     description: Serialization schema for a shape
     range: shacl.Shape
+  supportedOperation:
+    displayName: supportedOperation
+    description: Supported operations for this shape
+    range: Operation
   unevaluatedItems:
     displayName: unevaluatedItems
     description: Accepts that items may not be evaluated in schema validation
