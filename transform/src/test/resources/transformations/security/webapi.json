@@ -85,9 +85,9 @@
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
+      "http://a.ml/vocabularies/core#description": "Bad or expired token. This can happen if the user or Dropbox\nrevoked or expired an access token. To fix, re-authenticate\nthe user.\n",
       "http://a.ml/vocabularies/apiContract#statusCode": "401",
-      "http://a.ml/vocabularies/core#name": "401",
-      "http://a.ml/vocabularies/core#description": "Bad or expired token. This can happen if the user or Dropbox\nrevoked or expired an access token. To fix, re-authenticate\nthe user.\n"
+      "http://a.ml/vocabularies/core#name": "401"
     },
     {
       "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/settings/oauth2",
@@ -118,9 +118,9 @@
       ],
       "http://a.ml/vocabularies/apiContract#required": true,
       "http://a.ml/vocabularies/apiContract#paramName": "Authorization",
+      "http://a.ml/vocabularies/apiContract#binding": "header",
       "http://a.ml/vocabularies/core#name": "Authorization",
       "http://a.ml/vocabularies/core#description": "Used to send a valid OAuth 2 access token.\n",
-      "http://a.ml/vocabularies/apiContract#binding": "header",
       "http://a.ml/vocabularies/shapes#schema": {
         "@id": "file://transform/src/test/resources/transformations/security/api.raml#/declares/scheme/oauth_2_0/header/parameter/header/Authorization/scalar/schema"
       }
@@ -197,8 +197,8 @@
       ],
       "http://a.ml/vocabularies/apiContract#required": true,
       "http://a.ml/vocabularies/apiContract#paramName": "userid",
-      "http://a.ml/vocabularies/core#name": "userid",
       "http://a.ml/vocabularies/apiContract#binding": "path",
+      "http://a.ml/vocabularies/core#name": "userid",
       "http://a.ml/vocabularies/shapes#schema": {
         "@id": "file://transform/src/test/resources/transformations/security/api.raml#/web-api/endpoint/%2Fusers%2F%7Buserid%7D%2Fgists/parameter/parameter/path/userid/scalar/userid"
       }

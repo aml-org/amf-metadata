@@ -151,8 +151,8 @@
       ],
       "http://a.ml/vocabularies/apiContract#required": true,
       "http://a.ml/vocabularies/apiContract#paramName": "customer_id",
-      "http://a.ml/vocabularies/core#name": "customer_id",
       "http://a.ml/vocabularies/apiContract#binding": "path",
+      "http://a.ml/vocabularies/core#name": "customer_id",
       "http://a.ml/vocabularies/shapes#schema": {
         "@id": "file://transform/src/test/resources/transformations/raml-overlay/api.raml#/references/0/web-api/endpoint/%2Fbooks%2F%7Bcustomer_id%7D/parameter/parameter/path/customer_id/scalar/schema"
       }

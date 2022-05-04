@@ -178,13 +178,13 @@
         "meta:DialectDomainElement",
         "raml-doc:DomainElement"
       ],
-      "core:description": "an operation",
       "apiContract:returns": [
         {
           "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200"
         }
       ],
-      "apiContract:method": "get"
+      "apiContract:method": "get",
+      "core:description": "an operation"
     },
     {
       "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200",
@@ -194,13 +194,13 @@
         "meta:DialectDomainElement",
         "raml-doc:DomainElement"
       ],
-      "apiContract:statusCode": "200",
-      "core:name": "200",
       "apiContract:payload": [
         {
           "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson"
         }
-      ]
+      ],
+      "apiContract:statusCode": "200",
+      "core:name": "200"
     },
     {
       "@id": "#/web-api/endpoint/%2Ftest/supportedOperation/get/returns/resp/200/payload/application%2Fjson",

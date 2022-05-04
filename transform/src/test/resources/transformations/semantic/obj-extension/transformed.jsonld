@@ -94,9 +94,9 @@
         "meta:DialectDomainElement",
         "raml-doc:DomainElement"
       ],
+      "core:description": "An annotated response object with the pagination annotation.",
       "apiContract:statusCode": "200",
       "core:name": "200",
-      "core:description": "An annotated response object with the pagination annotation.",
       "raml-doc:designAnnotation": [
         {
           "@id": "#/web-api/endpoint/%2Fv1%2Fpaginated/supportedOperation/get/returns/resp/200_annotations_0"
