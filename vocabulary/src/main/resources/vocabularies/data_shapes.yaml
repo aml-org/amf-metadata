@@ -189,6 +189,10 @@ propertyTerms:
     displayName: isAbstract
     description: Marks this shape as an abstract node shape declared for pure re-use
     range: boolean
+  isExtension:
+    displayName: isExtension
+    description: Indicates if a Shape is an extension of another shape or a standalone shape
+    range: boolean
   items:
     displayName: items
     description: Shapes contained in the Tuple Shape
