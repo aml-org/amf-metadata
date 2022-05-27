@@ -2303,6 +2303,9 @@ nodeMappings:
       deprecated:
         propertyTerm: raml-shapes.deprecated
         range: boolean
+      isExtension:
+        propertyTerm: raml-shapes.isExtension
+        range: boolean
       designLink:
         propertyTerm: doc.design-link-target
         range: link
