@@ -102,7 +102,6 @@ sonarProperties ++= Map(
   "sonar.sourceEncoding"             -> "UTF-8",
   "sonar.github.repository"          -> "mulesoft/amf-metadata",
   "sonar.branch.name"                -> branch,
-  "sonar.scala.coverage.reportPaths" -> "transform/target/scala-2.12/scoverage-report/scoverage.xml,exporters/target/scala-2.12/scoverage-report/scoverage.xml",
   "sonar.sources"                    -> "transform/src/main/scala,exporters/src/main/scala",
   "sonar.tests"                      -> "transform/src/test/scala,exporters/src/test/scala"
 )
