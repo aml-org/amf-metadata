@@ -48,6 +48,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
 
   val reflectionsWebApi    = new Reflections("amf.apicontract.internal.metamodel.domain", new SubTypesScanner(false))
   val reflectionsShapes    = new Reflections("amf.shapes.internal.domain.metamodel", new SubTypesScanner(false))
+  val reflectionsShapeDocs    = new Reflections("amf.shapes.internal.document.metamodel", new SubTypesScanner(false))
   val reflectionsCore      = new Reflections("amf.core.internal.metamodel.domain.extensions", new SubTypesScanner(false))
   val reflectionsTemplates = new Reflections("amf.core.internal.metamodel.domain.templates", new SubTypesScanner(false))
   val reflectionsDataNode  = new Reflections("amf.core.internal.metamodel.domain", new SubTypesScanner(false))
@@ -742,6 +743,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
       logger.log("*** Processing classes")
       VocabularyExporter.metaObjects(reflectionsWebApi, parseMetaObject)
       VocabularyExporter.metaObjects(reflectionsShapes, parseMetaObject)
+      VocabularyExporter.metaObjects(reflectionsShapeDocs, parseMetaObject)
       VocabularyExporter.metaObjects(reflectionsCore, parseMetaObject)
       VocabularyExporter.metaObjects(reflectionsTemplates, parseMetaObject)
       VocabularyExporter.metaObjects(reflectionsDataNode, parseMetaObject)

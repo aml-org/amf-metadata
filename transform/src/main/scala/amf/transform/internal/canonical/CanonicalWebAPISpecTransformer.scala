@@ -106,10 +106,7 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
     val topLevelUnitUri = queryTopLevelDocument(nativeModel)
 
     // get all the document units
-    val unitUris = querySubjectsWith(nativeModel, Namespace.Rdf + "type", Namespace.Document + "Unit")
-      .toList
-      .asScala
-      .map(_.getURI)
+    val unitUris = getAllDocumentUnits(nativeModel)
 
     // for each document unit that is not the root one, we transform that into the canonical webpi spec asset fragment node
     // defined in the SpecDocument node mapping schema
@@ -126,6 +123,13 @@ private[amf] object CanonicalWebAPISpecTransformer extends PlatformSecrets with 
 
     introduceNewTopLevelDocument(nativeModel, topLevelUnitUri)
     topLevelUnitUri
+  }
+
+  private def getAllDocumentUnits(nativeModel: Model) = {
+    querySubjectsWith(nativeModel, Namespace.Rdf + "type", Namespace.Document + "Unit")
+      .toList
+      .asScala
+      .map(_.getURI)
   }
 
   private def introduceNewTopLevelDocument(nativeModel: Model, topLevelUnitUri: String) = {
