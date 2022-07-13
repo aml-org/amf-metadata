@@ -1159,6 +1159,15 @@ nodeMappings:
         allowMultiple: true
 
 
+  JsonSchemaDocument:
+    classTerm: doc.JsonSchemaDocument
+    extends: Document
+    mapping:
+      SchemaVersion:
+        propertyTerm: doc.schemaVersion
+        range: string
+
+
   KafkaMessageBinding:
     classTerm: apiBinding.KafkaMessageBinding
     extends: MessageBinding

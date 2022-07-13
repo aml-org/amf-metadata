@@ -57,6 +57,14 @@ classTerms:
     displayName: Fragment
     description: A Fragment is a parsing Unit that encodes a DomainElement
     extends: Unit
+  JsonSchemaDocument:
+    displayName: JsonSchemaDocument
+    description: A Document that represents a JSON Schema Fragment
+    extends:
+      - Document
+      - Fragment
+      - Module
+      - Unit
   Linkable:
     displayName: LinkableElement
     description: |-
@@ -170,6 +178,10 @@ propertyTerms:
     displayName: root
     description: Indicates if the base unit represents the root of the document model obtained from parsing
     range: boolean
+  schemaVersion:
+    displayName: SchemaVersion
+    description: JSON Schema version of the document
+    range: string
   strict:
     displayName: strict
     description: Indicates if this example should be validated against an associated schema
