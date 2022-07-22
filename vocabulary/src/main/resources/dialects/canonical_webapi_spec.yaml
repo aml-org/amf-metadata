@@ -12,6 +12,7 @@ uses:
   apiContract: ../vocabularies/api_contract.yaml
   core: ../vocabularies/core.yaml
   meta: ../vocabularies/aml_meta.yaml
+  federation: ../vocabularies/federation.yaml
 
 external:
   shacl: http://www.w3.org/ns/shacl#
@@ -373,6 +374,9 @@ nodeMappings:
       schema:
         propertyTerm: raml-shapes.schema
         range: DataShapesUnion
+      defaultValue:
+        propertyTerm: core.defaultValue
+        range: DataNodeUnion
       designLink:
         propertyTerm: doc.design-link-target
         range: link
@@ -787,6 +791,9 @@ nodeMappings:
       name:
         propertyTerm: core.name
         range: string
+      federationMetadata:
+        propertyTerm: federation.federationMetadata
+        range: ShapeFederationMetadata
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
@@ -1030,6 +1037,25 @@ nodeMappings:
     extends: Fragment
 
 
+  ExternalPropertyShape:
+    classTerm: federation.ExternalPropertyShape
+    mapping:
+      name:
+        propertyTerm: shacl.name
+        range: string
+      keyMappings:
+        propertyTerm: federation.keyMappings
+        range: PropertyKeyMapping
+        allowMultiple: true
+      rangeName:
+        propertyTerm: federation.rangeName
+        range: string
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
   ExternalSourceElement:
     classTerm: doc.ExternalSource
     mapping:
@@ -1042,6 +1068,31 @@ nodeMappings:
       location:
         propertyTerm: doc.location
         range: string
+
+
+  FederationMetadata:
+    classTerm: federation.FederationMetadata
+    mapping:
+      name:
+        propertyTerm: federation.name
+        range: string
+      tags:
+        propertyTerm: federation.tags
+        range: string
+        allowMultiple: true
+      shareable:
+        propertyTerm: federation.shareable
+        range: boolean
+      inaccessible:
+        propertyTerm: federation.inaccessible
+        range: boolean
+      override:
+        propertyTerm: federation.overrideFrom
+        range: string
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
 
 
   FileShape:
@@ -1193,6 +1244,22 @@ nodeMappings:
       bindingVersion:
         propertyTerm: apiBinding.bindingVersion
         range: string
+
+
+  Key:
+    classTerm: federation.Key
+    mapping:
+      keyComponents:
+        propertyTerm: federation.keyComponents
+        range: PropertyShapePath
+        allowMultiple: true
+      isResolvable:
+        propertyTerm: federation.isResolvable
+        range: boolean
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
 
 
   License:
@@ -1472,6 +1539,14 @@ nodeMappings:
       inputOnly:
         propertyTerm: raml-shapes.inputOnly
         range: boolean
+      keys:
+        propertyTerm: federation.keys
+        range: Key
+        allowMultiple: true
+      externalProperty:
+        propertyTerm: federation.externalProperty
+        range: ExternalPropertyShape
+        allowMultiple: true
 
 
   OAuth1Settings:
@@ -1627,6 +1702,9 @@ nodeMappings:
       operationId:
         propertyTerm: apiContract.operationId
         range: string
+      federationMetadata:
+        propertyTerm: federation.federationMetadata
+        range: OperationFederationMetadata
       designLink:
         propertyTerm: doc.design-link-target
         range: link
@@ -1660,6 +1738,22 @@ nodeMappings:
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
+        allowMultiple: true
+
+
+  OperationFederationMetadata:
+    classTerm: federation.OperationFederationMetadata
+    extends: FederationMetadata
+    mapping:
+      providedEntity:
+        propertyTerm: federation.providedEntity
+        range: NodeShape
+      federationMethod:
+        propertyTerm: federation.federationMethod
+        range: string
+      keyMapping:
+        propertyTerm: federation.keyMappings
+        range: ParameterKeyMapping
         allowMultiple: true
 
 
@@ -1721,6 +1815,21 @@ nodeMappings:
       examples:
         propertyTerm: apiContract.examples
         range: Example
+        allowMultiple: true
+
+
+  ParameterKeyMapping:
+    classTerm: federation.ParameterKeyMapping
+    mapping:
+      mappingSource:
+        propertyTerm: federation.mappingSource
+        range: Parameter
+      mappingTarget:
+        propertyTerm: federation.mappingTarget
+        range: PropertyShapePath
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
         allowMultiple: true
 
 
@@ -1809,6 +1918,21 @@ nodeMappings:
         allowMultiple: true
 
 
+  PropertyKeyMapping:
+    classTerm: federation.PropertyKeyMapping
+    mapping:
+      mappingSource:
+        propertyTerm: federation.mappingSource
+        range: PropertyShape
+      mappingTarget:
+        propertyTerm: federation.mappingTarget
+        range: string
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
   PropertyNode:
     classTerm: data.Property
     extends: DataNode
@@ -1840,6 +1964,28 @@ nodeMappings:
       serializationOrder:
         propertyTerm: raml-shapes.serializationOrder
         range: integer
+      requires:
+        propertyTerm: federation.requires
+        range: PropertyShapePath
+        allowMultiple: true
+      provides:
+        propertyTerm: federation.provides
+        range: PropertyShapePath
+        allowMultiple: true
+
+
+  PropertyShapePath:
+    classTerm: raml-shapes.PropertyShapePath
+    mapping:
+      path:
+        propertyTerm: raml-shapes.path
+        range: PropertyShape
+        allowMultiple: true
+        sorted: true
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
 
 
   RecursiveShape:
@@ -2315,6 +2461,12 @@ nodeMappings:
       isExtension:
         propertyTerm: raml-shapes.isExtension
         range: boolean
+      federationMetadata:
+        propertyTerm: federation.federationMetadata
+        range: ShapeFederationMetadata
+      isStub:
+        propertyTerm: federation.isStub
+        range: boolean
       designLink:
         propertyTerm: doc.design-link-target
         range: link
@@ -2339,6 +2491,11 @@ nodeMappings:
         allowMultiple: true
 
 
+  ShapeFederationMetadata:
+    classTerm: federation.ShapeFederationMetadata
+    extends: FederationMetadata
+
+
   ShapeOperation:
     classTerm: raml-shapes.Operation
     extends: AbstractOperation
@@ -2351,6 +2508,9 @@ nodeMappings:
         propertyTerm: raml-shapes.returns
         range: ShapeResponse
         allowMultiple: true
+      federationMetadata:
+        propertyTerm: federation.federationMetadata
+        range: ShapeFederationMetadata
 
 
   ShapeParameter:
@@ -2366,6 +2526,9 @@ nodeMappings:
       required:
         propertyTerm: raml-shapes.required
         range: boolean
+      federationMetadata:
+        propertyTerm: federation.federationMetadata
+        range: ShapeFederationMetadata
 
 
   ShapePayload:

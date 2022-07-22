@@ -54,6 +54,9 @@ classTerms:
   PropertyDependencies:
     displayName: PropertyDependencies
     description: Dependency between sets of property shapes
+  PropertyShapePath:
+    displayName: PropertyShapePath
+    description: Model that represents a property shape path in a traversal to reach a particular Shape
   RecursiveShape:
     displayName: RecursiveShape
     description: Recursion on a Shape structure, used when expanding a shape and finding the canonical representation of that shape.
@@ -225,6 +228,10 @@ propertyTerms:
     displayName: parameter
     description: Parameters associated to the communication model
     range: Parameter
+  path:
+    displayName: path
+    description: represents a property shape path in a traversal to reach a particular Shape
+    range: shacl.PropertyShape
   patternName:
     displayName: patternName
     description: Patterned property constraint

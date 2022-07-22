@@ -43,18 +43,23 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     "http://a.ml/vocabularies/core#"        -> "../vocabularies/core.yaml",
     "http://a.ml/vocabularies/meta#"        -> "../vocabularies/aml_meta.yaml",
     "http://a.ml/vocabularies/security#"    -> "../vocabularies/security.yaml",
-    "http://a.ml/vocabularies/shapes#"      -> "../vocabularies/data_shapes.yaml"
+    "http://a.ml/vocabularies/shapes#"      -> "../vocabularies/data_shapes.yaml",
+    "http://a.ml/vocabularies/federation#"  -> "../vocabularies/federation.yaml"
   )
 
   val reflectionsWebApi    = new Reflections("amf.apicontract.internal.metamodel.domain", new SubTypesScanner(false))
   val reflectionsShapes    = new Reflections("amf.shapes.internal.domain.metamodel", new SubTypesScanner(false))
-  val reflectionsShapeDocs    = new Reflections("amf.shapes.internal.document.metamodel", new SubTypesScanner(false))
+  val reflectionsShapeDocs = new Reflections("amf.shapes.internal.document.metamodel", new SubTypesScanner(false))
   val reflectionsCore      = new Reflections("amf.core.internal.metamodel.domain.extensions", new SubTypesScanner(false))
   val reflectionsTemplates = new Reflections("amf.core.internal.metamodel.domain.templates", new SubTypesScanner(false))
   val reflectionsDataNode  = new Reflections("amf.core.internal.metamodel.domain", new SubTypesScanner(false))
   val reflectionsApiDocs   = new Reflections("amf.apicontract.internal.metamodel.document", new SubTypesScanner(false))
   val reflectionsDocs      = new Reflections("amf.core.internal.metamodel.document", new SubTypesScanner(false))
   val reflectionsExtModel  = new Reflections("amf.transform", new SubTypesScanner(false))
+  val federationShapes     = new Reflections("amf.shapes.internal.domain.metamodel.federation", new SubTypesScanner(false))
+  val federationCore       = new Reflections("amf.core.internal.metamodel.domain.federation", new SubTypesScanner(false))
+  val federationApic =
+    new Reflections("amf.apicontract.internal.metamodel.domain.federation", new SubTypesScanner(false))
 
   var nodeMappings: Map[String, ExtendedDialectNodeMapping] = Map()
 
@@ -216,7 +221,8 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
     (Namespace.Shacl + "Shape").iri(),
     (Namespace.Shapes + "Shape").iri(),
     (Namespace.Rdf + "Property").iri(),
-    (Namespace.Rdf + "Seq").iri()
+    (Namespace.Rdf + "Seq").iri(),
+    (Namespace.Federation + "KeyMapping").iri()
   )
 
   val blocklistedRanges: Set[String] = Set()
@@ -355,7 +361,7 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
       |        allowMultiple: true
     """.stripMargin
 
-  val requestExtends: String = messageExtends
+  val requestExtends: String  = messageExtends
   val responseExtends: String = messageExtends
 
   val dataNodeUnionDeclaration = "DataNodeUnion"
@@ -750,6 +756,9 @@ class CanonicalWebAPISpecDialectExporter(logger: Logger = ConsoleLogger) {
       VocabularyExporter.metaObjects(reflectionsApiDocs, parseMetaObject)
       VocabularyExporter.metaObjects(reflectionsDocs, parseMetaObject)
       VocabularyExporter.metaObjects(reflectionsExtModel, parseMetaObject)
+      VocabularyExporter.metaObjects(federationShapes, parseMetaObject)
+      VocabularyExporter.metaObjects(federationCore, parseMetaObject)
+      VocabularyExporter.metaObjects(federationApic, parseMetaObject)
       cleanInheritance()
       val dialectText = renderDialect()
       logger.log(dialectText)
