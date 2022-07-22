@@ -1,0 +1,112 @@
+#%Vocabulary 1.0
+vocabulary: federation
+base: http://a.ml/vocabularies/federation#
+usage: Federation vocabulary
+uses:
+  shapes: data_shapes.yaml
+  apiContract: api_contract.yaml
+  shacl: external/shacl.yaml
+classTerms:
+  ExternalPropertyShape:
+    displayName: ExternalPropertyShape
+    description: Model that contains information to locally represent a Property Shape with a Range from an External graph
+  FederationMetadata:
+    displayName: FederationMetadata
+    description: Model that contains data about how the element should be federated
+  Key:
+    displayName: Key
+    description: Model that represents the Key of an element to be retrieved by the federated graph
+  KeyMapping:
+    displayName: KeyMapping
+  OperationFederationMetadata:
+    displayName: OperationFederationMetadata
+    description: Model that contains data about how the Operation is used in a federated graph
+    extends: FederationMetadata
+  ParameterKeyMapping:
+    displayName: ParameterKeyMapping
+    description: Model that indicates how other elements map to a federation Key's components
+    extends: KeyMapping
+  PropertyKeyMapping:
+    displayName: PropertyKeyMapping
+    description: Model that indicates how other elements map to a federation Key's components
+    extends: KeyMapping
+  ShapeFederationMetadata:
+    displayName: ShapeFederationMetadata
+    description: Model that contains data about how the Shape should be federated
+    extends: FederationMetadata
+propertyTerms:
+  externalProperty:
+    displayName: externalProperty
+    description: Properties imported from external graphs
+    range: ExternalPropertyShape
+  federationMetadata:
+    displayName: federationMetadata
+    description: Metadata about how this Shape should be federated
+    range: ShapeFederationMetadata
+  federationMethod:
+    displayName: federationMethod
+    description: REST method (e.g. GET, POST) used to retrieve an entity. Overrides the Method from the current operation
+    range: string
+  inaccessible:
+    displayName: inaccessible
+    description: Element cannot be accessed by the federated graph
+    range: boolean
+  isResolvable:
+    displayName: isResolvable
+    range: boolean
+  isStub:
+    displayName: isStub
+    description: Indicates if an element is a stub from an external component from another component of the federated graph
+    range: boolean
+  keyComponents:
+    displayName: keyComponents
+    description: Components that make up this Key
+    range: shapes.PropertyShapePath
+  keyMappings:
+    displayName: keyMapping
+    description: Mapping from parameters to properties from the provided entity to be used for data retrieval
+    range: ParameterKeyMapping
+  keys:
+    displayName: keys
+    description: Keys of this Node Shape in the federated graph
+    range: Key
+  mappingSource:
+    displayName: mappingSource
+    description: Parameter to use as source for this mapping
+    range: apiContract.Parameter
+  mappingTarget:
+    displayName: mappingTarget
+    description: Path to target Property Shape of this mapping
+    range: shapes.PropertyShapePath
+  name:
+    displayName: name
+    description: Name element in the federated graph
+    range: string
+  overrideFrom:
+    displayName: override
+    description: Indicates that the current subgraph is taking responsibility for resolving the marked field away from the subgraph specified in the from argument
+    range: string
+  providedEntity:
+    displayName: providedEntity
+    description: Node shape provided by this Operation to the federated graph
+    range: shacl.NodeShape
+  provides:
+    displayName: provides
+    description: External properties (by path) that can be provided by this graph during federation
+    range: shapes.PropertyShapePath
+  rangeName:
+    displayName: rangeName
+    description: Federation name of the External Shape in the external graph
+    range: string
+  requires:
+    displayName: requires
+    description: External properties (by path) required to retrieve data from this property during federation
+    range: shapes.PropertyShapePath
+  shareable:
+    displayName: shareable
+    description: Element can be defined by more than one component of the federated graph
+    range: boolean
+  tags:
+    displayName: tags
+    description: Federation tags of the element
+    range: string
