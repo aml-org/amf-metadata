@@ -43,7 +43,6 @@ pipeline {
         anyOf {
           branch 'master'
           branch 'develop'
-          branch 'fix-tests'
         }
       }
       steps {
