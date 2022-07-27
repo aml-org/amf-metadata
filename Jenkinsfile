@@ -30,7 +30,7 @@ pipeline {
       steps {
         script {
           try{
-            sh 'sbt -mem 4096 -Dfile.encoding=UTF-8 clean coverage test coverageReport'
+            sh 'sbt -mem 4096 -Dfile.encoding=UTF-8 clean coverage test coverageAggregate'
           } catch (ignored) {
             failedStage = failedStage + " TEST "
             unstable "Failed tests"

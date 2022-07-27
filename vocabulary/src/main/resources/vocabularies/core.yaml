@@ -2,6 +2,8 @@
 vocabulary: core
 base: http://a.ml/vocabularies/core#
 usage: Core vocabulary with common classes and properties
+uses:
+  data: data_model.yaml
 classTerms:
   CorrelationId:
     displayName: CorrelationId
@@ -43,6 +45,10 @@ propertyTerms:
     displayName: correlationId
     description: An identifier that can be used for message tracing and correlation
     range: CorrelationId
+  defaultValue:
+    displayName: defaultValue
+    description: Default value parsed for a parameter
+    range: data.Node
   deprecated:
     displayName: deprecated
     description: Marks the operation as deprecated

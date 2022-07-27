@@ -141,6 +141,7 @@ object VocabularyExporter {
   val reflectionsTemplates =
     new Reflections("amf.core.internal.metamodel.domain.templates", new SubTypesScanner(false))
   val reflectionsShapes = new Reflections("amf.shapes.internal.domain.metamodel", new SubTypesScanner(false))
+  val reflectionsShapeDocs    = new Reflections("amf.shapes.internal.document.metamodel", new SubTypesScanner(false))
   val reflectionsVocabularies =
     new Reflections("amf.aml.internal.metamodel.domain", new SubTypesScanner(false))
   val reflectionsVocabDoc =
@@ -667,6 +668,7 @@ object VocabularyExporter {
     metaObjects(reflectionsWebApi, parseMetaObject)
     metaObjects(reflectionsWebApiDoc, parseMetaObject)
     metaObjects(reflectionsShapes, parseMetaObject)
+    metaObjects(reflectionsShapeDocs, parseMetaObject)
     metaObjects(reflectionsTemplates, parseMetaObject)
     metaObjects(reflectionsVocabularies, parseMetaObject)
     metaObjects(reflectionsVocabDoc, parseMetaObject)
@@ -696,7 +698,8 @@ object VocabularyExporter {
     ModelVocabularies.Data,
     ModelVocabularies.Shapes,
     ModelVocabularies.Security,
-    ModelVocabularies.Meta
+    ModelVocabularies.Meta,
+    ModelVocabularies.Federation
   ) ++ ExternalModelVocabularies.all
 
   def getVocabulariesAsString(logger: Logger): Seq[ExportedVocabulary] = {
