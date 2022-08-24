@@ -780,6 +780,9 @@ nodeMappings:
       serializationOrder:
         propertyTerm: raml-shapes.serializationOrder
         range: integer
+      repeatable:
+        propertyTerm: core.repeatable
+        range: boolean
       designLink:
         propertyTerm: doc.design-link-target
         range: link
