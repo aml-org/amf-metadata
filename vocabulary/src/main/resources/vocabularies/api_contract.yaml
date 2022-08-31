@@ -23,6 +23,14 @@ classTerms:
   Callback:
     displayName: Callback
     description: Model defining the information for a HTTP callback/ webhook
+  ComponentModule:
+    displayName: ComponentModule
+    description: Model defining a Component Module
+    extends:
+      - doc.Document
+      - doc.Fragment
+      - doc.Module
+      - doc.Unit
   DomainExtension:
     displayName: DomainExtension
     description: |-
