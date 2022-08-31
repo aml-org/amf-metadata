@@ -722,6 +722,18 @@ nodeMappings:
         allowMultiple: true
 
 
+  ComponentModule:
+    classTerm: apiContract.ComponentModule
+    extends: Document
+    mapping:
+      name:
+        propertyTerm: core.name
+        range: string
+      version:
+        propertyTerm: core.version
+        range: string
+
+
   CorrelationId:
     classTerm: core.CorrelationId
     mapping:
