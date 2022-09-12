@@ -602,6 +602,9 @@ nodeMappings:
         propertyTerm: rdfs.member
         range: DataNodeUnion
         allowMultiple: true
+      description:
+        propertyTerm: core.description
+        range: string
 
 
   ArrayShape:
@@ -1299,6 +1302,9 @@ nodeMappings:
       value:
         propertyTerm: data.value
         range: string
+      description:
+        propertyTerm: core.description
+        range: string
 
 
   MatrixShape:
@@ -1626,6 +1632,9 @@ nodeMappings:
     classTerm: data.Object
     extends: DataNode
     mapping:
+      description:
+        propertyTerm: core.description
+        range: string
       properties:
         propertyTerm: data.properties
         range: PropertyNode
@@ -2182,6 +2191,9 @@ nodeMappings:
       dataType:
         propertyTerm: shacl.datatype
         range: link
+      description:
+        propertyTerm: core.description
+        range: string
 
 
   ScalarShape:
