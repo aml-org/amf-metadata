@@ -792,6 +792,9 @@ nodeMappings:
       name:
         propertyTerm: core.name
         range: string
+      description:
+        propertyTerm: core.description
+        range: string
       serializationOrder:
         propertyTerm: raml-shapes.serializationOrder
         range: integer
