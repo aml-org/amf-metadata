@@ -114,6 +114,10 @@ propertyTerms:
     displayName: provider
     description: Organization providing some kind of asset or service
     range: Organization
+  repeatable:
+    displayName: repeatable
+    description: Indicates if a Domain Element can define more than 1 Domain Extension defined by this Custom Domain Property
+    range: boolean
   required:
     displayName: required
     description: Marks the parameter as required

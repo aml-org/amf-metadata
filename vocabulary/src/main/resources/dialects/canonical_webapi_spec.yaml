@@ -602,6 +602,9 @@ nodeMappings:
         propertyTerm: rdfs.member
         range: DataNodeUnion
         allowMultiple: true
+      description:
+        propertyTerm: core.description
+        range: string
 
 
   ArrayShape:
@@ -722,6 +725,18 @@ nodeMappings:
         allowMultiple: true
 
 
+  ComponentModule:
+    classTerm: apiContract.ComponentModule
+    extends: Document
+    mapping:
+      name:
+        propertyTerm: core.name
+        range: string
+      version:
+        propertyTerm: core.version
+        range: string
+
+
   CorrelationId:
     classTerm: core.CorrelationId
     mapping:
@@ -777,9 +792,15 @@ nodeMappings:
       name:
         propertyTerm: core.name
         range: string
+      description:
+        propertyTerm: core.description
+        range: string
       serializationOrder:
         propertyTerm: raml-shapes.serializationOrder
         range: integer
+      repeatable:
+        propertyTerm: core.repeatable
+        range: boolean
       designLink:
         propertyTerm: doc.design-link-target
         range: link
@@ -1284,6 +1305,9 @@ nodeMappings:
       value:
         propertyTerm: data.value
         range: string
+      description:
+        propertyTerm: core.description
+        range: string
 
 
   MatrixShape:
@@ -1611,6 +1635,9 @@ nodeMappings:
     classTerm: data.Object
     extends: DataNode
     mapping:
+      description:
+        propertyTerm: core.description
+        range: string
       properties:
         propertyTerm: data.properties
         range: PropertyNode
@@ -2167,6 +2194,9 @@ nodeMappings:
       dataType:
         propertyTerm: shacl.datatype
         range: link
+      description:
+        propertyTerm: core.description
+        range: string
 
 
   ScalarShape:
