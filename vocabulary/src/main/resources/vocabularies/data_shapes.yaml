@@ -164,6 +164,14 @@ propertyTerms:
     displayName: encoding
     description: Describes the contents' value encoding
     range: string
+  exclusiveMaximumNumeric:
+    displayName: max. exclusive numeric
+    description: Maximum exclusive constraint
+    range: double
+  exclusiveMinimumNumeric:
+    displayName: min. exclusive numeric
+    description: Minimum exclusive constraint
+    range: double
   expects:
     displayName: expects
     description: Request information required by the operation
