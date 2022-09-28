@@ -1145,6 +1145,12 @@ nodeMappings:
       max.Exclusive:
         propertyTerm: shacl.maxExclusive
         range: boolean
+      min.ExclusiveNumeric:
+        propertyTerm: raml-shapes.exclusiveMinimumNumeric
+        range: double
+      max.ExclusiveNumeric:
+        propertyTerm: raml-shapes.exclusiveMaximumNumeric
+        range: double
       format:
         propertyTerm: raml-shapes.format
         range: string
@@ -2236,6 +2242,12 @@ nodeMappings:
       max.Exclusive:
         propertyTerm: shacl.maxExclusive
         range: boolean
+      min.ExclusiveNumeric:
+        propertyTerm: raml-shapes.exclusiveMinimumNumeric
+        range: double
+      max.ExclusiveNumeric:
+        propertyTerm: raml-shapes.exclusiveMaximumNumeric
+        range: double
       format:
         propertyTerm: raml-shapes.format
         range: string
