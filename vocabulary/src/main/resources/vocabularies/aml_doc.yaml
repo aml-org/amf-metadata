@@ -57,6 +57,17 @@ classTerms:
     displayName: Fragment
     description: A Fragment is a parsing Unit that encodes a DomainElement
     extends: Unit
+  JsonLDElement:
+    displayName: JsonLDElement
+    description: Base class for all the JSON-LD elements
+  JsonLDInstanceDocument:
+    displayName: JsonLDInstanceDocument
+    description: A Document that represents a JSON-LD instance document
+    extends:
+      - Document
+      - Fragment
+      - Module
+      - Unit
   JsonSchemaDocument:
     displayName: JsonSchemaDocument
     description: A Document that represents a JSON Schema Fragment
