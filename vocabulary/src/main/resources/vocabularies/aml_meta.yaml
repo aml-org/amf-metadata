@@ -125,6 +125,10 @@ propertyTerms:
     displayName: coercion
     description: Type to coerce the mapped model
     range: string
+  containers:
+    displayName: containers
+    description: Sets the default containers types for a term
+    range: string
   contextAlias:
     displayName: contextAlias
     description: lexical value of the alias in the context
