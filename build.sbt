@@ -2,11 +2,11 @@ import Versions.versions
 
 name := "amf-metadata"
 ThisBuild / organization := "com.github.amlorg"
-ThisBuild / scalaVersion := "2.12.11"
+ThisBuild / scalaVersion := "2.12.13"
 
 val artifactVersions = new {
   val vocabularyVersion = versions("versions.yaml")("amf.vocabulary")
-  val transformVersion = versions("versions.yaml")("amf.transform")
+  val transformVersion  = versions("versions.yaml")("amf.transform")
 }
 
 val ivyLocal = Resolver.file("ivy", file(Path.userHome.absolutePath + "/.ivy2/local"))(Resolver.ivyStylePatterns)
@@ -17,14 +17,15 @@ lazy val workspaceDirectory: File =
     case _       => Path.userHome / "mulesoft"
   }
 
-lazy val amfRdfLibJVM = "com.github.amlorg" %% "amf-rdf" % dependencies.amfRdfVersion
-lazy val amfRdfRef    = ProjectRef(workspaceDirectory / "amf-aml", "rdfJVM")
+lazy val amfRdfLibJVM         = "com.github.amlorg" %% "amf-rdf" % dependencies.amfRdfVersion
+lazy val amfRdfRef            = ProjectRef(workspaceDirectory / "amf-aml", "rdfJVM")
 lazy val amfApiContractLibJVM = "com.github.amlorg" %% "amf-api-contract" % dependencies.amfVersion
 lazy val amfApiContractRef    = ProjectRef(workspaceDirectory / "amf", "apiContractJVM")
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Root ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-lazy val root = project.in(file("."))
+lazy val root = project
+  .in(file("."))
   .aggregate(vocabulary, transform, exporters)
   .settings(
     publish / aggregate := false
@@ -38,7 +39,8 @@ lazy val vocabulary = project
     commonSettings,
     name := "amf-vocabulary",
     version := artifactVersions.vocabularyVersion
-  ).disablePlugins(SonarPlugin)
+  )
+  .disablePlugins(SonarPlugin)
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Canonical ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -81,7 +83,7 @@ val commonSettings = Common.settings ++ Common.publish ++ Seq(
 lazy val dependencies = new {
   val scalaTestVersion = "3.1.2"
   val amfVersion       = versions("transform/dependencies.properties")("amf.apicontract")
-  val amfRdfVersion       = versions("transform/dependencies.properties")("amf.rdf")
+  val amfRdfVersion    = versions("transform/dependencies.properties")("amf.rdf")
 
   val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion % Test
 }
@@ -90,19 +92,19 @@ lazy val commonDependencies = Seq(dependencies.scalaTest, amfApiContractLibJVM)
 
 lazy val sonarUrl   = sys.env.getOrElse("SONAR_SERVER_URL", "Not found url.")
 lazy val sonarToken = sys.env.getOrElse("SONAR_SERVER_TOKEN", "Not found token.")
-lazy val branch = sys.env.getOrElse("BRANCH_NAME", "develop")
+lazy val branch     = sys.env.getOrElse("BRANCH_NAME", "develop")
 
 //enablePlugins(ScalaJSBundlerPlugin)
 
 sonarProperties ++= Map(
-  "sonar.login"                      -> sonarToken,
-  "sonar.projectKey"                 -> "mulesoft.amf-metadata",
-  "sonar.projectName"                -> "AMF-Metadata",
-  "sonar.projectVersion"             -> artifactVersions.transformVersion,
-  "sonar.sourceEncoding"             -> "UTF-8",
-  "sonar.github.repository"          -> "mulesoft/amf-metadata",
-  "sonar.branch.name"                -> branch,
-
-  "sonar.sources"                    -> "transform/src/main/scala,exporters/src/main/scala",
-  "sonar.tests"                      -> "transform/src/test/scala,exporters/src/test/scala"
+  "sonar.login"             -> sonarToken,
+  "sonar.projectKey"        -> "mulesoft.amf-metadata",
+  "sonar.projectName"       -> "AMF-Metadata",
+  "sonar.projectVersion"    -> artifactVersions.transformVersion,
+  "sonar.sourceEncoding"    -> "UTF-8",
+  "sonar.github.repository" -> "mulesoft/amf-metadata",
+  "sonar.branch.name"       -> branch,
+  "sonar.sources"           -> "transform/src/main/scala,exporters/src/main/scala",
+  "sonar.tests"             -> "transform/src/test/scala,exporters/src/test/scala",
+  "sonar.userHome"          -> "${buildDir}/.sonar"
 )
