@@ -1237,6 +1237,20 @@ nodeMappings:
         allowMultiple: true
 
 
+  JsonLDElement:
+    classTerm: doc.JsonLDElement
+
+
+  JsonLDInstanceDocument:
+    classTerm: doc.JsonLDInstanceDocument
+    extends: Document
+    mapping:
+      encodes:
+        propertyTerm: doc.encodes
+        range: JsonLDElement
+        allowMultiple: true
+
+
   JsonSchemaDocument:
     classTerm: doc.JsonSchemaDocument
     extends: Document
@@ -2774,6 +2788,10 @@ nodeMappings:
       nulled:
         propertyTerm: meta.nulled
         range: boolean
+      containers:
+        propertyTerm: meta.containers
+        range: string
+        allowMultiple: true
 
 
   curiePrefixModel:
