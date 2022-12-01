@@ -7,6 +7,10 @@ uses:
   apiContract: api_contract.yaml
   shacl: external/shacl.yaml
 classTerms:
+  EndpointFederationMetadata:
+    displayName: EndpointFederationMetadata
+    description: Model that contains data about how the Shape should be federated
+    extends: FederationMetadata
   ExternalPropertyShape:
     displayName: ExternalPropertyShape
     description: Model that contains information to locally represent a Property Shape with a Range from an External graph
@@ -21,6 +25,10 @@ classTerms:
   OperationFederationMetadata:
     displayName: OperationFederationMetadata
     description: Model that contains data about how the Operation is used in a federated graph
+    extends: FederationMetadata
+  ParameterFederationMetadata:
+    displayName: ParameterFederationMetadata
+    description: Model that contains data about how the Shape should be federated
     extends: FederationMetadata
   ParameterKeyMapping:
     displayName: ParameterKeyMapping
@@ -41,7 +49,7 @@ propertyTerms:
     range: ExternalPropertyShape
   federationMetadata:
     displayName: federationMetadata
-    description: Metadata about how this Shape should be federated
+    description: Metadata about how this DomainElement should be federated
     range: ShapeFederationMetadata
   federationMethod:
     displayName: federationMethod
