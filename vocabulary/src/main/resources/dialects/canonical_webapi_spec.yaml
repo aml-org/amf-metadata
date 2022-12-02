@@ -982,10 +982,18 @@ nodeMappings:
       binding:
         propertyTerm: apiBinding.binding
         range: ChannelBindings
+      federationMetadata:
+        propertyTerm: federation.federationMetadata
+        range: EndpointFederationMetadata
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
         allowMultiple: true
+
+
+  EndpointFederationMetadata:
+    classTerm: federation.EndpointFederationMetadata
+    extends: FederationMetadata
 
 
   Example:
@@ -1863,6 +1871,14 @@ nodeMappings:
         propertyTerm: apiContract.examples
         range: Example
         allowMultiple: true
+      federationMetadata:
+        propertyTerm: federation.federationMetadata
+        range: ParameterFederationMetadata
+
+
+  ParameterFederationMetadata:
+    classTerm: federation.ParameterFederationMetadata
+    extends: FederationMetadata
 
 
   ParameterKeyMapping:
@@ -1938,6 +1954,9 @@ nodeMappings:
         propertyTerm: apiContract.encoding
         range: Encoding
         allowMultiple: true
+      required:
+        propertyTerm: apiContract.required
+        range: boolean
 
 
   PayloadFragment:
