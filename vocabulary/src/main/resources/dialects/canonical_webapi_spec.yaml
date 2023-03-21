@@ -1555,6 +1555,9 @@ nodeMappings:
       discriminatorValue:
         propertyTerm: raml-shapes.discriminatorValue
         range: string
+      discriminatorValueDataNode:
+        propertyTerm: raml-shapes.discriminatorValueDataNode
+        range: DataNodeUnion
       discriminatorMapping:
         propertyTerm: raml-shapes.discriminatorMapping
         range: IriTemplate
