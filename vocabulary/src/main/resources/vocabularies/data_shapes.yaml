@@ -7,6 +7,7 @@ uses:
   doc: aml_doc.yaml
   core: core.yaml
   apiContract: api_contract.yaml
+  data: data_model.yaml
 classTerms:
   AnyShape:
     displayName: AnyShape
@@ -152,6 +153,10 @@ propertyTerms:
     displayName: discriminatorValue
     description: Values for the discriminator property
     range: string
+  discriminatorValueDataNode:
+    displayName: discriminatorValueDataNode
+    description: Value for the discriminator property represented as a DataNode
+    range: data.Node
   discriminatorValueMapping:
     displayName: discriminatorValueMapping
     description: Mapping of acceptable values for the node discriminator
