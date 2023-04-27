@@ -92,7 +92,6 @@ project/boot/
 project/plugins/project/
 .history
 .cache
-.lib/
 # Ignore Gradle build output directory
 build
 .bsp
