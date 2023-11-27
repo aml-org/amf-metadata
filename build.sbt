@@ -2,7 +2,7 @@ import Versions.versions
 
 name := "amf-metadata"
 ThisBuild / organization := "com.github.amlorg"
-ThisBuild / scalaVersion := "2.12.15"
+ThisBuild / scalaVersion := "2.12.18"
 
 val artifactVersions = new {
   val vocabularyVersion = versions("versions.yaml")("amf.vocabulary")
