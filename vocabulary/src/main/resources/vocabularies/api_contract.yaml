@@ -236,6 +236,10 @@ propertyTerms:
     displayName: mapping
     description: Variable mapping for the URL template
     range: IriTemplateMapping
+  messageId:
+    displayName: messageId
+    description: Unique Id for request and response message
+    range: string
   method:
     displayName: method
     description: HTTP method required to invoke the operation
@@ -319,6 +323,10 @@ propertyTerms:
     displayName: tag
     description: Additionally custom tagged information
     range: Tag
+  tags:
+    displayName: tags
+    description: Tags for the different Servers
+    range: Parameter
   template:
     displayName: template
     description: URL template for a templated link

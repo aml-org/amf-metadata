@@ -594,6 +594,33 @@ nodeMappings:
         range: string
 
 
+  AnypointMQChannelBinding:
+    classTerm: apiBinding.AnypointMQChannelBinding
+    extends: ChannelBinding
+    mapping:
+      destination:
+        propertyTerm: apiBinding.destination
+        range: string
+      destinationType:
+        propertyTerm: apiBinding.destinationType
+        range: string
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  AnypointMQMessageBinding:
+    classTerm: apiBinding.AnypointMQMessageBinding
+    extends: MessageBinding
+    mapping:
+      headers:
+        propertyTerm: apiBinding.headers
+        range: DataShapesUnion
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
   ArrayNode:
     classTerm: data.Array
     extends: DataNode
@@ -1230,6 +1257,112 @@ nodeMappings:
         range: string
 
 
+  IBMMQChannelBinding:
+    classTerm: apiBinding.IBMMQChannelBinding
+    extends: ChannelBinding
+    mapping:
+      destinationType:
+        propertyTerm: apiBinding.destinationType
+        range: string
+      queue:
+        propertyTerm: apiBinding.queue
+        range: IBMMQChannelQueue
+      topic:
+        propertyTerm: apiBinding.topic
+        range: IBMMQChannelTopic
+      maxMsgLength:
+        propertyTerm: apiBinding.maxMsgLength
+        range: integer
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  IBMMQChannelQueue:
+    classTerm: apiBinding.IBMMQChannelQueue
+    mapping:
+      objectName:
+        propertyTerm: apiBinding.objectName
+        range: string
+      isPartitioned:
+        propertyTerm: apiBinding.isPartitioned
+        range: boolean
+      exclusive:
+        propertyTerm: apiBinding.exclusive
+        range: boolean
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  IBMMQChannelTopic:
+    classTerm: apiBinding.IBMMQChannelTopic
+    mapping:
+      string:
+        propertyTerm: apiBinding.string
+        range: string
+      objectName:
+        propertyTerm: apiBinding.objectName
+        range: string
+      durablePermitted:
+        propertyTerm: apiBinding.durablePermitted
+        range: boolean
+      lastMsgRetained:
+        propertyTerm: apiBinding.lastMsgRetained
+        range: boolean
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  IBMMQMessageBinding:
+    classTerm: apiBinding.IBMMQMessageBinding
+    extends: MessageBinding
+    mapping:
+      type:
+        propertyTerm: apiBinding.messageType
+        range: string
+      headers:
+        propertyTerm: apiBinding.headers
+        range: string
+        allowMultiple: true
+      ProvidesAdditionalInformationForApplicationDevelopers:DescribesTheMessageTypeOrFormat.:
+        propertyTerm: core.description
+        range: string
+      expiry:
+        propertyTerm: apiBinding.expiry
+        range: integer
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  IBMMQServerBinding:
+    classTerm: apiBinding.IBMMQServerBinding
+    extends: ServerBinding
+    mapping:
+      groupId:
+        propertyTerm: apiBinding.groupId
+        range: string
+      ccdtQueueManagerName:
+        propertyTerm: apiBinding.ccdtQueueManagerName
+        range: string
+      cipherSpec:
+        propertyTerm: apiBinding.cipherSpec
+        range: string
+      multiEndpointServer:
+        propertyTerm: apiBinding.multiEndpointServer
+        range: boolean
+      heartBeatInterval:
+        propertyTerm: apiBinding.heartBeatInterval
+        range: integer
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
   IriTemplate:
     classTerm: apiContract.IriTemplateMapping
     mapping:
@@ -1401,6 +1534,9 @@ nodeMappings:
       headerSchema:
         propertyTerm: apiContract.headerSchema
         range: NodeShape
+      messageId:
+        propertyTerm: apiContract.messageId
+        range: string
       designLink:
         propertyTerm: doc.design-link-target
         range: link
@@ -2143,6 +2279,9 @@ nodeMappings:
       headerSchema:
         propertyTerm: apiContract.headerSchema
         range: NodeShape
+      messageId:
+        propertyTerm: apiContract.messageId
+        range: string
       designLink:
         propertyTerm: doc.design-link-target
         range: link
@@ -2221,6 +2360,9 @@ nodeMappings:
       headerSchema:
         propertyTerm: apiContract.headerSchema
         range: NodeShape
+      messageId:
+        propertyTerm: apiContract.messageId
+        range: string
       designLink:
         propertyTerm: doc.design-link-target
         range: link
@@ -2403,6 +2545,10 @@ nodeMappings:
       description:
         propertyTerm: core.description
         range: string
+      tags:
+        propertyTerm: apiContract.tags
+        range: Parameter
+        allowMultiple: true
       variable:
         propertyTerm: apiContract.variable
         range: Parameter
