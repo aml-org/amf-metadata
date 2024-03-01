@@ -18,6 +18,12 @@ classTerms:
   Amqp091OperationBinding:
     displayName: Amqp091OperationBinding
     extends: OperationBinding
+  AnypointMQChannelBinding:
+    displayName: AnypointMQChannelBinding
+    extends: ChannelBinding
+  AnypointMQMessageBinding:
+    displayName: AnypointMQMessageBinding
+    extends: MessageBinding
   ChannelBinding:
     displayName: ChannelBinding
   ChannelBindings:
@@ -35,6 +41,19 @@ classTerms:
   HttpOperationBinding:
     displayName: HttpOperationBinding
     extends: OperationBinding
+  IBMMQChannelBinding:
+    displayName: IBMMQChannelBinding
+    extends: ChannelBinding
+  IBMMQChannelQueue:
+    displayName: IBMMQChannelQueue
+  IBMMQChannelTopic:
+    displayName: IBMMQChannelTopic
+  IBMMQMessageBinding:
+    displayName: IBMMQMessageBinding
+    extends: MessageBinding
+  IBMMQServerBinding:
+    displayName: IBMMQServerBinding
+    extends: ServerBinding
   KafkaMessageBinding:
     displayName: KafkaMessageBinding
     extends:
@@ -98,6 +117,14 @@ propertyTerms:
     displayName: cc
     description: The routing keys the message should be routed to at the time of publishing
     range: string
+  ccdtQueueManagerName:
+    displayName: ccdtQueueManagerName
+    description: The name of the IBM MQ queue manager to bind to in the CCDT file.
+    range: string
+  cipherSpec:
+    displayName: cipherSpec
+    description: The recommended cipher specification used to establish a TLS connection between the client and the IBM MQ queue manager.
+    range: string
   cleanSession:
     displayName: cleanSession
     description: Whether to create a persistent connection or not
@@ -114,9 +141,21 @@ propertyTerms:
     displayName: deliveryMode
     description: Delivery mode of the message
     range: integer
+  destination:
+    displayName: destination
+    description: The destination (queue or exchange) name for this channel.
+    range: string
+  destinationType:
+    displayName: destinationType
+    description: The type of destination (either exchange or queue or fifo-queue).
+    range: string
   durable:
     displayName: durable
     description: Whether the exchange should survive broker restarts or not
+    range: boolean
+  durablePermitted:
+    displayName: durablePermitted
+    description: Defines if the subscription may be durable.
     range: boolean
   exchange:
     displayName: exchange
@@ -130,6 +169,10 @@ propertyTerms:
     displayName: expiration
     description: TTL (Time-To-Live) for the message
     range: integer
+  expiry:
+    displayName: expiry
+    description: This is a period of time expressed in milliseconds and set by the application that puts the message.
+    range: integer
   groupId:
     displayName: groupId
     description: Schema that defines the id of the consumer group
@@ -138,14 +181,26 @@ propertyTerms:
     displayName: headers
     description: A Schema object containing the definitions for HTTP-specific headers
     range: shacl.Shape
+  heartBeatInterval:
+    displayName: heartBeatInterval
+    description: The recommended value (in seconds) for the heartbeat sent to the queue manager during periods of inactivity. A value of zero means that no heart beats are sent. A value of 1 means that the client will use the value defined by the queue manager.
+    range: integer
   is:
     displayName: is
     description: Defines what type of channel is it
     range: string
+  isPartitioned:
+    displayName: isPartitioned
+    description: Defines if the queue is a cluster queue and therefore partitioned. If true, a binding option MAY be specified when accessing the queue.
+    range: boolean
   keepAlive:
     displayName: keepAlive
     description: Interval in seconds of the longest period of time the broker and the client can endure without sending a message
     range: integer
+  lastMsgRetained:
+    displayName: lastMsgRetained
+    description: Defines if the last message published will be made available to new subscriptions.
+    range: boolean
   lastWill:
     displayName: lastWill
     description: Last Will and Testament configuration
@@ -154,6 +209,10 @@ propertyTerms:
     displayName: mandatory
     description: Whether the message is mandatory or not
     range: boolean
+  maxMsgLength:
+    displayName: maxMsgLength
+    description: The maximum length of the physical message (in bytes) accepted by the Topic or Queue. Messages produced that are greater in size than this value may fail to be delivered.
+    range: integer
   message:
     displayName: message
     description: Message used to notify other clients about an ungracefully disconnected client.
@@ -169,6 +228,14 @@ propertyTerms:
   method:
     displayName: method
     description: The HTTP method to use when establishing the connection
+    range: string
+  multiEndpointServer:
+    displayName: multiEndpointServer
+    description: If multiEndpointServer is true then multiple connections can be workload balanced and applications should not make assumptions as to where messages are processed. Where message ordering, or affinity to specific message resources is necessary, a single endpoint (multiEndpointServer = false) may be required.
+    range: boolean
+  objectName:
+    displayName: objectName
+    description: The name of the IBM MQ topic object.
     range: string
   operationType:
     displayName: type
@@ -198,6 +265,10 @@ propertyTerms:
     displayName: retain
     description: Whether the broker should retain the Last Will and Testament message or not
     range: boolean
+  string:
+    displayName: string
+    description: The value of the IBM MQ topic string to be used.
+    range: string
   timestamp:
     displayName: timestamp
     description: Whether the message should include a timestamp or not
