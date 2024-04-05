@@ -1203,6 +1203,97 @@ nodeMappings:
         range: DomainElementUnion
 
 
+  GooglePubSubChannelBinding:
+    classTerm: apiBinding.GooglePubSubChannelBinding
+    extends: ChannelBinding
+    mapping:
+      labels:
+        propertyTerm: apiBinding.labels
+        range: ObjectNode
+      messageRetentionDuration:
+        propertyTerm: apiBinding.messageRetentionDuration
+        range: string
+      messageStoragePolicy:
+        propertyTerm: apiBinding.messageStoragePolicy
+        range: GooglePubSubMessageStoragePolicy
+      schemaSettings:
+        propertyTerm: apiBinding.schemaSettings
+        range: GooglePubSubSchemaSettings
+      topic:
+        propertyTerm: apiBinding.topic
+        range: string
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  GooglePubSubMessageBinding:
+    classTerm: apiBinding.GooglePubSubMessageBinding
+    extends: MessageBinding
+    mapping:
+      attributes:
+        propertyTerm: apiBinding.attribute
+        range: ObjectNode
+      orderingKey:
+        propertyTerm: apiBinding.orderingKey
+        range: string
+      schema:
+        propertyTerm: apiBinding.schemaDefinition
+        range: GooglePubSubSchemaDefinition
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  GooglePubSubMessageStoragePolicy:
+    classTerm: apiBinding.GooglePubSubMessageStoragePolicy
+    mapping:
+      allowedPersistenceRegions:
+        propertyTerm: apiBinding.allowedPersistenceRegions
+        range: string
+        allowMultiple: true
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  GooglePubSubSchemaDefinition:
+    classTerm: apiBinding.GooglePubSubSchemaDefinition
+    mapping:
+      name:
+        propertyTerm: apiBinding.name
+        range: string
+      type:
+        propertyTerm: apiBinding.type
+        range: string
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  GooglePubSubSchemaSettings:
+    classTerm: apiBinding.GooglePubSubSchemaSettings
+    mapping:
+      encoding:
+        propertyTerm: apiBinding.encoding
+        range: string
+      firstRevisionId:
+        propertyTerm: apiBinding.firstRevisionId
+        range: string
+      lastRevisionId:
+        propertyTerm: apiBinding.lastRevisionId
+        range: string
+      name:
+        propertyTerm: apiBinding.name
+        range: string
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
   HttpAPIKeySettings:
     classTerm: security.HttpApiKeySettings
     extends: Settings
@@ -2193,6 +2284,64 @@ nodeMappings:
         allowMultiple: true
 
 
+  PulsarChannelBinding:
+    classTerm: apiBinding.PulsarChannelBinding
+    extends: ChannelBinding
+    mapping:
+      namespace:
+        propertyTerm: apiBinding.namespace
+        range: string
+      persistence:
+        propertyTerm: apiBinding.persistence
+        range: string
+      compaction:
+        propertyTerm: apiBinding.compaction
+        range: integer
+      geo-replication:
+        propertyTerm: apiBinding.geo-replication
+        range: string
+        allowMultiple: true
+      retention:
+        propertyTerm: apiBinding.retention
+        range: PulsarChannelRetention
+      ttl:
+        propertyTerm: apiBinding.ttl
+        range: integer
+      deduplication:
+        propertyTerm: apiBinding.deduplication
+        range: boolean
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  PulsarChannelRetention:
+    classTerm: apiBinding.PulsarChannelRetention
+    mapping:
+      time:
+        propertyTerm: apiBinding.time
+        range: integer
+      size:
+        propertyTerm: apiBinding.size
+        range: integer
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  PulsarServerBinding:
+    classTerm: apiBinding.PulsarServerBinding
+    extends: ServerBinding
+    mapping:
+      tenant:
+        propertyTerm: apiBinding.tenant
+        range: string
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
   RecursiveShape:
     classTerm: raml-shapes.RecursiveShape
     extends: Shape
@@ -2777,6 +2926,87 @@ nodeMappings:
       payload:
         propertyTerm: raml-shapes.payload
         range: ShapePayload
+
+
+  SolaceOperationBinding:
+    classTerm: apiBinding.SolaceOperationBinding
+    extends: OperationBinding
+    mapping:
+      destinations:
+        propertyTerm: apiBinding.destinations
+        range: SolaceOperationDestination
+        allowMultiple: true
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  SolaceOperationDestination:
+    classTerm: apiBinding.SolaceOperationDestination
+    mapping:
+      destinationType:
+        propertyTerm: apiBinding.destinationType
+        range: string
+      deliveryMode:
+        propertyTerm: apiBinding.deliveryMode
+        range: string
+      queue:
+        propertyTerm: apiBinding.queue
+        range: SolaceOperationQueue
+      topic:
+        propertyTerm: apiBinding.topic
+        range: SolaceOperationTopic
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  SolaceOperationQueue:
+    classTerm: apiBinding.SolaceOperationQueue
+    mapping:
+      topicSubscriptions:
+        propertyTerm: apiBinding.topicSubscriptions
+        range: string
+        allowMultiple: true
+      accessType:
+        propertyTerm: apiBinding.accessType
+        range: string
+      maxMsgSpoolSize:
+        propertyTerm: apiBinding.maxMsgSpoolSize
+        range: string
+      maxTtl:
+        propertyTerm: apiBinding.maxTtl
+        range: string
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  SolaceOperationTopic:
+    classTerm: apiBinding.SolaceOperationTopic
+    mapping:
+      topicSubscriptions:
+        propertyTerm: apiBinding.topicSubscriptions
+        range: string
+        allowMultiple: true
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  SolaceServerBinding:
+    classTerm: apiBinding.SolaceServerBinding
+    extends: ServerBinding
+    mapping:
+      msgVpn:
+        propertyTerm: apiBinding.msgVpn
+        range: string
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
 
 
   Tag:
