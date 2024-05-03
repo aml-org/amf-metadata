@@ -94,7 +94,7 @@
       ],
       "http://a.ml/vocabularies/apiBinding#bindings": [
         {
-          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message"
+          "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message-010"
         },
         {
           "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/amqp091-message"
@@ -102,15 +102,15 @@
       ]
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message-010",
       "@type": [
-        "http://a.ml/vocabularies/apiBinding#KafkaMessageBinding",
-        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/KafkaMessageBinding",
+        "http://a.ml/vocabularies/apiBinding#KafkaMessageBinding010",
+        "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/KafkaMessageBinding010",
         "http://a.ml/vocabularies/meta#DialectDomainElement",
         "http://a.ml/vocabularies/document#DomainElement"
       ],
       "http://a.ml/vocabularies/apiBinding#messageKey": {
-        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema"
+        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message-010/scalar/schema"
       },
       "http://a.ml/vocabularies/apiBinding#bindingVersion": "latest",
       "http://a.ml/vocabularies/apiBinding#type": "kafka"
@@ -129,7 +129,7 @@
       "http://a.ml/vocabularies/apiBinding#type": "amqp"
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message-010/scalar/schema",
       "@type": [
         "http://a.ml/vocabularies/shapes#ScalarShape",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarShape",
@@ -143,18 +143,18 @@
       ],
       "http://www.w3.org/ns/shacl#name": "schema",
       "http://www.w3.org/ns/shacl#in": {
-        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema/list"
+        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message-010/scalar/schema/list"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema/list",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message-010/scalar/schema/list",
       "@type": "http://www.w3.org/2000/01/rdf-schema#Seq",
       "http://www.w3.org/2000/01/rdf-schema#_1": {
-        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema/in/scalar_1"
+        "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message-010/scalar/schema/in/scalar_1"
       }
     },
     {
-      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message/scalar/schema/in/scalar_1",
+      "@id": "file://transform/src/test/resources/transformations/message-bindings/api.yaml#/async-api/endpoint/some-channel/supportedOperation/publish/expects/request/message-bindings/bindings/kafka-message-010/scalar/schema/in/scalar_1",
       "@type": [
         "http://a.ml/vocabularies/data#Scalar",
         "file://vocabulary/src/main/resources/dialects/canonical_webapi_spec.yaml#/declarations/ScalarNode",

@@ -9,16 +9,48 @@ classTerms:
   Amqp091ChannelBinding:
     displayName: Amqp091ChannelBinding
     extends: ChannelBinding
+  Amqp091ChannelBinding010:
+    displayName: Amqp091ChannelBinding010
+    extends:
+      - ChannelBinding
+      - Amqp091ChannelBinding
+  Amqp091ChannelBinding020:
+    displayName: Amqp091ChannelBinding020
+    extends:
+      - ChannelBinding
+      - Amqp091ChannelBinding
   Amqp091ChannelExchange:
     displayName: Amqp091ChannelExchange
+  Amqp091ChannelExchange010:
+    displayName: Amqp091ChannelExchange010
+    extends: Amqp091ChannelExchange
+  Amqp091ChannelExchange020:
+    displayName: Amqp091ChannelExchange020
+    extends: Amqp091ChannelExchange
   Amqp091ChannelQueue:
     displayName: Amqp091Queue
+  Amqp091ChannelQueue010:
+    displayName: Amqp091Queue010
+    extends: Amqp091ChannelQueue
+  Amqp091ChannelQueue020:
+    displayName: Amqp091Queue020
+    extends: Amqp091ChannelQueue
   Amqp091MessageBinding:
     displayName: Amqp091MessageBinding
     extends: MessageBinding
   Amqp091OperationBinding:
     displayName: Amqp091OperationBinding
     extends: OperationBinding
+  Amqp091OperationBinding010:
+    displayName: Amqp091OperationBinding010
+    extends:
+      - OperationBinding
+      - Amqp091OperationBinding
+  Amqp091OperationBinding030:
+    displayName: Amqp091OperationBinding030
+    extends:
+      - OperationBinding
+      - Amqp091OperationBinding
   AnypointMQChannelBinding:
     displayName: AnypointMQChannelBinding
     extends: ChannelBinding
@@ -67,14 +99,51 @@ classTerms:
   IBMMQServerBinding:
     displayName: IBMMQServerBinding
     extends: ServerBinding
+  KafkaChannelBinding:
+    displayName: KafkaChannelBinding
+    extends: ChannelBinding
+  KafkaChannelBinding030:
+    displayName: KafkaChannelBinding030
+    extends:
+      - ChannelBinding
+      - KafkaChannelBinding
+  KafkaChannelBinding040:
+    displayName: KafkaChannelBinding040
+    extends:
+      - ChannelBinding
+      - KafkaChannelBinding
+  KafkaChannelBinding050:
+    displayName: KafkaChannelBinding050
+    extends:
+      - ChannelBinding
+      - KafkaChannelBinding
   KafkaMessageBinding:
     displayName: KafkaMessageBinding
+    extends: MessageBinding
+  KafkaMessageBinding010:
+    displayName: KafkaMessageBinding010
     extends:
       - MessageBinding
-      - OperationBinding
+      - KafkaMessageBinding
+  KafkaMessageBinding030:
+    displayName: KafkaMessageBinding030
+    extends:
+      - MessageBinding
+      - KafkaMessageBinding
   KafkaOperationBinding:
     displayName: KafkaOperationBinding
     extends: OperationBinding
+  KafkaServerBinding:
+    displayName: KafkaServerBinding
+    extends: ServerBinding
+  KafkaTopicConfiguration:
+    displayName: KafkaTopicConfiguration
+  KafkaTopicConfiguration040:
+    displayName: KafkaTopicConfiguration040
+    extends: KafkaTopicConfiguration
+  KafkaTopicConfiguration050:
+    displayName: KafkaTopicConfiguration050
+    extends: KafkaTopicConfiguration
   MessageBinding:
     displayName: MessageBinding
   MessageBindings:
@@ -122,6 +191,42 @@ classTerms:
     displayName: WebSocketsChannelBinding
     extends: ChannelBinding
 propertyTerms:
+  CleanupPolicy:
+    displayName: CleanupPolicy
+    description: The cleanup.policy configuration option.
+    range: string
+  ConfluentKeySchemaValidation:
+    displayName: ConfluentKeySchemaValidation
+    description: It shows whether the schema validation for the message key is enabled. Vendor specific config.
+    range: boolean
+  ConfluentKeySubjectNameStrategy:
+    displayName: ConfluentKeySubjectNameStrategy
+    description: The name of the schema lookup strategy for the message key. Vendor specific config.
+    range: string
+  ConfluentValueSchemaValidation:
+    displayName: ConfluentValueSchemaValidation
+    description: It shows whether the schema validation for the message value is enabled. Vendor specific config.
+    range: boolean
+  ConfluentValueSubjectNameStrategy:
+    displayName: ConfluentValueSubjectNameStrategy
+    description: The name of the schema lookup strategy for the message value. Vendor specific config.
+    range: string
+  DeleteRetentionMs:
+    displayName: DeleteRetentionMs
+    description: The delete.retention.ms configuration option.
+    range: integer
+  MaxMessageBytes:
+    displayName: MaxMessageBytes
+    description: The max.message.bytes configuration option.
+    range: integer
+  RetentionBytes:
+    displayName: RetentionBytes
+    description: The retention.bytes configuration option.
+    range: integer
+  RetentionMs:
+    displayName: RetentionMs
+    description: The retention.ms configuration option.
+    range: integer
   accessType:
     displayName: accessType
     description: "'exclusive' or 'nonexclusive'. Only applicable when destinationType is 'queue'."
@@ -156,8 +261,8 @@ propertyTerms:
     range: string
   bindings:
     displayName: bindings
-    description: List of message bindings
-    range: MessageBinding
+    description: List of channel bindings
+    range: ChannelBinding
   cc:
     displayName: cc
     description: The routing keys the message should be routed to at the time of publishing
@@ -176,8 +281,8 @@ propertyTerms:
     range: boolean
   clientId:
     displayName: clientId
-    description: Schema that defines the id of the consumer inside a consumer group
-    range: shacl.Shape
+    description: The client identifier
+    range: string
   compaction:
     displayName: compaction
     description: Topic compaction threshold given in Megabytes.
@@ -200,7 +305,7 @@ propertyTerms:
     range: string
   destinationType:
     displayName: destinationType
-    description: The type of destination (either exchange or queue or fifo-queue).
+    description: Defines the type of AsyncAPI channel.
     range: string
   destinations:
     displayName: destinations
@@ -243,8 +348,8 @@ propertyTerms:
     range: string
   groupId:
     displayName: groupId
-    description: Schema that defines the id of the consumer group
-    range: shacl.Shape
+    description: Defines a logical group of IBM MQ server objects. This is necessary to specify multi-endpoint configurations used in high availability deployments. If omitted, the server object is not part of a group.
+    range: string
   headers:
     displayName: headers
     description: A Schema object containing the definitions for HTTP-specific headers
@@ -339,7 +444,7 @@ propertyTerms:
     range: string
   objectName:
     displayName: objectName
-    description: The name of the IBM MQ topic object.
+    description: Defines the name of the IBM MQ queue associated with the channel.
     range: string
   operationType:
     displayName: type
@@ -349,6 +454,10 @@ propertyTerms:
     displayName: orderingKey
     description: If non-empty, identifies related messages for which publish order should be respected
     range: string
+  partitions:
+    displayName: partitions
+    description: Number of partitions configured on this topic.
+    range: integer
   persistence:
     displayName: persistence
     description: Persistence of the topic in Pulsar. It MUST be either persistent or non-persistent.
@@ -369,6 +478,10 @@ propertyTerms:
     displayName: queue
     description: Defines the queue properties
     range: Amqp091ChannelQueue
+  replicas:
+    displayName: replicas
+    description: Number of replicas configured on this topic.
+    range: integer
   replyTo:
     displayName: replyTo
     description: Name of the queue where the consumer should send the response
@@ -385,6 +498,26 @@ propertyTerms:
     displayName: schema
     description: Define Schema
     range: GooglePubSubSchemaDefinition
+  schemaIdLocation:
+    displayName: schemaIdLocation
+    description: If a Schema Registry is used when performing this operation, tells where the id of schema is stored (e.g. header or payload).
+    range: string
+  schemaIdPayloadEncoding:
+    displayName: schemaIdPayloadEncoding
+    description: Number of bytes or vendor specific values when schema id is encoded in payload (e.g confluent/ apicurio-legacy / apicurio-new).
+    range: string
+  schemaLookupStrategy:
+    displayName: schemaLookupStrategy
+    description: Freeform string for any naming strategy class to use. Clients should default to the vendor default if not supplied.
+    range: string
+  schemaRegistryUrl:
+    displayName: schemaRegistryUrl
+    description: API URL for the Schema Registry used when producing Kafka messages (if a Schema Registry was used)
+    range: string
+  schemaRegistryVendor:
+    displayName: schemaRegistryVendor
+    description: The vendor of Schema Registry and Kafka serdes library that should be used
+    range: string
   schemaSettings:
     displayName: schemaSettings
     description: Settings for validating messages published against a schema
@@ -411,8 +544,16 @@ propertyTerms:
     range: boolean
   topic:
     displayName: topic
-    description: The topic where the Last Will and Testament message will be sent
+    description: Kafka topic name if different from channel name.
     range: string
+  topicConfiguration040:
+    displayName: topicConfiguration040
+    description: Topic configuration properties that are relevant for the API.
+    range: KafkaTopicConfiguration040
+  topicConfiguration050:
+    displayName: topicConfiguration050
+    description: Topic configuration properties that are relevant for the API.
+    range: KafkaTopicConfiguration050
   topicSubscriptions:
     displayName: topicSubscriptions
     description: A list of topics that the client subscribes to, only applicable when destinationType is 'topic'. If none is given, the client subscribes to the topic as represented by the channel name.
