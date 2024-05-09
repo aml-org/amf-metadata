@@ -176,6 +176,7 @@ propertyTerms:
     range: Callback
   contentType:
     displayName: contentType
+    description: Media types returned by a API response
     range: string
   cookieParameter:
     displayName: cookieParameter

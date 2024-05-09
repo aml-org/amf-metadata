@@ -457,8 +457,86 @@ nodeMappings:
         range: string
 
 
+  Amqp091ChannelBinding010:
+    classTerm: apiBinding.Amqp091ChannelBinding010
+    extends: ChannelBinding
+    mapping:
+      is:
+        propertyTerm: apiBinding.is
+        range: string
+      exchange:
+        propertyTerm: apiBinding.exchange
+        range: Amqp091ChannelExchange010
+      queue:
+        propertyTerm: apiBinding.queue
+        range: Amqp091Queue010
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  Amqp091ChannelBinding020:
+    classTerm: apiBinding.Amqp091ChannelBinding020
+    extends: ChannelBinding
+    mapping:
+      is:
+        propertyTerm: apiBinding.is
+        range: string
+      exchange:
+        propertyTerm: apiBinding.exchange
+        range: Amqp091ChannelExchange020
+      queue:
+        propertyTerm: apiBinding.queue
+        range: Amqp091Queue020
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
   Amqp091ChannelExchange:
     classTerm: apiBinding.Amqp091ChannelExchange
+    mapping:
+      name:
+        propertyTerm: core.name
+        range: string
+      type:
+        propertyTerm: apiBinding.type
+        range: string
+      durable:
+        propertyTerm: apiBinding.durable
+        range: boolean
+      autoDelete:
+        propertyTerm: apiBinding.autoDelete
+        range: boolean
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  Amqp091ChannelExchange010:
+    classTerm: apiBinding.Amqp091ChannelExchange010
+    mapping:
+      name:
+        propertyTerm: core.name
+        range: string
+      type:
+        propertyTerm: apiBinding.type
+        range: string
+      durable:
+        propertyTerm: apiBinding.durable
+        range: boolean
+      autoDelete:
+        propertyTerm: apiBinding.autoDelete
+        range: boolean
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  Amqp091ChannelExchange020:
+    classTerm: apiBinding.Amqp091ChannelExchange020
     mapping:
       name:
         propertyTerm: core.name
@@ -523,6 +601,44 @@ nodeMappings:
         propertyTerm: apiBinding.bcc
         range: string
         allowMultiple: true
+      timestamp:
+        propertyTerm: apiBinding.timestamp
+        range: boolean
+      ack:
+        propertyTerm: apiBinding.ack
+        range: boolean
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  Amqp091OperationBinding010:
+    classTerm: apiBinding.Amqp091OperationBinding010
+    extends: OperationBinding
+    mapping:
+      expiration:
+        propertyTerm: apiBinding.expiration
+        range: integer
+      userId:
+        propertyTerm: apiBinding.userId
+        range: string
+      cc:
+        propertyTerm: apiBinding.cc
+        range: string
+        allowMultiple: true
+      priority:
+        propertyTerm: apiBinding.priority
+        range: integer
+      deliveryMode:
+        propertyTerm: apiBinding.deliveryMode
+        range: integer
+      mandatory:
+        propertyTerm: apiBinding.mandatory
+        range: boolean
+      bcc:
+        propertyTerm: apiBinding.bcc
+        range: string
+        allowMultiple: true
       replyTo:
         propertyTerm: apiBinding.replyTo
         range: string
@@ -537,8 +653,88 @@ nodeMappings:
         range: string
 
 
+  Amqp091OperationBinding030:
+    classTerm: apiBinding.Amqp091OperationBinding030
+    extends: OperationBinding
+    mapping:
+      expiration:
+        propertyTerm: apiBinding.expiration
+        range: integer
+      userId:
+        propertyTerm: apiBinding.userId
+        range: string
+      cc:
+        propertyTerm: apiBinding.cc
+        range: string
+        allowMultiple: true
+      priority:
+        propertyTerm: apiBinding.priority
+        range: integer
+      deliveryMode:
+        propertyTerm: apiBinding.deliveryMode
+        range: integer
+      mandatory:
+        propertyTerm: apiBinding.mandatory
+        range: boolean
+      bcc:
+        propertyTerm: apiBinding.bcc
+        range: string
+        allowMultiple: true
+      timestamp:
+        propertyTerm: apiBinding.timestamp
+        range: boolean
+      ack:
+        propertyTerm: apiBinding.ack
+        range: boolean
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
   Amqp091Queue:
     classTerm: apiBinding.Amqp091ChannelQueue
+    mapping:
+      name:
+        propertyTerm: core.name
+        range: string
+      durable:
+        propertyTerm: apiBinding.durable
+        range: boolean
+      exclusive:
+        propertyTerm: apiBinding.exclusive
+        range: boolean
+      autoDelete:
+        propertyTerm: apiBinding.autoDelete
+        range: boolean
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  Amqp091Queue010:
+    classTerm: apiBinding.Amqp091ChannelQueue010
+    mapping:
+      name:
+        propertyTerm: core.name
+        range: string
+      durable:
+        propertyTerm: apiBinding.durable
+        range: boolean
+      exclusive:
+        propertyTerm: apiBinding.exclusive
+        range: boolean
+      autoDelete:
+        propertyTerm: apiBinding.autoDelete
+        range: boolean
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  Amqp091Queue020:
+    classTerm: apiBinding.Amqp091ChannelQueue020
     mapping:
       name:
         propertyTerm: core.name
@@ -1492,10 +1688,121 @@ nodeMappings:
         range: string
 
 
+  KafkaChannelBinding:
+    classTerm: apiBinding.KafkaChannelBinding
+    extends: ChannelBinding
+    mapping:
+      topic:
+        propertyTerm: apiBinding.topic
+        range: string
+      partitions:
+        propertyTerm: apiBinding.partitions
+        range: integer
+      replicas:
+        propertyTerm: apiBinding.replicas
+        range: integer
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  KafkaChannelBinding030:
+    classTerm: apiBinding.KafkaChannelBinding030
+    extends: ChannelBinding
+    mapping:
+      topic:
+        propertyTerm: apiBinding.topic
+        range: string
+      partitions:
+        propertyTerm: apiBinding.partitions
+        range: integer
+      replicas:
+        propertyTerm: apiBinding.replicas
+        range: integer
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  KafkaChannelBinding040:
+    classTerm: apiBinding.KafkaChannelBinding040
+    extends: ChannelBinding
+    mapping:
+      topicConfiguration040:
+        propertyTerm: apiBinding.topicConfiguration040
+        range: KafkaTopicConfiguration040
+      topic:
+        propertyTerm: apiBinding.topic
+        range: string
+      partitions:
+        propertyTerm: apiBinding.partitions
+        range: integer
+      replicas:
+        propertyTerm: apiBinding.replicas
+        range: integer
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  KafkaChannelBinding050:
+    classTerm: apiBinding.KafkaChannelBinding050
+    extends: ChannelBinding
+    mapping:
+      topicConfiguration050:
+        propertyTerm: apiBinding.topicConfiguration050
+        range: KafkaTopicConfiguration050
+      topic:
+        propertyTerm: apiBinding.topic
+        range: string
+      partitions:
+        propertyTerm: apiBinding.partitions
+        range: integer
+      replicas:
+        propertyTerm: apiBinding.replicas
+        range: integer
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
   KafkaMessageBinding:
     classTerm: apiBinding.KafkaMessageBinding
     extends: MessageBinding
     mapping:
+      key:
+        propertyTerm: apiBinding.messageKey
+        range: DataShapesUnion
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  KafkaMessageBinding010:
+    classTerm: apiBinding.KafkaMessageBinding010
+    extends: MessageBinding
+    mapping:
+      key:
+        propertyTerm: apiBinding.messageKey
+        range: DataShapesUnion
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  KafkaMessageBinding030:
+    classTerm: apiBinding.KafkaMessageBinding030
+    extends: MessageBinding
+    mapping:
+      schemaIdLocation:
+        propertyTerm: apiBinding.schemaIdLocation
+        range: string
+      schemaIdPayloadEncoding:
+        propertyTerm: apiBinding.schemaIdPayloadEncoding
+        range: string
+      schemaLookupStrategy:
+        propertyTerm: apiBinding.schemaLookupStrategy
+        range: string
       key:
         propertyTerm: apiBinding.messageKey
         range: DataShapesUnion
@@ -1517,6 +1824,108 @@ nodeMappings:
       bindingVersion:
         propertyTerm: apiBinding.bindingVersion
         range: string
+
+
+  KafkaServerBinding:
+    classTerm: apiBinding.KafkaServerBinding
+    extends: ServerBinding
+    mapping:
+      schemaRegistryUrl:
+        propertyTerm: apiBinding.schemaRegistryUrl
+        range: string
+      schemaRegistryVendor:
+        propertyTerm: apiBinding.schemaRegistryVendor
+        range: string
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  KafkaTopicConfiguration:
+    classTerm: apiBinding.KafkaTopicConfiguration
+    mapping:
+      CleanupPolicy:
+        propertyTerm: apiBinding.CleanupPolicy
+        range: string
+        allowMultiple: true
+      RetentionMs:
+        propertyTerm: apiBinding.RetentionMs
+        range: integer
+      RetentionBytes:
+        propertyTerm: apiBinding.RetentionBytes
+        range: integer
+      DeleteRetentionMs:
+        propertyTerm: apiBinding.DeleteRetentionMs
+        range: integer
+      MaxMessageBytes:
+        propertyTerm: apiBinding.MaxMessageBytes
+        range: integer
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  KafkaTopicConfiguration040:
+    classTerm: apiBinding.KafkaTopicConfiguration040
+    mapping:
+      CleanupPolicy:
+        propertyTerm: apiBinding.CleanupPolicy
+        range: string
+        allowMultiple: true
+      RetentionMs:
+        propertyTerm: apiBinding.RetentionMs
+        range: integer
+      RetentionBytes:
+        propertyTerm: apiBinding.RetentionBytes
+        range: integer
+      DeleteRetentionMs:
+        propertyTerm: apiBinding.DeleteRetentionMs
+        range: integer
+      MaxMessageBytes:
+        propertyTerm: apiBinding.MaxMessageBytes
+        range: integer
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  KafkaTopicConfiguration050:
+    classTerm: apiBinding.KafkaTopicConfiguration050
+    mapping:
+      ConfluentKeySchemaValidation:
+        propertyTerm: apiBinding.ConfluentKeySchemaValidation
+        range: boolean
+      ConfluentKeySubjectNameStrategy:
+        propertyTerm: apiBinding.ConfluentKeySubjectNameStrategy
+        range: string
+      ConfluentValueSchemaValidation:
+        propertyTerm: apiBinding.ConfluentValueSchemaValidation
+        range: boolean
+      ConfluentValueSubjectNameStrategy:
+        propertyTerm: apiBinding.ConfluentValueSubjectNameStrategy
+        range: string
+      CleanupPolicy:
+        propertyTerm: apiBinding.CleanupPolicy
+        range: string
+        allowMultiple: true
+      RetentionMs:
+        propertyTerm: apiBinding.RetentionMs
+        range: integer
+      RetentionBytes:
+        propertyTerm: apiBinding.RetentionBytes
+        range: integer
+      DeleteRetentionMs:
+        propertyTerm: apiBinding.DeleteRetentionMs
+        range: integer
+      MaxMessageBytes:
+        propertyTerm: apiBinding.MaxMessageBytes
+        range: integer
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
 
 
   Key:
