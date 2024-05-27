@@ -71,21 +71,67 @@ classTerms:
   GooglePubSubChannelBinding:
     displayName: GooglePubSubChannelBinding
     extends: ChannelBinding
+  GooglePubSubChannelBinding010:
+    displayName: GooglePubSubChannelBinding010
+    extends:
+      - ChannelBinding
+      - GooglePubSubChannelBinding
+  GooglePubSubChannelBinding020:
+    displayName: GooglePubSubChannelBinding020
+    extends:
+      - ChannelBinding
+      - GooglePubSubChannelBinding
   GooglePubSubMessageBinding:
     displayName: GooglePubSubMessageBinding
     extends: MessageBinding
+  GooglePubSubMessageBinding010:
+    displayName: GooglePubSubMessageBinding010
+    extends:
+      - MessageBinding
+      - GooglePubSubMessageBinding
+  GooglePubSubMessageBinding020:
+    displayName: GooglePubSubMessageBinding020
+    extends:
+      - MessageBinding
+      - GooglePubSubMessageBinding
   GooglePubSubMessageStoragePolicy:
     displayName: GooglePubSubMessageStoragePolicy
   GooglePubSubSchemaDefinition:
     displayName: GooglePubSubSchemaDefinition
+  GooglePubSubSchemaDefinition010:
+    displayName: GooglePubSubSchemaDefinition010
+    extends: GooglePubSubSchemaDefinition
+  GooglePubSubSchemaDefinition020:
+    displayName: GooglePubSubSchemaDefinition020
+    extends: GooglePubSubSchemaDefinition
   GooglePubSubSchemaSettings:
     displayName: GooglePubSubSchemaSettings
   HttpMessageBinding:
     displayName: HttpMessageBinding
     extends: MessageBinding
+  HttpMessageBinding020:
+    displayName: HttpMessageBinding020
+    extends:
+      - MessageBinding
+      - HttpMessageBinding
+  HttpMessageBinding030:
+    displayName: HttpMessageBinding030
+    extends:
+      - MessageBinding
+      - HttpMessageBinding
   HttpOperationBinding:
     displayName: HttpOperationBinding
     extends: OperationBinding
+  HttpOperationBinding010:
+    displayName: HttpOperationBinding010
+    extends:
+      - OperationBinding
+      - HttpOperationBinding
+  HttpOperationBinding020:
+    displayName: HttpOperationBinding020
+    extends:
+      - OperationBinding
+      - HttpOperationBinding
   IBMMQChannelBinding:
     displayName: IBMMQChannelBinding
     extends: ChannelBinding
@@ -151,12 +197,42 @@ classTerms:
   MqttMessageBinding:
     displayName: MqttMessageBinding
     extends: MessageBinding
+  MqttMessageBinding010:
+    displayName: MqttMessageBinding010
+    extends:
+      - MessageBinding
+      - MqttMessageBinding
+  MqttMessageBinding020:
+    displayName: MqttMessageBinding020
+    extends:
+      - MessageBinding
+      - MqttMessageBinding
   MqttOperationBinding:
     displayName: MqttOperationBinding
     extends: OperationBinding
+  MqttOperationBinding010:
+    displayName: MqttOperationBinding010
+    extends:
+      - OperationBinding
+      - MqttOperationBinding
+  MqttOperationBinding020:
+    displayName: MqttOperationBinding020
+    extends:
+      - OperationBinding
+      - MqttOperationBinding
   MqttServerBinding:
     displayName: MqttServerBinding
     extends: ServerBinding
+  MqttServerBinding010:
+    displayName: MqttServerBinding010
+    extends:
+      - ServerBinding
+      - MqttServerBinding
+  MqttServerBinding020:
+    displayName: MqttServerBinding020
+    extends:
+      - ServerBinding
+      - MqttServerBinding
   MqttServerLastWill:
     displayName: MqttServerLastWill
   OperationBinding:
@@ -178,15 +254,65 @@ classTerms:
   SolaceOperationBinding:
     displayName: SolaceOperationBinding
     extends: OperationBinding
+  SolaceOperationBinding010:
+    displayName: SolaceOperationBinding010
+    extends:
+      - OperationBinding
+      - SolaceOperationBinding
+  SolaceOperationBinding020:
+    displayName: SolaceOperationBinding020
+    extends:
+      - OperationBinding
+      - SolaceOperationBinding
+  SolaceOperationBinding030:
+    displayName: SolaceOperationBinding030
+    extends:
+      - OperationBinding
+      - SolaceOperationBinding
+  SolaceOperationBinding040:
+    displayName: SolaceOperationBinding040
+    extends:
+      - OperationBinding
+      - SolaceOperationBinding
   SolaceOperationDestination:
     displayName: SolaceOperationDestination
+  SolaceOperationDestination010:
+    displayName: SolaceOperationDestination010
+    extends: SolaceOperationDestination
+  SolaceOperationDestination020:
+    displayName: SolaceOperationDestination020
+    extends: SolaceOperationDestination
+  SolaceOperationDestination030:
+    displayName: SolaceOperationDestination030
+    extends: SolaceOperationDestination
+  SolaceOperationDestination040:
+    displayName: SolaceOperationDestination040
+    extends: SolaceOperationDestination
   SolaceOperationQueue:
     displayName: SolaceOperationQueue
+  SolaceOperationQueue010:
+    displayName: SolaceOperationQueue010
+    extends: SolaceOperationQueue
+  SolaceOperationQueue030:
+    displayName: SolaceOperationQueue030
+    extends:
+      - SolaceOperationDestination
+      - SolaceOperationQueue
   SolaceOperationTopic:
     displayName: SolaceOperationTopic
   SolaceServerBinding:
     displayName: SolaceServerBinding
     extends: ServerBinding
+  SolaceServerBinding010:
+    displayName: SolaceServerBinding010
+    extends:
+      - SolaceServerBinding
+      - ServerBinding
+  SolaceServerBinding040:
+    displayName: SolaceServerBinding040
+    extends:
+      - ServerBinding
+      - SolaceServerBinding
   WebSocketsChannelBinding:
     displayName: WebSocketsChannelBinding
     extends: ChannelBinding
@@ -283,6 +409,10 @@ propertyTerms:
     displayName: clientId
     description: The client identifier
     range: string
+  clientName:
+    displayName: clientName
+    description: A unique client name to use to register to the appliance. If specified, it must be a valid Topic name, and a maximum of 160 bytes in length when encoded as UTF-8.
+    range: string
   compaction:
     displayName: compaction
     description: Topic compaction threshold given in Megabytes.
@@ -291,25 +421,37 @@ propertyTerms:
     displayName: contentEncoding
     description: MIME encoding for the message content
     range: string
+  contentType:
+    displayName: contentType
+    description: String describing the content type of the message payload. This should not conflict with the contentType field of the associated AsyncAPI Message object.
+    range: string
+  correlationData:
+    displayName: correlationData
+    description: Correlation Data is used by the sender of the request message to identify which request the response message is for when it is received.
+    range: shacl.Shape
   deduplication:
     displayName: deduplication
     description: Message deduplication. When true, it ensures that each message produced on Pulsar topics is persisted to disk only once.
     range: boolean
   deliveryMode:
     displayName: deliveryMode
-    description: Delivery mode of the message
-    range: integer
+    description: "'direct' or 'persistent'. This determines the quality of service for publishing messages. Default is 'persistent'."
+    range: string
   destination:
     displayName: destination
     description: The destination (queue or exchange) name for this channel.
     range: string
   destinationType:
     displayName: destinationType
-    description: Defines the type of AsyncAPI channel.
+    description: "'queue' or 'topic'. If the type is queue, then the subscriber can bind to the queue, which in turn will subscribe to the topic as represented by the channel name or to the provided topicSubscriptions."
     range: string
   destinations:
     displayName: destinations
     range: SolaceOperationDestination
+  dmqEligible:
+    displayName: dmqEligible
+    description: Set the message to be eligible to be moved to a Dead Message Queue. The default value is false.
+    range: boolean
   durable:
     displayName: durable
     description: Whether the exchange should survive broker restarts or not
@@ -396,16 +538,28 @@ propertyTerms:
     range: integer
   maxMsgSpoolSize:
     displayName: maxMsgSpoolSize
-    description: The maximum amount of message spool that the given queue may use. Only applicable when destinationType is 'queue'.
+    description: The maximum size of the message spool used by the queue.
     range: string
   maxTtl:
     displayName: maxTtl
-    description: The maximum TTL to apply to messages to be spooled. Only applicable when destinationType is 'queue'.
+    description: The maximum time-to-live for messages in the queue.
     range: string
+  maximumPacketSize:
+    displayName: maximumPacketSize
+    description: Number of bytes or a Schema Object representing the maximum packet size the client is willing to accept.
+    range: integer
+  maximumPacketSizeSchema:
+    displayName: maximumPacketSizeSchema
+    description: Number of bytes or a Schema Object representing the maximum packet size the client is willing to accept.
+    range: shacl.Shape
   message:
     displayName: message
     description: Message used to notify other clients about an ungracefully disconnected client.
     range: string
+  messageExpiryInterval:
+    displayName: messageExpiryInterval
+    description: Interval in seconds or a Schema Object containing the definition of the lifetime of the message.
+    range: integer
   messageKey:
     displayName: key
     description: Schema that defines the message key
@@ -434,10 +588,6 @@ propertyTerms:
     displayName: multiEndpointServer
     description: If multiEndpointServer is true then multiple connections can be workload balanced and applications should not make assumptions as to where messages are processed. Where message ordering, or affinity to specific message resources is necessary, a single endpoint (multiEndpointServer = false) may be required.
     range: boolean
-  name:
-    displayName: name
-    description: Name of the schema that messages published should be validated against
-    range: string
   namespace:
     displayName: namespace
     description: The namespace the channel is associated with.
@@ -458,6 +608,10 @@ propertyTerms:
     displayName: partitions
     description: Number of partitions configured on this topic.
     range: integer
+  payloadFormatIndicator:
+    displayName: payloadFormatIndicator
+    description: "Either: 0 (zero): Indicates that the payload is unspecified bytes, or 1: Indicates that the payload is UTF-8 encoded character data."
+    range: integer
   persistence:
     displayName: persistence
     description: Persistence of the topic in Pulsar. It MUST be either persistent or non-persistent.
@@ -468,7 +622,7 @@ propertyTerms:
     range: integer
   qos:
     displayName: qos
-    description: Defines how hard the broker/client will try to ensure that the Last Will and Testament message is received
+    description: Defines how hard the broker/client will try to ensure that a message is received
     range: integer
   query:
     displayName: query
@@ -476,8 +630,8 @@ propertyTerms:
     range: shacl.Shape
   queue:
     displayName: queue
-    description: Defines the queue properties
-    range: Amqp091ChannelQueue
+    description: Defines the properties of a queue.
+    range: SolaceOperationQueue
   replicas:
     displayName: replicas
     description: Number of replicas configured on this topic.
@@ -486,9 +640,13 @@ propertyTerms:
     displayName: replyTo
     description: Name of the queue where the consumer should send the response
     range: string
+  responseTopic:
+    displayName: responseTopic
+    description: The topic (channel URI) for a response message.
+    range: string
   retain:
     displayName: retain
-    description: Whether the broker should retain the Last Will and Testament message or not
+    description: Whether the broker should retain the message or not
     range: boolean
   retention:
     displayName: retention
@@ -522,9 +680,21 @@ propertyTerms:
     displayName: schemaSettings
     description: Settings for validating messages published against a schema
     range: GooglePubSubSchemaSettings
+  sessionExpiryInterval:
+    displayName: sessionExpiryInterval
+    description: Interval in seconds or a Schema Object containing the definition of the interval. The broker maintains a session for a disconnected client until this interval expires.
+    range: integer
+  sessionExpiryIntervalSchema:
+    displayName: sessionExpiryIntervalSchema
+    description: Interval in seconds or a Schema Object containing the definition of the interval. The broker maintains a session for a disconnected client until this interval expires.
+    range: shacl.Shape
   size:
     displayName: size
     description: Size given in MegaBytes. Defaults to 0
+    range: integer
+  statusCode:
+    displayName: statusCode
+    description: The HTTP response status code according to RFC 9110.
     range: integer
   string:
     displayName: string
@@ -537,6 +707,10 @@ propertyTerms:
   time:
     displayName: time
     description: Time given in Minutes. Defaults to 0
+    range: integer
+  timeToLive:
+    displayName: timeToLive
+    description: Interval in milliseconds or a Schema Object containing the definition of the lifetime of the message.
     range: integer
   timestamp:
     displayName: timestamp
