@@ -1415,9 +1415,51 @@ nodeMappings:
       schemaSettings:
         propertyTerm: apiBinding.schemaSettings
         range: GooglePubSubSchemaSettings
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  GooglePubSubChannelBinding010:
+    classTerm: apiBinding.GooglePubSubChannelBinding010
+    extends: ChannelBinding
+    mapping:
       topic:
         propertyTerm: apiBinding.topic
         range: string
+      labels:
+        propertyTerm: apiBinding.labels
+        range: ObjectNode
+      messageRetentionDuration:
+        propertyTerm: apiBinding.messageRetentionDuration
+        range: string
+      messageStoragePolicy:
+        propertyTerm: apiBinding.messageStoragePolicy
+        range: GooglePubSubMessageStoragePolicy
+      schemaSettings:
+        propertyTerm: apiBinding.schemaSettings
+        range: GooglePubSubSchemaSettings
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  GooglePubSubChannelBinding020:
+    classTerm: apiBinding.GooglePubSubChannelBinding020
+    extends: ChannelBinding
+    mapping:
+      labels:
+        propertyTerm: apiBinding.labels
+        range: ObjectNode
+      messageRetentionDuration:
+        propertyTerm: apiBinding.messageRetentionDuration
+        range: string
+      messageStoragePolicy:
+        propertyTerm: apiBinding.messageStoragePolicy
+        range: GooglePubSubMessageStoragePolicy
+      schemaSettings:
+        propertyTerm: apiBinding.schemaSettings
+        range: GooglePubSubSchemaSettings
       bindingVersion:
         propertyTerm: apiBinding.bindingVersion
         range: string
@@ -1441,6 +1483,42 @@ nodeMappings:
         range: string
 
 
+  GooglePubSubMessageBinding010:
+    classTerm: apiBinding.GooglePubSubMessageBinding010
+    extends: MessageBinding
+    mapping:
+      attributes:
+        propertyTerm: apiBinding.attribute
+        range: ObjectNode
+      orderingKey:
+        propertyTerm: apiBinding.orderingKey
+        range: string
+      schema:
+        propertyTerm: apiBinding.schemaDefinition
+        range: GooglePubSubSchemaDefinition010
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  GooglePubSubMessageBinding020:
+    classTerm: apiBinding.GooglePubSubMessageBinding020
+    extends: MessageBinding
+    mapping:
+      attributes:
+        propertyTerm: apiBinding.attribute
+        range: ObjectNode
+      orderingKey:
+        propertyTerm: apiBinding.orderingKey
+        range: string
+      schema:
+        propertyTerm: apiBinding.schemaDefinition
+        range: GooglePubSubSchemaDefinition020
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
   GooglePubSubMessageStoragePolicy:
     classTerm: apiBinding.GooglePubSubMessageStoragePolicy
     mapping:
@@ -1458,10 +1536,34 @@ nodeMappings:
     classTerm: apiBinding.GooglePubSubSchemaDefinition
     mapping:
       name:
-        propertyTerm: apiBinding.name
+        propertyTerm: core.name
         range: string
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  GooglePubSubSchemaDefinition010:
+    classTerm: apiBinding.GooglePubSubSchemaDefinition010
+    mapping:
       type:
         propertyTerm: apiBinding.type
+        range: string
+      name:
+        propertyTerm: core.name
+        range: string
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  GooglePubSubSchemaDefinition020:
+    classTerm: apiBinding.GooglePubSubSchemaDefinition020
+    mapping:
+      name:
+        propertyTerm: core.name
         range: string
       designAnnotations:
         propertyTerm: doc.designAnnotation
@@ -1472,6 +1574,9 @@ nodeMappings:
   GooglePubSubSchemaSettings:
     classTerm: apiBinding.GooglePubSubSchemaSettings
     mapping:
+      name:
+        propertyTerm: core.name
+        range: string
       encoding:
         propertyTerm: apiBinding.encoding
         range: string
@@ -1480,9 +1585,6 @@ nodeMappings:
         range: string
       lastRevisionId:
         propertyTerm: apiBinding.lastRevisionId
-        range: string
-      name:
-        propertyTerm: apiBinding.name
         range: string
       designAnnotations:
         propertyTerm: doc.designAnnotation
@@ -1514,13 +1616,70 @@ nodeMappings:
         range: string
 
 
+  HttpMessageBinding020:
+    classTerm: apiBinding.HttpMessageBinding020
+    extends: MessageBinding
+    mapping:
+      headers:
+        propertyTerm: apiBinding.headers
+        range: DataShapesUnion
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  HttpMessageBinding030:
+    classTerm: apiBinding.HttpMessageBinding030
+    extends: MessageBinding
+    mapping:
+      statusCode:
+        propertyTerm: apiBinding.statusCode
+        range: integer
+      headers:
+        propertyTerm: apiBinding.headers
+        range: DataShapesUnion
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
   HttpOperationBinding:
     classTerm: apiBinding.HttpOperationBinding
+    extends: OperationBinding
+    mapping:
+      method:
+        propertyTerm: apiBinding.method
+        range: string
+      query:
+        propertyTerm: apiBinding.query
+        range: DataShapesUnion
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  HttpOperationBinding010:
+    classTerm: apiBinding.HttpOperationBinding010
     extends: OperationBinding
     mapping:
       type:
         propertyTerm: apiBinding.operationType
         range: string
+      method:
+        propertyTerm: apiBinding.method
+        range: string
+      query:
+        propertyTerm: apiBinding.query
+        range: DataShapesUnion
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  HttpOperationBinding020:
+    classTerm: apiBinding.HttpOperationBinding020
+    extends: OperationBinding
+    mapping:
       method:
         propertyTerm: apiBinding.method
         range: string
@@ -1568,6 +1727,9 @@ nodeMappings:
   IBMMQChannelQueue:
     classTerm: apiBinding.IBMMQChannelQueue
     mapping:
+      name:
+        propertyTerm: core.name
+        range: string
       objectName:
         propertyTerm: apiBinding.objectName
         range: string
@@ -1586,6 +1748,9 @@ nodeMappings:
   IBMMQChannelTopic:
     classTerm: apiBinding.IBMMQChannelTopic
     mapping:
+      name:
+        propertyTerm: core.name
+        range: string
       string:
         propertyTerm: apiBinding.string
         range: string
@@ -2096,6 +2261,36 @@ nodeMappings:
         range: string
 
 
+  MqttMessageBinding010:
+    classTerm: apiBinding.MqttMessageBinding010
+    extends: MessageBinding
+    mapping:
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  MqttMessageBinding020:
+    classTerm: apiBinding.MqttMessageBinding020
+    extends: MessageBinding
+    mapping:
+      payloadFormatIndicator:
+        propertyTerm: apiBinding.payloadFormatIndicator
+        range: integer
+      correlationData:
+        propertyTerm: apiBinding.correlationData
+        range: DataShapesUnion
+      contentType:
+        propertyTerm: apiBinding.contentType
+        range: string
+      responseTopic:
+        propertyTerm: apiBinding.responseTopic
+        range: string
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
   MqttOperationBinding:
     classTerm: apiBinding.MqttOperationBinding
     extends: OperationBinding
@@ -2111,10 +2306,97 @@ nodeMappings:
         range: string
 
 
+  MqttOperationBinding010:
+    classTerm: apiBinding.MqttOperationBinding010
+    extends: OperationBinding
+    mapping:
+      qos:
+        propertyTerm: apiBinding.qos
+        range: integer
+      retain:
+        propertyTerm: apiBinding.retain
+        range: boolean
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  MqttOperationBinding020:
+    classTerm: apiBinding.MqttOperationBinding020
+    extends: OperationBinding
+    mapping:
+      messageExpiryInterval:
+        propertyTerm: apiBinding.messageExpiryInterval
+        range: integer
+      qos:
+        propertyTerm: apiBinding.qos
+        range: integer
+      retain:
+        propertyTerm: apiBinding.retain
+        range: boolean
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
   MqttServerBinding:
     classTerm: apiBinding.MqttServerBinding
     extends: ServerBinding
     mapping:
+      clientId:
+        propertyTerm: apiBinding.clientId
+        range: string
+      cleanSession:
+        propertyTerm: apiBinding.cleanSession
+        range: boolean
+      lastWill:
+        propertyTerm: apiBinding.lastWill
+        range: MqttServerLastWill
+      keepAlive:
+        propertyTerm: apiBinding.keepAlive
+        range: integer
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  MqttServerBinding010:
+    classTerm: apiBinding.MqttServerBinding010
+    extends: ServerBinding
+    mapping:
+      clientId:
+        propertyTerm: apiBinding.clientId
+        range: string
+      cleanSession:
+        propertyTerm: apiBinding.cleanSession
+        range: boolean
+      lastWill:
+        propertyTerm: apiBinding.lastWill
+        range: MqttServerLastWill
+      keepAlive:
+        propertyTerm: apiBinding.keepAlive
+        range: integer
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  MqttServerBinding020:
+    classTerm: apiBinding.MqttServerBinding020
+    extends: ServerBinding
+    mapping:
+      sessionExpiryInterval:
+        propertyTerm: apiBinding.sessionExpiryInterval
+        range: integer
+      sessionExpiryIntervalSchema:
+        propertyTerm: apiBinding.sessionExpiryIntervalSchema
+        range: DataShapesUnion
+      maximumPacketSize:
+        propertyTerm: apiBinding.maximumPacketSize
+        range: integer
+      maximumPacketSizeSchema:
+        propertyTerm: apiBinding.maximumPacketSizeSchema
+        range: DataShapesUnion
       clientId:
         propertyTerm: apiBinding.clientId
         range: string
@@ -3350,6 +3632,67 @@ nodeMappings:
         range: string
 
 
+  SolaceOperationBinding010:
+    classTerm: apiBinding.SolaceOperationBinding010
+    extends: OperationBinding
+    mapping:
+      destinations:
+        propertyTerm: apiBinding.destinations
+        range: SolaceOperationDestination010
+        allowMultiple: true
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  SolaceOperationBinding020:
+    classTerm: apiBinding.SolaceOperationBinding020
+    extends: OperationBinding
+    mapping:
+      destinations:
+        propertyTerm: apiBinding.destinations
+        range: SolaceOperationDestination020
+        allowMultiple: true
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  SolaceOperationBinding030:
+    classTerm: apiBinding.SolaceOperationBinding030
+    extends: OperationBinding
+    mapping:
+      destinations:
+        propertyTerm: apiBinding.destinations
+        range: SolaceOperationDestination030
+        allowMultiple: true
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  SolaceOperationBinding040:
+    classTerm: apiBinding.SolaceOperationBinding040
+    extends: OperationBinding
+    mapping:
+      destinations:
+        propertyTerm: apiBinding.destinations
+        range: SolaceOperationDestination040
+        allowMultiple: true
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+      timeToLive:
+        propertyTerm: apiBinding.timeToLive
+        range: integer
+      priority:
+        propertyTerm: apiBinding.priority
+        range: integer
+      dmqEligible:
+        propertyTerm: apiBinding.dmqEligible
+        range: boolean
+
+
   SolaceOperationDestination:
     classTerm: apiBinding.SolaceOperationDestination
     mapping:
@@ -3362,13 +3705,58 @@ nodeMappings:
       queue:
         propertyTerm: apiBinding.queue
         range: SolaceOperationQueue
-      topic:
-        propertyTerm: apiBinding.topic
-        range: SolaceOperationTopic
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
         allowMultiple: true
+
+
+  SolaceOperationDestination010:
+    classTerm: apiBinding.SolaceOperationDestination010
+    extends: SolaceOperationDestination
+    mapping:
+      queue:
+        propertyTerm: apiBinding.queue
+        range: SolaceOperationQueue010
+
+
+  SolaceOperationDestination020:
+    classTerm: apiBinding.SolaceOperationDestination020
+    extends: SolaceOperationDestination
+    mapping:
+      queue:
+        propertyTerm: apiBinding.queue
+        range: SolaceOperationQueue010
+      topic:
+        propertyTerm: apiBinding.topic
+        range: SolaceOperationTopic
+
+
+  SolaceOperationDestination030:
+    classTerm: apiBinding.SolaceOperationDestination030
+    extends: SolaceOperationDestination
+    mapping:
+      queue:
+        propertyTerm: apiBinding.queue
+        range: SolaceOperationQueue030
+      topic:
+        propertyTerm: apiBinding.topic
+        range: SolaceOperationTopic
+
+
+  SolaceOperationDestination040:
+    classTerm: apiBinding.SolaceOperationDestination040
+    extends: SolaceOperationDestination
+    mapping:
+      queue:
+        propertyTerm: apiBinding.queue
+        range: SolaceOperationQueue030
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+      topic:
+        propertyTerm: apiBinding.topic
+        range: SolaceOperationTopic
 
 
   SolaceOperationQueue:
@@ -3381,16 +3769,27 @@ nodeMappings:
       accessType:
         propertyTerm: apiBinding.accessType
         range: string
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  SolaceOperationQueue010:
+    classTerm: apiBinding.SolaceOperationQueue010
+    extends: SolaceOperationQueue
+
+
+  SolaceOperationQueue030:
+    classTerm: apiBinding.SolaceOperationQueue030
+    extends: SolaceOperationDestination
+    mapping:
       maxMsgSpoolSize:
         propertyTerm: apiBinding.maxMsgSpoolSize
         range: string
       maxTtl:
         propertyTerm: apiBinding.maxTtl
         range: string
-      designAnnotations:
-        propertyTerm: doc.designAnnotation
-        range: DomainExtension
-        allowMultiple: true
 
 
   SolaceOperationTopic:
@@ -3415,6 +3814,26 @@ nodeMappings:
         range: string
       bindingVersion:
         propertyTerm: apiBinding.bindingVersion
+        range: string
+
+
+  SolaceServerBinding010:
+    classTerm: apiBinding.SolaceServerBinding010
+    extends: SolaceServerBinding
+
+
+  SolaceServerBinding040:
+    classTerm: apiBinding.SolaceServerBinding040
+    extends: ServerBinding
+    mapping:
+      msgVpn:
+        propertyTerm: apiBinding.msgVpn
+        range: string
+      bindingVersion:
+        propertyTerm: apiBinding.bindingVersion
+        range: string
+      clientName:
+        propertyTerm: apiBinding.clientName
         range: string
 
 
