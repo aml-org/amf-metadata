@@ -105,6 +105,10 @@ propertyTerms:
     displayName: additionalItemsSchema
     description: Controls whether it’s valid to have additional items in the array beyond what is defined
     range: shacl.Shape
+  aliases:
+    displayName: aliases
+    description: (AVRO) a JSON array of strings, providing alternate names for this shape
+    range: string
   anyOf:
     displayName: anyOf
     description: Data shapes in the union
@@ -232,6 +236,10 @@ propertyTerms:
   name:
     displayName: name
     range: string
+  namespace:
+    displayName: namespace
+    description: (AVRO) a JSON string that qualifies the name
+    range: string
   paramName:
     displayName: paramName
     description: Name of a parameter
@@ -297,6 +305,10 @@ propertyTerms:
     displayName: serializationSchema
     description: Serialization schema for a shape
     range: shacl.Shape
+  size:
+    displayName: size
+    description: (AVRO) an integer specifying the number of bytes per value
+    range: integer
   supportedOperation:
     displayName: supportedOperation
     description: Supported operations for this shape
