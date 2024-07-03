@@ -13,6 +13,14 @@ classTerms:
       Graph template that can be used to declare a re-usable graph structure that can be applied to different domain elements
       in order to re-use common semantics. Similar to a Lisp macro or a C++ template.
       It can be extended by any domain element adding bindings for the variables in the declaration.
+  AvroSchemaDocumentModel:
+    displayName: AvroSchemaDocument
+    description: A Document that represents an AVRO Schema Fragment
+    extends:
+      - Document
+      - Fragment
+      - Module
+      - Unit
   Document:
     displayName: Document
     description: |-
