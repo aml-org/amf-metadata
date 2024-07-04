@@ -779,6 +779,16 @@ nodeMappings:
         propertyTerm: apiContract.examples
         range: Example
         allowMultiple: true
+      namespace:
+        propertyTerm: raml-shapes.namespace
+        range: string
+      aliases:
+        propertyTerm: raml-shapes.aliases
+        range: string
+        allowMultiple: true
+      size:
+        propertyTerm: raml-shapes.size
+        range: integer
       raw:
         propertyTerm: doc.raw
         range: string
@@ -869,6 +879,11 @@ nodeMappings:
   AsyncAPI:
     classTerm: apiContract.AsyncAPI
     extends: API
+
+
+  AvroSchemaDocument:
+    classTerm: doc.AvroSchemaDocumentModel
+    extends: Document
 
 
   BaseUnit:

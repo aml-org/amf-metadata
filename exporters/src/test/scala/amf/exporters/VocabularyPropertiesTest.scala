@@ -18,7 +18,7 @@ class VocabularyPropertiesTest extends AsyncFunSuite with VocabularyTest {
   private val security_model = "vocabulary/src/main/resources/vocabularies/security.yaml"
 
   test("Vocabularies parsing aml_doc") {
-    testVocabulary(aml_doc, 17, 32)
+    testVocabulary(aml_doc, 18, 32)
   }
 
   test("Vocabularies parsing aml_meta") {
@@ -38,7 +38,7 @@ class VocabularyPropertiesTest extends AsyncFunSuite with VocabularyTest {
   }
 
   test("Vocabularies parsing data_shapes") {
-    testVocabulary(data_shapes, 22, 62)
+    testVocabulary(data_shapes, 22, 65)
   }
 
   test("Vocabularies parsing security_model") {
