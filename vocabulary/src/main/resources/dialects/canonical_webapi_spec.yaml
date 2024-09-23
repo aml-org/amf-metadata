@@ -3784,6 +3784,9 @@ nodeMappings:
       accessType:
         propertyTerm: apiBinding.accessType
         range: string
+      name:
+        propertyTerm: core.name
+        range: string
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
@@ -3804,6 +3807,16 @@ nodeMappings:
         range: string
       maxTtl:
         propertyTerm: apiBinding.maxTtl
+        range: string
+      topicSubscriptions:
+        propertyTerm: apiBinding.topicSubscriptions
+        range: string
+        allowMultiple: true
+      accessType:
+        propertyTerm: apiBinding.accessType
+        range: string
+      name:
+        propertyTerm: core.name
         range: string
 
 
