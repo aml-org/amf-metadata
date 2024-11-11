@@ -347,3 +347,7 @@ propertyTerms:
     displayName: variable
     description: Variables in the URL for the server
     range: Parameter
+  webhooks:
+    displayName: webhooks
+    description: Webhooks defined in the API
+    range: EndPoint
