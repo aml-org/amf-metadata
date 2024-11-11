@@ -279,6 +279,10 @@ nodeMappings:
         propertyTerm: apiContract.endpoint
         range: EndPoint
         allowMultiple: true
+      webhooks:
+        propertyTerm: apiContract.webhooks
+        range: EndPoint
+        allowMultiple: true
       security:
         propertyTerm: security.security
         range: SecurityRequirement
