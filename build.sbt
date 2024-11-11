@@ -98,7 +98,7 @@ lazy val branch     = sys.env.getOrElse("BRANCH_NAME", "develop")
 
 sonarProperties ++= Map(
   "sonar.login"             -> sonarToken,
-  "sonar.projectKey"        -> "mulesoft.amf-metadata",
+  "sonar.projectKey"        -> "mulesoft.amf-metadata.gec",
   "sonar.projectName"       -> "AMF-Metadata",
   "sonar.projectVersion"    -> artifactVersions.transformVersion,
   "sonar.sourceEncoding"    -> "UTF-8",
