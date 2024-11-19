@@ -106,5 +106,6 @@ sonarProperties ++= Map(
   "sonar.branch.name"       -> branch,
   "sonar.sources"           -> "transform/src/main/scala,exporters/src/main/scala",
   "sonar.tests"             -> "transform/src/test/scala,exporters/src/test/scala",
-  "sonar.userHome"          -> "${buildDir}/.sonar"
+  "sonar.userHome"          -> "${buildDir}/.sonar",
+  "sonar.scala.coverage.reportPaths" -> "target/scala-2.12/scoverage-report/scoverage.xml"
 )
