@@ -98,7 +98,7 @@ lazy val branch     = sys.env.getOrElse("BRANCH_NAME", "develop")
 
 sonarProperties ++= Map(
   "sonar.login"             -> sonarToken,
-  "sonar.projectKey"        -> "mulesoft.amf-metadata",
+  "sonar.projectKey"        -> "mulesoft.amf-metadata.gec",
   "sonar.projectName"       -> "AMF-Metadata",
   "sonar.projectVersion"    -> artifactVersions.transformVersion,
   "sonar.sourceEncoding"    -> "UTF-8",
@@ -106,5 +106,6 @@ sonarProperties ++= Map(
   "sonar.branch.name"       -> branch,
   "sonar.sources"           -> "transform/src/main/scala,exporters/src/main/scala",
   "sonar.tests"             -> "transform/src/test/scala,exporters/src/test/scala",
-  "sonar.userHome"          -> "${buildDir}/.sonar"
+  "sonar.userHome"          -> "${buildDir}/.sonar",
+  "sonar.scala.coverage.reportPaths" -> "target/scala-2.12/scoverage-report/scoverage.xml"
 )
