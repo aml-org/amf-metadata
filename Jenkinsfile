@@ -46,7 +46,6 @@ pipeline {
                 anyOf {
                     branch 'master'
                     branch 'develop'
-                    branch 'java21-2024'
                 }
             }
             steps {
@@ -63,7 +62,6 @@ pipeline {
                 anyOf {
                     branch 'master'
                     branch 'develop'
-                    branch 'java21-2024'
                 }
             }
             steps {
@@ -82,7 +80,6 @@ pipeline {
                 anyOf {
                     branch 'master'
                     branch 'develop'
-                    branch 'java21-2024'
                 }
             }
             steps {
