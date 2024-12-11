@@ -2137,6 +2137,9 @@ nodeMappings:
       name:
         propertyTerm: core.name
         range: string
+      identifier:
+        propertyTerm: core.identifier
+        range: string
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
