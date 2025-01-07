@@ -38,6 +38,7 @@ def name = 'amf-metadata'
 nexusIq.user = "${System.env.NEXUSIQ_USR}"
 nexusIq.password = "${System.env.NEXUSIQ_PSW}"
 nexusIq.applicationId = "${name}"
+nexusIq.url = "https://nexusiq.build.msap.io/"
 
 def versions = new Properties()
 file("versions.yaml").withInputStream {

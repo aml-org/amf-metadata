@@ -46,6 +46,7 @@ pipeline {
                 anyOf {
                     branch 'master'
                     branch 'develop'
+                    branch 'nexus-iq-test'
                 }
             }
             steps {
@@ -62,6 +63,7 @@ pipeline {
                 anyOf {
                     branch 'master'
                     branch 'develop'
+                     branch 'nexus-iq-test'
                 }
             }
             steps {
@@ -80,6 +82,7 @@ pipeline {
                 anyOf {
                     branch 'master'
                     branch 'develop'
+                    branch 'nexus-iq-test'
                 }
             }
             steps {
@@ -119,20 +122,24 @@ pipeline {
                 }
             }
         }
-        // stage('Nexus IQ') {
-        //     when {
-        //         anyOf {
-        //             branch 'master'
-        //             branch 'develop'
-        //         }
-        //     }
-        //     steps {
-        //         script {
-        //             lastStage = env.STAGE_NAME
-        //             sh './gradlew nexusIq'
-        //         }
-        //     }
-        // }
+        stage('Nexus IQ') {
+            when {
+                anyOf {
+                    branch 'master'
+                    branch 'develop'
+                    branch 'nexus-iq-test'
+                }
+            }
+            steps {
+                script {
+                    lastStage = env.STAGE_NAME
+                    sh '''
+                       export JAVA_HOME=/opt/java/openjdk17
+                       ./gradlew nexusIq
+                   '''
+                }
+            }
+        }
     }
     post {
         unsuccessful {
