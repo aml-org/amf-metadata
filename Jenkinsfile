@@ -46,7 +46,6 @@ pipeline {
                 anyOf {
                     branch 'master'
                     branch 'develop'
-                    branch 'nexus-iq-test'
                 }
             }
             steps {
@@ -63,7 +62,6 @@ pipeline {
                 anyOf {
                     branch 'master'
                     branch 'develop'
-                     branch 'nexus-iq-test'
                 }
             }
             steps {
@@ -82,7 +80,6 @@ pipeline {
                 anyOf {
                     branch 'master'
                     branch 'develop'
-                    branch 'nexus-iq-test'
                 }
             }
             steps {
@@ -127,7 +124,6 @@ pipeline {
                 anyOf {
                     branch 'master'
                     branch 'develop'
-                    branch 'nexus-iq-test'
                 }
             }
             steps {
