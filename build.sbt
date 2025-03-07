@@ -74,8 +74,7 @@ lazy val exporters = project
 
 val commonSettings = Common.settings ++ Common.publish ++ Seq(
   organization := "com.github.amlorg",
-  resolvers ++= List(ivyLocal, Common.releases, Common.snapshots, Resolver.mavenLocal),
-  resolvers += "jitpack" at "https://jitpack.io",
+  resolvers ++= List(ivyLocal, Common.releases, Common.snapshots, Common.public, Resolver.mavenLocal),
   credentials ++= Common.credentials(),
   Test / logBuffered := false
 )

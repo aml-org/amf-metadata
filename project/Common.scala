@@ -7,6 +7,7 @@ object Common {
 
   val snapshots: MavenRepository = "MuleSoft snapshots" at s"$nexus/snapshots"
   val releases: MavenRepository  = "MuleSoft releases" at s"$nexus/releases"
+  val public: MavenRepository    = "MuleSoft public" at s"$nexus/public"
 
   val settings: Seq[Def.Setting[_]] = Seq(
     Test / parallelExecution := false,
@@ -23,9 +24,9 @@ object Common {
   def credentials(): Seq[Credentials] = {
     val cs =
       Seq("mule_user"         -> "mule_password",
-        "PUBLIC_NEXUS_USER" -> "PUBLIC_NEXUS_PASS",
-        "NEXUS_USER"        -> "NEXUS_PASSWORD",
-        "NEXUS_USR"         -> "NEXUS_PSW")
+          "PUBLIC_NEXUS_USER" -> "PUBLIC_NEXUS_PASS",
+          "NEXUS_USER"        -> "NEXUS_PASSWORD",
+          "NEXUS_USR"         -> "NEXUS_PSW")
         .flatMap({
           case (user, password) =>
             for {
@@ -44,14 +45,13 @@ object Common {
           )
       })
 
-    }
-    else {
+    } else {
 
       val ivyCredentials   = Path.userHome / ".ivy2" / ".credentials"
       val mavenCredentials = Path.userHome / ".m2" / "settings.xml"
 
       val servers = Map(("mule-ee-releases", "repository-master.mulesoft.org"),
-        ("mule-ee-customer-releases", "repository.mulesoft.org"))
+                        ("mule-ee-customer-releases", "repository.mulesoft.org"))
 
       def loadMavenCredentials(file: java.io.File): Seq[Credentials] = {
         xml.XML.loadFile(file) \ "servers" \ "server" flatMap (s => {
@@ -59,11 +59,10 @@ object Common {
           if (servers.contains(id)) {
             Some(
               Credentials("Sonatype Nexus Repository Manager",
-                servers(id),
-                (s \ "username").text,
-                (s \ "password").text))
-          }
-          else {
+                          servers(id),
+                          (s \ "username").text,
+                          (s \ "password").text))
+          } else {
             None
           }
         })
