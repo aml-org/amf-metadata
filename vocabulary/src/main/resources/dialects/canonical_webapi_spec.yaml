@@ -291,6 +291,9 @@ nodeMappings:
         propertyTerm: apiContract.tag
         range: Tag
         allowMultiple: true
+      defaultSchema:
+        propertyTerm: apiContract.defaultSchema
+        range: string
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
@@ -307,6 +310,10 @@ nodeMappings:
       in:
         propertyTerm: security.in
         range: string
+      scope:
+        propertyTerm: security.scope
+        range: Scope
+        allowMultiple: true
 
 
   AbstractDeclaration:
@@ -1720,6 +1727,10 @@ nodeMappings:
       bearerFormat:
         propertyTerm: security.bearerFormat
         range: string
+      scope:
+        propertyTerm: security.scope
+        range: Scope
+        allowMultiple: true
 
 
   IBMMQChannelBinding:
