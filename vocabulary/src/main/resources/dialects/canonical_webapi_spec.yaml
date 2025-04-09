@@ -2468,6 +2468,16 @@ nodeMappings:
         allowMultiple: true
 
 
+  MutualTLSSettings:
+    classTerm: security.MutualTLSSettings
+    extends: Settings
+    mapping:
+      scope:
+        propertyTerm: security.scope
+        range: Scope
+        allowMultiple: true
+
+
   NamedExampleFragment:
     classTerm: apiContract.NamedExampleFragment
     extends: Fragment
