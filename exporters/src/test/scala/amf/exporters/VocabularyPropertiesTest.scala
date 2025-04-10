@@ -42,6 +42,6 @@ class VocabularyPropertiesTest extends AsyncFunSuite with VocabularyTest {
   }
 
   test("Vocabularies parsing security_model") {
-    testVocabulary(security_model, 13, 19)
+    testVocabulary(security_model, 14, 19)
   }
 }

@@ -18,6 +18,10 @@ classTerms:
     displayName: HttpSettings
     description: Settings for an HTTP security scheme
     extends: Settings
+  MutualTLSSettings:
+    displayName: MutualTLSSettings
+    description: Settings for an Mutual TLS security scheme
+    extends: Settings
   OAuth1Settings:
     displayName: OAuth1Settings
     description: Settings for an OAuth1 security scheme
