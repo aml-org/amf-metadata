@@ -181,6 +181,10 @@ propertyTerms:
   cookieParameter:
     displayName: cookieParameter
     range: Parameter
+  defaultSchema:
+    displayName: defaultSchema
+    description: The default value for the $schema keyword within Schema Objects
+    range: string
   encoding:
     displayName: encoding
     description: An array of properties and its encoding information. The key, being the property name, must exist in the schema as a property
