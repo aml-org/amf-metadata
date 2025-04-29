@@ -297,6 +297,10 @@ propertyTerms:
     displayName: schemaTarget
     description: Target applied shape in the dependency
     range: shacl.Shape
+  schemaVersion:
+    displayName: SchemaVersion
+    description: Determine which dialect should be used when processing the schema
+    range: string
   serializationOrder:
     displayName: serializationOrder
     description: position in the set of properties for a shape used to serialize this property on the wire
