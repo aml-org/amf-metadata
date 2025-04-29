@@ -786,6 +786,9 @@ nodeMappings:
       comment:
         propertyTerm: core.comment
         range: string
+      SchemaVersion:
+        propertyTerm: raml-shapes.schemaVersion
+        range: string
       examples:
         propertyTerm: apiContract.examples
         range: Example
