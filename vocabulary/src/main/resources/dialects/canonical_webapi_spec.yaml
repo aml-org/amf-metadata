@@ -786,6 +786,9 @@ nodeMappings:
       comment:
         propertyTerm: core.comment
         range: string
+      SchemaVersion:
+        propertyTerm: raml-shapes.schemaVersion
+        range: string
       examples:
         propertyTerm: apiContract.examples
         range: Example
@@ -2465,6 +2468,16 @@ nodeMappings:
       designAnnotations:
         propertyTerm: doc.designAnnotation
         range: DomainExtension
+        allowMultiple: true
+
+
+  MutualTLSSettings:
+    classTerm: security.MutualTLSSettings
+    extends: Settings
+    mapping:
+      scope:
+        propertyTerm: security.scope
+        range: Scope
         allowMultiple: true
 
 
