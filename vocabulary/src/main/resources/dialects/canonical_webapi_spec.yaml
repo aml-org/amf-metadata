@@ -803,6 +803,10 @@ nodeMappings:
       size:
         propertyTerm: raml-shapes.size
         range: integer
+      reservedValues:
+        propertyTerm: raml-shapes.reservedValues
+        range: Reserved
+        allowMultiple: true
       raw:
         propertyTerm: doc.raw
         range: string
@@ -3171,6 +3175,39 @@ nodeMappings:
       designLink:
         propertyTerm: doc.design-link-target
         range: link
+
+
+  Reserved:
+    classTerm: raml-shapes.Reserved
+    mapping:
+      range:
+        propertyTerm: raml-shapes.range
+        range: ReservedRange
+      fieldName:
+        propertyTerm: raml-shapes.fieldName
+        range: string
+      number:
+        propertyTerm: raml-shapes.number
+        range: integer
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
+
+
+  ReservedRange:
+    classTerm: raml-shapes.ReservedRange
+    mapping:
+      from:
+        propertyTerm: raml-shapes.from
+        range: integer
+      to:
+        propertyTerm: raml-shapes.to
+        range: integer
+      designAnnotations:
+        propertyTerm: doc.designAnnotation
+        range: DomainExtension
+        allowMultiple: true
 
 
   ResourceType:

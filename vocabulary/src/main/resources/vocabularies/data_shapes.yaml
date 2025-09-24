@@ -65,6 +65,12 @@ classTerms:
     displayName: ShapeRequest
     description: Request information for an operation
     extends: core.Request
+  Reserved:
+    displayName: Reserved
+    description: (GRPC) class to allocate values or fields to be reserved
+  ReservedRange:
+    displayName: ReservedRange
+    description: (GRPC) class to allocate a reserved range of values
   Response:
     displayName: ShapeResponse
     description: Response information for an operation
@@ -185,6 +191,10 @@ propertyTerms:
     displayName: expects
     description: Request information required by the operation
     range: Request
+  fieldName:
+    displayName: fieldName
+    description: (GRPC) field name to be reserved
+    range: string
   fileType:
     displayName: fileType
     description: Type of file described by this shape
@@ -197,6 +207,10 @@ propertyTerms:
     displayName: format
     description: Format constraint
     range: string
+  from:
+    displayName: from
+    description: (GRPC) from value of the range
+    range: integer
   inherits:
     displayName: inherits
     description: Relationship of inheritance between data shapes
@@ -240,6 +254,10 @@ propertyTerms:
     displayName: namespace
     description: (AVRO) a JSON string that qualifies the name
     range: string
+  number:
+    displayName: number
+    description: (GRPC) number to be reserved
+    range: integer
   paramName:
     displayName: paramName
     description: Name of a parameter
@@ -281,6 +299,10 @@ propertyTerms:
     displayName: required
     description: Marks the parameter as required
     range: boolean
+  reservedValues:
+    displayName: reservedValues
+    description: (GRPC) field name or values to be reserved
+    range: Reserved
   returns:
     displayName: returns
     description: Response data returned by the operation
@@ -317,6 +339,10 @@ propertyTerms:
     displayName: supportedOperation
     description: Supported operations for this shape
     range: Operation
+  to:
+    displayName: to
+    description: (GRPC) to value of the range
+    range: integer
   unevaluatedItems:
     displayName: unevaluatedItems
     description: Accepts that items may not be evaluated in schema validation
