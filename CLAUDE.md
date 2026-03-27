@@ -21,10 +21,20 @@ Follows the regular release process (see ~/mulesoft/CLAUDE.md).
 
 ## Artifacts Published
 This project publishes 2 artifacts:
-- amf-transform
-- amf-vocabulary
+- **amf-vocabulary** - Uses **MAJOR** version bumps (e.g., 67.0.0 → 68.0.0)
+- **amf-transform** - Uses **MINOR** version bumps (e.g., 2.51.0 → 2.52.0)
+
+### Versioning Rules
+- **Vocabulary**: Always increment the MAJOR version (x.0.0)
+- **Transform**: Always increment the MINOR version (x.y.0)
+- **Example**: After releasing 67.0.0 / 2.51.0, next snapshot is 68.0.0-SNAPSHOT / 2.52.0-SNAPSHOT
 
 ## Jenkins Configuration
+
+### Dashboard
+- **Base URL**: https://jenkins.build.msap.io/job/application/job/AMF/job/amf-metadata
+- **Branch URL format**: `{base-url}/job/{branch-name}` (URL encode `/` as `%252F`)
+- **Example**: https://jenkins.build.msap.io/job/application/job/AMF/job/amf-metadata/job/release%252F67.0.0-2.51.0
 
 ### Stages to Modify
 - **Building stages**: N/A
@@ -34,28 +44,22 @@ This project publishes 2 artifacts:
 - **For RC**: Add `"release/*"` to branch list in `Publish Vocabulary Artifact` and `Publish Transform Artifact` stages
 - **For Release**: Remove `"release/*"` from branch list in publish stages
 
-## Release Steps
+## Special Instructions
 
-### Publishing RC (x.y.z-RC.r)
-1. Update transform/dependencies.properties with amf RC version from previous step
-2. From develop: `git checkout -b release/x.y.z`
-3. Edit Jenkinsfile: add `"release/*"` to both Publish stages
-4. Edit versions.yaml: update version to `x.y.z-RC.r`
-5. Commit: `git commit -m "Publish x.y.z-RC.r"`
-6. Push: `git push -u origin release/x.y.z`
-
-### Publishing Release (x.y.z)
-1. Update transform/dependencies.properties with amf release version
-2. Follow standard three-PR process (setup → master → develop)
-3. After merging to master, manually tag: `git tag x.y.z origin/master && git push origin x.y.z`
-
-### Publishing Hotfix (x.y.z-n)
-1. Checkout/create `support/x.y.z` branch from tag
-2. Cherry-pick required commits
-3. Update version in versions.yaml to `x.y.z-n`
-4. Check if amf hotfix is also needed and update dependency
-5. Ensure Jenkinsfile has `support/*` in both Publish stages (for first HF only)
-6. Push and create PR to merge into `support/x.y.z`
+### Manual Tagging (IMPORTANT)
+**After merging to master, manually tag BOTH artifacts with namespaced tags:**
+```bash
+git tag vocabulary/vocab-version origin/master
+git tag transform/transform-version origin/master
+git push origin vocabulary/vocab-version transform/transform-version
+```
+**Example**: For vocabulary 67.0.0 and transform 2.51.0:
+```bash
+git tag vocabulary/67.0.0 origin/master
+git tag transform/2.51.0 origin/master
+git push origin vocabulary/67.0.0 transform/2.51.0
+```
+**⚠️ IMPORTANT**: Use namespaced tags (`vocabulary/` and `transform/` prefixes), NOT plain version numbers!
 
 ## Dependencies Impact
 After releasing amf-metadata, update the version in:
